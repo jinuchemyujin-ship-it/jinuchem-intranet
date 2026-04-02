@@ -77,7 +77,11 @@ input,select,textarea{font-family:var(--font)}
 .gnb-items::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
 .gi{display:flex;align-items:center;padding:0 12px;height:38px;color:var(--sbtext);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .15s;position:relative;gap:10px;flex-shrink:0;margin:1px 6px;border-radius:7px}
 .gnb.collapsed .gi{justify-content:center;padding:0 6px;margin:1px 4px}
-.gi-icon{font-size:15px;flex-shrink:0;width:20px;text-align:center;position:relative}
+.gi-icon{font-size:15px;flex-shrink:0;width:20px;text-align:center;position:relative;display:flex;align-items:center;justify-content:center}
+.gi-icon svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.gi.act .gi-icon svg{stroke-width:2.2}
+.sb-nf svg{width:16px;height:16px;stroke:rgba(255,255,255,.65);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.whdr svg,.wttl svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px}
 .gi-badge{position:absolute;top:-4px;right:-6px;background:#ef4444;color:#fff;font-size:8px;font-weight:700;min-width:14px;height:14px;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0 3px;border:1.5px solid var(--sb)}
 .gi-label{transition:all .15s;font-size:12px;white-space:nowrap;flex:1}
 .gi-label-badge{transition:all .15s;background:#ef4444;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:auto;flex-shrink:0}
@@ -416,27 +420,27 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <!-- 상단: 로고 + 접기 버튼 -->
   <div class="gnb-top">
     <div class="gnb-logo" style="cursor:pointer" onclick="if(document.getElementById('gnb').classList.contains('collapsed'))toggleSidebar()">
-      <div class="gnb-logo-icon">🔬</div>
+      <div class="gnb-logo-icon"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M9 3h6v7l4 8a2 2 0 01-1.8 2.9H6.8A2 2 0 015 18l4-8V3z"/><path d="M9 3h6"/></svg></div>
       <div class="gnb-logo-text">Jinuchem <span class="ver" style="background:rgba(52,211,153,.2);color:#34d399;letter-spacing:.3px">Intranet</span></div>
     </div>
-    <button class="gnb-toggle" onclick="toggleSidebar()" title="사이드바 접기">◀</button>
+    <button class="gnb-toggle" onclick="toggleSidebar()" title="사이드바 접기"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M15 18l-6-6 6-6"/></svg></button>
   </div>
 
   <!-- 검색 -->
   <div class="sb-search">
-    <span class="sb-search-icon">🔍</span>
+    <span class="sb-search-icon"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
     <input placeholder="빠른 검색...">
   </div>
 
   <!-- 알림 요약 -->
   <div class="sb-notif-row">
     <div class="sb-nf" onclick="openTab('approval','전자결재','✅')" title="결재 대기">
-      <span style="font-size:14px">✅</span>
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       <span class="sb-nf-label">결재대기</span>
       <span class="sb-nf-count" style="color:#f59e0b">3</span>
     </div>
     <div class="sb-nf" onclick="window.open('https://slack.com','_blank')" title="Slack">
-      <span style="font-size:14px">💬</span>
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2h-2v2a2 2 0 01-4 0v-6a2 2 0 012-2h4a2 2 0 012 2z"/><path d="M3 9a2 2 0 012-2h2V5a2 2 0 014 0v6a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
       <span class="sb-nf-label">Slack</span>
       <span class="sb-nf-count" style="color:#ef4444">3</span>
     </div>
@@ -445,59 +449,59 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <!-- 네비게이션 -->
   <div class="gnb-items">
     <div class="gi act" onclick="showMain('dashboard')" data-tip="대시보드">
-      <span class="gi-icon">🏠</span><span class="gi-label">대시보드</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="gi-label">대시보드</span>
     </div>
     <div class="gi-section-label">업무</div>
     <div class="gi" onclick="openTab('approval','전자결재','✅')" data-tip="전자결재">
-      <span class="gi-icon">✅</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
       <span class="gi-label">전자결재</span>
       <span class="gi-label-badge" style="background:#f59e0b">3</span>
     </div>
     <div class="gi" onclick="openTab('attendance','근태관리','🗓️')" data-tip="근태관리">
-      <span class="gi-icon">🗓️</span><span class="gi-label">근태관리</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="gi-label">근태관리</span>
     </div>
     <div class="gi" onclick="openTab('projects','과제관리','📋')" data-tip="과제관리">
-      <span class="gi-icon">📋</span><span class="gi-label">과제관리</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12h6M9 16h6"/></svg></span><span class="gi-label">과제관리</span>
       <span class="gi-label-badge">4</span>
     </div>
     <div class="gi" onclick="openExpensePage('목록')" data-tip="연구비 관리">
-      <span class="gi-icon">💳</span><span class="gi-label">연구비 관리</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="gi-label">연구비 관리</span>
     </div>
     <div class="gi-divider"></div>
     <div class="gi-section-label">소통</div>
     <div class="gi" onclick="openTab('board','게시판','📢')" data-tip="게시판">
-      <span class="gi-icon">📢</span><span class="gi-label">게시판</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><span class="gi-label">게시판</span>
     </div>
     <div class="gi" onclick="openTab('msds','MSDS 관리','⚗️')" data-tip="MSDS 관리">
-      <span class="gi-icon">⚗️</span><span class="gi-label">MSDS 관리</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6v7l4 8a2 2 0 01-1.8 2.9H6.8A2 2 0 015 18l4-8V3z"/><path d="M9 3h6"/></svg></span><span class="gi-label">MSDS 관리</span>
     </div>
     <div class="gi-divider"></div>
     <div class="gi-section-label">정보</div>
     <div class="gi" onclick="openTab('organization','조직도','👥')" data-tip="조직도">
-      <span class="gi-icon">👥</span><span class="gi-label">조직도</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="gi-label">조직도</span>
     </div>
     <div class="gi" onclick="openTab('salary','인사·급여','👤')" data-tip="인사·급여">
-      <span class="gi-icon">👤</span><span class="gi-label">인사·급여</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="gi-label">인사·급여</span>
     </div>
     <div class="gi" onclick="openTab('sales','매출·매입','📊')" data-tip="매출·매입">
-      <span class="gi-icon">📊</span><span class="gi-label">매출·매입</span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span><span class="gi-label">매출·매입</span>
     </div>
     <div class="gi-divider"></div>
     <div class="gi-section-label">외부 도구</div>
     <div class="gi" onclick="window.open('https://slack.com','_blank')" data-tip="Slack">
-      <span class="gi-icon">💬</span><span class="gi-label">Slack <span style="font-size:9px;color:var(--tx4)">↗</span></span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2h-2v2a2 2 0 01-4 0v-6a2 2 0 012-2h4a2 2 0 012 2z"/><path d="M3 9a2 2 0 012-2h2V5a2 2 0 014 0v6a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M15 3a2 2 0 012 2v2h2a2 2 0 010 4h-6a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M9 21a2 2 0 01-2-2v-2H5a2 2 0 010-4h6a2 2 0 012 2v4a2 2 0 01-2 2z"/></svg></span><span class="gi-label">Slack <span style="font-size:9px;color:var(--tx4)">↗</span></span>
     </div>
     <div class="gi" onclick="window.open('https://atlassian.net','_blank')" data-tip="Jira">
-      <span class="gi-icon">🎫</span><span class="gi-label">Jira <span style="font-size:9px;color:var(--tx4)">↗</span></span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/><path d="M12 8v8M8 12h8"/></svg></span><span class="gi-label">Jira <span style="font-size:9px;color:var(--tx4)">↗</span></span>
     </div>
     <div class="gi" onclick="window.open('https://atlassian.net/wiki','_blank')" data-tip="Confluence">
-      <span class="gi-icon">📄</span><span class="gi-label">Confluence <span style="font-size:9px;color:var(--tx4)">↗</span></span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span><span class="gi-label">Confluence <span style="font-size:9px;color:var(--tx4)">↗</span></span>
     </div>
     <div class="gi" onclick="window.open('https://calendar.google.com','_blank')" data-tip="Google Calendar">
-      <span class="gi-icon">📅</span><span class="gi-label">Google Calendar <span style="font-size:9px;color:var(--tx4)">↗</span></span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><span class="gi-label">Calendar <span style="font-size:9px;color:var(--tx4)">↗</span></span>
     </div>
     <div class="gi" onclick="window.open('https://drive.google.com','_blank')" data-tip="Google Drive">
-      <span class="gi-icon">📁</span><span class="gi-label">Google Drive <span style="font-size:9px;color:var(--tx4)">↗</span></span>
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="gi-label">Drive <span style="font-size:9px;color:var(--tx4)">↗</span></span>
     </div>
   </div>
 
@@ -513,18 +517,18 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- 하단 아이콘 (알림 + 설정만) -->
     <div style="display:flex;gap:6px;padding:0 2px">
       <div title="알림" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:6px 4px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .15s" onmouseenter="this.style.background='rgba(255,255,255,.14)'" onmouseleave="this.style.background='rgba(255,255,255,.06)'">
-        <span style="font-size:14px">🔔</span>
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:rgba(255,255,255,.65);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
         <span style="font-size:10px;font-weight:700;color:#fff;background:#ef4444;padding:1px 5px;border-radius:8px;line-height:1.4">5</span>
       </div>
       <div title="환경설정" style="flex:2;display:flex;align-items:center;justify-content:center;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .15s;gap:5px;font-size:10px;color:rgba(255,255,255,.5)" onmouseenter="this.style.background='rgba(255,255,255,.14)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(255,255,255,.06)';this.style.color='rgba(255,255,255,.5)'">
-        <span style="font-size:14px">⚙️</span><span>설정</span>
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>설정</span>
       </div>
     </div>
     <div style="padding:0 2px">
       <button style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);padding:7px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--font)" onmouseenter="this.style.background='rgba(255,255,255,.15)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">로그아웃</button>
     </div>
     <div class="gnb-footer-item" onclick="toggleSidebar()" title="사이드바 펼치기" id="gnb-collapse-btn" style="display:none">
-      <span style="font-size:15px">▶</span>
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M9 18l6-6-6-6"/></svg>
     </div>
   </div>
 </div>
@@ -534,7 +538,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
 <!-- MULTITAB -->
 <div class="tbar">
-  <div class="tb-home" onclick="showMain('dashboard')">🏠 메인</div>
+  <div class="tb-home" onclick="showMain('dashboard')"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:-1px"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> 메인</div>
   <div class="tabs-wrap" id="tabs-wrap"></div>
   <div class="tb-arr">◀</div>
   <div class="tb-arr">▶</div>
