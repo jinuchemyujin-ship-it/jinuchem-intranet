@@ -515,7 +515,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div style="padding:0 2px">
-      <button style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);padding:7px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--font)" onmouseenter="this.style.background='rgba(255,255,255,.15)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">로그아웃</button>
+      <button onclick="showToast('로그아웃되었습니다')" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);padding:7px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--font)" onmouseenter="this.style.background='rgba(255,255,255,.15)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">로그아웃</button>
     </div>
     <div class="gnb-footer-item" onclick="toggleSidebar()" title="사이드바 펼치기" id="gnb-collapse-btn" style="display:none">
       <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M9 18l6-6-6-6"/></svg>
@@ -749,7 +749,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <span class="tb-title">■ 조직도</span>
     <div class="ts"></div>
     <input class="fi" placeholder="직원 검색..." style="width:200px">
-    <button class="fb">검색</button>
+    <button class="fb" onclick="showToast('검색 완료')">검색</button>
   </div>
   <div class="scroll" style="padding:20px">
     <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
@@ -767,15 +767,15 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <div style="padding:8px">
             <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">합성연구팀</div>
-              <div style="color:var(--tx3);font-size:10px;margin-top:2px">김병선 외 4명</div>
+              <div style="color:var(--tx3);font-size:10px;margin-top:4px;cursor:pointer" onclick="showEmployee('김병선','합성연구팀','1201','bs.kim@jinuchem.com')"><span style="color:var(--p);text-decoration:underline">김병선</span> 외 4명</div>
             </div>
             <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">분석연구팀</div>
-              <div style="color:var(--tx3);font-size:10px;margin-top:2px">박연구 외 3명</div>
+              <div style="color:var(--tx3);font-size:10px;margin-top:4px;cursor:pointer" onclick="showEmployee('박연구','분석연구팀','1202','yg.park@jinuchem.com')"><span style="color:var(--p);text-decoration:underline">박연구</span> 외 3명</div>
             </div>
             <div style="padding:8px 12px;background:var(--bg);border-radius:10px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">안전환경팀</div>
-              <div style="color:var(--tx3);font-size:10px;margin-top:2px">이안전 외 2명</div>
+              <div style="color:var(--tx3);font-size:10px;margin-top:4px;cursor:pointer" onclick="showEmployee('이안전','안전환경팀','1203','aj.lee@jinuchem.com')"><span style="color:var(--p);text-decoration:underline">이안전</span> 외 2명</div>
             </div>
           </div>
         </div>
@@ -824,9 +824,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page" id="page-msds">
   <div class="toolbar">
     <span class="tb-title">■ MSDS 관리 (물질안전보건자료)</span>
-    <button class="tb pri">+ MSDS 등록</button>
+    <button class="tb pri" onclick="openBoardWrite()">+ MSDS 등록</button>
     <div class="tb-sep"></div>
-    <button class="tb">Excel 다운로드</button>
+    <button class="tb" onclick="downloadExcel('msds')">Excel 다운로드</button>
     <div class="ts"></div>
     <span style="font-size:11px;color:var(--tx3)">총 <strong style="color:var(--p)">156건</strong></span>
   </div>
@@ -834,7 +834,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <span class="fl">검색:</span>
     <input class="fi" placeholder="물질명 또는 CAS 번호 입력..." style="width:280px" id="msds-search">
     <select class="fs"><option>전체 위험등급</option><option>1등급 (매우 위험)</option><option>2등급 (위험)</option><option>3등급 (주의)</option><option>4등급 (일반)</option></select>
-    <button class="fb" onclick="showToast('🔍 MSDS 검색 중...')">검색</button>
+    <button class="fb" onclick="searchMSDS()">검색</button>
   </div>
   <div class="dtw">
     <table class="dt">
@@ -850,14 +850,14 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <th style="width:60px">MSDS</th>
       </tr></thead>
       <tbody>
-        <tr><td class="tc">1</td><td style="font-weight:600">소듐 클로라이드</td><td style="font-size:10px;color:var(--tx3)">Sodium Chloride</td><td class="tc mn">7647-14-5</td><td class="tc"><span class="bd bg">4등급</span></td><td class="tc">⚠️</td><td>시그마알드리치</td><td class="tc">2025-12</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
-        <tr><td class="tc">2</td><td style="font-weight:600">에탄올</td><td style="font-size:10px;color:var(--tx3)">Ethanol</td><td class="tc mn">64-17-5</td><td class="tc"><span class="bd bo">3등급</span></td><td class="tc">🔥⚠️</td><td>대정화금</td><td class="tc">2026-01</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
-        <tr><td class="tc">3</td><td style="font-weight:600">아세톤</td><td style="font-size:10px;color:var(--tx3)">Acetone</td><td class="tc mn">67-64-1</td><td class="tc"><span class="bd bo">3등급</span></td><td class="tc">🔥⚠️</td><td>대정화금</td><td class="tc">2025-11</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
-        <tr><td class="tc">4</td><td style="font-weight:600">염산</td><td style="font-size:10px;color:var(--tx3)">Hydrochloric Acid</td><td class="tc mn">7647-01-0</td><td class="tc"><span class="bd br">1등급</span></td><td class="tc">💀🔥⚠️</td><td>덕산과학</td><td class="tc">2026-02</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
-        <tr><td class="tc">5</td><td style="font-weight:600">황산</td><td style="font-size:10px;color:var(--tx3)">Sulfuric Acid</td><td class="tc mn">7664-93-9</td><td class="tc"><span class="bd br">1등급</span></td><td class="tc">💀🔥⚠️</td><td>대정화금</td><td class="tc">2025-10</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
-        <tr><td class="tc">6</td><td style="font-weight:600">메탄올</td><td style="font-size:10px;color:var(--tx3)">Methanol</td><td class="tc mn">67-56-1</td><td class="tc"><span class="bd br">2등급</span></td><td class="tc">💀🔥⚠️</td><td>시그마알드리치</td><td class="tc">2026-01</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
-        <tr><td class="tc">7</td><td style="font-weight:600">디클로로메탄</td><td style="font-size:10px;color:var(--tx3)">Dichloromethane</td><td class="tc mn">75-09-2</td><td class="tc"><span class="bd br">2등급</span></td><td class="tc">⚠️☠️</td><td>대정화금</td><td class="tc">2025-09</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
-        <tr><td class="tc">8</td><td style="font-weight:600">톨루엔</td><td style="font-size:10px;color:var(--tx3)">Toluene</td><td class="tc mn">108-88-3</td><td class="tc"><span class="bd br">2등급</span></td><td class="tc">🔥⚠️☠️</td><td>덕산과학</td><td class="tc">2026-01</td><td class="tc"><span class="lk" onclick="showToast('📄 MSDS PDF를 열고 있습니다...')">PDF</span></td></tr>
+        <tr><td class="tc">1</td><td style="font-weight:600">소듐 클로라이드</td><td style="font-size:10px;color:var(--tx3)">Sodium Chloride</td><td class="tc mn">7647-14-5</td><td class="tc"><span class="bd bg">4등급</span></td><td class="tc">⚠️</td><td>시그마알드리치</td><td class="tc">2025-12</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
+        <tr><td class="tc">2</td><td style="font-weight:600">에탄올</td><td style="font-size:10px;color:var(--tx3)">Ethanol</td><td class="tc mn">64-17-5</td><td class="tc"><span class="bd bo">3등급</span></td><td class="tc">🔥⚠️</td><td>대정화금</td><td class="tc">2026-01</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
+        <tr><td class="tc">3</td><td style="font-weight:600">아세톤</td><td style="font-size:10px;color:var(--tx3)">Acetone</td><td class="tc mn">67-64-1</td><td class="tc"><span class="bd bo">3등급</span></td><td class="tc">🔥⚠️</td><td>대정화금</td><td class="tc">2025-11</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
+        <tr><td class="tc">4</td><td style="font-weight:600">염산</td><td style="font-size:10px;color:var(--tx3)">Hydrochloric Acid</td><td class="tc mn">7647-01-0</td><td class="tc"><span class="bd br">1등급</span></td><td class="tc">💀🔥⚠️</td><td>덕산과학</td><td class="tc">2026-02</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
+        <tr><td class="tc">5</td><td style="font-weight:600">황산</td><td style="font-size:10px;color:var(--tx3)">Sulfuric Acid</td><td class="tc mn">7664-93-9</td><td class="tc"><span class="bd br">1등급</span></td><td class="tc">💀🔥⚠️</td><td>대정화금</td><td class="tc">2025-10</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
+        <tr><td class="tc">6</td><td style="font-weight:600">메탄올</td><td style="font-size:10px;color:var(--tx3)">Methanol</td><td class="tc mn">67-56-1</td><td class="tc"><span class="bd br">2등급</span></td><td class="tc">💀🔥⚠️</td><td>시그마알드리치</td><td class="tc">2026-01</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
+        <tr><td class="tc">7</td><td style="font-weight:600">디클로로메탄</td><td style="font-size:10px;color:var(--tx3)">Dichloromethane</td><td class="tc mn">75-09-2</td><td class="tc"><span class="bd br">2등급</span></td><td class="tc">⚠️☠️</td><td>대정화금</td><td class="tc">2025-09</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
+        <tr><td class="tc">8</td><td style="font-weight:600">톨루엔</td><td style="font-size:10px;color:var(--tx3)">Toluene</td><td class="tc mn">108-88-3</td><td class="tc"><span class="bd br">2등급</span></td><td class="tc">🔥⚠️☠️</td><td>덕산과학</td><td class="tc">2026-01</td><td class="tc"><span class="lk" onclick="openMsdsPdf(this.closest('tr').children[1].textContent,this.closest('tr').children[3].textContent)">PDF</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -867,9 +867,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page" id="page-projects">
   <div class="toolbar">
     <span class="tb-title">■ 과제관리</span>
-    <button class="tb pri">+ 과제 등록</button>
+    <button class="tb pri" onclick="showToast('과제 등록 화면을 엽니다')">+ 과제 등록</button>
     <div class="tb-sep"></div>
-    <button class="tb">Excel 다운로드</button>
+    <button class="tb" onclick="downloadExcel('projects')">Excel 다운로드</button>
     <div class="ts"></div>
     <span style="font-size:11px;color:var(--tx3)">총 <strong style="color:var(--p)">23건</strong></span>
   </div>
@@ -887,7 +887,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <input class="fi" placeholder="과제명 / 과제번호 / 담당자 검색" style="width:300px">
     <span class="fl">종료일</span>
     <input class="fi" type="date" value="2026-02-19" style="width:130px">
-    <button class="fb">조회</button>
+    <button class="fb" onclick="showToast('조회 완료')">조회</button>
     <div class="ts"></div>
     <select class="fs" style="width:130px"><option>시작일자내림차순</option><option>종료일자임박순</option></select>
     <span style="font-size:11px;color:var(--tx3)">총 <strong style="color:var(--p)">23건</strong></span>
@@ -1036,11 +1036,11 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <select class="fs"><option>전체</option><option>일반청구</option><option>카드청구</option><option>인건비</option><option>반납청구</option></select>
       <span class="fl">상태</span>
       <select class="fs"><option>전체</option><option>작성중</option><option>상신</option><option>승인</option><option>반려</option></select>
-      <button class="fb">조회</button>
+      <button class="fb" onclick="showToast('조회 완료')">조회</button>
       <div class="ts"></div>
       <button class="tb" onclick="switchExpTab('일반청구')" style="background:var(--p);color:#fff;border-color:var(--p)">+ 일반청구 작성</button>
       <button class="tb" onclick="switchExpTab('카드청구')">+ 카드청구</button>
-      <button class="tb">Excel</button>
+      <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel</button>
     </div>
     <div class="dtw" style="flex:1">
       <table class="dt">
@@ -1124,7 +1124,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
                     </select>
                     <span style="font-size:11px;color:var(--tx2)">예산잔액 :</span>
                     <span id="budget-bal" style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green);min-width:80px">0</span>
-                    <button class="tb" style="padding:2px 8px;font-size:10px">예산 조회</button>
+                    <button class="tb" style="padding:2px 8px;font-size:10px" onclick="showToast('예산을 조회합니다')">예산 조회</button>
                   </div>
                 </td>
               </tr>
@@ -1207,7 +1207,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
                   <div style="display:flex;gap:8px;align-items:flex-start">
                     <textarea class="fc" rows="2" style="flex:1;resize:vertical" placeholder="첨부 파일 목록이 여기에 표시됩니다."></textarea>
                     <div style="display:flex;flex-direction:column;gap:4px">
-                      <button class="tb pri" style="height:28px;white-space:nowrap">첨부문서관리</button>
+                      <button class="tb pri" style="height:28px;white-space:nowrap" onclick="showToast('첨부문서를 관리합니다')">첨부문서관리</button>
                       <button class="tb" style="height:28px;white-space:nowrap;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📂 Google Drive에서 파일을 선택합니다')">📂 Drive 연결</button>
                     </div>
                   </div>
@@ -1501,7 +1501,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <div class="frow">
         <span class="fl">문서종류</span><select class="fs"><option>전체</option><option>지출청구</option><option>인건비</option></select>
         <span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19">
-        <button class="fb">조회</button>
+        <button class="fb" onclick="showToast('조회 완료')">조회</button>
         <div style="flex:1"></div>
         <span style="font-size:11px;color:var(--red);font-weight:600">처리대기: 3건</span>
       </div>
@@ -1538,7 +1538,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="apr-out" style="display:none">
-      <div class="frow"><select class="fs"><option>전체</option><option>결재중</option><option>승인완료</option><option>반려</option></select><button class="fb">조회</button></div>
+      <div class="frow"><select class="fs"><option>전체</option><option>결재중</option><option>승인완료</option><option>반려</option></select><button class="fb" onclick="showToast('조회 완료')">조회</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th>순번</th><th>문서번호</th><th>문서제목</th><th>금액</th><th>상신일</th><th>현재단계</th><th>상태</th></tr></thead>
@@ -1664,7 +1664,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <button class="tb pri" onclick="showToast('💰 이번달 급여를 일괄 처리합니다')">급여 일괄처리</button>
     <button class="tb" style="background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 급여명세서를 이메일로 발송합니다')">📧 급여명세서 발송</button>
     <div class="tb-sep"></div>
-    <button class="tb">Excel 다운로드</button>
+    <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button>
     <button class="tb" onclick="pasteExcel()">📋 Excel 붙여넣기</button>
     <div class="ts"></div>
     <span style="font-size:10px;color:var(--tx3)">Tab 이동 | 마지막 행 Enter = 행 추가</span>
@@ -1689,7 +1689,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <option>2010-06750012 - 학생인건비 통합관리 계정-김병선</option>
         </select>
         <span class="fl">지급연월</span><input class="fi" type="month" value="2026-02">
-        <button class="fb">조회</button>
+        <button class="fb" onclick="showToast('조회 완료')">조회</button>
         <div class="ts"></div>
         <button class="tb" style="background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 선택된 직원들에게 급여명세서를 이메일로 발송합니다')">📧 이메일 발송</button>
       </div>
@@ -1745,7 +1745,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <button class="tb dan" onclick="removePayrollRow()">- 행 삭제</button>
         <div class="ts"></div>
         <button class="tb pri" onclick="submitPayroll()">결재상신</button>
-        <button class="tb">임시저장</button>
+        <button class="tb" onclick="showToast('임시저장되었습니다')">임시저장</button>
       </div>
       <div id="pt-alert" class="ib d" style="display:none;margin-top:4px"></div>
     </div>
@@ -1753,7 +1753,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- ─── 급여 기본정보 ─── -->
     <div id="sal-base" style="display:none">
       <div class="ib i" style="margin:8px">ℹ️ 직원의 급여 기본정보 및 연봉 계약 정보입니다.</div>
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri">+ 직원 추가</button><button class="tb">Excel 다운로드</button></div>
+      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri" onclick="showToast('직원 정보를 등록합니다')">+ 직원 추가</button><button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button></div>
       <div style="padding:0 8px">
         <table class="dt">
           <thead><tr><th>성명</th><th>소속</th><th>직위</th><th>입사일</th><th>기본급</th><th>연구수당</th><th>4대보험</th><th>실수령액</th><th>연계과제</th><th>이메일</th><th>상태</th><th>관리</th></tr></thead>
@@ -1771,10 +1771,10 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <div class="frow">
         <span class="fl">직원</span><select class="fs" style="width:160px"><option>전체</option><option>김병선</option><option>이연구</option><option>박대학원</option></select>
         <span class="fl">지급연월</span><input class="fi" type="month" value="2026-02">
-        <button class="fb">조회</button>
+        <button class="fb" onclick="showToast('조회 완료')">조회</button>
         <div class="ts"></div>
         <button class="tb" style="background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 전체 직원에게 급여명세서를 이메일로 발송했습니다')">📧 전체 이메일 발송</button>
-        <button class="tb">PDF 출력</button>
+        <button class="tb" onclick="printPage()">PDF 출력</button>
       </div>
       <div style="padding:8px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
         <!-- 급여명세서 카드 -->
@@ -1805,7 +1805,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
               <tr style="font-weight:800;font-size:13px;background:var(--pp)"><td style="padding:8px 4px">🏦 실수령액</td><td class="tr" style="color:var(--p)">4,413,900</td></tr>
             </table>
             <div style="margin-top:8px;display:flex;gap:6px">
-              <button class="tb" style="flex:1;font-size:10px">📄 PDF 출력</button>
+              <button class="tb" style="flex:1;font-size:10px" onclick="printPage()">PDF 출력</button>
               <button class="tb" style="flex:1;font-size:10px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 김병선 님께 급여명세서를 발송했습니다')">📧 이메일 발송</button>
             </div>
           </div>
@@ -1828,7 +1828,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
               <tr style="font-weight:800;font-size:13px;background:var(--pp)"><td style="padding:8px 4px">🏦 실수령액</td><td class="tr" style="color:var(--p)">2,992,400</td></tr>
             </table>
             <div style="margin-top:8px;display:flex;gap:6px">
-              <button class="tb" style="flex:1;font-size:10px">📄 PDF 출력</button>
+              <button class="tb" style="flex:1;font-size:10px" onclick="printPage()">PDF 출력</button>
               <button class="tb" style="flex:1;font-size:10px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 이연구 님께 급여명세서를 발송했습니다')">📧 이메일 발송</button>
             </div>
           </div>
@@ -1939,7 +1939,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <div style="padding:0 8px 4px;display:flex;justify-content:flex-end;gap:4px;margin-top:8px">
         <button class="tb pri" onclick="showToast('+ 일용직 근로자를 등록합니다')">+ 일용직 등록</button>
         <button class="tb" onclick="showToast('📄 원천세 신고파일을 생성합니다')">원천세 신고파일</button>
-        <button class="tb">Excel 다운로드</button>
+        <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button>
       </div>
       <div style="padding:0 8px">
         <table class="dt" style="font-size:11px">
@@ -1963,7 +1963,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <div class="frow">
         <span class="fl">통합계정</span><select class="fs" style="width:280px"><option>2010-06750012 - 학생인건비 통합관리 계정-김병선</option></select>
         <span class="fl">지급연월</span><input class="fi" type="month" value="2026-02">
-        <button class="fb">조회</button>
+        <button class="fb" onclick="showToast('조회 완료')">조회</button>
       </div>
       <div style="padding:8px">
         <table class="dt">
@@ -1983,14 +1983,14 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page" id="page-sales">
   <div class="toolbar">
     <span class="tb-title">■ 매출·매입관리</span>
-    <button class="tb pri">+ 매출 등록</button>
-    <button class="tb acc">+ 매입 등록</button>
+    <button class="tb pri" onclick="showToast('매출 등록 화면을 엽니다')">+ 매출 등록</button>
+    <button class="tb acc" onclick="showToast('매입을 등록합니다')">+ 매입 등록</button>
     <div class="tb-sep"></div>
-    <button class="tb">견적서 작성</button>
-    <button class="tb">세금계산서 발행</button>
+    <button class="tb" onclick="showToast('견적서를 작성합니다')">견적서 작성</button>
+    <button class="tb" onclick="showToast('세금계산서를 발행합니다')">세금계산서 발행</button>
     <div class="tb-sep"></div>
-    <button class="tb">매입매출장 출력</button>
-    <button class="tb">Excel</button>
+    <button class="tb" onclick="printPage()">매입매출장 출력</button>
+    <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel</button>
   </div>
   <div class="itabs">
     <div class="it act" onclick="switchIT(this,'sl-out')">매출 목록</div>
@@ -2003,7 +2003,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   </div>
   <div class="scroll">
     <div id="sl-out">
-      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><span class="fl">거래처</span><input class="fi" placeholder="거래처명" style="width:150px"><button class="fb">조회</button><div class="ts"></div><span style="font-size:11px;color:var(--tx3)">합계: <strong style="color:var(--p)">5,500,000원</strong></span></div>
+      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><span class="fl">거래처</span><input class="fi" placeholder="거래처명" style="width:150px"><button class="fb" onclick="showToast('조회 완료')">조회</button><div class="ts"></div><span style="font-size:11px;color:var(--tx3)">합계: <strong style="color:var(--p)">5,500,000원</strong></span></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th><input type="checkbox"></th><th>매출번호</th><th>매출일</th><th>거래처</th><th>품목</th><th>공급가액</th><th>부가세</th><th>합계</th><th>수금일</th><th>상태</th><th>관리</th></tr></thead>
@@ -2015,7 +2015,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="sl-in" style="display:none">
-      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><span class="fl">거래처</span><input class="fi" placeholder="거래처명" style="width:150px"><button class="fb">조회</button></div>
+      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><span class="fl">거래처</span><input class="fi" placeholder="거래처명" style="width:150px"><button class="fb" onclick="showToast('조회 완료')">조회</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th><input type="checkbox"></th><th>매입번호</th><th>매입일</th><th>거래처</th><th>품목</th><th>공급가액</th><th>부가세</th><th>합계</th><th>지급일</th><th>상태</th><th>관리</th></tr></thead>
@@ -2028,7 +2028,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="sl-stat" style="display:none">
-      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-12-31"><select class="fs"><option>거래처별</option><option>품목별</option><option>월별</option></select><button class="fb">조회</button></div>
+      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-12-31"><select class="fs"><option>거래처별</option><option>품목별</option><option>월별</option></select><button class="fb" onclick="showToast('조회 완료')">조회</button></div>
       <div style="padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <div style="background:#fff;border:1px solid var(--bdr);border-radius:8px;padding:14px">
           <div style="font-size:12px;font-weight:700;color:var(--tx);margin-bottom:10px">📊 거래처별 매출 현황</div>
@@ -2050,8 +2050,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
     <div id="sl-quote" style="display:none">
       <div class="toolbar" style="padding:6px 10px;border-bottom:1px solid var(--bdr)">
-        <button class="tb pri">+ 견적서 작성</button>
-        <button class="tb acc">+ 주문서 작성</button>
+        <button class="tb pri" onclick="showToast('견적서 작성 화면을 엽니다')">+ 견적서 작성</button>
+        <button class="tb acc" onclick="showToast('주문서를 작성합니다')">+ 주문서 작성</button>
         <div class="ts"></div>
       </div>
       <div class="dtw">
@@ -2064,7 +2064,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="sl-stmt" style="display:none">
-      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><button class="fb">조회</button><div class="ts"></div><button class="tb pri">+ 거래명세서 작성</button></div>
+      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><button class="fb" onclick="showToast('조회 완료')">조회</button><div class="ts"></div><button class="tb pri" onclick="showToast('거래명세서 작성 화면을 엽니다')">+ 거래명세서 작성</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th>번호</th><th>일자</th><th>거래처</th><th>품목 내역</th><th>공급가액</th><th>부가세</th><th>합계</th><th>관리</th></tr></thead>
@@ -2075,7 +2075,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="sl-tax" style="display:none">
-      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><select class="fs"><option>전체</option><option>발행</option><option>수취</option></select><button class="fb">조회</button><div class="ts"></div><button class="tb pri">+ 세금계산서 발행</button></div>
+      <div class="frow"><span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19"><select class="fs"><option>전체</option><option>발행</option><option>수취</option></select><button class="fb" onclick="showToast('조회 완료')">조회</button><div class="ts"></div><button class="tb pri" onclick="showToast('세금계산서 발행 화면을 엽니다')">+ 세금계산서 발행</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th>구분</th><th>승인번호</th><th>발행일</th><th>공급자</th><th>공급받는자</th><th>공급가액</th><th>세액</th><th>합계</th><th>상태</th><th>관리</th></tr></thead>
@@ -2086,7 +2086,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="sl-client" style="display:none">
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri">+ 거래처 등록</button><button class="tb">Excel</button></div>
+      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri" onclick="showToast('거래처를 등록합니다')">+ 거래처 등록</button><button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel</button></div>
       <div style="padding:0 8px">
         <table class="dt">
           <thead><tr><th>코드</th><th>거래처명</th><th>사업자번호</th><th>대표자</th><th>업태/업종</th><th>담당자</th><th>연락처</th><th>이메일</th><th>관리</th></tr></thead>
@@ -2105,11 +2105,11 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page" id="page-attendance">
   <div class="toolbar">
     <span class="tb-title">■ 근태관리</span>
-    <button class="tb pri">+ 출장 신청</button>
-    <button class="tb acc">+ 휴가 신청</button>
+    <button class="tb pri" onclick="showToast('출장 신청서를 작성합니다')">+ 출장 신청</button>
+    <button class="tb acc" onclick="showToast('휴가를 신청합니다')">+ 휴가 신청</button>
     <div class="tb-sep"></div>
-    <button class="tb">Excel 다운로드</button>
-    <button class="tb">출력</button>
+    <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button>
+    <button class="tb" onclick="printPage()">출력</button>
   </div>
   <div class="itabs">
     <div class="it act" onclick="switchIT(this,'att-dash')">현황 대시보드</div>
@@ -2152,7 +2152,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="att-trip" style="display:none">
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px;margin-bottom:0"><button class="tb pri">+ 출장 신청</button></div>
+      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px;margin-bottom:0"><button class="tb pri" onclick="showToast('출장 신청서를 작성합니다')">+ 출장 신청</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th>신청자</th><th>출장지</th><th>출발일</th><th>복귀일</th><th>목적</th><th>연계과제</th><th>예산</th><th>상태</th><th>관리</th></tr></thead>
@@ -2164,7 +2164,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="att-leave" style="display:none">
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri">+ 휴가 신청</button></div>
+      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri" onclick="showToast('휴가 신청서를 작성합니다')">+ 휴가 신청</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th>신청자</th><th>휴가종류</th><th>시작일</th><th>종료일</th><th>일수</th><th>사유</th><th>상태</th><th>관리</th></tr></thead>
@@ -2194,10 +2194,10 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page" id="page-meeting">
   <div class="toolbar">
     <span class="tb-title">■ 회의관리</span>
-    <button class="tb pri">+ 회의 등록</button>
+    <button class="tb pri" onclick="showToast('회의를 등록합니다')">+ 회의 등록</button>
     <div class="tb-sep"></div>
-    <button class="tb">회의록 출력</button>
-    <button class="tb">Excel</button>
+    <button class="tb" onclick="printPage()">회의록 출력</button>
+    <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel</button>
     <div class="ts"></div>
     <span style="font-size:10px;color:var(--tx3)">Google 캘린더 연동</span>
   </div>
@@ -2211,7 +2211,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <div class="frow">
         <span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19">
         <select class="fs"><option>전체 회의</option><option>정기회의</option><option>임시회의</option><option>화상회의</option></select>
-        <button class="fb">조회</button>
+        <button class="fb" onclick="showToast('조회 완료')">조회</button>
       </div>
       <div class="dtw">
         <table class="dt">
@@ -2262,7 +2262,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
               <div style="font-size:15px;font-weight:700;color:var(--tx)">2월 정기 연구미팅</div>
               <div style="font-size:11px;color:var(--tx3);margin-top:3px">2026-02-19 14:00 | 연구실 (B304) | 주관: 김병선</div>
             </div>
-            <div style="display:flex;gap:6px"><button class="tb">✏️ 편집</button><button class="tb">출력</button></div>
+            <div style="display:flex;gap:6px"><button class="tb" onclick="showToast('편집 모드로 전환합니다')">편집</button><button class="tb" onclick="printPage()">출력</button></div>
           </div>
           <div style="background:var(--bg);border-radius:8px;padding:14px;font-size:12px;line-height:1.7;color:var(--tx)">
             <strong>참석자:</strong> 김병선, 이연구, 박대학원<br><br>
@@ -2315,11 +2315,11 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
       <!-- 우측 버튼 -->
       <div style="display:flex;justify-content:flex-end;gap:4px;padding:6px 10px 2px;background:#fff;border-bottom:1px solid var(--bdr)">
-        <button class="tb" style="font-size:11px">통계정보입력</button>
-        <button class="tb" style="font-size:11px">기관별연구비</button>
-        <button class="tb" style="font-size:11px">원천징수영수증</button>
-        <button class="tb" style="font-size:11px">라벨출력</button>
-        <button class="tb pri" style="font-size:11px">현물부담확인서</button>
+        <button class="tb" style="font-size:11px" onclick="showToast('통계정보를 입력합니다')">통계정보입력</button>
+        <button class="tb" style="font-size:11px" onclick="showToast('기관별 연구비를 조회합니다')">기관별연구비</button>
+        <button class="tb" style="font-size:11px" onclick="printPage()">원천징수영수증</button>
+        <button class="tb" style="font-size:11px" onclick="printPage()">라벨출력</button>
+        <button class="tb pri" style="font-size:11px" onclick="printPage()">현물부담확인서</button>
       </div>
 
       <!-- 과제개요 -->
@@ -2375,7 +2375,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </table>
         <div style="text-align:right;padding:4px 10px;font-size:10px;color:var(--tx3)">
           ※ 매입세금계산서 검색조건으로 사용됩니다.
-          <button class="tb" style="font-size:10px;margin-left:6px">계산서수신메일등록/수정</button>
+          <button class="tb" style="font-size:10px;margin-left:6px" onclick="showToast('계산서 수신메일을 등록/수정합니다')">계산서수신메일등록/수정</button>
         </div>
       </div>
 
@@ -2400,9 +2400,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div style="background:#3d4f66;color:#fff;padding:4px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:space-between">
           <span>▶ 첨부파일</span>
           <div style="display:flex;gap:4px">
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">순서변경</button>
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">과제문서등록</button>
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">삭제</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="showToast('순서를 변경합니다')">순서변경</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="showToast('과제문서를 등록합니다')">과제문서등록</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="showToast('삭제되었습니다')">삭제</button>
           </div>
         </div>
         <table class="dt" style="font-size:11px">
@@ -2492,7 +2492,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div id="pdt-person" style="display:none">
       <div style="background:#fff;margin:8px;border:1px solid var(--bdr);border-radius:2px">
         <div style="background:#3d4f66;color:#fff;padding:4px 10px;font-size:11px;font-weight:700;display:flex;justify-content:space-between;align-items:center">
-          <span>▶ 참여인력</span><button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">+ 인력 추가</button>
+          <span>▶ 참여인력</span><button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="showToast('참여인력을 추가합니다')">+ 인력 추가</button>
         </div>
         <table class="dt" style="font-size:11px">
           <thead><tr><th>성명</th><th>직위</th><th>역할</th><th>기여율</th><th>참여기간</th><th>총지급액</th><th>상태</th></tr></thead>
@@ -2567,8 +2567,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div style="background:#3d4f66;color:#fff;padding:4px 10px;font-size:11px;font-weight:700;display:flex;justify-content:space-between;align-items:center">
           <span>▶ 카드사용내역 (1건)</span>
           <div style="display:flex;gap:4px">
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">청구서작성 바로가기</button>
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">다운로드</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="openExpensePage('일반청구')">청구서작성 바로가기</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="downloadExcel('project-detail')">다운로드</button>
           </div>
         </div>
         <div style="padding:6px 10px;background:#fffbeb;border-bottom:1px solid #fde68a;font-size:11px;color:#92400e;display:flex;align-items:center;gap:6px">
@@ -2582,7 +2582,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <label style="font-size:11px;display:flex;align-items:center;gap:3px"><input type="radio" name="cstat" checked> 전체</label>
           <label style="font-size:11px;display:flex;align-items:center;gap:3px"><input type="radio" name="cstat"> 미청구</label>
           <label style="font-size:11px;display:flex;align-items:center;gap:3px"><input type="radio" name="cstat"> 청구</label>
-          <button class="fb">조회</button>
+          <button class="fb" onclick="showToast('조회 완료')">조회</button>
         </div>
         <table class="dt" style="font-size:11px">
           <thead><tr><th><input type="checkbox"></th><th>카드구분</th><th>카드번호</th><th>사용자</th><th>결제예정일</th><th>사용일</th><th>사용시각</th><th>승인번호</th><th>사용구분</th><th>가맹점</th><th>가맹점업종</th><th>사용액</th><th>공급가액</th><th>부가세</th><th>청구구분</th><th>청구합계</th><th>반납액</th></tr></thead>
@@ -2631,9 +2631,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div style="background:#3d4f66;color:#fff;padding:4px 10px;font-size:11px;font-weight:700;display:flex;justify-content:space-between;align-items:center">
           <span>▶ 자금현황 요약</span>
           <div style="display:flex;gap:4px">
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">항목별집행현황</button>
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">지출일자별 지출부</button>
-            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff">이자조회</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="showToast('항목별 집행현황을 조회합니다')">항목별집행현황</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="showToast('지출일자별 지출부를 조회합니다')">지출일자별 지출부</button>
+            <button class="tb" style="font-size:10px;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" onclick="showToast('이자내역을 조회합니다')">이자조회</button>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--bdr)">
@@ -2790,7 +2790,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <span style="cursor:pointer;font-size:16px">📎</span>
             <span style="cursor:pointer;font-size:16px">😊</span>
           </div>
-          <button style="width:36px;height:36px;background:var(--p);border:none;border-radius:50%;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">➤</button>
+          <button onclick="showToast('메시지를 전송했습니다')" style="width:36px;height:36px;background:var(--p);border:none;border-radius:50%;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">➤</button>
         </div>
       </div>
     </div>
@@ -2802,8 +2802,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <div class="toolbar">
     <span class="tb-title">■ 게시판</span>
     <div class="ts"></div>
-    <button class="tb pri">✏️ 글쓰기</button>
-    <button class="tb">Excel</button>
+    <button class="tb pri" onclick="openBoardWrite()">+ 글쓰기</button>
+    <button class="tb" onclick="downloadExcel('board')">Excel</button>
   </div>
   <div style="display:flex;height:100%;overflow:hidden">
     <!-- Left: Board List -->
@@ -2821,7 +2821,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <div class="frow">
         <span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19">
         <span class="fl">검색</span><input class="fi" placeholder="제목 또는 내용" style="width:200px">
-        <button class="fb">조회</button>
+        <button class="fb" onclick="showToast('조회 완료')">조회</button>
       </div>
       <div class="dtw">
         <table class="dt">
@@ -2869,10 +2869,10 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page" id="page-docmgmt">
   <div class="toolbar">
     <span class="tb-title">■ 문서관리</span>
-    <button class="tb pri" onclick="showToast('✏️ 새 문서를 작성합니다')">+ 문서 작성</button>
-    <button class="tb" onclick="showToast('📋 템플릿 목록을 엽니다')">📋 템플릿</button>
+    <button class="tb pri" onclick="openBoardWrite()">+ 문서 작성</button>
+    <button class="tb" onclick="openTab('approval','전자결재','✅')">결재 템플릿</button>
     <div class="tb-sep"></div>
-    <button class="tb">Excel 다운로드</button>
+    <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button>
   </div>
   <div class="itabs">
     <div class="it act" onclick="switchIT(this,'doc-all')">전체 문서</div>
@@ -2886,7 +2886,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19">
         <span class="fl">문서유형</span><select class="fs"><option>전체</option><option>지출결의서</option><option>출장비</option><option>전문가활용료</option></select>
         <input class="fi" placeholder="문서명 또는 내용 검색" style="width:220px">
-        <button class="fb">조회</button>
+        <button class="fb" onclick="showToast('조회 완료')">조회</button>
       </div>
       <div class="dtw">
         <table class="dt">
@@ -2941,7 +2941,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="doc-sent" style="display:none">
-      <div class="frow"><button class="fb">조회</button></div>
+      <div class="frow"><button class="fb" onclick="showToast('조회 완료')">조회</button></div>
       <div class="dtw"><table class="dt"><thead><tr><th>문서번호</th><th>제목</th><th>수신자</th><th>발송일</th><th>상태</th></tr></thead><tbody>
         <tr><td class="mn lk">DOC-2026-0089</td><td>전문가활용비 - 하향수 자문료 청구</td><td>이팀장 → 박처장</td><td class="mn">2026-01-29</td><td><span class="bd bg">완료</span></td></tr>
       </tbody></table></div>
@@ -2980,7 +2980,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="mfoot">
       <button class="tb" onclick="closeModal('modal-approve')">닫기</button>
       <button class="tb dan" onclick="doReject()">반려</button>
-      <button class="tb" style="background:var(--tx3);color:#fff;border-color:var(--tx3)">위임</button>
+      <button class="tb" style="background:var(--tx3);color:#fff;border-color:var(--tx3)" onclick="showToast('결재를 위임합니다')">위임</button>
       <button class="tb pri" onclick="doApprove()">승인</button>
     </div>
   </div>
@@ -2991,7 +2991,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <div class="modal" style="max-width:520px">
     <div class="mhdr"><span class="mttl">입금처 검색</span><span class="mclose" onclick="closeModal('modal-vendor')">×</span></div>
     <div class="mbody">
-      <div class="frow" style="margin-bottom:8px"><input class="fi" placeholder="업체명 또는 사업자번호" style="width:260px"><button class="fb">검색</button></div>
+      <div class="frow" style="margin-bottom:8px"><input class="fi" placeholder="업체명 또는 사업자번호" style="width:260px"><button class="fb" onclick="showToast('검색 완료')">검색</button></div>
       <table class="dt"><thead><tr><th>코드</th><th>업체명</th><th>사업자번호</th><th>대표자</th><th>선택</th></tr></thead>
       <tbody>
         <tr><td class="mn">V001</td><td>(주)사이언스샵</td><td class="mn">123-45-67890</td><td>홍길동</td><td class="tc"><button class="tb pri" style="font-size:10px;padding:2px 7px" onclick="selectVendor('(주)사이언스샵');closeModal('modal-vendor')">선택</button></td></tr>
@@ -3259,12 +3259,168 @@ function showMain(pid){
     const home=document.querySelector('.gi[onclick*="dashboard"]');
     if(home)home.classList.add('act');
   }
-  // Close all tabs when going to main dashboard
-  if(pid==='dashboard'){activeTab=null;renderTabs();}
 }
+
+// ══ MSDS 검색 ══
+function searchMSDS(){
+  const q=document.getElementById('msds-search').value.trim().toLowerCase();
+  const rows=document.querySelectorAll('#page-msds table.dt tbody tr');
+  let count=0;
+  rows.forEach(r=>{
+    const txt=r.textContent.toLowerCase();
+    const show=!q||txt.includes(q);
+    r.style.display=show?'':'none';
+    if(show)count++;
+  });
+  showToast(q?count+'건 검색됨':'전체 '+rows.length+'건 표시');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const si=document.getElementById('msds-search');
+  if(si){si.addEventListener('keyup',e=>{if(e.key==='Enter')searchMSDS();});
+    si.addEventListener('input',()=>{if(!si.value)searchMSDS();});}
+});
+
+// ══ MSDS PDF 미리보기 모달 ══
+function openMsdsPdf(name,cas){
+  const m=document.getElementById('modal-msds');
+  if(!m)return;
+  document.getElementById('msds-modal-title').textContent=name+' — MSDS';
+  document.getElementById('msds-modal-body').innerHTML=
+    '<div style="padding:30px;text-align:center;color:var(--tx3)">'+
+    '<svg viewBox="0 0 24 24" style="width:60px;height:60px;stroke:var(--p);stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>'+
+    '<div style="font-size:15px;font-weight:700;color:var(--tx);margin-bottom:4px">'+name+'</div>'+
+    '<div style="font-size:12px;color:var(--tx4);margin-bottom:16px">CAS: '+cas+'</div>'+
+    '<div style="background:var(--bg);border-radius:12px;padding:20px;text-align:left;font-size:12px;line-height:1.8;color:var(--tx2)">'+
+    '<strong>1. 화학제품과 회사에 관한 정보</strong><br>제품명: '+name+'<br>CAS No: '+cas+'<br><br>'+
+    '<strong>2. 유해성·위험성</strong><br>해당 물질의 GHS 분류 정보를 참고하세요.<br><br>'+
+    '<strong>3. 구성성분의 명칭 및 함유량</strong><br>순도 99% 이상 시약급<br><br>'+
+    '<strong>4. 응급조치 요령</strong><br>눈 접촉: 깨끗한 물로 15분 이상 세척<br>피부 접촉: 오염된 의복을 벗기고 비누와 물로 세척<br>흡입: 신선한 공기가 있는 곳으로 이동</div>'+
+    '</div>';
+  openModal('modal-msds');
+}
+
+// ══ 엑셀 다운로드 ══
+function downloadExcel(pageName){
+  const page=document.getElementById('page-'+pageName);
+  if(!page){showToast('다운로드 준비 중...');return;}
+  const table=page.querySelector('table.dt');
+  if(!table){showToast('테이블 데이터가 없습니다');return;}
+  let csv='\uFEFF';
+  table.querySelectorAll('tr').forEach(r=>{
+    const cells=[];
+    r.querySelectorAll('th,td').forEach(c=>cells.push('"'+c.textContent.trim().replace(/"/g,'""')+'"'));
+    csv+=cells.join(',')+'\n';
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download=pageName+'_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();URL.revokeObjectURL(url);
+  showToast('Excel(CSV) 다운로드 완료');
+}
+
+// ══ 게시판 글쓰기 모달 ══
+function openBoardWrite(){
+  const m=document.getElementById('modal-board-write');
+  if(m)openModal('modal-board-write');
+}
+function submitBoardPost(){
+  const title=document.getElementById('board-title');
+  const content=document.getElementById('board-content');
+  if(!title||!title.value.trim()){showToast('제목을 입력하세요');return;}
+  if(!content||!content.value.trim()){showToast('내용을 입력하세요');return;}
+  // 게시글 목록에 추가
+  const list=document.querySelector('#page-board .wbody');
+  if(list){
+    const now=new Date();
+    const dateStr=(now.getMonth()+1).toString().padStart(2,'0')+'-'+now.getDate().toString().padStart(2,'0');
+    const item=document.createElement('div');
+    item.className='nr';
+    item.innerHTML='<span class="ncat nc-pub">공지</span><span class="ntitle">'+title.value+'</span><span class="nmeta">'+dateStr+'</span>';
+    list.insertBefore(item,list.firstChild);
+  }
+  closeModal('modal-board-write');
+  title.value='';content.value='';
+  showToast('게시글이 등록되었습니다');
+}
+
+// ══ 조직도 직원 상세 ══
+function showEmployee(name,team,ext,email){
+  const m=document.getElementById('modal-employee');
+  if(!m)return;
+  document.getElementById('emp-modal-name').textContent=name;
+  document.getElementById('emp-modal-detail').innerHTML=
+    '<div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px">'+
+    '<div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#5AC8FA,#007AFF);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700">'+name.charAt(0)+'</div>'+
+    '<div style="font-size:17px;font-weight:700;color:var(--tx)">'+name+'</div>'+
+    '<div style="font-size:13px;color:var(--tx3)">'+team+'</div>'+
+    '<div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:8px">'+
+    '<div style="display:flex;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:10px"><span style="color:var(--tx3)">내선번호</span><span style="font-weight:600">'+ext+'</span></div>'+
+    '<div style="display:flex;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:10px"><span style="color:var(--tx3)">이메일</span><span style="font-weight:600">'+email+'</span></div>'+
+    '<div style="display:flex;gap:8px;margin-top:8px">'+
+    '<button class="tb pri" style="flex:1;justify-content:center;border-radius:10px;padding:10px" onclick="window.open(\'https://slack.com\',\'_blank\');closeModal(\'modal-employee\')">Slack DM</button>'+
+    '<button class="tb" style="flex:1;justify-content:center;border-radius:10px;padding:10px" onclick="window.open(\'mailto:'+email+'\');closeModal(\'modal-employee\')">이메일</button>'+
+    '</div></div></div>';
+  openModal('modal-employee');
+}
+
+// ══ 임시저장 (LocalStorage) ══
+function saveDraft(formId){
+  const form=document.getElementById(formId);
+  if(!form){showToast('임시저장되었습니다');return;}
+  const data={};
+  form.querySelectorAll('input,select,textarea').forEach(el=>{
+    if(el.id)data[el.id]=el.value;
+  });
+  localStorage.setItem('draft_'+formId,JSON.stringify(data));
+  showToast('임시저장되었습니다 (로컬)');
+}
+
+// ══ 인쇄 ══
+function printPage(){window.print();showToast('인쇄 화면을 엽니다');}
 
 // ══ INIT ══
 showMain('dashboard');
 </script>
+
+<!-- ══ 추가 모달들 ══ -->
+<!-- MSDS PDF 모달 -->
+<div class="mbg" id="modal-msds">
+  <div class="modal" style="max-width:600px">
+    <div class="mhdr"><span class="mttl" id="msds-modal-title">MSDS</span><span class="mclose" onclick="closeModal('modal-msds')">✕</span></div>
+    <div class="mbody" id="msds-modal-body"></div>
+    <div class="mfoot">
+      <button class="tb" onclick="printPage()">인쇄</button>
+      <button class="tb pri" onclick="closeModal('modal-msds')">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 게시판 글쓰기 모달 -->
+<div class="mbg" id="modal-board-write">
+  <div class="modal" style="max-width:600px">
+    <div class="mhdr"><span class="mttl">새 게시글 작성</span><span class="mclose" onclick="closeModal('modal-board-write')">✕</span></div>
+    <div class="mbody">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="fg"><label>카테고리</label><select class="fc" style="width:100%"><option>공지사항</option><option>자유게시판</option><option>화학연구팀</option><option>IT개발팀</option><option>경영지원팀</option></select></div>
+        <div class="fg"><label>제목 <span class="req">*</span></label><input class="fc" id="board-title" placeholder="제목을 입력하세요" style="width:100%"></div>
+        <div class="fg"><label>내용 <span class="req">*</span></label><textarea class="fc" id="board-content" rows="8" placeholder="내용을 입력하세요" style="width:100%;resize:vertical"></textarea></div>
+        <div class="fg"><label>첨부파일</label><input type="file" class="fc" style="width:100%" multiple></div>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="tb" onclick="closeModal('modal-board-write')">취소</button>
+      <button class="tb pri" onclick="submitBoardPost()">등록</button>
+    </div>
+  </div>
+</div>
+
+<!-- 직원 상세 모달 -->
+<div class="mbg" id="modal-employee">
+  <div class="modal" style="max-width:400px">
+    <div class="mhdr"><span class="mttl" id="emp-modal-name">직원 정보</span><span class="mclose" onclick="closeModal('modal-employee')">✕</span></div>
+    <div class="mbody" id="emp-modal-detail"></div>
+  </div>
+</div>
 </body>
 </html>
