@@ -423,7 +423,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <div class="gnb-top">
     <div class="gnb-logo" style="cursor:pointer" onclick="if(document.getElementById('gnb').classList.contains('collapsed'))toggleSidebar()">
       <div class="gnb-logo-icon"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M9 3h6v7l4 8a2 2 0 01-1.8 2.9H6.8A2 2 0 015 18l4-8V3z"/><path d="M9 3h6"/></svg></div>
-      <div class="gnb-logo-text">Jinuchem <span class="ver" style="background:rgba(52,211,153,.2);color:#34d399;letter-spacing:.3px">Intranet</span></div>
+      <div class="gnb-logo-text">Jinuchem <span class="ver">Intranet</span></div>
     </div>
     <button class="gnb-toggle" onclick="toggleSidebar()" title="사이드바 접기"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M15 18l-6-6 6-6"/></svg></button>
   </div>
@@ -439,12 +439,12 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="sb-nf" onclick="openTab('approval','전자결재','✅')" title="결재 대기">
       <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       <span class="sb-nf-label">결재대기</span>
-      <span class="sb-nf-count" style="color:#f59e0b">3</span>
+      <span class="sb-nf-count" style="color:#FF9500">3</span>
     </div>
     <div class="sb-nf" onclick="window.open('https://slack.com','_blank')" title="Slack">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2h-2v2a2 2 0 01-4 0v-6a2 2 0 012-2h4a2 2 0 012 2z"/><path d="M3 9a2 2 0 012-2h2V5a2 2 0 014 0v6a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
       <span class="sb-nf-label">Slack</span>
-      <span class="sb-nf-count" style="color:#ef4444">3</span>
+      <span class="sb-nf-count">3</span>
     </div>
   </div>
 
@@ -457,7 +457,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="gi" onclick="openTab('approval','전자결재','✅')" data-tip="전자결재">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
       <span class="gi-label">전자결재</span>
-      <span class="gi-label-badge" style="background:#f59e0b">3</span>
+      <span class="gi-label-badge">3</span>
     </div>
     <div class="gi" onclick="openTab('attendance','근태관리','🗓️')" data-tip="근태관리">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="gi-label">근태관리</span>
@@ -579,36 +579,36 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <span class="wttl"><span class="wttl-dot"></span>전자결재 현황</span>
         <div class="wact">
           <div style="display:flex;gap:6px;font-size:10px;color:var(--tx3)">
-            <span style="background:#f3f4f6;color:var(--tx2);padding:2px 6px;border-radius:4px;font-weight:600">결재중 13</span>
-            <span style="background:#f3f4f6;color:var(--tx3);padding:2px 6px;border-radius:4px;font-weight:600">반려 2</span>
+            <span style="background:rgba(0,122,255,.08);color:var(--p);padding:2px 8px;border-radius:12px;font-weight:600">결재중 13</span>
+            <span style="background:rgba(255,59,48,.08);color:var(--red);padding:2px 8px;border-radius:12px;font-weight:600">반려 2</span>
           </div>
           <div class="wico" onclick="openTab('approval','전자결재','✅')">↗</div>
         </div>
       </div>
       <div class="wbody">
         <div class="apv-item" onclick="openTab('approval','전자결재','✅')">
-          <div class="apv-dot" style="background:#9ca3af;margin-top:4px"></div>
+          <div class="apv-dot" style="background:#FF9500;margin-top:4px"></div>
           <div class="apv-body"><div class="apv-title">재료비 청구 — 시약 구입 (소듐클로라이드)</div>
           <div class="apv-meta"><span>CLM-2026-0023</span><span>1,200,000원</span><span>김병선</span></div></div>
-          <span class="apv-badge" style="background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb">결재대기</span>
+          <span class="apv-badge" style="background:rgba(255,149,0,.1);color:#C77800;border:none;border-radius:12px">결재대기</span>
         </div>
         <div class="apv-item" onclick="openTab('approval','전자결재','✅')">
-          <div class="apv-dot" style="background:#b0b8c4;margin-top:4px"></div>
+          <div class="apv-dot" style="background:#007AFF;margin-top:4px"></div>
           <div class="apv-body"><div class="apv-title">(주)사이언스샵 거래명세서 결재</div>
           <div class="apv-meta"><span>CLM-2026-0021</span><span>850,000원</span></div></div>
-          <span class="apv-badge" style="background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb">검토중</span>
+          <span class="apv-badge" style="background:rgba(0,122,255,.08);color:#007AFF;border:none;border-radius:12px">검토중</span>
         </div>
         <div class="apv-item">
-          <div class="apv-dot" style="background:#6b7280;margin-top:4px"></div>
+          <div class="apv-dot" style="background:#34C759;margin-top:4px"></div>
           <div class="apv-body"><div class="apv-title">전문가활용비 — 자문료 (하향수)</div>
           <div class="apv-meta"><span>CLM-2025-0089</span><span>300,000원</span></div></div>
-          <span class="apv-badge" style="background:#f0f1f3;color:#4b5563;border:1px solid #d1d5db">완료</span>
+          <span class="apv-badge" style="background:rgba(52,199,89,.1);color:#248A3D;border:none;border-radius:12px">완료</span>
         </div>
         <div class="apv-item">
-          <div class="apv-dot" style="background:#d1d5db;margin-top:4px"></div>
+          <div class="apv-dot" style="background:#007AFF;margin-top:4px"></div>
           <div class="apv-body"><div class="apv-title">인건비 배치 — 2026년 2월</div>
           <div class="apv-meta"><span>PAY-2026-0005</span><span>9,560,000원</span></div></div>
-          <span class="apv-badge" style="background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb">결재중</span>
+          <span class="apv-badge" style="background:rgba(0,122,255,.08);color:#007AFF;border:none;border-radius:12px">결재중</span>
         </div>
       </div>
     </div>
@@ -626,29 +626,29 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
       </div>
       <div class="wbody" style="display:flex;flex-direction:column">
-        <div style="flex:1;min-height:180px;background:#f9fafb;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--bdr);cursor:pointer" onclick="window.open('https://calendar.google.com','_blank')">
-          <svg viewBox="0 0 24 24" style="width:36px;height:36px;stroke:#9ca3af;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          <div style="font-size:12px;font-weight:700;color:var(--tx2)">Google 캘린더 연동</div>
-          <div style="font-size:10px;color:var(--tx4)">jinuchem.com</div>
-          <div style="background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:6px 14px;font-size:11px;font-weight:600;color:var(--tx2)">캘린더 열기 →</div>
+        <div style="flex:1;min-height:160px;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-bottom:0.5px solid rgba(60,60,67,.1);cursor:pointer" onclick="window.open('https://calendar.google.com','_blank')">
+          <svg viewBox="0 0 24 24" style="width:40px;height:40px;stroke:var(--p);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <div style="font-size:13px;font-weight:600;color:var(--tx)">Google 캘린더 연동</div>
+          <div style="font-size:11px;color:var(--tx4)">jinuchem.com</div>
+          <div style="background:var(--p);color:#fff;border:none;border-radius:20px;padding:7px 18px;font-size:12px;font-weight:600">캘린더 열기</div>
         </div>
-        <div style="padding:8px 14px">
-          <div style="font-size:10px;color:var(--tx3);margin-bottom:6px;font-weight:700">📅 오늘 일정 (2026.02.19)</div>
-          <div style="display:flex;flex-direction:column;gap:4px">
-            <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;border-radius:6px;background:#f9fafb;border:1px solid #e5e7eb">
-              <span style="width:6px;height:6px;border-radius:50%;background:#6b7280;flex-shrink:0"></span>
-              <span style="font-size:11px;font-weight:600;color:var(--tx)">14:00</span>
-              <span style="font-size:11px;color:var(--tx2)">연구비 점검회의</span>
+        <div style="padding:12px 16px">
+          <div style="font-size:11px;color:var(--tx3);margin-bottom:8px;font-weight:600">오늘 일정 (2026.02.19)</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:rgba(0,122,255,.04);border:none">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--p);flex-shrink:0"></span>
+              <span style="font-size:12px;font-weight:600;color:var(--tx)">14:00</span>
+              <span style="font-size:12px;color:var(--tx2)">연구비 점검회의</span>
             </div>
-            <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;border-radius:6px;background:#f9fafb;border:1px solid #e5e7eb">
-              <span style="width:6px;height:6px;border-radius:50%;background:#9ca3af;flex-shrink:0"></span>
-              <span style="font-size:11px;font-weight:600;color:var(--tx)">16:00</span>
-              <span style="font-size:11px;color:var(--tx2)">감사 서류 제출 마감</span>
+            <div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:rgba(255,149,0,.04);border:none">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--ora);flex-shrink:0"></span>
+              <span style="font-size:12px;font-weight:600;color:var(--tx)">16:00</span>
+              <span style="font-size:12px;color:var(--tx2)">감사 서류 제출 마감</span>
             </div>
-            <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;border-radius:6px;background:#f9fafb;border:1px solid #e5e7eb">
-              <span style="width:6px;height:6px;border-radius:50%;background:#b0b8c4;flex-shrink:0"></span>
-              <span style="font-size:11px;font-weight:600;color:var(--tx)">18:00</span>
-              <span style="font-size:11px;color:var(--tx2)">팀 미팅 (정기 주간회의)</span>
+            <div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:rgba(88,86,214,.04);border:none">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--acc);flex-shrink:0"></span>
+              <span style="font-size:12px;font-weight:600;color:var(--tx)">18:00</span>
+              <span style="font-size:12px;color:var(--tx2)">팀 미팅 (정기 주간회의)</span>
             </div>
           </div>
         </div>
@@ -682,12 +682,12 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <div class="msg-preview">과제 청구서 제출 완료했습니다</div></div>
         </div>
         <div class="msg-item" onclick="window.open('https://slack.com','_blank')">
-          <div class="msg-avatar" style="background:#6b7280">J</div>
+          <div class="msg-avatar" style="background:linear-gradient(135deg,#34C759,#30B350)">J</div>
           <div class="msg-body"><div class="msg-name">#jira-alerts <span class="msg-time">어제</span></div>
           <div class="msg-preview">JC-142 이슈가 할당되었습니다</div></div>
         </div>
         <div class="msg-item" onclick="openTab('messenger','메신저','💬')">
-          <div class="msg-avatar" style="background:#4b5563">연</div>
+          <div class="msg-avatar" style="background:linear-gradient(135deg,#5856D6,#AF52DE)">연</div>
           <div class="msg-body"><div class="msg-name">연구지원팀 채널 <span class="msg-time">어제</span></div>
           <div class="msg-preview">[공지] 2월 연구비 마감 안내</div></div>
         </div>
@@ -703,10 +703,10 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
       </div>
       <div class="wbody">
-        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:#f3f4f6;color:#4b5563;border:1px solid #e5e7eb">진행중</span><span class="ntitle">JC-142 인트라넷 대시보드 위젯 구현</span><span class="nmeta">높음</span></div>
-        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:#f3f4f6;color:#4b5563;border:1px solid #e5e7eb">진행중</span><span class="ntitle">JC-138 MSDS 검색 API 연동</span><span class="nmeta">보통</span></div>
-        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb">리뷰</span><span class="ntitle">JC-135 결재 알림 Slack Webhook</span><span class="nmeta">높음</span></div>
-        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:#f0f1f3;color:#6b7280;border:1px solid #d1d5db">완료</span><span class="ntitle">JC-130 출퇴근 체크 모바일 대응</span><span class="nmeta">완료</span></div>
+        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:rgba(0,122,255,.08);color:#007AFF;border:none">진행중</span><span class="ntitle">JC-142 인트라넷 대시보드 위젯 구현</span><span class="nmeta">높음</span></div>
+        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:rgba(0,122,255,.08);color:#007AFF;border:none">진행중</span><span class="ntitle">JC-138 MSDS 검색 API 연동</span><span class="nmeta">보통</span></div>
+        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:rgba(255,149,0,.1);color:#C77800;border:none">리뷰</span><span class="ntitle">JC-135 결재 알림 Slack Webhook</span><span class="nmeta">높음</span></div>
+        <div class="nr" onclick="window.open('https://atlassian.net','_blank')"><span class="ncat" style="background:rgba(52,199,89,.1);color:#248A3D;border:none">완료</span><span class="ntitle">JC-130 출퇴근 체크 모바일 대응</span><span class="nmeta">완료</span></div>
       </div>
     </div>
 
@@ -729,32 +729,32 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <div style="font-size:16px;font-weight:700;font-family:var(--mono);color:var(--green)">19h 15m</div>
           </div>
         </div>
-        <div style="background:#e5e7eb;border-radius:6px;height:10px;overflow:hidden;margin-bottom:6px">
-          <div style="width:63%;height:100%;background:#6b7280;border-radius:6px;transition:width 1s"></div>
+        <div style="background:rgba(118,118,128,.12);border-radius:5px;height:8px;overflow:hidden;margin-bottom:8px">
+          <div style="width:63%;height:100%;background:var(--p);border-radius:5px;transition:width 1s"></div>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--tx4)">
-          <span>0h</span><span>40h 기본</span><span>52h 한도</span>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--tx4)">
+          <span>0h</span><span style="color:var(--ora)">40h</span><span style="color:var(--red)">52h</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:12px">
-          <div style="text-align:center;padding:6px 4px;background:#f3f4f6;border-radius:6px;border:1px solid #e5e7eb">
-            <div style="font-size:9px;color:var(--tx3)">월</div>
-            <div style="font-size:12px;font-weight:700;font-family:var(--mono);color:var(--tx2)">8:30</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:14px">
+          <div style="text-align:center;padding:8px 4px;background:rgba(52,199,89,.06);border-radius:10px;border:none">
+            <div style="font-size:10px;color:var(--tx3);margin-bottom:2px">월</div>
+            <div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--tx)">8:30</div>
           </div>
-          <div style="text-align:center;padding:6px 4px;background:#f3f4f6;border-radius:6px;border:1px solid #e5e7eb">
-            <div style="font-size:9px;color:var(--tx3)">화</div>
-            <div style="font-size:12px;font-weight:700;font-family:var(--mono);color:var(--tx2)">9:15</div>
+          <div style="text-align:center;padding:8px 4px;background:rgba(52,199,89,.06);border-radius:10px;border:none">
+            <div style="font-size:10px;color:var(--tx3);margin-bottom:2px">화</div>
+            <div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--tx)">9:15</div>
           </div>
-          <div style="text-align:center;padding:6px 4px;background:#f3f4f6;border-radius:6px;border:1px solid #e5e7eb">
-            <div style="font-size:9px;color:var(--tx3)">수</div>
-            <div style="font-size:12px;font-weight:700;font-family:var(--mono);color:var(--tx2)">8:00</div>
+          <div style="text-align:center;padding:8px 4px;background:rgba(52,199,89,.06);border-radius:10px;border:none">
+            <div style="font-size:10px;color:var(--tx3);margin-bottom:2px">수</div>
+            <div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--tx)">8:00</div>
           </div>
-          <div style="text-align:center;padding:6px 4px;background:#f9fafb;border-radius:6px;border:1px solid #e5e7eb">
-            <div style="font-size:9px;color:var(--tx3)">목</div>
-            <div style="font-size:12px;font-weight:700;font-family:var(--mono);color:var(--p)">7:00</div>
+          <div style="text-align:center;padding:8px 4px;background:rgba(0,122,255,.06);border-radius:10px;border:none">
+            <div style="font-size:10px;color:var(--tx3);margin-bottom:2px">목</div>
+            <div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--p)">7:00</div>
           </div>
-          <div style="text-align:center;padding:6px 4px;background:#f1f5f9;border-radius:6px;border:1px solid #e2e8f0">
-            <div style="font-size:9px;color:var(--tx4)">금</div>
-            <div style="font-size:12px;font-weight:700;font-family:var(--mono);color:var(--tx4)">—</div>
+          <div style="text-align:center;padding:8px 4px;background:rgba(118,118,128,.06);border-radius:10px;border:none">
+            <div style="font-size:10px;color:var(--tx4);margin-bottom:2px">금</div>
+            <div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--tx4)">—</div>
           </div>
         </div>
       </div>
@@ -774,7 +774,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <div class="scroll" style="padding:20px">
     <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
       <!-- CEO -->
-      <div style="background:#3d4551;color:#fff;border-radius:12px;padding:16px 32px;text-align:center;box-shadow:var(--shadow-md)">
+      <div style="background:var(--p);color:#fff;border-radius:14px;padding:16px 32px;text-align:center;box-shadow:var(--shadow-md)">
         <div style="font-size:14px;font-weight:800">대표이사</div>
         <div style="font-size:11px;opacity:.8;margin-top:2px">김대표</div>
       </div>
@@ -782,54 +782,54 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <!-- Divisions -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;max-width:900px">
         <!-- 화학연구본부 -->
-        <div style="border:1px solid var(--bdr);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)">
-          <div style="background:#4b5563;color:#fff;padding:10px 16px;font-size:12px;font-weight:700;text-align:center">화학연구본부</div>
+        <div style="border:none;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#fff">
+          <div style="background:var(--tx);color:#fff;padding:12px 16px;font-size:13px;font-weight:600;text-align:center">화학연구본부</div>
           <div style="padding:8px">
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;margin-bottom:6px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">합성연구팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">김병선 외 4명</div>
             </div>
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;margin-bottom:6px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">분석연구팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">박연구 외 3명</div>
             </div>
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">안전환경팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">이안전 외 2명</div>
             </div>
           </div>
         </div>
         <!-- IT개발본부 -->
-        <div style="border:1px solid var(--bdr);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)">
-          <div style="background:#4b5563;color:#fff;padding:10px 16px;font-size:12px;font-weight:700;text-align:center">IT개발본부</div>
+        <div style="border:none;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#fff">
+          <div style="background:var(--tx);color:#fff;padding:12px 16px;font-size:13px;font-weight:600;text-align:center">IT개발본부</div>
           <div style="padding:8px">
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;margin-bottom:6px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">프론트엔드팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">정프론 외 3명</div>
             </div>
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;margin-bottom:6px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">백엔드팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">최백엔 외 3명</div>
             </div>
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">인프라팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">박인프 외 2명</div>
             </div>
           </div>
         </div>
         <!-- 경영지원본부 -->
-        <div style="border:1px solid var(--bdr);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)">
-          <div style="background:#4b5563;color:#fff;padding:10px 16px;font-size:12px;font-weight:700;text-align:center">경영지원본부</div>
+        <div style="border:none;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#fff">
+          <div style="background:var(--tx);color:#fff;padding:12px 16px;font-size:13px;font-weight:600;text-align:center">경영지원본부</div>
           <div style="padding:8px">
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;margin-bottom:6px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">경영기획팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">강기획 외 2명</div>
             </div>
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;margin-bottom:6px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">인사총무팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">윤인사 외 2명</div>
             </div>
-            <div style="padding:8px 12px;background:#f9fafb;border-radius:8px;font-size:11px;border:1px solid #e5e7eb">
+            <div style="padding:8px 12px;background:var(--bg);border-radius:10px;font-size:12px;border:none">
               <div style="font-weight:700;color:var(--tx2)">재무회계팀</div>
               <div style="color:var(--tx3);font-size:10px;margin-top:2px">한회계 외 1명</div>
             </div>
@@ -2752,7 +2752,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           </div>
         </div>
         <div class="msg-item">
-          <div class="msg-avatar" style="background:#4b5563">연</div>
+          <div class="msg-avatar" style="background:linear-gradient(135deg,#5856D6,#AF52DE)">연</div>
           <div class="msg-body">
             <div class="msg-name">연구지원팀 채널 <span class="msg-time">어제</span></div>
             <div class="msg-preview">[공지] 2월 연구비 마감 안내</div>
@@ -3279,7 +3279,7 @@ document.querySelectorAll('.mbg').forEach(bg=>bg.addEventListener('click',e=>{if
 
 // ══ TOAST ══
 function showToast(msg,color){
-  const t=document.getElementById('toast');t.textContent=msg;t.style.background=color||'var(--p)';
+  const t=document.getElementById('toast');t.textContent=msg;t.style.background=color||'';
   t.classList.add('sh');setTimeout(()=>t.classList.remove('sh'),3200);
 }
 
@@ -3290,7 +3290,9 @@ function toggleSidebar(){
   const btn=document.getElementById('gnb-collapse-btn');
   if(btn)btn.style.display=collapsed?'flex':'none';
   const toggle=gnb.querySelector('.gnb-toggle');
-  if(toggle)toggle.textContent=collapsed?'▶':'◀';
+  if(toggle)toggle.innerHTML=collapsed
+    ?'<svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M9 18l6-6-6-6"/></svg>'
+    :'<svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M15 18l-6-6 6-6"/></svg>';
 }
 
 // ══ SHOW MAIN ══
