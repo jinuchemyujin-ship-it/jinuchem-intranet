@@ -565,6 +565,63 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
+    <!-- Widget: 출퇴근 체크 (코러스 복무관리) -->
+    <div style="grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <!-- 출퇴근 -->
+      <div class="wgt">
+        <div class="whdr">
+          <span class="wttl"><span class="wttl-dot"></span>출퇴근</span>
+          <span style="font-size:11px;color:var(--tx4)" id="clock-display">--:--:--</span>
+        </div>
+        <div class="wbody" style="padding:16px">
+          <div style="text-align:center;margin-bottom:14px">
+            <div style="font-size:12px;color:var(--tx3);margin-bottom:4px" id="attend-date">2026년 4월 5일 (토)</div>
+            <div id="attend-status" style="font-size:14px;font-weight:700;color:var(--tx4)">미출근</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+            <button id="btn-checkin" onclick="checkIn()" style="padding:14px;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;background:var(--p);color:#fff;font-family:var(--font);transition:all .2s">출근</button>
+            <button id="btn-checkout" onclick="checkOut()" style="padding:14px;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;background:var(--bg);color:var(--tx3);font-family:var(--font);transition:all .2s" disabled>퇴근</button>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--tx4)">
+            <span>출근 <strong id="checkin-time" style="color:var(--tx)">--:--</strong></span>
+            <span>퇴근 <strong id="checkout-time" style="color:var(--tx)">--:--</strong></span>
+            <span>근무 <strong id="work-duration" style="color:var(--p)">0h 0m</strong></span>
+          </div>
+        </div>
+      </div>
+      <!-- 예산 집행 현황 (코러스 재정/회계) -->
+      <div class="wgt">
+        <div class="whdr">
+          <span class="wttl"><span class="wttl-dot"></span>예산 집행 현황</span>
+          <div class="wact"><div class="wico" onclick="openExpensePage('목록')">↗</div></div>
+        </div>
+        <div class="wbody" style="padding:14px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span style="color:var(--tx2)">재료비</span><span style="color:var(--tx3)">2,160,000 / 5,000,000</span></div>
+              <div style="background:rgba(118,118,128,.12);border-radius:4px;height:6px;overflow:hidden"><div style="width:43%;height:100%;background:var(--p);border-radius:4px"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span style="color:var(--tx2)">인건비</span><span style="color:var(--tx3)">7,840,000 / 10,000,000</span></div>
+              <div style="background:rgba(118,118,128,.12);border-radius:4px;height:6px;overflow:hidden"><div style="width:78%;height:100%;background:var(--ora);border-radius:4px"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span style="color:var(--tx2)">여비</span><span style="color:var(--tx3)">1,200,000 / 3,000,000</span></div>
+              <div style="background:rgba(118,118,128,.12);border-radius:4px;height:6px;overflow:hidden"><div style="width:40%;height:100%;background:var(--green);border-radius:4px"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span style="color:var(--tx2)">전문가활용비</span><span style="color:var(--tx3)">800,000 / 3,000,000</span></div>
+              <div style="background:rgba(118,118,128,.12);border-radius:4px;height:6px;overflow:hidden"><div style="width:27%;height:100%;background:var(--acc);border-radius:4px"></div></div>
+            </div>
+          </div>
+          <div style="margin-top:12px;padding-top:10px;border-top:0.5px solid rgba(60,60,67,.1);display:flex;justify-content:space-between;font-size:12px">
+            <span style="color:var(--tx3)">총 집행률</span>
+            <span style="font-weight:700;color:var(--tx)">57.1%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Widget: 공지사항 -->
     <div class="wgt">
       <div class="whdr">
@@ -1615,32 +1672,32 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <span style="font-size:10px;background:#eff6ff;color:var(--p);padding:2px 8px;border-radius:8px">자주 쓰는 양식을 선택하세요</span>
           </div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px">
-            <div onclick="showToast('📋 지출결의서 양식을 불러옵니다')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
+            <div onclick="openApprovalForm('지출결의서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
               <div style="font-size:24px;margin-bottom:6px">💳</div>
               <div style="font-size:11px;font-weight:600;color:var(--tx)">지출결의서</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">일반 지출 청구</div>
             </div>
-            <div onclick="showToast('✈️ 출장비신청서 양식을 불러옵니다')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
+            <div onclick="openApprovalForm('출장비신청서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
               <div style="font-size:24px;margin-bottom:6px">✈️</div>
               <div style="font-size:11px;font-weight:600;color:var(--tx)">출장비 신청</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">국내외 출장</div>
             </div>
-            <div onclick="showToast('👨‍🏫 전문가활용료 양식을 불러옵니다')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
+            <div onclick="openApprovalForm('전문가활용료')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
               <div style="font-size:24px;margin-bottom:6px">👨‍🏫</div>
               <div style="font-size:11px;font-weight:600;color:var(--tx)">전문가활용료</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">자문료 지급</div>
             </div>
-            <div onclick="showToast('📦 재료비청구서 양식을 불러옵니다')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
+            <div onclick="openApprovalForm('재료비청구서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
               <div style="font-size:24px;margin-bottom:6px">🧪</div>
               <div style="font-size:11px;font-weight:600;color:var(--tx)">재료비 청구</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">시약·소모품</div>
             </div>
-            <div onclick="showToast('🤝 회의비 양식을 불러옵니다')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
+            <div onclick="openApprovalForm('회의비')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
               <div style="font-size:24px;margin-bottom:6px">🤝</div>
               <div style="font-size:11px;font-weight:600;color:var(--tx)">회의비 청구</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">식대·회의</div>
             </div>
-            <div onclick="showToast('📚 학술대회 참가비 양식을 불러옵니다')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
+            <div onclick="openApprovalForm('지출결의서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
               <div style="font-size:24px;margin-bottom:6px">📚</div>
               <div style="font-size:11px;font-weight:600;color:var(--tx)">학술대회 참가비</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">등록비·숙박</div>
@@ -2160,8 +2217,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page" id="page-attendance">
   <div class="toolbar">
     <span class="tb-title">■ 근태관리</span>
-    <button class="tb pri" onclick="showToast('출장 신청서를 작성합니다')">+ 출장 신청</button>
-    <button class="tb acc" onclick="showToast('휴가를 신청합니다')">+ 휴가 신청</button>
+    <button class="tb pri" onclick="openApprovalForm('출장비신청서')">+ 출장 신청</button>
+    <button class="tb acc" onclick="openApprovalForm('휴가신청서')">+ 휴가 신청</button>
     <div class="tb-sep"></div>
     <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button>
     <button class="tb" onclick="printPage()">출력</button>
@@ -2207,7 +2264,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="att-trip" style="display:none">
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px;margin-bottom:0"><button class="tb pri" onclick="showToast('출장 신청서를 작성합니다')">+ 출장 신청</button></div>
+      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px;margin-bottom:0"><button class="tb pri" onclick="openApprovalForm('출장비신청서')">+ 출장 신청</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th>신청자</th><th>출장지</th><th>출발일</th><th>복귀일</th><th>목적</th><th>연계과제</th><th>예산</th><th>상태</th><th>관리</th></tr></thead>
@@ -2219,7 +2276,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div id="att-leave" style="display:none">
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri" onclick="showToast('휴가 신청서를 작성합니다')">+ 휴가 신청</button></div>
+      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri" onclick="openApprovalForm('휴가신청서')">+ 휴가 신청</button></div>
       <div class="dtw">
         <table class="dt">
           <thead><tr><th>신청자</th><th>휴가종류</th><th>시작일</th><th>종료일</th><th>일수</th><th>사유</th><th>상태</th><th>관리</th></tr></thead>
@@ -3433,6 +3490,91 @@ function saveDraft(formId){
 
 // ══ 인쇄 ══
 function printPage(){window.print();showToast('인쇄 화면을 엽니다');}
+
+// ══ 출퇴근 체크 (코러스 복무관리) ══
+let isCheckedIn=false, checkinTs=null;
+function updateClock(){
+  const now=new Date();
+  const cd=document.getElementById('clock-display');
+  if(cd)cd.textContent=now.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const ad=document.getElementById('attend-date');
+  if(ad)ad.textContent=now.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'short'});
+  if(isCheckedIn&&checkinTs){
+    const diff=Math.floor((now-checkinTs)/60000);
+    const h=Math.floor(diff/60),m=diff%60;
+    const wd=document.getElementById('work-duration');
+    if(wd)wd.textContent=h+'h '+m+'m';
+  }
+}
+setInterval(updateClock,1000);updateClock();
+
+function checkIn(){
+  if(isCheckedIn)return;
+  isCheckedIn=true;checkinTs=new Date();
+  const t=checkinTs.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('checkin-time').textContent=t;
+  document.getElementById('attend-status').textContent='근무중';
+  document.getElementById('attend-status').style.color='var(--green)';
+  document.getElementById('btn-checkin').style.background='var(--bg)';
+  document.getElementById('btn-checkin').style.color='var(--tx3)';
+  document.getElementById('btn-checkin').textContent='출근완료';
+  document.getElementById('btn-checkin').disabled=true;
+  document.getElementById('btn-checkout').disabled=false;
+  document.getElementById('btn-checkout').style.background='var(--red)';
+  document.getElementById('btn-checkout').style.color='#fff';
+  showToast('출근 처리되었습니다 ('+t+')');
+}
+function checkOut(){
+  if(!isCheckedIn)return;
+  const now=new Date();
+  const t=now.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('checkout-time').textContent=t;
+  document.getElementById('attend-status').textContent='퇴근';
+  document.getElementById('attend-status').style.color='var(--tx3)';
+  document.getElementById('btn-checkout').style.background='var(--bg)';
+  document.getElementById('btn-checkout').style.color='var(--tx3)';
+  document.getElementById('btn-checkout').textContent='퇴근완료';
+  document.getElementById('btn-checkout').disabled=true;
+  isCheckedIn=false;
+  showToast('퇴근 처리되었습니다 ('+t+')');
+}
+
+// ══ 결재 양식 작성 (코러스 전자문서) ══
+function openApprovalForm(type){
+  const forms={
+    '지출결의서':{fields:['과제번호','비목','금액','거래처','적요','증빙서류']},
+    '출장비신청서':{fields:['과제번호','출장지','출장기간','목적','예상경비']},
+    '전문가활용료':{fields:['과제번호','전문가명','소속','자문일자','자문료','자문내용']},
+    '재료비청구서':{fields:['과제번호','비목','품목','수량','단가','금액','거래처']},
+    '회의비':{fields:['과제번호','회의일자','회의장소','참석인원','금액']},
+    '휴가신청서':{fields:['휴가종류','시작일','종료일','사용일수','사유']}
+  };
+  const f=forms[type];if(!f)return;
+  let html='<div style="display:flex;flex-direction:column;gap:12px">';
+  html+='<div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:4px">'+type+'</div>';
+  f.fields.forEach(field=>{
+    html+='<div class="fg"><label>'+field+' <span class="req">*</span></label>';
+    if(field==='적요'||field==='자문내용'||field==='사유'||field==='목적')
+      html+='<textarea class="fc" rows="3" placeholder="'+field+'을(를) 입력하세요" style="width:100%;resize:vertical"></textarea>';
+    else if(field.includes('일자')||field.includes('기간')||field.includes('시작일')||field.includes('종료일'))
+      html+='<input class="fc" type="date" style="width:100%">';
+    else if(field==='금액'||field==='단가'||field==='예상경비'||field==='자문료'||field==='수량'||field==='참석인원'||field==='사용일수')
+      html+='<input class="fc" type="number" placeholder="0" style="width:100%;text-align:right;font-family:var(--mono)">';
+    else if(field==='비목')
+      html+='<select class="fc" style="width:100%"><option>재료비</option><option>인건비</option><option>여비</option><option>전문가활용비</option><option>연구활동비</option></select>';
+    else if(field==='휴가종류')
+      html+='<select class="fc" style="width:100%"><option>연차</option><option>오전반차</option><option>오후반차</option><option>병가</option><option>경조</option><option>무급</option></select>';
+    else
+      html+='<input class="fc" placeholder="'+field+'" style="width:100%">';
+    html+='</div>';
+  });
+  html+='</div>';
+  document.getElementById('msds-modal-title').textContent=type+' 작성';
+  document.getElementById('msds-modal-body').innerHTML=html;
+  const foot=document.querySelector('#modal-msds .mfoot');
+  if(foot)foot.innerHTML='<button class="tb" onclick="closeModal(\'modal-msds\')">취소</button><button class="tb" onclick="showToast(\'임시저장되었습니다\')">임시저장</button><button class="tb pri" onclick="closeModal(\'modal-msds\');showToast(\'결재 상신되었습니다\')">결재상신</button>';
+  openModal('modal-msds');
+}
 
 // ══ INIT ══
 showMain('dashboard');
