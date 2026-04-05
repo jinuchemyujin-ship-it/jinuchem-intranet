@@ -101,19 +101,7 @@ input,select,textarea{font-family:var(--font)}
 .gnb.collapsed .gnb-footer > div:not(#gnb-collapse-btn):not(.sb-user){display:none !important}
 .gnb.collapsed #gnb-collapse-btn{display:flex !important;justify-content:center;padding:8px}
 
-/* ══ MULTITAB — iOS 글래스 ══ */
-.tbar{height:38px;background:rgba(255,255,255,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:0.5px solid rgba(60,60,67,.12);display:flex;align-items:stretch;flex-shrink:0;z-index:180}
-.tb-home{height:100%;display:flex;align-items:center;padding:0 14px;background:var(--p);color:#fff;font-size:12px;cursor:pointer;border-right:none;white-space:nowrap;gap:5px;flex-shrink:0;font-weight:600;border-radius:0}
-.tb-home:hover{background:var(--pd)}
-.tabs-wrap{display:flex;align-items:stretch;height:100%;overflow-x:hidden;flex:1}
-.tab2{display:flex;align-items:center;gap:4px;padding:0 12px;min-width:80px;max-width:160px;background:transparent;border-right:0.5px solid rgba(60,60,67,.08);cursor:pointer;font-size:12px;color:var(--tx3);white-space:nowrap;height:100%;flex-shrink:0;transition:all .2s}
-.tab2:hover{background:rgba(0,0,0,.03);color:var(--tx)}
-.tab2.act{background:rgba(0,122,255,.06);color:var(--p);font-weight:600;border-bottom:2px solid var(--p)}
-.tab2-lbl{flex:1;overflow:hidden;text-overflow:ellipsis}
-.tab2-x{width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--tx4);flex-shrink:0}
-.tab2-x:hover{background:rgba(60,60,67,.1);color:var(--red)}
-.tb-arr{width:24px;display:flex;align-items:center;justify-content:center;background:transparent;border-left:0.5px solid rgba(60,60,67,.08);color:var(--tx3);font-size:10px;cursor:pointer;flex-shrink:0}
-.tb-arr:hover{background:rgba(0,0,0,.03)}
+/* 멀티탭 제거됨 */
 
 /* ══ PAGES ══ */
 .page{display:none;flex-direction:column;flex:1;overflow:hidden}
@@ -537,14 +525,6 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
 <!-- MAIN CONTENT COLUMN -->
 <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
-
-<!-- MULTITAB -->
-<div class="tbar">
-  <div class="tb-home" onclick="showMain('dashboard')"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:-1px"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> 메인</div>
-  <div class="tabs-wrap" id="tabs-wrap"></div>
-  <div class="tb-arr">◀</div>
-  <div class="tb-arr">▶</div>
-</div>
 
 <!-- PAGES -->
 <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
@@ -3043,44 +3023,18 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div id="toast"></div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ══ TABS ══
-const tabs=[];let activeTab=null;
+// ══ NAVIGATION (탭 없이 직접 페이지 전환) ══
 function openTab(pid,title,ico){
-  // Special page mappings
   const pageMap={'docmgmt':'docmgmt'};
   if(pageMap[pid])pid=pageMap[pid];
-  // highlight sidebar item
   document.querySelectorAll('.gnb .gi').forEach(g=>g.classList.remove('act'));
   document.querySelectorAll('.gnb .gi').forEach(g=>{if(g.getAttribute('onclick')&&g.getAttribute('onclick').includes("'"+pid+"'"))g.classList.add('act');});
-  const ex=tabs.find(t=>t.pid===pid);
-  if(ex){activateTab(ex.id);return;}
-  const id='t'+Date.now();
-  tabs.push({id,pid,title,ico});
-  renderTabs();activateTab(id);
-}
-function activateTab(id){
-  activeTab=id;const t=tabs.find(t=>t.id===id);
-  if(t)showPage(t.pid);renderTabs();
-}
-function closeTabById(id,e){
-  e.stopPropagation();const idx=tabs.findIndex(t=>t.id===id);
-  tabs.splice(idx,1);
-  if(activeTab===id){tabs.length>0?activateTab(tabs[Math.min(idx,tabs.length-1)].id):showMain('dashboard');}
-  renderTabs();
-}
-function renderTabs(){
-  const w=document.getElementById('tabs-wrap');w.innerHTML='';
-  tabs.forEach(t=>{
-    const d=document.createElement('div');
-    d.className='tab2'+(t.id===activeTab?' act':'');
-    d.innerHTML=`<span style="font-size:11px">${t.ico}</span><span class="tab2-lbl">${t.title}</span><span class="tab2-x" onclick="closeTabById('${t.id}',event)">✕</span>`;
-    d.onclick=()=>activateTab(t.id);w.appendChild(d);
-  });
+  showPage(pid);
 }
 function showMain(pid){
   document.querySelectorAll('.gnb .gi').forEach(g=>g.classList.remove('act'));
   document.querySelector('.gnb .gi').classList.add('act');
-  activeTab=null;renderTabs();showPage(pid);
+  showPage(pid);
 }
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('act'));
