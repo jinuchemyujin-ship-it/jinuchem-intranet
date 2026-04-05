@@ -1851,7 +1851,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
       <!-- 전체서식 -->
       <div class="apr-panel" id="apr-forms">
-        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">전체서식 (8)</div>
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">전체서식 (11)</div>
         <div class="frow">
           <span class="fl">서식명</span><input class="fi" placeholder="서식명 검색" style="width:180px">
           <button class="fb" onclick="showToast('검색 완료')">검색</button>
@@ -1866,8 +1866,11 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <tr style="cursor:pointer" onclick="openApprovalForm('재료비청구서')"><td class="lk">04_재료비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('회의비')"><td class="lk">05_회의비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('휴가신청서')"><td class="lk">06_휴가신청서</td><td>공통서식</td><td>결재자3명 협조자2명</td></tr>
-            <tr style="cursor:pointer" onclick="openApprovalForm('지출결의서')"><td class="lk">10_간이기안문</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
-            <tr style="cursor:pointer" onclick="openApprovalForm('지출결의서')"><td class="lk">11_간이기안문</td><td>공통서식(이전서식)</td><td>결재자6명 협조자6명</td></tr>
+            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('기안기 배포 안내')"><td class="lk" style="color:#2185C5">07_공문_기안기 배포</td><td>공문서식</td><td>기안기 프로그램 배포 안내 공문</td></tr>
+            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('유통필터 변경 안내')"><td class="lk" style="color:#2185C5">08_공문_유통필터 변경</td><td>공문서식</td><td>유통필터 정책 변경 안내 공문</td></tr>
+            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('한글 OCX 패치 안내')"><td class="lk" style="color:#2185C5">09_공문_한글OCX패치</td><td>공문서식</td><td>한글 OCX 패치파일 설치 안내 공문</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">10_간이기안문</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">11_간이기안문</td><td>공통서식(이전서식)</td><td>결재자6명 협조자6명</td></tr>
           </tbody></table>
         </div>
       </div>
@@ -3901,6 +3904,65 @@ function submitDraft(){
   openDocEditor(title.value, apLine);
 }
 
+// 공문 양식 템플릿 데이터
+const GM_TEMPLATES={
+  '기안기 배포 안내':{
+    recv:'각 부서장',
+    title:'전자결재 기안기 프로그램 배포 안내',
+    body:'<p>1. 귀 부서의 무궁한 발전을 기원합니다.</p>'
+      +'<p>2. 사내 전자결재 시스템 고도화의 일환으로 기안기 프로그램을 아래와 같이 배포하오니, 각 부서 구성원에게 설치를 안내하여 주시기 바랍니다.</p>'
+      +'<p style="margin:16px 0 4px;font-weight:700">가. 배포 개요</p>'
+      +'<table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px"><tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0;width:120px">배포 프로그램</th><td style="border:1px solid #999;padding:6px 10px">지누켐 전자결재 기안기 v2.0</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">배포 일자</th><td style="border:1px solid #999;padding:6px 10px">2026. 04. 07.(월)</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">배포 대상</th><td style="border:1px solid #999;padding:6px 10px">전 부서 (임직원 전원)</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">설치 방법</th><td style="border:1px solid #999;padding:6px 10px">인트라넷 → 전자결재 → 기안기 다운로드</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">문의처</th><td style="border:1px solid #999;padding:6px 10px">IT지원팀 (내선 1053)</td></tr></table>'
+      +'<p style="margin:12px 0 4px;font-weight:700">나. 주요 변경 사항</p>'
+      +'<p style="padding-left:16px">- 결재선 자동 지정 기능 추가<br>- 문서 서식 템플릿 확장 (공문, 품의서 등 11종)<br>- 한글(HWP) 문서 연동 개선<br>- 전자서명 보안 강화</p>'
+      +'<p style="margin:12px 0 4px;font-weight:700">다. 유의 사항</p>'
+      +'<p style="padding-left:16px">- 기존 기안기 삭제 후 신규 버전 설치 필요<br>- 설치 시 관리자 권한 필요<br>- 설치 완료 후 PC 재부팅 권장</p>'
+      +'<p style="margin-top:20px">붙임 &nbsp; 기안기 v2.0 설치 매뉴얼 1부. &nbsp; 끝.</p>'
+  },
+  '유통필터 변경 안내':{
+    recv:'각 부서장',
+    title:'전자결재 유통필터 정책 변경 안내',
+    body:'<p>1. 귀 부서의 무궁한 발전을 기원합니다.</p>'
+      +'<p>2. 전자결재 시스템의 문서 유통 효율화를 위하여 유통필터 정책을 아래와 같이 변경하오니 업무에 참고하시기 바랍니다.</p>'
+      +'<p style="margin:16px 0 4px;font-weight:700">가. 변경 개요</p>'
+      +'<table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px"><tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0;width:120px">적용 일자</th><td style="border:1px solid #999;padding:6px 10px">2026. 04. 14.(월) 09:00~</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">적용 대상</th><td style="border:1px solid #999;padding:6px 10px">전자결재 시스템 전체 문서</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">변경 내용</th><td style="border:1px solid #999;padding:6px 10px">유통필터 규칙 세분화 및 자동 분류 적용</td></tr></table>'
+      +'<p style="margin:12px 0 4px;font-weight:700">나. 주요 변경 내용</p>'
+      +'<table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px">'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">구분</th><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">변경 전</th><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">변경 후</th></tr>'
+      +'<tr><td style="border:1px solid #999;padding:6px 10px;text-align:center">부서 필터</td><td style="border:1px solid #999;padding:6px 10px">수동 지정</td><td style="border:1px solid #999;padding:6px 10px">조직도 기반 자동 분류</td></tr>'
+      +'<tr><td style="border:1px solid #999;padding:6px 10px;text-align:center">문서 등급</td><td style="border:1px solid #999;padding:6px 10px">일반/대외비 2단계</td><td style="border:1px solid #999;padding:6px 10px">일반/내부/대외비/극비 4단계</td></tr>'
+      +'<tr><td style="border:1px solid #999;padding:6px 10px;text-align:center">유통 경로</td><td style="border:1px solid #999;padding:6px 10px">전체 부서 일괄 배포</td><td style="border:1px solid #999;padding:6px 10px">관련 부서 선별 배포</td></tr></table>'
+      +'<p style="margin:12px 0 4px;font-weight:700">다. 유의 사항</p>'
+      +'<p style="padding-left:16px">- 기존 유통 중인 문서는 변경 없이 유지<br>- 신규 기안 문서부터 변경된 필터 적용<br>- 문서 등급 미지정 시 "일반" 자동 적용</p>'
+      +'<p style="margin-top:20px">붙임 &nbsp; 유통필터 변경 세부 내역서 1부. &nbsp; 끝.</p>'
+  },
+  '한글 OCX 패치 안내':{
+    recv:'각 부서장',
+    title:'한글 OCX 패치파일 설치 안내',
+    body:'<p>1. 귀 부서의 무궁한 발전을 기원합니다.</p>'
+      +'<p>2. 전자결재 시스템에서 한글(HWP) 문서를 정상적으로 열람 및 편집하기 위한 한글 OCX 패치파일을 아래와 같이 배포하오니 설치하여 주시기 바랍니다.</p>'
+      +'<p style="margin:16px 0 4px;font-weight:700">가. 패치 개요</p>'
+      +'<table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px"><tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0;width:120px">패치명</th><td style="border:1px solid #999;padding:6px 10px">한글 OCX 컨트롤 패치 v3.2.1</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">배포 일자</th><td style="border:1px solid #999;padding:6px 10px">2026. 04. 07.(월)</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">대상 환경</th><td style="border:1px solid #999;padding:6px 10px">Windows 10/11, 한컴오피스 2022 이상</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">파일 크기</th><td style="border:1px solid #999;padding:6px 10px">약 15MB</td></tr>'
+      +'<tr><th style="border:1px solid #999;padding:6px 10px;background:#f0f0f0">다운로드</th><td style="border:1px solid #999;padding:6px 10px">인트라넷 → 자료실 → OCX패치파일</td></tr></table>'
+      +'<p style="margin:12px 0 4px;font-weight:700">나. 패치 사유</p>'
+      +'<p style="padding-left:16px">- 기존 OCX 모듈의 보안 취약점 해결<br>- 전자결재 기안기 내 HWP 문서 편집 오류 수정<br>- 크롬/엣지 브라우저 호환성 개선<br>- 대용량 HWP 문서 로딩 속도 최적화</p>'
+      +'<p style="margin:12px 0 4px;font-weight:700">다. 설치 방법</p>'
+      +'<p style="padding-left:16px">① 실행 중인 브라우저 및 한글 프로그램 모두 종료<br>② 인트라넷 자료실에서 패치파일 다운로드<br>③ "HWP_OCX_Patch_v321.exe" 관리자 권한으로 실행<br>④ 설치 완료 후 PC 재부팅<br>⑤ 전자결재 기안기에서 HWP 문서 열람 정상 여부 확인</p>'
+      +'<p style="margin:12px 0 4px;font-weight:700">라. 유의 사항</p>'
+      +'<p style="padding-left:16px">- 반드시 관리자 권한으로 설치할 것<br>- 한컴오피스 미설치 PC는 IT지원팀 문의<br>- 설치 중 오류 발생 시 IT지원팀 (내선 1053) 연락</p>'
+      +'<p style="margin-top:20px">붙임 &nbsp; 1. 한글 OCX 패치파일 설치 매뉴얼 1부.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. 패치 후 확인 체크리스트 1부. &nbsp; 끝.</p>'
+  }
+};
+
 function openDocEditor(docTitle, apLine){
   const editor=document.getElementById('doc-editor-overlay');
   if(!editor)return;
@@ -3912,11 +3974,20 @@ function openDocEditor(docTitle, apLine){
   document.getElementById('doc-ed-docno').textContent='JNC-'+y+m+d+'-'+seq;
   document.getElementById('doc-ed-date').textContent=y+'. '+m+'. '+d+'.';
   const rd=document.getElementById('doc-ed-recv-date');if(rd)rd.textContent=y+'. '+m+'. '+d+'.';
-  const recv=document.getElementById('doc-ed-recv');if(recv)recv.textContent='';
+  const recv=document.getElementById('doc-ed-recv');
   const via=document.getElementById('doc-ed-via');if(via)via.textContent='';
-  document.getElementById('doc-ed-content').innerHTML='';
+  // 공문 템플릿 자동 채우기
+  const tpl=GM_TEMPLATES[docTitle];
+  if(tpl){
+    if(recv)recv.textContent=tpl.recv||'';
+    document.getElementById('doc-ed-title').textContent=tpl.title||docTitle;
+    document.getElementById('doc-ed-content').innerHTML=tpl.body||'';
+  } else {
+    if(recv)recv.textContent='';
+    document.getElementById('doc-ed-content').innerHTML='';
+  }
   editor.style.display='flex';
-  document.getElementById('doc-ed-recv').focus();
+  if(!tpl && recv) recv.focus();
 }
 
 function closeDocEditor(){
