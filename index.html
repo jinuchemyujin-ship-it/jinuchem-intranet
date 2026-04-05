@@ -399,6 +399,30 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .mt6{margin-top:6px}.mb6{margin-bottom:6px}
 
 /* ══ LOGIN SCREEN ══ */
+/* ══ APPROVAL SIDEBAR (KORUS 전자문서) ══ */
+.apr-sidebar{width:150px;background:#fff;border-right:1px solid rgba(0,0,0,.06);flex-shrink:0;overflow-y:auto;display:flex;flex-direction:column}
+.apr-btn-write{margin:8px 12px;padding:8px;background:#2e7d32;color:#fff;border:none;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s}
+.apr-btn-write:hover{background:#1b5e20}
+.apr-nav-item{display:flex;align-items:center;gap:6px;padding:7px 16px;font-size:12px;color:var(--tx2);cursor:pointer;transition:all .15s;border-left:3px solid transparent}
+.apr-nav-item:hover{background:rgba(0,0,0,.03);color:var(--tx)}
+.apr-nav-item.act{background:rgba(46,125,50,.08);color:#2e7d32;font-weight:700;border-left-color:#2e7d32}
+.apr-nav-item svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.apr-nav-group{display:flex;flex-direction:column}
+.apr-nav-head{display:flex;align-items:center;gap:6px;padding:7px 16px;font-size:12px;color:var(--tx);cursor:pointer;font-weight:600;transition:all .15s}
+.apr-nav-head:hover{background:rgba(0,0,0,.03)}
+.apr-nav-head svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.apr-nav-sub{display:none;flex-direction:column}
+.apr-nav-head.open+.apr-nav-sub{display:flex}
+.apr-nav-sub .apr-nav-item{padding-left:36px;font-size:11px}
+.apr-sum-item{flex:1;text-align:center;padding:10px 8px;cursor:pointer;border-right:1px solid rgba(0,0,0,.06);transition:all .15s}
+.apr-sum-item:last-child{border-right:none}
+.apr-sum-item:hover{background:rgba(0,0,0,.02)}
+.apr-sum-label{font-size:11px;color:var(--tx3);margin-bottom:4px}
+.apr-sum-num{font-size:18px;font-weight:800;font-family:var(--mono);color:var(--tx)}
+.apr-sum-num.c-o{color:var(--ora)}
+.apr-panel{display:none}
+.apr-panel.act{display:block}
+
 /* ══ QUICK ACTION BAR (KORUS) ══ */
 .qab{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:none;border-radius:4px;background:transparent;font-size:11px;color:var(--tx2);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
 .qab:hover{background:rgba(0,0,0,.04);color:var(--tx)}
@@ -1641,197 +1665,341 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
 <!-- ━━━━━━━━━━━━━━━━━━━━ APPROVAL ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-approval">
-  <div class="toolbar">
-    <span class="tb-title">전자결재</span>
-  </div>
-  <div class="itabs">
-    <div class="it act" onclick="switchIT(this,'apr-in')">결재처리함 <span style="font-size:10px;background:rgba(255,59,48,.1);color:#FF3B30;padding:1px 6px;border-radius:10px;margin-left:3px;font-weight:700">3</span></div>
-    <div class="it" onclick="switchIT(this,'apr-out')">상신함 <span style="font-size:10px;color:var(--tx4)">5</span></div>
-    <div class="it" onclick="switchIT(this,'apr-agree')">합의함</div>
-    <div class="it" onclick="switchIT(this,'apr-ref')">참조함</div>
-    <div class="it" onclick="switchIT(this,'apr-write')">문서 작성</div>
-    <div class="it" onclick="switchIT(this,'apr-tpl')">결재선 관리</div>
-  </div>
-  <div class="scroll">
-    <div id="apr-in">
-      <div class="frow">
-        <span class="fl">문서종류</span><select class="fs"><option>전체</option><option>지출청구</option><option>인건비</option></select>
-        <span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19">
-        <button class="fb" onclick="showToast('조회 완료')">조회</button>
-        <div style="flex:1"></div>
-        <span style="font-size:11px;color:var(--red);font-weight:600">처리대기: 3건</span>
+  <div style="display:flex;flex:1;overflow:hidden">
+    <!-- ══ 전자문서 서브 사이드바 (KORUS 스타일) ══ -->
+    <div class="apr-sidebar" id="apr-sidebar">
+      <div style="font-size:15px;font-weight:800;color:var(--tx);padding:16px 16px 10px">전자문서</div>
+      <button class="apr-btn-write" onclick="aprNav('apr-write')">최근서식 작성</button>
+      <div class="apr-nav-item act" onclick="aprNav('apr-todo')">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        처리할 일</div>
+      <div class="apr-nav-group">
+        <div class="apr-nav-head" onclick="this.classList.toggle('open')">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          기안</div>
+        <div class="apr-nav-sub">
+          <div class="apr-nav-item" onclick="aprNav('apr-forms')">전체서식</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-recent')">최근서식</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-draft')">임시저장함</div>
+        </div>
       </div>
-      <div class="dtw">
-        <table class="dt">
-          <thead><tr><th>순번</th><th>●</th><th>문서번호</th><th>문서제목</th><th>상신자</th><th>과제번호</th><th>금액</th><th>상신일시</th><th>대기일</th><th>처리</th></tr></thead>
-          <tbody>
-            <tr style="background:#fffde7;font-weight:600">
-              <td class="tc">1</td><td class="tc" style="color:var(--red);font-size:14px">●</td>
-              <td class="mn lk" onclick="openModal('modal-approve')">CLM-2026-0023</td>
-              <td class="lk" onclick="openModal('modal-approve')">지출청구 - 재료비 (시약 구입)</td>
-              <td>김병선</td><td class="mn">202505000001</td><td class="tr">1,200,000</td>
-              <td class="mn fs10">2026-01-15 10:23</td><td class="tc c-r fw7">4일</td>
-              <td class="tc"><button class="tb pri" style="padding:2px 8px;font-size:10px" onclick="openModal('modal-approve')">결재처리</button></td>
-            </tr>
-            <tr style="background:#fffde7;font-weight:600">
-              <td class="tc">2</td><td class="tc" style="color:var(--red);font-size:14px">●</td>
-              <td class="mn lk" onclick="openModal('modal-approve')">CLM-2026-0008</td>
-              <td class="lk" onclick="openModal('modal-approve')">지출청구 - 재료비 (실험장비 소모품)</td>
-              <td>이연구</td><td class="mn">202505100001</td><td class="tr">4,800,000</td>
-              <td class="mn fs10">2026-01-08 14:10</td><td class="tc c-r fw7">11일</td>
-              <td class="tc"><button class="tb pri" style="padding:2px 8px;font-size:10px" onclick="openModal('modal-approve')">결재처리</button></td>
-            </tr>
-            <tr style="background:#fffde7;font-weight:600">
-              <td class="tc">3</td><td class="tc" style="color:var(--red);font-size:14px">●</td>
-              <td class="mn lk" onclick="openModal('modal-approve')">PAY-2026-0005</td>
-              <td class="lk" onclick="openModal('modal-approve')">인건비 배치 - 2026년 2월</td>
-              <td>김병선</td><td class="mn">202505000001</td><td class="tr">9,560,000</td>
-              <td class="mn fs10">2026-02-01 09:00</td><td class="tc">2일</td>
-              <td class="tc"><button class="tb pri" style="padding:2px 8px;font-size:10px" onclick="openModal('modal-approve')">결재처리</button></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="apr-nav-group">
+        <div class="apr-nav-head open" onclick="this.classList.toggle('open')">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          결재</div>
+        <div class="apr-nav-sub">
+          <div class="apr-nav-item" onclick="aprNav('apr-wait')">결재대기함</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-progress')">진행문서함</div>
+        </div>
       </div>
+      <div class="apr-nav-group">
+        <div class="apr-nav-head" onclick="this.classList.toggle('open')">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          발송</div>
+        <div class="apr-nav-sub">
+          <div class="apr-nav-item" onclick="aprNav('apr-send')">발송대기함</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-recv')">수신반송함</div>
+        </div>
+      </div>
+      <div class="apr-nav-item" onclick="aprNav('apr-done')">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        완료문서</div>
+      <div class="apr-nav-item" onclick="aprNav('apr-share')">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+        공유/공람</div>
+      <div class="apr-nav-item" onclick="aprNav('apr-registry')">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        문서등록대장</div>
+      <div class="apr-nav-item" onclick="aprNav('apr-stats')">
+        <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        부서사용현황</div>
     </div>
-    <div id="apr-out" style="display:none">
-      <div class="frow"><select class="fs"><option>전체</option><option>결재중</option><option>승인완료</option><option>반려</option></select><button class="fb" onclick="showToast('조회 완료')">조회</button></div>
-      <div class="dtw">
-        <table class="dt">
-          <thead><tr><th>순번</th><th>문서번호</th><th>문서제목</th><th>금액</th><th>상신일</th><th>현재단계</th><th>상태</th></tr></thead>
-          <tbody>
-            <tr><td class="tc">1</td><td class="mn lk">CLM-2026-0023</td><td>지출청구 - 재료비 (시약 구입)</td><td class="tr">1,200,000</td><td class="mn">2026-01-15</td><td>1단계 (이팀장)</td><td><span class="bd by">결재중</span></td></tr>
-            <tr><td class="tc">2</td><td class="mn lk">PAY-2026-0005</td><td>인건비 배치 - 2026년 2월</td><td class="tr">9,560,000</td><td class="mn">2026-02-01</td><td>1단계 (이팀장)</td><td><span class="bd by">결재중</span></td></tr>
-            <tr><td class="tc">3</td><td class="mn lk">CLM-2026-0018</td><td>지출청구 - 여비 (ICLR 등록비)</td><td class="tr">380,000</td><td class="mn">2026-01-12</td><td>완료</td><td><span class="bd bg">승인완료</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div id="apr-agree" style="display:none">
-      <div class="frow">
-        <span class="fl">상태</span><select class="fs"><option>전체</option><option>합의대기</option><option>합의완료</option></select>
-        <button class="fb" onclick="showToast('조회 완료')">조회</button>
-        <div style="flex:1"></div>
-        <span style="font-size:11px;color:var(--tx3)">합의 대기: <strong style="color:var(--p)">1건</strong></span>
-      </div>
-      <div class="dtw">
-        <table class="dt">
-          <thead><tr><th>순번</th><th>문서번호</th><th>문서제목</th><th>기안부서</th><th>기안자</th><th>금액</th><th>요청일</th><th>처리</th></tr></thead>
-          <tbody>
-            <tr>
-              <td class="tc">1</td>
-              <td class="mn lk" onclick="openModal('modal-approve')">CLM-2026-0025</td>
-              <td class="lk" onclick="openModal('modal-approve')">IT장비 구매 — 서버 교체 품의</td>
-              <td>IT개발본부</td><td>정프론</td><td class="tr">8,500,000</td>
-              <td class="mn fs10">2026-02-18</td>
-              <td class="tc"><button class="tb pri" style="padding:2px 8px;font-size:10px" onclick="openModal('modal-approve')">합의</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div id="apr-ref" style="display:none"><div style="padding:20px;text-align:center;color:var(--tx3)">참조 문서가 없습니다.</div></div>
-    <!-- 문서 작성 탭 (NEW) -->
-    <div id="apr-write" style="display:none">
-      <div style="padding:14px">
-        <div style="background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)">
-          <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px;display:flex;align-items:center;gap:8px">
-            ✏️ 새 문서 작성
-            <span style="font-size:10px;background:#eff6ff;color:var(--p);padding:2px 8px;border-radius:8px">자주 쓰는 양식을 선택하세요</span>
+    <!-- ══ 전자문서 메인 콘텐츠 ══ -->
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+
+      <!-- 처리할 일 -->
+      <div class="apr-panel act" id="apr-todo">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">처리할 일</div>
+        <div style="display:flex;border-bottom:1px solid rgba(0,0,0,.06);background:#fff;margin:0 0 10px">
+          <div class="apr-sum-item" onclick="aprNav('apr-wait')"><div class="apr-sum-label">결재대기</div><div class="apr-sum-num">3</div></div>
+          <div class="apr-sum-item" onclick="aprNav('apr-send')"><div class="apr-sum-label">발송대기</div><div class="apr-sum-num">0</div></div>
+          <div class="apr-sum-item" onclick="aprNav('apr-share')"><div class="apr-sum-label">공유/공람</div><div class="apr-sum-num c-o">99+</div></div>
+          <div class="apr-sum-item"><div class="apr-sum-label">처리할 메모</div><div class="apr-sum-num">0</div></div>
+          <div class="apr-sum-item"><div class="apr-sum-label">새메모 의견</div><div class="apr-sum-num">0</div></div>
+          <div class="apr-sum-item"><div class="apr-sum-label">처리할 지시</div><div class="apr-sum-num">0</div></div>
+        </div>
+        <!-- 결재대기 섹션 -->
+        <div style="padding:0 16px 10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:12px;font-weight:700;color:var(--red)">● 결재대기(3)</div>
+            <div style="display:flex;gap:8px;font-size:11px"><span class="lk">목록이동</span><span class="lk">더보기</span></div>
           </div>
+          <table class="dt"><thead><tr><th style="width:60px">기안일자</th><th>제목</th><th style="width:80px">기안부서</th><th style="width:60px">기안자</th></tr></thead>
+          <tbody>
+            <tr onclick="openModal('modal-approve')" style="cursor:pointer"><td class="mn">2026-01-15</td><td class="lk">지출청구 - 재료비 (시약 구입)</td><td>화학연구팀</td><td>김병선</td></tr>
+            <tr onclick="openModal('modal-approve')" style="cursor:pointer"><td class="mn">2026-01-08</td><td class="lk">지출청구 - 재료비 (실험장비 소모품)</td><td>화학연구팀</td><td>이연구</td></tr>
+            <tr onclick="openModal('modal-approve')" style="cursor:pointer"><td class="mn">2026-02-01</td><td class="lk">인건비 배치 - 2026년 2월</td><td>경영지원팀</td><td>김병선</td></tr>
+          </tbody></table>
+        </div>
+        <!-- 발송대기 섹션 -->
+        <div style="padding:0 16px 10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:12px;font-weight:700;color:var(--tx3)">● 발송대기(0)</div>
+            <div style="display:flex;gap:8px;font-size:11px"><span class="lk">목록이동</span><span class="lk">더보기</span></div>
+          </div>
+          <table class="dt"><thead><tr><th>제목</th><th style="width:80px">수신부서</th><th style="width:60px">기안자</th></tr></thead>
+          <tbody><tr><td colspan="3" class="tc" style="color:var(--tx4);padding:12px">조회 결과가 없습니다</td></tr></tbody></table>
+        </div>
+        <!-- 공람대기 섹션 -->
+        <div style="padding:0 16px 10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:12px;font-weight:700;color:var(--green)">● 공람대기(2)</div>
+            <div style="display:flex;gap:8px;font-size:11px"><span class="lk">읽기처리</span><span class="lk">목록이동</span></div>
+          </div>
+          <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:70px">공람도착일자</th><th>제목</th><th style="width:80px">기안부서</th><th style="width:60px">기안자</th><th style="width:70px">공람지정자</th></tr></thead>
+          <tbody>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-03</td><td class="lk" onclick="showToast('공람 문서를 열람합니다')">2026년 상반기 안전관리 계획서</td><td>안전팀</td><td>박안전</td><td>김병선</td></tr>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-01</td><td class="lk" onclick="showToast('공람 문서를 열람합니다')">연구비 집행 가이드라인 개정</td><td>경영지원팀</td><td>최경영</td><td>김병선</td></tr>
+          </tbody></table>
+        </div>
+        <!-- 처리할 메모보고 -->
+        <div style="padding:0 16px 10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:12px;font-weight:700;color:var(--ora)">● 처리할 메모보고(0)</div>
+            <div style="display:flex;gap:8px;font-size:11px"><span class="lk">읽기처리</span><span class="lk">목록이동</span></div>
+          </div>
+          <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:40px">구분</th><th style="width:70px">보고일자</th><th>제목</th><th style="width:60px">부서</th><th style="width:50px">직위</th><th style="width:60px">보고자</th><th style="width:40px">첨부</th></tr></thead>
+          <tbody><tr><td colspan="8" class="tc" style="color:var(--tx4);padding:12px">해당 메모가 없습니다</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- 전체서식 -->
+      <div class="apr-panel" id="apr-forms">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">전체서식 (8)</div>
+        <div class="frow">
+          <span class="fl">서식명</span><input class="fi" placeholder="서식명 검색" style="width:180px">
+          <button class="fb" onclick="showToast('검색 완료')">검색</button>
+          <div style="flex:1"></div>
+        </div>
+        <div class="dtw" style="padding:0 16px">
+          <table class="dt"><thead><tr><th>서식명</th><th style="width:140px">서식카테고리명</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr style="cursor:pointer" onclick="openApprovalForm('지출결의서')"><td class="lk">01_지출결의서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자6명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('출장비신청서')"><td class="lk">02_출장비신청서</td><td>공통서식(이전서식)</td><td>결재자6명 협조자4명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('전문가활용료')"><td class="lk">03_전문가활용료</td><td>공통서식(이전서식)</td><td>결재자6명 협조자6명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('재료비청구서')"><td class="lk">04_재료비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('회의비')"><td class="lk">05_회의비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('휴가신청서')"><td class="lk">06_휴가신청서</td><td>공통서식</td><td>결재자3명 협조자2명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('지출결의서')"><td class="lk">10_간이기안문</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('지출결의서')"><td class="lk">11_간이기안문</td><td>공통서식(이전서식)</td><td>결재자6명 협조자6명</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <!-- 최근서식 -->
+      <div class="apr-panel" id="apr-recent">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">최근서식</div>
+        <div class="dtw" style="padding:8px 16px">
+          <table class="dt"><thead><tr><th>서식명</th><th style="width:140px">카테고리</th><th style="width:100px">최근 사용일</th></tr></thead>
+          <tbody>
+            <tr style="cursor:pointer" onclick="openApprovalForm('지출결의서')"><td class="lk">지출결의서</td><td>공통서식</td><td class="mn">2026-04-02</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('재료비청구서')"><td class="lk">재료비청구서</td><td>공통서식</td><td class="mn">2026-03-28</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('출장비신청서')"><td class="lk">출장비신청서</td><td>공통서식</td><td class="mn">2026-03-15</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <!-- 임시저장함 -->
+      <div class="apr-panel" id="apr-draft">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">임시저장함</div>
+        <div class="dtw" style="padding:8px 16px">
+          <table class="dt"><thead><tr><th>서식명</th><th>제목</th><th style="width:100px">저장일</th><th style="width:60px">관리</th></tr></thead>
+          <tbody><tr><td colspan="4" class="tc" style="color:var(--tx4);padding:20px">임시저장된 문서가 없습니다</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- 문서 작성 (최근서식 작성 버튼용) -->
+      <div class="apr-panel" id="apr-write">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">새 문서 작성</div>
+        <div style="padding:12px 16px">
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px">
-            <div onclick="openApprovalForm('지출결의서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
-              <div style="font-size:24px;margin-bottom:6px">💳</div>
-              <div style="font-size:11px;font-weight:600;color:var(--tx)">지출결의서</div>
+            <div onclick="openApprovalForm('지출결의서')" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:6px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#f5f5f5'" onmouseout="this.style.borderColor='rgba(0,0,0,.08)';this.style.background='#fff'">
+              <div style="font-size:12px;font-weight:600;color:var(--tx)">지출결의서</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">일반 지출 청구</div>
             </div>
-            <div onclick="openApprovalForm('출장비신청서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
-              <div style="font-size:24px;margin-bottom:6px">✈️</div>
-              <div style="font-size:11px;font-weight:600;color:var(--tx)">출장비 신청</div>
+            <div onclick="openApprovalForm('출장비신청서')" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:6px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#f5f5f5'" onmouseout="this.style.borderColor='rgba(0,0,0,.08)';this.style.background='#fff'">
+              <div style="font-size:12px;font-weight:600;color:var(--tx)">출장비 신청</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">국내외 출장</div>
             </div>
-            <div onclick="openApprovalForm('전문가활용료')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
-              <div style="font-size:24px;margin-bottom:6px">👨‍🏫</div>
-              <div style="font-size:11px;font-weight:600;color:var(--tx)">전문가활용료</div>
+            <div onclick="openApprovalForm('전문가활용료')" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:6px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#f5f5f5'" onmouseout="this.style.borderColor='rgba(0,0,0,.08)';this.style.background='#fff'">
+              <div style="font-size:12px;font-weight:600;color:var(--tx)">전문가활용료</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">자문료 지급</div>
             </div>
-            <div onclick="openApprovalForm('재료비청구서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
-              <div style="font-size:24px;margin-bottom:6px">🧪</div>
-              <div style="font-size:11px;font-weight:600;color:var(--tx)">재료비 청구</div>
+            <div onclick="openApprovalForm('재료비청구서')" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:6px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#f5f5f5'" onmouseout="this.style.borderColor='rgba(0,0,0,.08)';this.style.background='#fff'">
+              <div style="font-size:12px;font-weight:600;color:var(--tx)">재료비 청구</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">시약·소모품</div>
             </div>
-            <div onclick="openApprovalForm('회의비')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
-              <div style="font-size:24px;margin-bottom:6px">🤝</div>
-              <div style="font-size:11px;font-weight:600;color:var(--tx)">회의비 청구</div>
+            <div onclick="openApprovalForm('회의비')" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:6px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#f5f5f5'" onmouseout="this.style.borderColor='rgba(0,0,0,.08)';this.style.background='#fff'">
+              <div style="font-size:12px;font-weight:600;color:var(--tx)">회의비 청구</div>
               <div style="font-size:10px;color:var(--tx3);margin-top:2px">식대·회의</div>
             </div>
-            <div onclick="openApprovalForm('지출결의서')" style="border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#eff6ff'" onmouseout="this.style.borderColor='var(--bdr)';this.style.background=''">
-              <div style="font-size:24px;margin-bottom:6px">📚</div>
-              <div style="font-size:11px;font-weight:600;color:var(--tx)">학술대회 참가비</div>
-              <div style="font-size:10px;color:var(--tx3);margin-top:2px">등록비·숙박</div>
+            <div onclick="openApprovalForm('휴가신청서')" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:6px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)';this.style.background='#f5f5f5'" onmouseout="this.style.borderColor='rgba(0,0,0,.08)';this.style.background='#fff'">
+              <div style="font-size:12px;font-weight:600;color:var(--tx)">휴가신청서</div>
+              <div style="font-size:10px;color:var(--tx3);margin-top:2px">연차·반차</div>
             </div>
-            <div onclick="openExpensePage('일반청구')" style="border:2px dashed var(--bdr);border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--p)'" onmouseout="this.style.borderColor='var(--bdr)'">
-              <div style="font-size:24px;margin-bottom:6px">＋</div>
-              <div style="font-size:11px;color:var(--tx3)">직접 작성</div>
-            </div>
-          </div>
-          <div style="background:var(--bg);border-radius:8px;padding:10px 14px;font-size:11px">
-            <span style="color:var(--tx3);font-weight:500">최근 사용:</span>
-            <span class="lk" style="margin:0 6px">지출결의서 (2026-02-17)</span>·
-            <span class="lk" style="margin:0 6px">출장비 신청 (2026-02-12)</span>·
-            <span class="lk" style="margin:0 6px">전문가활용료 (2026-01-29)</span>
           </div>
         </div>
       </div>
-    </div>
-    <!-- 템플릿 관리 탭 -->
-    <div id="apr-tpl" style="display:none">
-      <div class="fw" style="margin:8px">
-        <div class="fs-ttl">문서 템플릿 관리</div>
-        <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
-          <button class="tb pri" onclick="showToast('✏️ 새 템플릿을 만듭니다')">+ 새 템플릿</button>
+
+      <!-- 결재대기함 -->
+      <div class="apr-panel" id="apr-wait">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">결재대기함 (3)</div>
+        <div class="frow">
+          <span class="fl">제목</span><input class="fi" placeholder="" style="width:140px">
+          <span class="fl">기안(접수)자</span><input class="fi" placeholder="" style="width:100px">
+          <span class="fl">등록일자</span><input class="fi" type="date" style="width:120px"> ~ <input class="fi" type="date" style="width:120px">
+          <button class="fb" onclick="showToast('검색 완료')">검색</button>
+          <div style="flex:1"></div>
+          <button class="tb acc" onclick="showToast('일괄승조 처리')">일괄승조</button>
+          <button class="tb" onclick="showToast('문서정보 조회')">문서정보</button>
         </div>
-        <table class="dt">
-          <thead><tr><th>템플릿명</th><th>문서유형</th><th>최근 사용일</th><th>사용횟수</th><th>기본설정</th><th>관리</th></tr></thead>
+        <div class="dtw" style="padding:0 16px">
+          <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:30px">상태</th><th style="width:70px">문서종류</th><th style="width:70px">시행종류</th><th>제목</th><th style="width:60px">처리구분</th><th style="width:70px">기안(접수)자</th><th style="width:70px">업무담당자</th><th style="width:70px">발송부서</th><th style="width:70px">기안일자</th><th style="width:70px">등록일자</th></tr></thead>
           <tbody>
-            <tr>
-              <td class="lk fw7" onclick="showToast('지출결의서(표준) 템플릿을 불러옵니다')">지출결의서 (표준)</td>
-              <td>지출청구</td><td class="mn">2026-02-17</td><td class="tc">47</td>
-              <td class="tc"><span class="bd bg">기본</span></td>
-              <td><span class="lk">수정</span> <span class="lk">복사</span></td>
+            <tr onclick="openModal('modal-approve')" style="cursor:pointer;background:#fffde7">
+              <td class="tc"><input type="checkbox"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
+              <td class="lk fw7">지출청구 - 재료비 (시약 구입)</td><td class="tc">결재</td><td>김병선</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-15</td><td class="mn">2026-01-15</td>
             </tr>
-            <tr>
-              <td class="lk fw7" onclick="showToast('출장비신청(국내) 템플릿을 불러옵니다')">출장비신청 (국내)</td>
-              <td>여비</td><td class="mn">2026-02-12</td><td class="tc">23</td>
-              <td class="tc">-</td>
-              <td><span class="lk">수정</span> <span class="lk">복사</span> <span class="lk c-r">삭제</span></td>
+            <tr onclick="openModal('modal-approve')" style="cursor:pointer;background:#fffde7">
+              <td class="tc"><input type="checkbox"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
+              <td class="lk fw7">지출청구 - 재료비 (실험장비 소모품)</td><td class="tc">결재</td><td>이연구</td><td>이연구</td><td>화학연구팀</td><td class="mn">2026-01-08</td><td class="mn">2026-01-08</td>
             </tr>
-            <tr>
-              <td class="lk fw7">전문가활용료 (자문)</td>
-              <td>전문가활용비</td><td class="mn">2026-01-29</td><td class="tc">12</td>
-              <td class="tc">-</td>
-              <td><span class="lk">수정</span> <span class="lk">복사</span> <span class="lk c-r">삭제</span></td>
+            <tr onclick="openModal('modal-approve')" style="cursor:pointer;background:#fffde7">
+              <td class="tc"><input type="checkbox"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
+              <td class="lk fw7">인건비 배치 - 2026년 2월</td><td class="tc">결재</td><td>김병선</td><td>김병선</td><td>경영지원팀</td><td class="mn">2026-02-01</td><td class="mn">2026-02-01</td>
             </tr>
-          </tbody>
-        </table>
+          </tbody></table>
+        </div>
       </div>
-    </div>
-    <div id="apr-line" style="display:none">
-      <div class="fw" style="margin:8px">
-        <div class="fs-ttl">결재선 템플릿 관리</div>
-        <table class="dt">
-          <thead><tr><th>템플릿명</th><th>결재 단계</th><th>적용 문서유형</th><th>기본</th><th>관리</th></tr></thead>
+
+      <!-- 진행문서함 -->
+      <div class="apr-panel" id="apr-progress">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">진행문서함 (2)</div>
+        <div class="frow">
+          <span class="fl">제목</span><input class="fi" placeholder="" style="width:140px">
+          <span class="fl">기안(접수)자</span><input class="fi" placeholder="" style="width:100px">
+          <span class="fl">등록일자</span><input class="fi" type="date" style="width:120px"> ~ <input class="fi" type="date" style="width:120px">
+          <button class="fb" onclick="showToast('검색 완료')">검색</button>
+          <div style="flex:1"></div>
+          <button class="tb" onclick="showToast('문서정보 조회')">문서정보</button>
+          <button class="tb" onclick="showToast('재작성')">재작성</button>
+          <button class="tb" onclick="showToast('회수')">회수</button>
+          <button class="tb dan" onclick="showToast('삭제')">삭제</button>
+        </div>
+        <div class="dtw" style="padding:0 16px">
+          <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:30px">상태</th><th style="width:70px">문서종류</th><th style="width:70px">시행종류</th><th>제목</th><th style="width:70px">기안(접수)자</th><th style="width:70px">업무담당자</th><th style="width:70px">발송부서</th><th style="width:70px">기안일자</th><th style="width:40px">상태</th><th style="width:60px">처리현황</th></tr></thead>
           <tbody>
-            <tr><td class="lk fw7">기본결재선</td>
-              <td><div style="display:flex;align-items:center;gap:4px;font-size:10px"><span class="bd bg">기안자</span>→<span class="bd bb">팀장(이팀장)</span>→<span class="bd bb">행정처장(박처장)</span>→<span class="bd bgr">완료</span></div></td>
-              <td>지출청구, 인건비</td><td class="tc"><span class="bd bg">기본</span></td><td><span class="lk">수정</span></td>
+            <tr style="cursor:pointer" onclick="showToast('문서 상세보기')">
+              <td class="tc"><input type="checkbox"></td><td class="tc">📋</td><td>일반</td><td>대내시행</td>
+              <td class="lk">2026년 첨단산업 인재양성 부트캠프 사업 참여기업 모집 공고(안)</td><td>김병선</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-19</td><td class="tc"><span class="bd bg">완료</span></td><td class="tc">진행</td>
             </tr>
-            <tr><td class="lk">간이결재선</td>
-              <td><div style="display:flex;align-items:center;gap:4px;font-size:10px"><span class="bd bg">기안자</span>→<span class="bd bb">팀장(이팀장)</span>→<span class="bd bgr">완료</span></div></td>
-              <td>소액청구(50만원 미만)</td><td class="tc">-</td><td><span class="lk">수정</span> <span class="lk c-r">삭제</span></td>
+            <tr style="cursor:pointer" onclick="showToast('문서 상세보기')">
+              <td class="tc"><input type="checkbox"></td><td class="tc">📋</td><td>일반</td><td>내부결재</td>
+              <td class="lk">외부강의 등 신고서</td><td>김병선</td><td>김병선</td><td>경영지원팀</td><td class="mn">2024-09-29</td><td class="tc"><span class="bd bg">완료</span></td><td class="tc">진행</td>
             </tr>
-          </tbody>
-        </table>
+          </tbody></table>
+        </div>
       </div>
+
+      <!-- 발송대기함 -->
+      <div class="apr-panel" id="apr-send">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">발송대기함 (0)</div>
+        <div class="frow">
+          <span class="fl">제목</span><input class="fi" placeholder="" style="width:140px">
+          <span class="fl">기안자</span><input class="fi" placeholder="" style="width:100px">
+          <span class="fl">완료일자</span><input class="fi" type="date" style="width:120px"> ~ <input class="fi" type="date" style="width:120px">
+          <button class="fb" onclick="showToast('검색 완료')">검색</button>
+          <div style="flex:1"></div>
+          <button class="tb" onclick="showToast('문서정보')">문서정보</button>
+        </div>
+        <div class="dtw" style="padding:0 16px">
+          <table class="dt"><thead><tr><th style="width:30px">상태</th><th style="width:70px">시행종류</th><th>제목</th><th style="width:80px">문서번호</th><th style="width:60px">기안자</th><th style="width:80px">결재완료일자</th><th style="width:60px">수신자</th></tr></thead>
+          <tbody><tr><td colspan="7" class="tc" style="color:var(--tx4);padding:20px">조회 결과가 없습니다</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- 수신반송함 -->
+      <div class="apr-panel" id="apr-recv">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">수신반송함 (0)</div>
+        <div class="dtw" style="padding:8px 16px">
+          <table class="dt"><thead><tr><th>제목</th><th style="width:80px">발송부서</th><th style="width:60px">기안자</th><th style="width:80px">반송일자</th><th style="width:60px">사유</th></tr></thead>
+          <tbody><tr><td colspan="5" class="tc" style="color:var(--tx4);padding:20px">조회 결과가 없습니다</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- 완료문서 -->
+      <div class="apr-panel" id="apr-done">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">완료문서</div>
+        <div class="frow">
+          <span class="fl">제목</span><input class="fi" placeholder="" style="width:140px">
+          <span class="fl">기간</span><input class="fi" type="date" style="width:120px"> ~ <input class="fi" type="date" style="width:120px">
+          <button class="fb" onclick="showToast('검색 완료')">검색</button>
+        </div>
+        <div class="dtw" style="padding:0 16px">
+          <table class="dt"><thead><tr><th style="width:70px">문서번호</th><th>제목</th><th style="width:70px">기안자</th><th style="width:80px">기안일자</th><th style="width:80px">완료일자</th><th style="width:60px">상태</th></tr></thead>
+          <tbody>
+            <tr><td class="mn">CLM-2026-0018</td><td class="lk" onclick="showToast('문서 상세보기')">지출청구 - 여비 (ICLR 등록비)</td><td>김병선</td><td class="mn">2026-01-12</td><td class="mn">2026-01-14</td><td><span class="bd bg">승인</span></td></tr>
+            <tr><td class="mn">CLM-2025-0089</td><td class="lk" onclick="showToast('문서 상세보기')">전문가활용비 — 자문료 (하향수)</td><td>김병선</td><td class="mn">2025-12-20</td><td class="mn">2025-12-22</td><td><span class="bd bg">승인</span></td></tr>
+            <tr><td class="mn">CLM-2025-0075</td><td class="lk" onclick="showToast('문서 상세보기')">회의비 — 12월 정기회의</td><td>이연구</td><td class="mn">2025-12-10</td><td class="mn">2025-12-11</td><td><span class="bd bg">승인</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <!-- 공유/공람 -->
+      <div class="apr-panel" id="apr-share">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">공유/공람</div>
+        <div class="dtw" style="padding:8px 16px">
+          <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:70px">공람일자</th><th>제목</th><th style="width:80px">기안부서</th><th style="width:60px">기안자</th><th style="width:60px">읽음</th></tr></thead>
+          <tbody>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-03</td><td class="lk" onclick="showToast('공람 문서 열람')">2026년 상반기 안전관리 계획서</td><td>안전팀</td><td>박안전</td><td class="tc"><span class="bd bgr">미읽음</span></td></tr>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-01</td><td class="lk" onclick="showToast('공람 문서 열람')">연구비 집행 가이드라인 개정</td><td>경영지원팀</td><td>최경영</td><td class="tc"><span class="bd bgr">미읽음</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <!-- 문서등록대장 -->
+      <div class="apr-panel" id="apr-registry">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">문서등록대장</div>
+        <div class="frow">
+          <span class="fl">기간</span><input class="fi" type="date" style="width:120px"> ~ <input class="fi" type="date" style="width:120px">
+          <button class="fb" onclick="showToast('검색 완료')">검색</button>
+          <div style="flex:1"></div>
+          <button class="tb" onclick="downloadExcel('approval')">Excel 다운로드</button>
+        </div>
+        <div class="dtw" style="padding:0 16px">
+          <table class="dt"><thead><tr><th style="width:50px">순번</th><th style="width:80px">문서번호</th><th>제목</th><th style="width:60px">기안자</th><th style="width:80px">기안부서</th><th style="width:70px">기안일자</th><th style="width:70px">완료일자</th><th style="width:60px">상태</th></tr></thead>
+          <tbody>
+            <tr><td class="tc">1</td><td class="mn">CLM-2026-0023</td><td>지출청구 - 재료비 (시약 구입)</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-15</td><td class="mn">-</td><td><span class="bd by">결재중</span></td></tr>
+            <tr><td class="tc">2</td><td class="mn">CLM-2026-0018</td><td>지출청구 - 여비 (ICLR 등록비)</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-12</td><td class="mn">2026-01-14</td><td><span class="bd bg">완료</span></td></tr>
+            <tr><td class="tc">3</td><td class="mn">PAY-2026-0005</td><td>인건비 배치 - 2026년 2월</td><td>김병선</td><td>경영지원팀</td><td class="mn">2026-02-01</td><td class="mn">-</td><td><span class="bd by">결재중</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <!-- 부서사용현황 -->
+      <div class="apr-panel" id="apr-stats">
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">부서사용현황</div>
+        <div class="dtw" style="padding:8px 16px">
+          <table class="dt"><thead><tr><th>부서명</th><th style="width:60px">기안</th><th style="width:60px">결재</th><th style="width:60px">발송</th><th style="width:60px">완료</th><th style="width:60px">반려</th><th style="width:60px">합계</th></tr></thead>
+          <tbody>
+            <tr><td class="fw7">화학연구팀</td><td class="tc">12</td><td class="tc">8</td><td class="tc">5</td><td class="tc">10</td><td class="tc c-r">1</td><td class="tc fw7">36</td></tr>
+            <tr><td class="fw7">IT개발본부</td><td class="tc">8</td><td class="tc">6</td><td class="tc">3</td><td class="tc">7</td><td class="tc">0</td><td class="tc fw7">24</td></tr>
+            <tr><td class="fw7">경영지원팀</td><td class="tc">15</td><td class="tc">12</td><td class="tc">8</td><td class="tc">14</td><td class="tc c-r">2</td><td class="tc fw7">51</td></tr>
+            <tr><td class="fw7">기초과학연구소</td><td class="tc">6</td><td class="tc">4</td><td class="tc">2</td><td class="tc">5</td><td class="tc">0</td><td class="tc fw7">17</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -3641,6 +3809,21 @@ function openApprovalForm(type){
   const foot=document.querySelector('#modal-msds .mfoot');
   if(foot)foot.innerHTML='<button class="tb" onclick="closeModal(\'modal-msds\')">취소</button><button class="tb" onclick="showToast(\'임시저장되었습니다\')">임시저장</button><button class="tb pri" onclick="closeModal(\'modal-msds\');showToast(\'결재 상신되었습니다\')">결재상신</button>';
   openModal('modal-msds');
+}
+
+// ══ 전자문서 네비게이션 (KORUS) ══
+function aprNav(panelId){
+  document.querySelectorAll('.apr-panel').forEach(p=>p.classList.remove('act'));
+  const panel=document.getElementById(panelId);
+  if(panel)panel.classList.add('act');
+  document.querySelectorAll('#apr-sidebar .apr-nav-item').forEach(n=>n.classList.remove('act'));
+  // 클릭한 항목 활성화
+  const items=document.querySelectorAll('#apr-sidebar .apr-nav-item');
+  items.forEach(item=>{
+    if(item.getAttribute('onclick')&&item.getAttribute('onclick').includes(panelId)){
+      item.classList.add('act');
+    }
+  });
 }
 
 // ══ LOGIN ══
