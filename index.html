@@ -435,6 +435,30 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .org-person{padding:2px 4px;border-radius:4px;cursor:pointer;transition:background .15s}
 .org-person:hover{background:rgba(0,122,255,.08)}
 
+/* ══ DOCUMENT EDITOR (KORUS 기안 에디터) ══ */
+.doc-editor-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;background:#e8e8e8;flex-direction:column}
+.doc-ed-toolbar{display:flex;align-items:center;gap:2px;padding:4px 8px;background:#f0f0f0;border-bottom:1px solid #ccc;flex-shrink:0;flex-wrap:wrap}
+.doc-ed-toolbar button{padding:4px 10px;border:1px solid #bbb;border-radius:3px;background:linear-gradient(to bottom,#fafafa,#e8e8e8);font-size:11px;color:#333;cursor:pointer;font-family:var(--font);white-space:nowrap;transition:all .1s}
+.doc-ed-toolbar button:hover{background:linear-gradient(to bottom,#fff,#f0f0f0);border-color:#999}
+.doc-ed-toolbar button.pri-btn{background:linear-gradient(to bottom,#4a90d9,#357abd);color:#fff;border-color:#2a6cb5}
+.doc-ed-toolbar button.pri-btn:hover{background:linear-gradient(to bottom,#5a9fe9,#4589cc)}
+.doc-ed-toolbar .sep{width:1px;height:20px;background:#ccc;margin:0 4px}
+.doc-ed-menubar{display:flex;gap:0;padding:0 8px;background:#f5f5f5;border-bottom:1px solid #ccc;flex-shrink:0}
+.doc-ed-menubar span{padding:3px 12px;font-size:11px;color:#333;cursor:pointer}
+.doc-ed-menubar span:hover{background:#ddd}
+.doc-ed-format{display:flex;align-items:center;gap:4px;padding:3px 8px;background:#f5f5f5;border-bottom:1px solid #ccc;flex-shrink:0;flex-wrap:wrap}
+.doc-ed-format select,.doc-ed-format input{padding:2px 4px;border:1px solid #bbb;border-radius:2px;font-size:11px;background:#fff}
+.doc-ed-format button{padding:2px 8px;border:1px solid #bbb;border-radius:2px;background:#fff;font-size:12px;cursor:pointer;min-width:24px}
+.doc-ed-format button:hover{background:#e8e8e8}
+.doc-ed-body{flex:1;display:flex;justify-content:center;overflow-y:auto;padding:20px;background:#e0e0e0}
+.doc-ed-paper{width:210mm;min-height:297mm;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15);padding:30mm 25mm;font-size:14px;line-height:1.8;color:#000}
+.doc-ed-paper table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px}
+.doc-ed-paper table td,.doc-ed-paper table th{border:1px solid #999;padding:6px 10px}
+.doc-ed-paper table th{background:#f0f0f0;font-weight:600;text-align:center}
+.doc-ed-paper [contenteditable]{outline:none;min-height:200px}
+.doc-ed-paper [contenteditable]:empty:before{content:'본문 내용을 입력하세요...';color:#999}
+.doc-ed-statusbar{display:flex;align-items:center;justify-content:space-between;padding:2px 10px;background:#f0f0f0;border-top:1px solid #ccc;font-size:10px;color:#666;flex-shrink:0}
+
 /* ══ QUICK ACTION BAR (KORUS) ══ */
 .qab{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:none;border-radius:4px;background:transparent;font-size:11px;color:var(--tx2);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
 .qab:hover{background:rgba(0,0,0,.04);color:var(--tx)}
@@ -3825,10 +3849,42 @@ function removeLastApprover(){
 function submitDraft(){
   const title=document.getElementById('draft-title');
   if(!title||!title.value.trim()){showToast('제목을 입력하세요');return;}
+  // 결재선 정보 수집
+  const rows=document.querySelectorAll('#draft-ap-table tbody tr');
+  let apLine='';
+  rows.forEach((r,i)=>{
+    const cells=r.querySelectorAll('td');
+    if(cells.length>=4) apLine+=(i>0?' → ':'')+cells[3].textContent+'('+cells[2].textContent+')';
+  });
+  // 에디터 열기
   closeModal('modal-draft');
-  showToast('결재 상신되었습니다 — '+title.value);
-  title.value='';
-  // 테이블 초기화
+  openDocEditor(title.value, apLine);
+}
+
+function openDocEditor(docTitle, apLine){
+  const editor=document.getElementById('doc-editor-overlay');
+  if(!editor)return;
+  document.getElementById('doc-ed-title').textContent=docTitle;
+  document.getElementById('doc-ed-apline').textContent=apLine||'김병선(결재)';
+  document.getElementById('doc-ed-docno').textContent='JC-'+new Date().getFullYear()+'-'+String(Math.floor(Math.random()*9000)+1000);
+  document.getElementById('doc-ed-date').textContent=new Date().toLocaleDateString('ko-KR');
+  document.getElementById('doc-ed-content').innerHTML='';
+  document.getElementById('doc-ed-content').focus();
+  editor.style.display='flex';
+}
+
+function closeDocEditor(){
+  const editor=document.getElementById('doc-editor-overlay');
+  if(editor)editor.style.display='none';
+}
+
+function submitDocEditor(){
+  const content=document.getElementById('doc-ed-content').innerHTML.trim();
+  if(!content){showToast('내용을 입력하세요');return;}
+  closeDocEditor();
+  showToast('결재 상신되었습니다');
+  // draft 모달 초기화
+  const ti=document.getElementById('draft-title');if(ti)ti.value='';
   const tbody=document.querySelector('#draft-ap-table tbody');
   if(tbody)tbody.innerHTML='<tr><td class="tc">부교수</td><td class="tc">연구</td><td class="tc">결재</td><td class="tc">김병선</td></tr>';
 }
@@ -3918,6 +3974,97 @@ function handleLogin(e){
   <div class="modal" style="max-width:400px">
     <div class="mhdr"><span class="mttl" id="emp-modal-name">직원 정보</span><span class="mclose" onclick="closeModal('modal-employee')">✕</span></div>
     <div class="mbody" id="emp-modal-detail"></div>
+  </div>
+</div>
+
+<!-- ══ 문서 에디터 오버레이 (KORUS 기안 에디터) ══ -->
+<div class="doc-editor-overlay" id="doc-editor-overlay">
+  <!-- 상단 툴바 -->
+  <div class="doc-ed-toolbar">
+    <button onclick="closeDocEditor()">닫기</button>
+    <button onclick="openModal('modal-draft')">결재정보</button>
+    <button onclick="showToast('공람지정 설정')">공람지정</button>
+    <button class="pri-btn" onclick="submitDocEditor()">결재상신</button>
+    <div class="sep"></div>
+    <button onclick="showToast('요지 입력')">요지</button>
+    <button onclick="showToast('외자삭제 처리')">외자삭제</button>
+    <button onclick="showToast('의견 입력')">의견</button>
+    <div class="sep"></div>
+    <button onclick="showToast('붙임문서 추가')">붙임문서</button>
+    <button onclick="showToast('관련정보 조회')">관련정보</button>
+    <div class="sep"></div>
+    <button onclick="showToast('PC에 저장되었습니다')">PC저장</button>
+    <button onclick="showToast('임시저장되었습니다')">임시저장</button>
+    <button onclick="window.print()">인쇄</button>
+    <button onclick="showToast('개인정보 확인')">개인정보</button>
+  </div>
+  <!-- 메뉴바 -->
+  <div class="doc-ed-menubar">
+    <span>파일(F)</span><span>편집(E)</span><span>보기(V)</span><span>입력(U)</span>
+    <span>모양(J)</span><span>도구(K)</span><span>표(Q)</span><span>도움말(H)</span>
+  </div>
+  <!-- 서식 도구모음 -->
+  <div class="doc-ed-format">
+    <select style="width:80px"><option>바탕글</option><option>제목</option><option>본문</option></select>
+    <select style="width:70px"><option>대표</option><option>본문</option></select>
+    <select style="width:70px"><option>바탕</option><option>맑은고딕</option><option>굴림</option><option>돋움</option></select>
+    <select style="width:40px"><option>10</option><option>11</option><option>12</option><option>14</option><option>16</option><option>18</option><option>20</option></select>
+    <div class="sep"></div>
+    <button onclick="document.execCommand('bold')" title="굵게"><strong>B</strong></button>
+    <button onclick="document.execCommand('italic')" title="기울임"><em>I</em></button>
+    <button onclick="document.execCommand('underline')" title="밑줄"><u>U</u></button>
+    <div class="sep"></div>
+    <button onclick="document.execCommand('justifyLeft')" title="왼쪽 정렬">≡</button>
+    <button onclick="document.execCommand('justifyCenter')" title="가운데 정렬">≡</button>
+    <button onclick="document.execCommand('justifyRight')" title="오른쪽 정렬">≡</button>
+    <div class="sep"></div>
+    <button onclick="document.execCommand('insertUnorderedList')" title="목록">•≡</button>
+    <button onclick="document.execCommand('insertOrderedList')" title="번호 목록">1≡</button>
+    <div class="sep"></div>
+    <button onclick="document.execCommand('insertTable')" title="표 삽입">⊞</button>
+  </div>
+  <!-- 문서 본문 -->
+  <div class="doc-ed-body">
+    <div class="doc-ed-paper">
+      <!-- 문서 헤더 (품의서 양식) -->
+      <table>
+        <tr>
+          <th colspan="2" style="font-size:18px;padding:12px;letter-spacing:8px;background:#fff">품 의 서</th>
+          <th style="width:80px;background:#f5f5f5">결<br>재</th>
+          <td style="width:120px;text-align:center;font-size:12px;vertical-align:top;padding:8px">
+            <div style="font-size:10px;color:#888;margin-bottom:4px">결재자</div>
+            <div id="doc-ed-apline-box" style="font-size:11px;font-weight:600">김병선</div>
+          </td>
+        </tr>
+        <tr>
+          <th style="width:80px;background:#f5f5f5">문서번호</th>
+          <td id="doc-ed-docno" style="font-family:var(--mono);font-size:12px">JC-2026-0001</td>
+          <th style="width:80px;background:#f5f5f5">기안일자</th>
+          <td id="doc-ed-date">2026-04-05</td>
+        </tr>
+        <tr>
+          <th style="background:#f5f5f5">기안부서</th>
+          <td>화학연구팀</td>
+          <th style="background:#f5f5f5">기 안 자</th>
+          <td>김병선</td>
+        </tr>
+        <tr>
+          <th style="background:#f5f5f5">제 목</th>
+          <td colspan="3" style="font-weight:700;font-size:15px" id="doc-ed-title">지출결의서</td>
+        </tr>
+        <tr>
+          <th style="background:#f5f5f5">결재선</th>
+          <td colspan="3" style="font-size:12px" id="doc-ed-apline">김병선(결재)</td>
+        </tr>
+      </table>
+      <!-- 본문 편집 영역 -->
+      <div contenteditable="true" id="doc-ed-content" style="min-height:300px;padding:10px 0;line-height:2"></div>
+    </div>
+  </div>
+  <!-- 상태바 -->
+  <div class="doc-ed-statusbar">
+    <span>1쪽 1단 1줄 1칸 표</span>
+    <span>1/ 1 구역 삽입</span>
   </div>
 </div>
 
