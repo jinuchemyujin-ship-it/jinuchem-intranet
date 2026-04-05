@@ -112,8 +112,8 @@ input,select,textarea{font-family:var(--font)}
 .scroll::-webkit-scrollbar-track{background:transparent}
 
 /* ══ TOOLBAR — iOS 글래스 ══ */
-.toolbar{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:0.5px solid rgba(60,60,67,.12);display:flex;align-items:center;padding:8px 16px;gap:8px;flex-shrink:0;min-height:46px;flex-wrap:wrap}
-.tb-title{font-size:15px;font-weight:700;color:var(--tx);border-left:none;padding-left:0;white-space:nowrap;margin-right:8px}
+.toolbar{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:0.5px solid rgba(60,60,67,.1);display:flex;align-items:center;padding:12px 20px;gap:10px;flex-shrink:0;min-height:52px;flex-wrap:wrap}
+.tb-title{font-size:16px;font-weight:700;color:var(--tx);border-left:none;padding-left:0;white-space:nowrap;margin-right:10px}
 .tb-sep{width:0.5px;height:20px;background:rgba(60,60,67,.15)}
 .tb{display:flex;align-items:center;gap:4px;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:500;border:none;background:rgba(0,0,0,.04);color:var(--tx2);transition:all .2s;white-space:nowrap}
 .tb:hover{background:rgba(0,0,0,.08);color:var(--tx)}
@@ -129,7 +129,7 @@ input,select,textarea{font-family:var(--font)}
 .it.act{color:var(--p);font-weight:600;border-bottom-color:var(--p)}
 
 /* ══ FILTER ROW ══ */
-.frow{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-bottom:0.5px solid rgba(60,60,67,.12);padding:10px 16px;display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.frow{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-bottom:0.5px solid rgba(60,60,67,.08);padding:12px 20px;display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap}
 .fl{font-size:12px;color:var(--tx3);white-space:nowrap;font-weight:500}
 .fs{border:none;border-radius:8px;padding:6px 10px;font-size:12px;color:var(--tx);background:rgba(118,118,128,.12);cursor:pointer;outline:none;transition:all .2s}
 .fs:focus{background:rgba(118,118,128,.18)}
@@ -145,11 +145,11 @@ input,select,textarea{font-family:var(--font)}
 .dtw::-webkit-scrollbar-thumb{background:#b0bac8;border-radius:3px}
 table.dt{width:100%;border-collapse:collapse;font-size:12px}
 table.dt thead tr{background:rgba(0,0,0,.03);position:sticky;top:0;z-index:5}
-table.dt thead th{color:var(--tx2);font-weight:600;padding:8px 10px;text-align:center;border-right:none;border-bottom:0.5px solid rgba(60,60,67,.15);white-space:nowrap;font-size:11px;text-transform:uppercase;letter-spacing:.3px}
-table.dt tbody tr{border-bottom:0.5px solid rgba(60,60,67,.08);transition:background .15s}
-table.dt tbody tr:hover{background:rgba(0,122,255,.03)}
-table.dt tbody tr.sel,table.dt tbody tr.sel:hover{background:rgba(0,122,255,.06)}
-table.dt tbody td{padding:8px 10px;color:var(--tx);border-right:none;vertical-align:middle}
+table.dt thead th{color:var(--tx3);font-weight:600;padding:10px 12px;text-align:center;border-right:none;border-bottom:0.5px solid rgba(60,60,67,.12);white-space:nowrap;font-size:11px;letter-spacing:.2px}
+table.dt tbody tr{border-bottom:0.5px solid rgba(60,60,67,.06);transition:background .15s}
+table.dt tbody tr:hover{background:rgba(0,122,255,.02)}
+table.dt tbody tr.sel,table.dt tbody tr.sel:hover{background:rgba(0,122,255,.04)}
+table.dt tbody td{padding:11px 12px;color:var(--tx);border-right:none;vertical-align:middle;font-size:13px}
 table.dt .tc{text-align:center}
 table.dt .tr{text-align:right;font-family:var(--mono);font-size:11px}
 table.dt .lk{color:var(--p);cursor:pointer;text-decoration:underline}
@@ -835,7 +835,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ ORGANIZATION PAGE ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-organization">
   <div class="toolbar">
-    <span class="tb-title">■ 조직도</span>
+    <span class="tb-title">조직도</span>
     <div class="ts"></div>
     <input class="fi" placeholder="직원 검색..." style="width:200px">
     <button class="fb" onclick="showToast('검색 완료')">검색</button>
@@ -912,7 +912,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ MSDS PAGE ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-msds">
   <div class="toolbar">
-    <span class="tb-title">■ MSDS 관리 (물질안전보건자료)</span>
+    <span class="tb-title">MSDS 관리 (물질안전보건자료)</span>
     <button class="tb pri" onclick="openBoardWrite()">+ MSDS 등록</button>
     <div class="tb-sep"></div>
     <button class="tb" onclick="downloadExcel('msds')">Excel 다운로드</button>
@@ -955,7 +955,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ PROJECTS PAGE ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-projects">
   <div class="toolbar">
-    <span class="tb-title">■ 과제관리</span>
+    <span class="tb-title">과제관리</span>
     <button class="tb pri" onclick="showToast('과제 등록 화면을 엽니다')">+ 과제 등록</button>
     <div class="tb-sep"></div>
     <button class="tb" onclick="downloadExcel('projects')">Excel 다운로드</button>
@@ -1114,7 +1114,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
   </div>
 
-  <!-- ■ TAB: 청구 목록 -->
+  <!-- TAB: 청구 목록 -->
   <div id="expcontent-list" class="exp-content" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
     <div class="frow" style="flex-shrink:0">
       <span class="fl">기간</span>
@@ -1191,12 +1191,12 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
   </div>
 
-  <!-- ■ TAB: 일반청구 작성 -->
+  <!-- TAB: 일반청구 작성 -->
   <div id="expcontent-general" class="exp-content" style="display:none;flex-direction:column;flex:1;overflow:hidden">
     <div class="scroll">
       <div class="claim-wrap">
         <div class="claim-section">
-          <div class="claim-shdr" onclick="toggleSection(this)">■ 청구 정보</div>
+          <div class="claim-shdr" onclick="toggleSection(this)">청구 정보</div>
           <div class="claim-sbody">
             <table class="ctbl" style="margin:6px 0">
               <tr>
@@ -1308,7 +1308,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
         <!-- 청구내역 섹션 -->
         <div class="claim-section">
-          <div class="claim-shdr" onclick="toggleSection(this)">■ 청구내역</div>
+          <div class="claim-shdr" onclick="toggleSection(this)">청구내역</div>
           <div class="claim-sbody" style="padding:8px">
             <table class="ctbl2">
               <thead>
@@ -1370,7 +1370,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
   </div>
 
-  <!-- ■ TAB: 카드청구 -->
+  <!-- TAB: 카드청구 -->
   <div id="expcontent-card" class="exp-content" style="display:none;flex-direction:column;flex:1;overflow:hidden">
     <div class="scroll">
       <div style="padding:8px">
@@ -1407,7 +1407,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
 
         <div class="claim-section">
-          <div class="claim-shdr" onclick="toggleSection(this)">■ 카드청구서 작성</div>
+          <div class="claim-shdr" onclick="toggleSection(this)">카드청구서 작성</div>
           <div class="claim-sbody">
             <table class="ctbl">
               <tr>
@@ -1456,13 +1456,13 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
   </div>
 
-  <!-- ■ TAB: 인건비 -->
+  <!-- TAB: 인건비 -->
   <div id="expcontent-payroll" class="exp-content" style="display:none;flex-direction:column;flex:1;overflow:hidden">
     <div class="scroll">
       <div class="claim-wrap">
         <div class="ib i" style="margin:8px">ℹ️ 인건비(소득성 경비) 청구는 참여인력에 등록된 인원에 대해 처리합니다. 급여관리 모듈과 연동됩니다.</div>
         <div class="claim-section">
-          <div class="claim-shdr" onclick="toggleSection(this)">■ 인건비 청구 정보</div>
+          <div class="claim-shdr" onclick="toggleSection(this)">인건비 청구 정보</div>
           <div class="claim-sbody">
             <table class="ctbl">
               <tr><th><span class="req">*</span>예산</th><td><select class="fc" style="width:300px"><option>인건비 (잔액: 2,000,000원)</option></select></td></tr>
@@ -1472,7 +1472,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           </div>
         </div>
         <div class="claim-section">
-          <div class="claim-shdr" onclick="toggleSection(this)">■ 인건비 배치</div>
+          <div class="claim-shdr" onclick="toggleSection(this)">인건비 배치</div>
           <div class="claim-sbody" style="padding:8px;overflow-x:auto">
             <table class="pt" id="pt">
               <thead>
@@ -1533,13 +1533,13 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
   </div>
 
-  <!-- ■ TAB: 반납청구 -->
+  <!-- TAB: 반납청구 -->
   <div id="expcontent-refund" class="exp-content" style="display:none;flex-direction:column;flex:1;overflow:hidden">
     <div class="scroll">
       <div class="claim-wrap">
         <div class="ib i" style="margin:8px">ℹ️ 연구비 반납 청구서를 작성합니다. 잔액 반납, 이자 반납 등 유형을 선택하세요.</div>
         <div class="claim-section">
-          <div class="claim-shdr" onclick="toggleSection(this)">■ 반납 청구 정보</div>
+          <div class="claim-shdr" onclick="toggleSection(this)">반납 청구 정보</div>
           <div class="claim-sbody">
             <table class="ctbl">
               <tr><th><span class="req">*</span>반납구분</th><td>
@@ -1575,7 +1575,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ APPROVAL ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-approval">
   <div class="toolbar">
-    <span class="tb-title">■ 전자결재</span>
+    <span class="tb-title">전자결재</span>
   </div>
   <div class="itabs">
     <div class="it act" onclick="switchIT(this,'apr-in')">결재처리함 <span style="font-size:10px;background:rgba(255,59,48,.1);color:#FF3B30;padding:1px 6px;border-radius:10px;margin-left:3px;font-weight:700">3</span></div>
@@ -1719,7 +1719,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- 템플릿 관리 탭 -->
     <div id="apr-tpl" style="display:none">
       <div class="fw" style="margin:8px">
-        <div class="fs-ttl">■ 문서 템플릿 관리</div>
+        <div class="fs-ttl">문서 템플릿 관리</div>
         <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
           <button class="tb pri" onclick="showToast('✏️ 새 템플릿을 만듭니다')">+ 새 템플릿</button>
         </div>
@@ -1750,7 +1750,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
     <div id="apr-line" style="display:none">
       <div class="fw" style="margin:8px">
-        <div class="fs-ttl">■ 결재선 템플릿 관리</div>
+        <div class="fs-ttl">결재선 템플릿 관리</div>
         <table class="dt">
           <thead><tr><th>템플릿명</th><th>결재 단계</th><th>적용 문서유형</th><th>기본</th><th>관리</th></tr></thead>
           <tbody>
@@ -1772,7 +1772,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ SALARY + PAYROLL ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-salary">
   <div class="toolbar">
-    <span class="tb-title">■ 인사·급여 관리</span>
+    <span class="tb-title">인사·급여 관리</span>
     <button class="tb pri" onclick="showToast('💰 이번달 급여를 일괄 처리합니다')">급여 일괄처리</button>
     <button class="tb" style="background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 급여명세서를 이메일로 발송합니다')">📧 급여명세서 발송</button>
     <div class="tb-sep"></div>
@@ -2094,7 +2094,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ SALES ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-sales">
   <div class="toolbar">
-    <span class="tb-title">■ 매출·매입관리</span>
+    <span class="tb-title">매출·매입관리</span>
     <button class="tb pri" onclick="showToast('매출 등록 화면을 엽니다')">+ 매출 등록</button>
     <button class="tb acc" onclick="showToast('매입을 등록합니다')">+ 매입 등록</button>
     <div class="tb-sep"></div>
@@ -2216,7 +2216,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ 근태관리 ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-attendance">
   <div class="toolbar">
-    <span class="tb-title">■ 근태관리</span>
+    <span class="tb-title">근태관리</span>
     <button class="tb pri" onclick="openApprovalForm('출장비신청서')">+ 출장 신청</button>
     <button class="tb acc" onclick="openApprovalForm('휴가신청서')">+ 휴가 신청</button>
     <div class="tb-sep"></div>
@@ -2305,7 +2305,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ 회의관리 ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-meeting">
   <div class="toolbar">
-    <span class="tb-title">■ 회의관리</span>
+    <span class="tb-title">회의관리</span>
     <button class="tb pri" onclick="showToast('회의를 등록합니다')">+ 회의 등록</button>
     <div class="tb-sep"></div>
     <button class="tb" onclick="printPage()">회의록 출력</button>
@@ -2912,63 +2912,63 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ BOARD (게시판) ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-board">
   <div class="toolbar">
-    <span class="tb-title">■ 게시판</span>
+    <span class="tb-title">게시판</span>
     <div class="ts"></div>
     <button class="tb pri" onclick="openBoardWrite()">+ 글쓰기</button>
     <button class="tb" onclick="downloadExcel('board')">Excel</button>
   </div>
   <div style="display:flex;height:100%;overflow:hidden">
     <!-- Left: Board List -->
-    <div style="width:200px;border-right:1px solid var(--bdr);overflow-y:auto;background:#fff;flex-shrink:0">
-      <div style="padding:10px 12px;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--tx4);border-bottom:1px solid var(--bdr)">게시판 목록</div>
-      <div style="padding:8px 12px;font-size:12px;font-weight:700;color:var(--p);background:var(--pp);cursor:pointer;border-left:3px solid var(--p)">📢 전체공지</div>
-      <div style="padding:8px 12px;font-size:12px;color:var(--tx2);cursor:pointer;transition:background .1s" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">📋 공지사항</div>
-      <div style="padding:8px 12px;font-size:12px;color:var(--tx2);cursor:pointer" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">💼 사업공고</div>
-      <div style="padding:8px 12px;font-size:12px;color:var(--tx2);cursor:pointer" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">📊 국가R&D</div>
-      <div style="padding:8px 12px;font-size:12px;color:var(--tx2);cursor:pointer" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">💡 자유게시판</div>
-      <div style="padding:8px 12px;font-size:12px;color:var(--tx2);cursor:pointer" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">📁 자료실</div>
+    <div style="width:180px;border-right:0.5px solid rgba(60,60,67,.1);overflow-y:auto;background:rgba(255,255,255,.6);flex-shrink:0;padding:8px 0">
+      <div style="padding:6px 16px;font-size:11px;font-weight:600;color:var(--tx4);letter-spacing:.3px;margin-bottom:4px">게시판</div>
+      <div class="board-cat act" style="padding:10px 16px;font-size:13px;font-weight:600;color:var(--p);background:rgba(0,122,255,.06);cursor:pointer;border-left:3px solid var(--p);margin:0 4px;border-radius:0 8px 8px 0">전체공지</div>
+      <div class="board-cat" style="padding:10px 16px;font-size:13px;color:var(--tx2);cursor:pointer;margin:0 4px;border-radius:8px;border-left:3px solid transparent" onmouseover="this.style.background='rgba(0,0,0,.03)'" onmouseout="this.style.background=''">공지사항</div>
+      <div class="board-cat" style="padding:10px 16px;font-size:13px;color:var(--tx2);cursor:pointer;margin:0 4px;border-radius:8px;border-left:3px solid transparent" onmouseover="this.style.background='rgba(0,0,0,.03)'" onmouseout="this.style.background=''">사업공고</div>
+      <div class="board-cat" style="padding:10px 16px;font-size:13px;color:var(--tx2);cursor:pointer;margin:0 4px;border-radius:8px;border-left:3px solid transparent" onmouseover="this.style.background='rgba(0,0,0,.03)'" onmouseout="this.style.background=''">국가R&D</div>
+      <div class="board-cat" style="padding:10px 16px;font-size:13px;color:var(--tx2);cursor:pointer;margin:0 4px;border-radius:8px;border-left:3px solid transparent" onmouseover="this.style.background='rgba(0,0,0,.03)'" onmouseout="this.style.background=''">자유게시판</div>
+      <div class="board-cat" style="padding:10px 16px;font-size:13px;color:var(--tx2);cursor:pointer;margin:0 4px;border-radius:8px;border-left:3px solid transparent" onmouseover="this.style.background='rgba(0,0,0,.03)'" onmouseout="this.style.background=''">자료실</div>
     </div>
     <!-- Right: Board Content -->
     <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
-      <div class="frow">
-        <span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> ~ <input class="fi" type="date" value="2026-02-19">
-        <span class="fl">검색</span><input class="fi" placeholder="제목 또는 내용" style="width:200px">
+      <div class="frow" style="gap:10px">
+        <span class="fl">기간</span><input class="fi" type="date" value="2026-01-01"> <span style="color:var(--tx4)">~</span> <input class="fi" type="date" value="2026-02-19">
+        <span class="fl">검색</span><input class="fi" placeholder="제목 또는 내용" style="width:220px">
         <button class="fb" onclick="showToast('조회 완료')">조회</button>
       </div>
       <div class="dtw">
-        <table class="dt">
-          <thead><tr><th style="width:50px">번호</th><th style="width:70px">구분</th><th>제목</th><th style="width:80px">작성자</th><th style="width:90px">등록일</th><th style="width:50px">조회</th></tr></thead>
+        <table class="dt" style="font-size:13px">
+          <thead><tr><th style="width:55px">번호</th><th style="width:75px">구분</th><th>제목</th><th style="width:80px">작성자</th><th style="width:100px">등록일</th><th style="width:50px">조회</th></tr></thead>
           <tbody>
-            <tr style="background:#fffbeb">
-              <td class="tc"><span style="background:#f59e0b;color:#fff;padding:1px 5px;border-radius:4px;font-size:9px;font-weight:700">공지</span></td>
+            <tr style="background:rgba(0,122,255,.02)">
+              <td class="tc"><span style="background:var(--p);color:#fff;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600">공지</span></td>
               <td class="tc"><span class="ncat nc-all">전체공지</span></td>
-              <td class="lk">출력물이 열리지 않을 경우 조치 방법 (오즈뷰어 설치 안내)</td>
-              <td class="tc">이현주</td><td class="tc mn">2026-01-23</td><td class="tc">142</td>
+              <td class="lk" style="padding:12px 10px">출력물이 열리지 않을 경우 조치 방법 (오즈뷰어 설치 안내)</td>
+              <td class="tc">이현주</td><td class="tc" style="font-size:12px;color:var(--tx3)">2026-01-23</td><td class="tc">142</td>
             </tr>
             <tr>
-              <td class="tc">1042</td><td class="tc"><span class="ncat nc-pub">공지</span></td>
-              <td class="lk">국가연구개발사업 간접비 고시 안내 ('26. 1. 22. 고시)</td>
-              <td class="tc">이혁규</td><td class="tc mn">2026-01-21</td><td class="tc">89</td>
+              <td class="tc" style="color:var(--tx3)">1042</td><td class="tc"><span class="ncat nc-pub">공지</span></td>
+              <td class="lk" style="padding:12px 10px">국가연구개발사업 간접비 고시 안내 ('26. 1. 22. 고시)</td>
+              <td class="tc">이혁규</td><td class="tc" style="font-size:12px;color:var(--tx3)">2026-01-21</td><td class="tc">89</td>
             </tr>
             <tr>
-              <td class="tc">1041</td><td class="tc"><span class="ncat nc-sys">시스템</span></td>
-              <td class="lk">산학협단 운영 웹서비스 이용 불가 안내</td>
-              <td class="tc">이혁규</td><td class="tc mn">2026-01-21</td><td class="tc">67</td>
+              <td class="tc" style="color:var(--tx3)">1041</td><td class="tc"><span class="ncat nc-sys">시스템</span></td>
+              <td class="lk" style="padding:12px 10px">산학협단 운영 웹서비스 이용 불가 안내</td>
+              <td class="tc">이혁규</td><td class="tc" style="font-size:12px;color:var(--tx3)">2026-01-21</td><td class="tc">67</td>
             </tr>
             <tr>
-              <td class="tc">1040</td><td class="tc"><span class="ncat nc-pub">공지</span></td>
-              <td class="lk">[2026년] 기술이전창업 신청 및 실적반영 관련 매뉴얼</td>
-              <td class="tc">장유선</td><td class="tc mn">2026-01-07</td><td class="tc">231</td>
+              <td class="tc" style="color:var(--tx3)">1040</td><td class="tc"><span class="ncat nc-pub">공지</span></td>
+              <td class="lk" style="padding:12px 10px">[2026년] 기술이전창업 신청 및 실적반영 관련 매뉴얼</td>
+              <td class="tc">장유선</td><td class="tc" style="font-size:12px;color:var(--tx3)">2026-01-07</td><td class="tc">231</td>
             </tr>
             <tr>
-              <td class="tc">1039</td><td class="tc"><span class="ncat nc-pub">공지</span></td>
-              <td class="lk">2025년 연구비 감사 주요 지적 사례 안내</td>
-              <td class="tc">여향도</td><td class="tc mn">2025-12-24</td><td class="tc">315</td>
+              <td class="tc" style="color:var(--tx3)">1039</td><td class="tc"><span class="ncat nc-pub">공지</span></td>
+              <td class="lk" style="padding:12px 10px">2025년 연구비 감사 주요 지적 사례 안내</td>
+              <td class="tc">여향도</td><td class="tc" style="font-size:12px;color:var(--tx3)">2025-12-24</td><td class="tc">315</td>
             </tr>
             <tr>
-              <td class="tc">1038</td><td></td>
-              <td class="lk">2026년 1분기 산학협력 실적 보고서 제출 안내</td>
-              <td class="tc">관리자</td><td class="tc mn">2025-12-20</td><td class="tc">178</td>
+              <td class="tc" style="color:var(--tx3)">1038</td><td></td>
+              <td class="lk" style="padding:12px 10px">2026년 1분기 산학협력 실적 보고서 제출 안내</td>
+              <td class="tc">관리자</td><td class="tc" style="font-size:12px;color:var(--tx3)">2025-12-20</td><td class="tc">178</td>
             </tr>
           </tbody>
         </table>
@@ -2980,7 +2980,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ DOC MANAGEMENT ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-docmgmt">
   <div class="toolbar">
-    <span class="tb-title">■ 문서관리</span>
+    <span class="tb-title">문서관리</span>
     <button class="tb pri" onclick="openBoardWrite()">+ 문서 작성</button>
     <button class="tb" onclick="openTab('approval','전자결재','✅')">결재 템플릿</button>
     <div class="tb-sep"></div>
