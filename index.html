@@ -264,8 +264,8 @@ table.dt .alt:nth-child(even){background:#fafbfc}
 .wgt{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:none;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
 .wgt.span2{grid-column:span 2}
 .wgt.span3{grid-column:span 3}
-.whdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 12px;border-bottom:0.5px solid rgba(60,60,67,.1);flex-shrink:0}
-.wttl{font-size:13px;font-weight:600;color:var(--tx);display:flex;align-items:center;gap:6px}
+.whdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 12px;border-bottom:0.5px solid rgba(60,60,67,.08);flex-shrink:0}
+.wttl{font-size:14px;font-weight:600;color:var(--tx);display:flex;align-items:center;gap:6px}
 .wttl-dot{width:6px;height:6px;border-radius:50%;background:var(--p);flex-shrink:0}
 .wact{display:flex;gap:4px;align-items:center}
 .wico{width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;color:var(--tx4);border-radius:6px;transition:all .15s}
@@ -281,14 +281,14 @@ table.dt .alt:nth-child(even){background:#fafbfc}
 .si-v{font-size:22px;font-weight:800;font-family:var(--mono);color:var(--p)}
 .si-s{font-size:10px;color:var(--tx4);margin-top:2px}
 /* notice */
-.nr{display:flex;gap:8px;padding:9px 14px;border-bottom:1px solid var(--bdr);cursor:pointer;font-size:11px;align-items:center;transition:background .1s}
+.nr{display:flex;gap:10px;padding:11px 18px;border-bottom:0.5px solid rgba(60,60,67,.08);cursor:pointer;font-size:12px;align-items:center;transition:background .15s}
 .nr:hover{background:var(--rh)}
 .ncat{font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;white-space:nowrap;flex-shrink:0}
 .nc-all{background:rgba(255,149,0,.12);color:#C77800;border:none}
 .nc-pub{background:rgba(0,122,255,.08);color:var(--p);border:none}
 .nc-sys{background:rgba(88,86,214,.08);color:#5856D6;border:none}
-.ntitle{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tx)}
-.nmeta{font-size:10px;color:var(--tx4);white-space:nowrap}
+.ntitle{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tx);font-size:13px}
+.nmeta{font-size:11px;color:var(--tx4);white-space:nowrap}
 /* calendar */
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;padding:0 8px 8px}
 .cal-dh{font-size:10px;color:var(--tx3);font-weight:600;padding:6px 0}
@@ -307,23 +307,23 @@ table.dt .alt:nth-child(even){background:#fafbfc}
 .qm:hover{background:var(--pp);color:var(--p)}
 .qm-ico{font-size:20px;line-height:1}
 /* messenger widget */
-.msg-item{display:flex;gap:10px;padding:9px 14px;border-bottom:1px solid var(--bdr);cursor:pointer;align-items:center;transition:background .1s}
+.msg-item{display:flex;gap:12px;padding:12px 18px;border-bottom:0.5px solid rgba(60,60,67,.08);cursor:pointer;align-items:center;transition:background .15s}
 .msg-item:hover{background:var(--rh)}
 .msg-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#5AC8FA,#007AFF);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;flex-shrink:0}
 .msg-avatar.purple{background:linear-gradient(135deg,#AF52DE,#5856D6)}
 .msg-avatar.amber{background:linear-gradient(135deg,#FF9500,#FFCC00)}
 .msg-body{flex:1;min-width:0}
-.msg-name{font-size:11px;font-weight:600;color:var(--tx);display:flex;justify-content:space-between;align-items:center}
-.msg-time{font-size:10px;color:var(--tx4);font-weight:400}
-.msg-preview{font-size:11px;color:var(--tx3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:1px}
+.msg-name{font-size:13px;font-weight:600;color:var(--tx);display:flex;justify-content:space-between;align-items:center}
+.msg-time{font-size:11px;color:var(--tx4);font-weight:400}
+.msg-preview{font-size:12px;color:var(--tx3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
 .msg-unread{background:var(--p);color:#fff;font-size:10px;font-weight:600;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 5px;flex-shrink:0}
 /* approval timeline widget */
-.apv-item{display:flex;gap:10px;padding:8px 14px;border-bottom:1px solid var(--bdr);cursor:pointer;align-items:flex-start;transition:background .1s}
-.apv-item:hover{background:var(--rh)}
+.apv-item{display:flex;gap:12px;padding:12px 18px;border-bottom:0.5px solid rgba(60,60,67,.08);cursor:pointer;align-items:flex-start;transition:background .15s}
+.apv-item:hover{background:rgba(0,122,255,.02)}
 .apv-dot{width:8px;height:8px;border-radius:50%;margin-top:3px;flex-shrink:0}
 .apv-body{flex:1;min-width:0}
-.apv-title{font-size:11px;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.apv-meta{font-size:10px;color:var(--tx4);margin-top:2px;display:flex;gap:8px}
+.apv-title{font-size:13px;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.apv-meta{font-size:11px;color:var(--tx4);margin-top:3px;display:flex;gap:8px}
 .apv-badge{font-size:9px;font-weight:700;padding:1px 6px;border-radius:4px}
 
 /* ══ CLAIM FORM (from screenshot 3) ══ */
@@ -531,10 +531,10 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
 <!-- ━━━━━━━━━━━━━━━━━━━━ DASHBOARD ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page act" id="page-dashboard">
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px;overflow-y:auto;align-content:start">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px 24px;overflow-y:auto;align-content:start">
 
     <!-- KPI 카드 4개 (코러스 벤치마킹) -->
-    <div style="grid-column:span 2;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+    <div style="grid-column:span 2;display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
       <div style="background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);cursor:pointer" onclick="openTab('approval','전자결재','✅')">
         <div style="font-size:11px;color:var(--tx3);margin-bottom:6px">결재 대기</div>
         <div style="display:flex;align-items:flex-end;justify-content:space-between">
@@ -566,7 +566,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
 
     <!-- Widget: 출퇴근 체크 (코러스 복무관리) -->
-    <div style="grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:16px">
       <!-- 출퇴근 -->
       <div class="wgt">
         <div class="whdr">
