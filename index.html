@@ -4005,23 +4005,28 @@ function handleLogin(e){
   </div>
   <!-- 서식 도구모음 -->
   <div class="doc-ed-format">
-    <select style="width:80px"><option>바탕글</option><option>제목</option><option>본문</option></select>
-    <select style="width:70px"><option>대표</option><option>본문</option></select>
-    <select style="width:70px"><option>바탕</option><option>맑은고딕</option><option>굴림</option><option>돋움</option></select>
-    <select style="width:40px"><option>10</option><option>11</option><option>12</option><option>14</option><option>16</option><option>18</option><option>20</option></select>
+    <select style="width:70px"><option>바탕글</option><option>제목</option><option>본문</option><option>개요 1</option><option>개요 2</option></select>
     <div class="sep"></div>
-    <button onclick="document.execCommand('bold')" title="굵게"><strong>B</strong></button>
-    <button onclick="document.execCommand('italic')" title="기울임"><em>I</em></button>
-    <button onclick="document.execCommand('underline')" title="밑줄"><u>U</u></button>
+    <select style="width:60px"><option>대표</option><option>본문</option><option>영문</option></select>
     <div class="sep"></div>
-    <button onclick="document.execCommand('justifyLeft')" title="왼쪽 정렬">≡</button>
-    <button onclick="document.execCommand('justifyCenter')" title="가운데 정렬">≡</button>
-    <button onclick="document.execCommand('justifyRight')" title="오른쪽 정렬">≡</button>
+    <select style="width:60px" onchange="document.execCommand('fontName',false,this.value)"><option>바탕</option><option>맑은고딕</option><option>굴림</option><option>돋움</option><option>궁서</option></select>
     <div class="sep"></div>
-    <button onclick="document.execCommand('insertUnorderedList')" title="목록">•≡</button>
-    <button onclick="document.execCommand('insertOrderedList')" title="번호 목록">1≡</button>
+    <select style="width:38px" onchange="document.execCommand('fontSize',false,this.value)"><option value="2">10</option><option value="3">11</option><option value="3">12</option><option value="4">14</option><option value="5">16</option><option value="6">18</option><option value="7">20</option></select>
     <div class="sep"></div>
-    <button onclick="document.execCommand('insertTable')" title="표 삽입">⊞</button>
+    <button onclick="document.execCommand('bold')" title="굵게" style="font-weight:900;font-family:serif">가</button>
+    <button onclick="document.execCommand('italic')" title="기울임" style="font-style:italic;font-family:serif">갸</button>
+    <button onclick="document.execCommand('underline')" title="밑줄" style="text-decoration:underline;font-family:serif">갸</button>
+    <div class="sep"></div>
+    <button onclick="document.execCommand('justifyLeft')" title="왼쪽 정렬" style="font-size:14px;line-height:1">☰</button>
+    <button onclick="document.execCommand('justifyCenter')" title="가운데 정렬" style="font-size:14px;line-height:1">☰</button>
+    <button onclick="document.execCommand('justifyRight')" title="오른쪽 정렬" style="font-size:14px;line-height:1">☰</button>
+    <button onclick="document.execCommand('justifyFull')" title="양쪽 정렬" style="font-size:14px;line-height:1">☰</button>
+    <div class="sep"></div>
+    <select style="width:55px"><option>160%</option><option>100%</option><option>120%</option><option>140%</option><option>200%</option></select>
+    <div class="sep"></div>
+    <button title="쪽 윤곽" style="font-size:10px">≡ ≡</button>
+    <div class="sep"></div>
+    <button title="폭 맞춤" style="font-size:10px;white-space:nowrap">폭 맞춤</button>
   </div>
   <!-- 문서 본문 -->
   <div class="doc-ed-body">
