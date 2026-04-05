@@ -423,6 +423,18 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .apr-panel{display:none}
 .apr-panel.act{display:block}
 
+/* ══ DRAFT MODAL (KORUS 결재정보) ══ */
+.draft-tab{padding:10px 18px;font-size:13px;font-weight:600;color:var(--tx3);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.draft-tab:hover{color:var(--tx)}
+.draft-tab.act{color:var(--tx);border-bottom-color:var(--tx)}
+.draft-panel{display:none}
+.draft-panel.act{display:block}
+.draft-subtab{padding:6px 14px;font-size:11px;color:var(--tx3);cursor:pointer;border-bottom:2px solid transparent;font-weight:600}
+.draft-subtab.act{color:var(--p);border-bottom-color:var(--p)}
+.draft-subtab:hover{color:var(--tx)}
+.org-person{padding:2px 4px;border-radius:4px;cursor:pointer;transition:background .15s}
+.org-person:hover{background:rgba(0,122,255,.08)}
+
 /* ══ QUICK ACTION BAR (KORUS) ══ */
 .qab{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:none;border-radius:4px;background:transparent;font-size:11px;color:var(--tx2);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
 .qab:hover{background:rgba(0,0,0,.04);color:var(--tx)}
@@ -1669,7 +1681,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- ══ 전자문서 서브 사이드바 (KORUS 스타일) ══ -->
     <div class="apr-sidebar" id="apr-sidebar">
       <div style="font-size:15px;font-weight:800;color:var(--tx);padding:16px 16px 10px">전자문서</div>
-      <button class="apr-btn-write" onclick="aprNav('apr-write')">최근서식 작성</button>
+      <button class="apr-btn-write" onclick="openDraftModal('')">최근서식 작성</button>
       <div class="apr-nav-item act" onclick="aprNav('apr-todo')">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         처리할 일</div>
@@ -3776,39 +3788,49 @@ function checkOut(){
 
 // ══ 결재 양식 작성 (코러스 전자문서) ══
 function openApprovalForm(type){
-  const forms={
-    '지출결의서':{fields:['과제번호','비목','금액','거래처','적요','증빙서류']},
-    '출장비신청서':{fields:['과제번호','출장지','출장기간','목적','예상경비']},
-    '전문가활용료':{fields:['과제번호','전문가명','소속','자문일자','자문료','자문내용']},
-    '재료비청구서':{fields:['과제번호','비목','품목','수량','단가','금액','거래처']},
-    '회의비':{fields:['과제번호','회의일자','회의장소','참석인원','금액']},
-    '휴가신청서':{fields:['휴가종류','시작일','종료일','사용일수','사유']}
-  };
-  const f=forms[type];if(!f)return;
-  let html='<div style="display:flex;flex-direction:column;gap:12px">';
-  html+='<div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:4px">'+type+'</div>';
-  f.fields.forEach(field=>{
-    html+='<div class="fg"><label>'+field+' <span class="req">*</span></label>';
-    if(field==='적요'||field==='자문내용'||field==='사유'||field==='목적')
-      html+='<textarea class="fc" rows="3" placeholder="'+field+'을(를) 입력하세요" style="width:100%;resize:vertical"></textarea>';
-    else if(field.includes('일자')||field.includes('기간')||field.includes('시작일')||field.includes('종료일'))
-      html+='<input class="fc" type="date" style="width:100%">';
-    else if(field==='금액'||field==='단가'||field==='예상경비'||field==='자문료'||field==='수량'||field==='참석인원'||field==='사용일수')
-      html+='<input class="fc" type="number" placeholder="0" style="width:100%;text-align:right;font-family:var(--mono)">';
-    else if(field==='비목')
-      html+='<select class="fc" style="width:100%"><option>재료비</option><option>인건비</option><option>여비</option><option>전문가활용비</option><option>연구활동비</option></select>';
-    else if(field==='휴가종류')
-      html+='<select class="fc" style="width:100%"><option>연차</option><option>오전반차</option><option>오후반차</option><option>병가</option><option>경조</option><option>무급</option></select>';
-    else
-      html+='<input class="fc" placeholder="'+field+'" style="width:100%">';
-    html+='</div>';
-  });
-  html+='</div>';
-  document.getElementById('msds-modal-title').textContent=type+' 작성';
-  document.getElementById('msds-modal-body').innerHTML=html;
-  const foot=document.querySelector('#modal-msds .mfoot');
-  if(foot)foot.innerHTML='<button class="tb" onclick="closeModal(\'modal-msds\')">취소</button><button class="tb" onclick="showToast(\'임시저장되었습니다\')">임시저장</button><button class="tb pri" onclick="closeModal(\'modal-msds\');showToast(\'결재 상신되었습니다\')">결재상신</button>';
-  openModal('modal-msds');
+  openDraftModal(type);
+}
+
+// ══ 결재정보 모달 (KORUS 기안) ══
+function switchDraftTab(el,panelId){
+  el.parentElement.querySelectorAll('.draft-tab').forEach(t=>t.classList.remove('act'));
+  el.classList.add('act');
+  el.closest('.modal').querySelectorAll('.draft-panel').forEach(p=>p.classList.remove('act'));
+  const panel=document.getElementById(panelId);
+  if(panel)panel.classList.add('act');
+}
+function openDraftModal(formName){
+  if(formName){
+    const ti=document.getElementById('draft-title');
+    if(ti)ti.value=formName;
+  }
+  openModal('modal-draft');
+}
+function addApprover(pos,grade,method,name){
+  const tbody=document.querySelector('#draft-ap-table tbody');
+  if(!tbody)return;
+  const m=document.getElementById('draft-ap-method');
+  const mVal=m?m.value:'결재';
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td class="tc">'+pos+'</td><td class="tc">'+grade+'</td><td class="tc">'+mVal+'</td><td class="tc">'+name+'</td>';
+  tbody.appendChild(tr);
+  showToast(name+' ('+pos+') 추가됨');
+}
+function removeLastApprover(){
+  const tbody=document.querySelector('#draft-ap-table tbody');
+  if(!tbody||tbody.rows.length<=1){showToast('최소 1명의 결재자가 필요합니다');return;}
+  tbody.removeChild(tbody.lastElementChild);
+  showToast('결재자 삭제됨');
+}
+function submitDraft(){
+  const title=document.getElementById('draft-title');
+  if(!title||!title.value.trim()){showToast('제목을 입력하세요');return;}
+  closeModal('modal-draft');
+  showToast('결재 상신되었습니다 — '+title.value);
+  title.value='';
+  // 테이블 초기화
+  const tbody=document.querySelector('#draft-ap-table tbody');
+  if(tbody)tbody.innerHTML='<tr><td class="tc">부교수</td><td class="tc">연구</td><td class="tc">결재</td><td class="tc">김병선</td></tr>';
 }
 
 // ══ 전자문서 네비게이션 (KORUS) ══
@@ -3896,6 +3918,173 @@ function handleLogin(e){
   <div class="modal" style="max-width:400px">
     <div class="mhdr"><span class="mttl" id="emp-modal-name">직원 정보</span><span class="mclose" onclick="closeModal('modal-employee')">✕</span></div>
     <div class="mbody" id="emp-modal-detail"></div>
+  </div>
+</div>
+
+<!-- ══ 결재정보 모달 (KORUS 기안) ══ -->
+<div class="mbg" id="modal-draft">
+  <div class="modal" style="max-width:780px;height:85vh;display:flex;flex-direction:column">
+    <div class="mhdr"><span class="mttl">결재정보</span><span class="mclose" onclick="closeModal('modal-draft')">✕</span></div>
+    <!-- 탭 -->
+    <div style="display:flex;border-bottom:1px solid rgba(0,0,0,.1);background:#f9f9f6;flex-shrink:0">
+      <div class="draft-tab act" onclick="switchDraftTab(this,'draft-docinfo')">
+        <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        문서정보</div>
+      <div class="draft-tab" onclick="switchDraftTab(this,'draft-apline')">
+        <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        결재선</div>
+    </div>
+    <!-- 문서정보 탭 -->
+    <div class="draft-panel act" id="draft-docinfo" style="flex:1;overflow-y:auto;padding:20px">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;width:100px;white-space:nowrap;vertical-align:middle">발송종류</td>
+          <td style="padding:10px 12px">
+            <label style="margin-right:16px;cursor:pointer"><input type="radio" name="send-type" style="accent-color:var(--p)"> 대외발송</label>
+            <label style="margin-right:16px;cursor:pointer"><input type="radio" name="send-type" style="accent-color:var(--p)"> 대내발송</label>
+            <label style="margin-right:24px;cursor:pointer"><input type="radio" name="send-type" checked style="accent-color:var(--p)"> 내부결재</label>
+            <label style="margin-right:12px;cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 자동발송</label>
+            <label style="margin-right:12px;cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 긴급결재</label>
+            <label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 열람시암호확인</label>
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">제 목</td>
+          <td style="padding:10px 12px"><input class="fc" id="draft-title" placeholder="문서 제목을 입력하세요" style="width:100%"></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">문서번호</td>
+          <td style="padding:10px 12px"><span style="color:var(--tx3);font-family:var(--mono);font-size:12px" id="draft-docno">화학연구팀-@N</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">과제카드</td>
+          <td style="padding:10px 12px;display:flex;gap:6px;align-items:center">
+            <select class="fc" style="flex:1"><option>선택하세요</option><option>202505000001 — 기초화학물질 안전성 연구</option><option>202505100001 — 화학공정 최적화</option></select>
+            <button class="tb" onclick="showToast('과제카드 검색')">선택...</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">업무유형</td>
+          <td style="padding:10px 12px"><select class="fc" style="width:180px"><option>일반</option><option>연구비</option><option>인건비</option><option>출장</option></select></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">열람범위</td>
+          <td style="padding:10px 12px">
+            <label style="margin-right:16px;cursor:pointer"><input type="radio" name="read-scope" style="accent-color:var(--p)"> 전체</label>
+            <label style="margin-right:16px;cursor:pointer"><input type="radio" name="read-scope" style="accent-color:var(--p)"> 소속기관</label>
+            <label style="margin-right:24px;cursor:pointer"><input type="radio" name="read-scope" checked style="accent-color:var(--p)"> 부서</label>
+            <label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 이력관리</label>
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">열람제한</td>
+          <td style="padding:10px 12px">
+            <label style="margin-right:16px;cursor:pointer"><input type="radio" name="read-limit" checked style="accent-color:var(--p)"> 설정안함</label>
+            <label style="margin-right:8px;cursor:pointer"><input type="radio" name="read-limit" style="accent-color:var(--p)"> 제한종료일</label>
+            <input class="fc" type="date" value="2026-04-12" style="width:130px;margin-right:8px">
+            <label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 영구</label>
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">공개여부</td>
+          <td style="padding:10px 12px;display:flex;gap:6px;align-items:center">
+            <select class="fc" style="width:100px"><option>공개</option><option>비공개</option><option>부분공개</option></select>
+            <button class="tb" onclick="showToast('공개 대상 선택')">선택...</button>
+            <button class="tb" onclick="showToast('검색어 설정')">검색어...</button>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">쪽 수</td>
+          <td style="padding:10px 12px"><input class="fc" type="number" value="1" min="1" style="width:80px;text-align:center"></td>
+        </tr>
+      </table>
+    </div>
+    <!-- 결재선 탭 -->
+    <div class="draft-panel" id="draft-apline" style="flex:1;overflow-y:auto;padding:16px">
+      <div style="display:flex;gap:12px;height:100%">
+        <!-- 좌측: 조직도 트리 -->
+        <div style="flex:1;border:1px solid rgba(0,0,0,.1);border-radius:6px;display:flex;flex-direction:column;min-width:0">
+          <div style="display:flex;border-bottom:1px solid rgba(0,0,0,.08);background:#f9f9f6">
+            <div class="draft-subtab act" onclick="this.parentElement.querySelectorAll('.draft-subtab').forEach(t=>t.classList.remove('act'));this.classList.add('act')">조직도</div>
+            <div class="draft-subtab" onclick="this.parentElement.querySelectorAll('.draft-subtab').forEach(t=>t.classList.remove('act'));this.classList.add('act')">결재선목록</div>
+            <div class="draft-subtab" onclick="this.parentElement.querySelectorAll('.draft-subtab').forEach(t=>t.classList.remove('act'));this.classList.add('act')">사용자</div>
+          </div>
+          <div style="flex:1;overflow-y:auto;padding:8px;font-size:12px;line-height:2">
+            <div style="cursor:pointer" onclick="this.querySelector('span')&&(this.querySelector('span').style.display=this.querySelector('span').style.display==='none'?'block':'none')">
+              📁 <strong>지누켐</strong>
+              <span style="padding-left:16px;display:block">
+                <div style="cursor:pointer" onclick="event.stopPropagation();this.querySelector('span')&&(this.querySelector('span').style.display=this.querySelector('span').style.display==='none'?'block':'none')">📁 경영지원팀<span style="padding-left:16px;display:none">
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('대표이사','대표','결재','박대표')">👤 박대표 (대표이사)</div>
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('팀장','관리','결재','최경영')">👤 최경영 (팀장)</div>
+                </span></div>
+                <div style="cursor:pointer" onclick="event.stopPropagation();this.querySelector('span')&&(this.querySelector('span').style.display=this.querySelector('span').style.display==='none'?'block':'none')">📁 화학연구팀<span style="padding-left:16px;display:none">
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('소장','연구','결재','이경훈')">👤 이경훈 (소장)</div>
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('부교수','연구','결재','김병선')">👤 김병선 (부교수)</div>
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('연구원','연구','결재','이영옥')">👤 이영옥 (연구원)</div>
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('연구원','연구','결재','손미현')">👤 손미현 (연구원)</div>
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('연구원','연구','결재','김수진')">👤 김수진 (연구원)</div>
+                </span></div>
+                <div style="cursor:pointer" onclick="event.stopPropagation();this.querySelector('span')&&(this.querySelector('span').style.display=this.querySelector('span').style.display==='none'?'block':'none')">📁 IT개발본부<span style="padding-left:16px;display:none">
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('본부장','IT','결재','정프론')">👤 정프론 (본부장)</div>
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('선임','IT','결재','한백엔')">👤 한백엔 (선임)</div>
+                </span></div>
+                <div style="cursor:pointer" onclick="event.stopPropagation();this.querySelector('span')&&(this.querySelector('span').style.display=this.querySelector('span').style.display==='none'?'block':'none')">📁 기초과학연구소<span style="padding-left:16px;display:none">
+                  <div class="org-person" onclick="event.stopPropagation();addApprover('소장','연구','결재','강연구')">👤 강연구 (소장)</div>
+                </span></div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- 중앙: 추가/삭제 버튼 -->
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:8px;flex-shrink:0">
+          <button class="tb" style="padding:6px 14px;font-size:11px" onclick="showToast('조직도에서 결재자를 클릭하세요')">▶ 추가</button>
+          <button class="tb" style="padding:6px 14px;font-size:11px" onclick="removeLastApprover()">◀ 삭제</button>
+          <div style="height:20px"></div>
+          <button class="tb" style="padding:6px 14px;font-size:11px" onclick="showToast('부재정보 조회')">부재정보</button>
+        </div>
+        <!-- 우측: 결재선 -->
+        <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-width:0">
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:12px;color:var(--tx2);font-weight:600">결재선:</span>
+            <select class="fc" style="flex:1;font-size:12px"><option>기본결재선</option><option>간이결재선</option></select>
+            <button class="tb" style="padding:5px 10px;font-size:11px" onclick="showToast('결재선 등록')">등록</button>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:12px;color:var(--tx2);font-weight:600;white-space:nowrap">결재방법:</span>
+            <select class="fc" id="draft-ap-method" style="width:80px;font-size:12px"><option>결재</option><option>전결</option></select>
+            <span style="font-size:12px;color:var(--tx2);margin-left:8px">사유:</span>
+            <select class="fc" style="flex:1;font-size:12px"><option></option><option>출장</option><option>휴가</option><option>위임</option></select>
+          </div>
+          <div style="display:flex;gap:12px;font-size:12px">
+            <label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 발의자</label>
+            <label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 보고자</label>
+          </div>
+          <!-- 결재선 테이블 -->
+          <div style="flex:1;border:1px solid rgba(0,0,0,.1);border-radius:6px;overflow:hidden">
+            <table class="dt" style="font-size:12px" id="draft-ap-table">
+              <thead><tr><th style="width:70px">직위</th><th style="width:50px">직급</th><th style="width:70px">결재방법</th><th>결재자</th></tr></thead>
+              <tbody>
+                <tr><td class="tc">부교수</td><td class="tc">연구</td><td class="tc">결재</td><td class="tc">김병선</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- 하단 권한 옵션 -->
+          <div style="display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--tx3);padding:4px 0;border-top:1px solid rgba(0,0,0,.06)">
+            <span>결 재:</span>
+            <label><input type="checkbox" checked style="accent-color:var(--p)"> 결재선변경</label>
+            <label><input type="checkbox" checked style="accent-color:var(--p)"> 문서수정</label>
+            <span style="margin-left:12px">붙임문서:</span>
+            <label><input type="checkbox" checked style="accent-color:var(--p)"> 추가</label>
+            <label><input type="checkbox" checked style="accent-color:var(--p)"> 삭제</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 하단 버튼 -->
+    <div class="mfoot" style="border-top:1px solid rgba(0,0,0,.1)">
+      <button class="tb pri" onclick="submitDraft()">확인</button>
+      <button class="tb" onclick="closeModal('modal-draft')">취소</button>
+    </div>
   </div>
 </div>
 </body>
