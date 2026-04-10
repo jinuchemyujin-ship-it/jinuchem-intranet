@@ -408,22 +408,22 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
 /* ══ LOGIN SCREEN ══ */
 /* ══ APPROVAL SIDEBAR (KORUS 전자문서) ══ */
-.apr-sidebar{width:180px;background:#fff;border-right:1px solid rgba(0,0,0,.08);flex-shrink:0;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:12px}
-.apr-sidebar-title{font-size:16px;font-weight:800;color:#222;padding:18px 18px 12px;letter-spacing:-.3px}
-.apr-btn-write{margin:0 16px 14px;padding:11px 12px;background:#2e7d32;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s;text-align:center}
-.apr-btn-write:hover{background:#1b5e20}
-.apr-nav-item{display:flex;align-items:center;gap:8px;padding:9px 18px;font-size:13px;color:#444;cursor:pointer;transition:all .12s;position:relative;line-height:1}
-.apr-nav-item:hover{background:#f5f5f5;color:#222}
-.apr-nav-item.act{background:#eafbe5;color:#2e7d32;font-weight:700}
-.apr-nav-item.act::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#2e7d32}
-.apr-nav-item svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.apr-sidebar{width:185px;background:#fff;border-right:1px solid #e8e8e8;flex-shrink:0;overflow-y:auto;display:flex;flex-direction:column;padding:0 0 12px}
+.apr-sidebar-title{font-size:17px;font-weight:800;color:#222;padding:20px 20px 14px;letter-spacing:-.4px}
+.apr-btn-write{margin:0 18px 16px;padding:13px 12px;background:#43a047;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s;text-align:center;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.apr-btn-write:hover{background:#388e3c}
+.apr-nav-item{display:flex;align-items:center;gap:9px;padding:10px 20px;font-size:13px;color:#3a3a3a;cursor:pointer;transition:all .12s;position:relative;line-height:1.2}
+.apr-nav-item:hover{background:#f6f6f6;color:#111}
+.apr-nav-item svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;opacity:.75}
 .apr-nav-group{display:flex;flex-direction:column;margin-top:2px}
-.apr-nav-head{display:flex;align-items:center;gap:8px;padding:9px 18px;font-size:13px;color:#222;font-weight:700;line-height:1}
-.apr-nav-head svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.apr-nav-head{display:flex;align-items:center;gap:9px;padding:10px 20px;font-size:13px;color:#222;font-weight:700;line-height:1.2}
+.apr-nav-head svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;opacity:.85}
 .apr-nav-sub{display:flex;flex-direction:column}
-.apr-nav-sub .apr-nav-item{padding:7px 18px 7px 41px;font-size:12px;color:#666;gap:0}
-.apr-nav-sub .apr-nav-item:hover{color:#222}
-.apr-nav-sub .apr-nav-item.act{font-weight:700}
+.apr-nav-sub .apr-nav-item{padding:8px 20px 8px 44px;font-size:12.5px;color:#5a5a5a;gap:0}
+.apr-nav-sub .apr-nav-item:hover{background:#f6f6f6;color:#111}
+.apr-nav-item.act,
+.apr-nav-sub .apr-nav-item.act{background:#eaf5ec;color:#1b5e20;font-weight:700}
+.apr-nav-item.act::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#43a047}
 .apr-sum-item{flex:1;text-align:center;padding:10px 8px;cursor:pointer;border-right:1px solid rgba(0,0,0,.06);transition:all .15s}
 .apr-sum-item:last-child{border-right:none}
 .apr-sum-item:hover{background:rgba(0,0,0,.02)}
