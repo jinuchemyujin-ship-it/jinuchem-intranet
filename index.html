@@ -408,20 +408,22 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
 /* ══ LOGIN SCREEN ══ */
 /* ══ APPROVAL SIDEBAR (KORUS 전자문서) ══ */
-.apr-sidebar{width:150px;background:#fff;border-right:1px solid rgba(0,0,0,.06);flex-shrink:0;overflow-y:auto;display:flex;flex-direction:column}
-.apr-btn-write{margin:8px 12px;padding:8px;background:#2e7d32;color:#fff;border:none;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s}
+.apr-sidebar{width:180px;background:#fff;border-right:1px solid rgba(0,0,0,.08);flex-shrink:0;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:12px}
+.apr-sidebar-title{font-size:16px;font-weight:800;color:#222;padding:18px 18px 12px;letter-spacing:-.3px}
+.apr-btn-write{margin:0 16px 14px;padding:11px 12px;background:#2e7d32;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s;text-align:center}
 .apr-btn-write:hover{background:#1b5e20}
-.apr-nav-item{display:flex;align-items:center;gap:6px;padding:7px 16px;font-size:12px;color:var(--tx2);cursor:pointer;transition:all .15s;border-left:3px solid transparent}
-.apr-nav-item:hover{background:rgba(0,0,0,.03);color:var(--tx)}
-.apr-nav-item.act{background:rgba(46,125,50,.08);color:#2e7d32;font-weight:700;border-left-color:#2e7d32}
-.apr-nav-item svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.apr-nav-group{display:flex;flex-direction:column}
-.apr-nav-head{display:flex;align-items:center;gap:6px;padding:7px 16px;font-size:12px;color:var(--tx);cursor:pointer;font-weight:600;transition:all .15s}
-.apr-nav-head:hover{background:rgba(0,0,0,.03)}
-.apr-nav-head svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.apr-nav-sub{display:none;flex-direction:column}
-.apr-nav-head.open+.apr-nav-sub{display:flex}
-.apr-nav-sub .apr-nav-item{padding-left:36px;font-size:11px}
+.apr-nav-item{display:flex;align-items:center;gap:8px;padding:9px 18px;font-size:13px;color:#444;cursor:pointer;transition:all .12s;position:relative;line-height:1}
+.apr-nav-item:hover{background:#f5f5f5;color:#222}
+.apr-nav-item.act{background:#eafbe5;color:#2e7d32;font-weight:700}
+.apr-nav-item.act::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#2e7d32}
+.apr-nav-item svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.apr-nav-group{display:flex;flex-direction:column;margin-top:2px}
+.apr-nav-head{display:flex;align-items:center;gap:8px;padding:9px 18px;font-size:13px;color:#222;font-weight:700;line-height:1}
+.apr-nav-head svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.apr-nav-sub{display:flex;flex-direction:column}
+.apr-nav-sub .apr-nav-item{padding:7px 18px 7px 41px;font-size:12px;color:#666;gap:0}
+.apr-nav-sub .apr-nav-item:hover{color:#222}
+.apr-nav-sub .apr-nav-item.act{font-weight:700}
 .apr-sum-item{flex:1;text-align:center;padding:10px 8px;cursor:pointer;border-right:1px solid rgba(0,0,0,.06);transition:all .15s}
 .apr-sum-item:last-child{border-right:none}
 .apr-sum-item:hover{background:rgba(0,0,0,.02)}
@@ -1768,15 +1770,15 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ APPROVAL ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-approval">
   <div style="display:flex;flex:1;overflow:hidden">
-    <!-- ══ 전자문서 서브 사이드바 (KORUS 스타일) ══ -->
+    <!-- ══ 전자문서 서브 사이드바 ══ -->
     <div class="apr-sidebar" id="apr-sidebar">
-      <div style="font-size:15px;font-weight:800;color:var(--tx);padding:16px 16px 10px">전자문서</div>
+      <div class="apr-sidebar-title">전자문서</div>
       <button class="apr-btn-write" onclick="openDraftModal('')">최근서식 작성</button>
       <div class="apr-nav-item act" onclick="aprNav('apr-todo')">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         처리할 일</div>
       <div class="apr-nav-group">
-        <div class="apr-nav-head" onclick="this.classList.toggle('open')">
+        <div class="apr-nav-head">
           <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           기안</div>
         <div class="apr-nav-sub">
@@ -1786,7 +1788,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
       </div>
       <div class="apr-nav-group">
-        <div class="apr-nav-head open" onclick="this.classList.toggle('open')">
+        <div class="apr-nav-head">
           <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           결재</div>
         <div class="apr-nav-sub">
@@ -1795,26 +1797,16 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
       </div>
       <div class="apr-nav-group">
-        <div class="apr-nav-head" onclick="this.classList.toggle('open')">
+        <div class="apr-nav-head">
           <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           발송</div>
         <div class="apr-nav-sub">
-          <div class="apr-nav-item" onclick="aprNav('apr-send')">발송대기함</div>
-          <div class="apr-nav-item" onclick="aprNav('apr-recv')">수신반송함</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-done')">완료문서</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-share')">공유/공람</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-registry')">문서등록대장</div>
+          <div class="apr-nav-item" onclick="aprNav('apr-stats')">부서사용현황</div>
         </div>
       </div>
-      <div class="apr-nav-item" onclick="aprNav('apr-done')">
-        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        완료문서</div>
-      <div class="apr-nav-item" onclick="aprNav('apr-share')">
-        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
-        공유/공람</div>
-      <div class="apr-nav-item" onclick="aprNav('apr-registry')">
-        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-        문서등록대장</div>
-      <div class="apr-nav-item" onclick="aprNav('apr-stats')">
-        <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-        부서사용현황</div>
     </div>
     <!-- ══ 전자문서 메인 콘텐츠 ══ -->
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
