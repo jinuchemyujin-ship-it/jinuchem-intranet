@@ -1846,9 +1846,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           </div>
           <table class="dt"><thead><tr><th style="width:90px">기안일자</th><th>제목</th><th style="width:110px">기안부서</th><th style="width:80px">기안자</th></tr></thead>
           <tbody>
-            <tr onclick="openModal('modal-approve')" style="cursor:pointer"><td class="mn tc">2026-01-15</td><td class="lk">지출청구 - 재료비 (시약 구입)</td><td class="tc">화학연구팀</td><td class="tc">김병선</td></tr>
-            <tr onclick="openModal('modal-approve')" style="cursor:pointer"><td class="mn tc">2026-01-08</td><td class="lk">지출청구 - 재료비 (실험장비 소모품)</td><td class="tc">화학연구팀</td><td class="tc">이연구</td></tr>
-            <tr onclick="openModal('modal-approve')" style="cursor:pointer"><td class="mn tc">2026-02-01</td><td class="lk">인건비 배치 - 2026년 2월</td><td class="tc">경영지원팀</td><td class="tc">김병선</td></tr>
+            <tr onclick="openDocDetail('CLM-2026-0023')" style="cursor:pointer"><td class="mn tc">2026-01-15</td><td class="lk">지출청구 - 재료비 (시약 구입)</td><td class="tc">화학연구팀</td><td class="tc">김병선</td></tr>
+            <tr onclick="openDocDetail('CLM-2026-0022')" style="cursor:pointer"><td class="mn tc">2026-01-08</td><td class="lk">지출청구 - 재료비 (실험장비 소모품)</td><td class="tc">화학연구팀</td><td class="tc">이연구</td></tr>
+            <tr onclick="openDocDetail('PAY-2026-0005')" style="cursor:pointer"><td class="mn tc">2026-02-01</td><td class="lk">인건비 배치 - 2026년 2월</td><td class="tc">경영지원팀</td><td class="tc">김병선</td></tr>
           </tbody></table>
         </div>
         <!-- 발송대기 섹션 -->
@@ -1868,8 +1868,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           </div>
           <table class="dt"><thead><tr><th style="width:36px"><input type="checkbox"></th><th style="width:100px">공람도착일자</th><th>제목</th><th style="width:110px">기안부서</th><th style="width:80px">기안자</th><th style="width:90px">공람지정자</th></tr></thead>
           <tbody>
-            <tr><td class="tc"><input type="checkbox"></td><td class="mn tc">2026-04-03</td><td class="lk" onclick="showToast('공람 문서를 열람합니다')">2026년 상반기 안전관리 계획서</td><td class="tc">안전팀</td><td class="tc">박안전</td><td class="tc">김병선</td></tr>
-            <tr><td class="tc"><input type="checkbox"></td><td class="mn tc">2026-04-01</td><td class="lk" onclick="showToast('공람 문서를 열람합니다')">연구비 집행 가이드라인 개정</td><td class="tc">경영지원팀</td><td class="tc">최경영</td><td class="tc">김병선</td></tr>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn tc">2026-04-03</td><td class="lk" onclick="openDocDetail('NOTE-2026-0011')">2026년 상반기 안전관리 계획서</td><td class="tc">안전팀</td><td class="tc">박안전</td><td class="tc">김병선</td></tr>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn tc">2026-04-01</td><td class="lk" onclick="openDocDetail('NOTE-2026-0010')">연구비 집행 가이드라인 개정</td><td class="tc">경영지원팀</td><td class="tc">최경영</td><td class="tc">김병선</td></tr>
           </tbody></table>
         </div>
         <!-- 처리할 메모보고 -->
@@ -1977,16 +1977,16 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div class="dtw" style="padding:0 16px">
           <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:30px">상태</th><th style="width:70px">문서종류</th><th style="width:70px">시행종류</th><th>제목</th><th style="width:60px">처리구분</th><th style="width:70px">기안(접수)자</th><th style="width:70px">업무담당자</th><th style="width:70px">발송부서</th><th style="width:70px">기안일자</th><th style="width:70px">등록일자</th></tr></thead>
           <tbody>
-            <tr onclick="openModal('modal-approve')" style="cursor:pointer;background:#fffde7">
-              <td class="tc"><input type="checkbox"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
+            <tr onclick="openDocDetail('CLM-2026-0023')" style="cursor:pointer;background:#fffde7">
+              <td class="tc"><input type="checkbox" onclick="event.stopPropagation()"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
               <td class="lk fw7">지출청구 - 재료비 (시약 구입)</td><td class="tc">결재</td><td>김병선</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-15</td><td class="mn">2026-01-15</td>
             </tr>
-            <tr onclick="openModal('modal-approve')" style="cursor:pointer;background:#fffde7">
-              <td class="tc"><input type="checkbox"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
+            <tr onclick="openDocDetail('CLM-2026-0022')" style="cursor:pointer;background:#fffde7">
+              <td class="tc"><input type="checkbox" onclick="event.stopPropagation()"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
               <td class="lk fw7">지출청구 - 재료비 (실험장비 소모품)</td><td class="tc">결재</td><td>이연구</td><td>이연구</td><td>화학연구팀</td><td class="mn">2026-01-08</td><td class="mn">2026-01-08</td>
             </tr>
-            <tr onclick="openModal('modal-approve')" style="cursor:pointer;background:#fffde7">
-              <td class="tc"><input type="checkbox"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
+            <tr onclick="openDocDetail('PAY-2026-0005')" style="cursor:pointer;background:#fffde7">
+              <td class="tc"><input type="checkbox" onclick="event.stopPropagation()"></td><td class="tc" style="color:var(--ora)">●</td><td>일반</td><td>대내시행</td>
               <td class="lk fw7">인건비 배치 - 2026년 2월</td><td class="tc">결재</td><td>김병선</td><td>김병선</td><td>경영지원팀</td><td class="mn">2026-02-01</td><td class="mn">2026-02-01</td>
             </tr>
           </tbody></table>
@@ -2010,12 +2010,12 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div class="dtw" style="padding:0 16px">
           <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:30px">상태</th><th style="width:70px">문서종류</th><th style="width:70px">시행종류</th><th>제목</th><th style="width:70px">기안(접수)자</th><th style="width:70px">업무담당자</th><th style="width:70px">발송부서</th><th style="width:70px">기안일자</th><th style="width:40px">상태</th><th style="width:60px">처리현황</th></tr></thead>
           <tbody>
-            <tr style="cursor:pointer" onclick="showToast('문서 상세보기')">
-              <td class="tc"><input type="checkbox"></td><td class="tc"></td><td>일반</td><td>대내시행</td>
+            <tr style="cursor:pointer" onclick="openDocDetail('DOC-2026-0019')">
+              <td class="tc"><input type="checkbox" onclick="event.stopPropagation()"></td><td class="tc"></td><td>일반</td><td>대내시행</td>
               <td class="lk">2026년 첨단산업 인재양성 부트캠프 사업 참여기업 모집 공고(안)</td><td>김병선</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-19</td><td class="tc"><span class="bd bg">완료</span></td><td class="tc">진행</td>
             </tr>
-            <tr style="cursor:pointer" onclick="showToast('문서 상세보기')">
-              <td class="tc"><input type="checkbox"></td><td class="tc"></td><td>일반</td><td>내부결재</td>
+            <tr style="cursor:pointer" onclick="openDocDetail('DOC-2024-0212')">
+              <td class="tc"><input type="checkbox" onclick="event.stopPropagation()"></td><td class="tc"></td><td>일반</td><td>내부결재</td>
               <td class="lk">외부강의 등 신고서</td><td>김병선</td><td>김병선</td><td>경영지원팀</td><td class="mn">2024-09-29</td><td class="tc"><span class="bd bg">완료</span></td><td class="tc">진행</td>
             </tr>
           </tbody></table>
@@ -2059,9 +2059,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div class="dtw" style="padding:0 16px">
           <table class="dt"><thead><tr><th style="width:70px">문서번호</th><th>제목</th><th style="width:70px">기안자</th><th style="width:80px">기안일자</th><th style="width:80px">완료일자</th><th style="width:60px">상태</th></tr></thead>
           <tbody>
-            <tr><td class="mn">CLM-2026-0018</td><td class="lk" onclick="showToast('문서 상세보기')">지출청구 - 여비 (ICLR 등록비)</td><td>김병선</td><td class="mn">2026-01-12</td><td class="mn">2026-01-14</td><td><span class="bd bg">승인</span></td></tr>
-            <tr><td class="mn">CLM-2025-0089</td><td class="lk" onclick="showToast('문서 상세보기')">전문가활용비 — 자문료 (하향수)</td><td>김병선</td><td class="mn">2025-12-20</td><td class="mn">2025-12-22</td><td><span class="bd bg">승인</span></td></tr>
-            <tr><td class="mn">CLM-2025-0075</td><td class="lk" onclick="showToast('문서 상세보기')">회의비 — 12월 정기회의</td><td>이연구</td><td class="mn">2025-12-10</td><td class="mn">2025-12-11</td><td><span class="bd bg">승인</span></td></tr>
+            <tr style="cursor:pointer" onclick="openDocDetail('CLM-2026-0018')"><td class="mn">CLM-2026-0018</td><td class="lk">지출청구 - 여비 (ICLR 등록비)</td><td>김병선</td><td class="mn">2026-01-12</td><td class="mn">2026-01-14</td><td><span class="bd bg">승인</span></td></tr>
+            <tr style="cursor:pointer" onclick="openDocDetail('CLM-2025-0089')"><td class="mn">CLM-2025-0089</td><td class="lk">전문가활용비 — 자문료 (하향수)</td><td>김병선</td><td class="mn">2025-12-20</td><td class="mn">2025-12-22</td><td><span class="bd bg">승인</span></td></tr>
+            <tr style="cursor:pointer" onclick="openDocDetail('CLM-2025-0075')"><td class="mn">CLM-2025-0075</td><td class="lk">회의비 — 12월 정기회의</td><td>이연구</td><td class="mn">2025-12-10</td><td class="mn">2025-12-11</td><td><span class="bd bg">승인</span></td></tr>
           </tbody></table>
         </div>
       </div>
@@ -2072,8 +2072,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div class="dtw" style="padding:8px 16px">
           <table class="dt"><thead><tr><th style="width:30px"><input type="checkbox"></th><th style="width:70px">공람일자</th><th>제목</th><th style="width:80px">기안부서</th><th style="width:60px">기안자</th><th style="width:60px">읽음</th></tr></thead>
           <tbody>
-            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-03</td><td class="lk" onclick="showToast('공람 문서 열람')">2026년 상반기 안전관리 계획서</td><td>안전팀</td><td>박안전</td><td class="tc"><span class="bd bgr">미읽음</span></td></tr>
-            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-01</td><td class="lk" onclick="showToast('공람 문서 열람')">연구비 집행 가이드라인 개정</td><td>경영지원팀</td><td>최경영</td><td class="tc"><span class="bd bgr">미읽음</span></td></tr>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-03</td><td class="lk" onclick="openDocDetail('NOTE-2026-0011')">2026년 상반기 안전관리 계획서</td><td>안전팀</td><td>박안전</td><td class="tc"><span class="bd bgr">미읽음</span></td></tr>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn">2026-04-01</td><td class="lk" onclick="openDocDetail('NOTE-2026-0010')">연구비 집행 가이드라인 개정</td><td>경영지원팀</td><td>최경영</td><td class="tc"><span class="bd bgr">미읽음</span></td></tr>
           </tbody></table>
         </div>
       </div>
@@ -2090,9 +2090,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div class="dtw" style="padding:0 16px">
           <table class="dt"><thead><tr><th style="width:50px">순번</th><th style="width:80px">문서번호</th><th>제목</th><th style="width:60px">기안자</th><th style="width:80px">기안부서</th><th style="width:70px">기안일자</th><th style="width:70px">완료일자</th><th style="width:60px">상태</th></tr></thead>
           <tbody>
-            <tr><td class="tc">1</td><td class="mn">CLM-2026-0023</td><td>지출청구 - 재료비 (시약 구입)</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-15</td><td class="mn">-</td><td><span class="bd by">결재중</span></td></tr>
-            <tr><td class="tc">2</td><td class="mn">CLM-2026-0018</td><td>지출청구 - 여비 (ICLR 등록비)</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-12</td><td class="mn">2026-01-14</td><td><span class="bd bg">완료</span></td></tr>
-            <tr><td class="tc">3</td><td class="mn">PAY-2026-0005</td><td>인건비 배치 - 2026년 2월</td><td>김병선</td><td>경영지원팀</td><td class="mn">2026-02-01</td><td class="mn">-</td><td><span class="bd by">결재중</span></td></tr>
+            <tr style="cursor:pointer" onclick="openDocDetail('CLM-2026-0023')"><td class="tc">1</td><td class="mn">CLM-2026-0023</td><td class="lk">지출청구 - 재료비 (시약 구입)</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-15</td><td class="mn">-</td><td><span class="bd by">결재중</span></td></tr>
+            <tr style="cursor:pointer" onclick="openDocDetail('CLM-2026-0018')"><td class="tc">2</td><td class="mn">CLM-2026-0018</td><td class="lk">지출청구 - 여비 (ICLR 등록비)</td><td>김병선</td><td>화학연구팀</td><td class="mn">2026-01-12</td><td class="mn">2026-01-14</td><td><span class="bd bg">완료</span></td></tr>
+            <tr style="cursor:pointer" onclick="openDocDetail('PAY-2026-0005')"><td class="tc">3</td><td class="mn">PAY-2026-0005</td><td class="lk">인건비 배치 - 2026년 2월</td><td>김병선</td><td>경영지원팀</td><td class="mn">2026-02-01</td><td class="mn">-</td><td><span class="bd by">결재중</span></td></tr>
           </tbody></table>
         </div>
       </div>
@@ -4284,6 +4284,63 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   </div>
 </div>
 
+<!-- MODAL: DOCUMENT DETAIL (공문 상세) -->
+<div class="mbg" id="modal-doc">
+  <div class="modal" style="max-width:760px">
+    <div class="mhdr">
+      <span class="mttl">공문 상세 — <span class="doc-no mn">-</span></span>
+      <span class="mclose" onclick="closeModal('modal-doc')">×</span>
+    </div>
+    <div class="mbody">
+      <div style="background:#fafbfc;border:1px solid #eef0f3;border-radius:6px;padding:14px 18px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div class="doc-title" style="font-size:16px;font-weight:700;color:var(--tx);line-height:1.4;flex:1">-</div>
+          <span class="doc-status bd bgr" style="margin-left:12px">-</span>
+        </div>
+        <table style="width:100%;font-size:12px">
+          <tr>
+            <td style="width:80px;color:var(--tx3);padding:3px 0">문서번호</td><td class="doc-no mn fw7">-</td>
+            <td style="width:80px;color:var(--tx3)">기안일자</td><td class="doc-date mn">-</td>
+          </tr>
+          <tr>
+            <td style="color:var(--tx3);padding:3px 0">기안자</td><td class="doc-drafter">-</td>
+            <td style="color:var(--tx3)">기안부서</td><td class="doc-dept">-</td>
+          </tr>
+          <tr>
+            <td style="color:var(--tx3);padding:3px 0">문서종류</td><td class="doc-type">-</td>
+            <td style="color:var(--tx3)">시행종류</td><td class="doc-kind">-</td>
+          </tr>
+        </table>
+      </div>
+      <div class="aflw" style="margin:0 0 14px">
+        <div class="af-s"><div class="af-c dn"></div><div class="af-l"><strong>기안</strong>김병선<br><span style="font-size:9px">완료</span></div></div>
+        <div class="af-ln dn"></div>
+        <div class="af-s"><div class="af-c cr">나</div><div class="af-l"><strong>팀장</strong>이팀장<br><span style="font-size:9px">처리중</span></div></div>
+        <div class="af-ln"></div>
+        <div class="af-s"><div class="af-c">2</div><div class="af-l"><strong>본부장</strong>박본부장</div></div>
+        <div class="af-ln"></div>
+        <div class="af-s"><div class="af-c">완</div><div class="af-l"><strong>완료</strong></div></div>
+      </div>
+      <div style="background:#fff;border:1px solid #eef0f3;border-radius:6px;padding:18px 22px;margin-bottom:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--tx3);margin-bottom:10px;letter-spacing:.2px">문서 본문</div>
+        <div class="doc-body" style="font-size:13px;color:var(--tx);line-height:1.8">-</div>
+      </div>
+      <div>
+        <label style="font-size:11px;color:var(--tx2);font-weight:600">결재 의견 <span style="color:var(--tx3);font-weight:400">(반려 시 필수)</span></label>
+        <textarea class="fc doc-opinion" rows="3" style="width:100%;margin-top:4px;resize:vertical" placeholder="결재 의견을 입력하세요. 반려 시 사유를 반드시 입력해주세요."></textarea>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="tb" onclick="closeModal('modal-doc')">닫기</button>
+      <div class="doc-actions-approve" style="display:flex;gap:6px">
+        <button class="tb dan" onclick="doDocReject()">반려</button>
+        <button class="tb" style="background:var(--tx3);color:#fff;border-color:var(--tx3)" onclick="showToast('결재를 위임합니다')">위임</button>
+        <button class="tb pri" onclick="doDocApprove()">승인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL: VENDOR SEARCH -->
 <div class="mbg" id="modal-vendor">
   <div class="modal" style="max-width:520px">
@@ -4523,6 +4580,100 @@ function switchClaimSubTab(el, tid){
 // ══ APPROVAL ══
 function doApprove(){closeModal('modal-approve');showToast('승인이 완료되었습니다');}
 function doReject(){closeModal('modal-approve');showToast('반려 처리되었습니다','var(--red)');}
+
+// ══ DOCUMENT DETAIL (공문 상세) ══
+const APR_DOCS = {
+  'CLM-2026-0023':{title:'지출청구 - 재료비 (시약 구입)',no:'CLM-2026-0023',drafter:'김병선',dept:'화학연구팀',date:'2026-01-15',type:'일반',kind:'대내시행',status:'wait',
+    body:`<p><strong>1. 청구내용:</strong> 재료비 — 시약 구입 (소듐클로라이드 1kg)</p>
+<p><strong>2. 청구금액:</strong> ₩ 1,200,000</p>
+<p><strong>3. 비목잔액:</strong> 2,160,000원 → 승인 시 960,000원</p>
+<p><strong>4. 사용목적:</strong> 화학연구팀 신규 합성공정 개발 과제 수행에 필요한 시약 확보</p>
+<p><strong>5. 첨부:</strong> 영수증_시약구입_20260115.pdf</p>`},
+  'CLM-2026-0022':{title:'지출청구 - 재료비 (실험장비 소모품)',no:'CLM-2026-0022',drafter:'이연구',dept:'화학연구팀',date:'2026-01-08',type:'일반',kind:'대내시행',status:'wait',
+    body:`<p><strong>1. 청구내용:</strong> 실험장비 소모품 (HPLC 컬럼, 필터)</p>
+<p><strong>2. 청구금액:</strong> ₩ 850,000</p>
+<p><strong>3. 사용목적:</strong> 정기 분석 업무에 사용되는 소모성 부품 교체</p>`},
+  'PAY-2026-0005':{title:'인건비 배치 - 2026년 2월',no:'PAY-2026-0005',drafter:'김병선',dept:'경영지원팀',date:'2026-02-01',type:'일반',kind:'내부결재',status:'wait',
+    body:`<p><strong>1. 안건:</strong> 2026년 2월 인건비 지급 배치 승인 요청</p>
+<p><strong>2. 대상:</strong> 본사 정규직 직원 32명, 계약직 5명</p>
+<p><strong>3. 지급예정일:</strong> 2026-02-25</p>
+<p><strong>4. 총 지급액:</strong> ₩ 142,500,000</p>`},
+  'DOC-2026-0019':{title:'2026년 첨단산업 인재양성 부트캠프 사업 참여기업 모집 공고(안)',no:'DOC-2026-0019',drafter:'김병선',dept:'화학연구팀',date:'2026-01-19',type:'일반',kind:'대내시행',status:'progress',
+    body:`<p><strong>1. 사업개요:</strong> 산업통상자원부 주관 2026년 첨단산업 인재양성 부트캠프</p>
+<p><strong>2. 공고기간:</strong> 2026-02-01 ~ 2026-02-28</p>
+<p><strong>3. 모집분야:</strong> 화학소재, 정밀화학 분야 참여기업</p>
+<p><strong>4. 신청방법:</strong> 사업 홈페이지 온라인 접수</p>
+<p><strong>5. 문의:</strong> 화학연구팀 김병선 (내선 202)</p>`},
+  'DOC-2024-0212':{title:'외부강의 등 신고서',no:'DOC-2024-0212',drafter:'김병선',dept:'경영지원팀',date:'2024-09-29',type:'일반',kind:'내부결재',status:'progress',
+    body:`<p><strong>1. 강의제목:</strong> 화학산업의 디지털 전환 사례</p>
+<p><strong>2. 강의기관:</strong> 대한화학회</p>
+<p><strong>3. 강의일자:</strong> 2024-10-15</p>
+<p><strong>4. 강의시간:</strong> 2시간</p>
+<p><strong>5. 사례비:</strong> ₩ 300,000</p>`},
+  'CLM-2026-0018':{title:'지출청구 - 여비 (ICLR 등록비)',no:'CLM-2026-0018',drafter:'김병선',dept:'화학연구팀',date:'2026-01-12',type:'일반',kind:'대내시행',status:'done',
+    body:`<p><strong>1. 청구내용:</strong> 국제학회 ICLR 2026 등록비</p>
+<p><strong>2. 청구금액:</strong> ₩ 720,000</p>
+<p><strong>3. 사용목적:</strong> 국제학회 참가 및 연구동향 파악</p>`},
+  'CLM-2025-0089':{title:'전문가활용비 — 자문료',no:'CLM-2025-0089',drafter:'김병선',dept:'화학연구팀',date:'2025-12-20',type:'일반',kind:'대내시행',status:'done',
+    body:`<p><strong>1. 자문위원:</strong> 하향수 박사 (외부 전문가)</p>
+<p><strong>2. 자문주제:</strong> 신규 합성공정 안전성 검토</p>
+<p><strong>3. 자문료:</strong> ₩ 500,000</p>`},
+  'CLM-2025-0075':{title:'회의비 — 12월 정기회의',no:'CLM-2025-0075',drafter:'이연구',dept:'화학연구팀',date:'2025-12-10',type:'일반',kind:'대내시행',status:'done',
+    body:`<p><strong>1. 회의명:</strong> 화학연구팀 12월 정기회의</p>
+<p><strong>2. 참석인원:</strong> 12명</p>
+<p><strong>3. 회의비:</strong> ₩ 240,000</p>`},
+  'NOTE-2026-0011':{title:'2026년 상반기 안전관리 계획서',no:'NOTE-2026-0011',drafter:'박안전',dept:'안전팀',date:'2026-04-03',type:'공람',kind:'대내시행',status:'share',
+    body:`<p><strong>1. 목적:</strong> 2026년 상반기 사업장 안전관리 추진계획 수립 및 공유</p>
+<p><strong>2. 대상:</strong> 전 사업장 직원</p>
+<p><strong>3. 주요 내용:</strong></p>
+<p>　· 정기 안전점검 일정 공지 (월 1회)</p>
+<p>　· 화학물질 취급 교육 (분기 1회)</p>
+<p>　· 비상대응 훈련 (연 2회)</p>
+<p><strong>4. 시행일:</strong> 2026-04-15</p>`},
+  'NOTE-2026-0010':{title:'연구비 집행 가이드라인 개정',no:'NOTE-2026-0010',drafter:'최경영',dept:'경영지원팀',date:'2026-04-01',type:'공람',kind:'대내시행',status:'share',
+    body:`<p><strong>1. 개정사유:</strong> 국가연구개발사업 회계처리 지침 개정 반영</p>
+<p><strong>2. 주요 변경사항:</strong></p>
+<p>　· 재료비 한도 상향 조정</p>
+<p>　· 출장비 정산 절차 간소화</p>
+<p>　· 카드 사용 의무 비목 확대</p>
+<p><strong>3. 시행일:</strong> 2026-04-01</p>`}
+};
+
+function openDocDetail(docId){
+  const d = APR_DOCS[docId];
+  if(!d){showToast('문서 정보를 찾을 수 없습니다');return;}
+  const m = document.getElementById('modal-doc');
+  m.querySelector('.doc-title').textContent = d.title;
+  m.querySelectorAll('.doc-no').forEach(el=>el.textContent = d.no);
+  m.querySelector('.doc-drafter').textContent = d.drafter;
+  m.querySelector('.doc-dept').textContent = d.dept;
+  m.querySelector('.doc-date').textContent = d.date;
+  m.querySelector('.doc-type').textContent = d.type;
+  m.querySelector('.doc-kind').textContent = d.kind;
+  m.querySelector('.doc-body').innerHTML = d.body;
+  // status badge + buttons
+  const statusEl = m.querySelector('.doc-status');
+  const actEl = m.querySelector('.doc-actions-approve');
+  const labels={wait:'결재대기',progress:'진행중',done:'완료',share:'공람'};
+  const cls={wait:'by',progress:'bb',done:'bg',share:'bgr'};
+  statusEl.className = 'doc-status bd ' + (cls[d.status]||'bgr');
+  statusEl.textContent = labels[d.status]||'-';
+  // show approve/reject only for wait status
+  actEl.style.display = (d.status==='wait') ? 'flex' : 'none';
+  openModal('modal-doc');
+}
+
+function doDocApprove(){
+  const opinion = document.querySelector('#modal-doc .doc-opinion').value.trim();
+  closeModal('modal-doc');
+  showToast('승인이 완료되었습니다' + (opinion?' (의견 등록)':''));
+}
+function doDocReject(){
+  const opinion = document.querySelector('#modal-doc .doc-opinion').value.trim();
+  if(!opinion){showToast('반려 사유를 입력해주세요','var(--red)');return;}
+  closeModal('modal-doc');
+  showToast('반려 처리되었습니다','var(--red)');
+}
 
 // ══ MODAL ══
 function openModal(id){document.getElementById(id).classList.add('sh');}
