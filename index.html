@@ -91,6 +91,17 @@ input,select,textarea{font-family:var(--font)}
 .gi-section-label{padding:14px 16px 4px;font-size:11px;font-weight:600;letter-spacing:.2px;color:rgba(235,235,245,.3);text-transform:none;white-space:nowrap;transition:all .15s}
 .gnb.collapsed .gi-section-label{display:none}
 .gi-divider{height:0;margin:2px 10px}
+.gi-arrow{width:14px;height:14px;flex-shrink:0;transition:transform .18s ease;opacity:.55}
+.gi-arrow svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+.gi.gi-parent.open .gi-arrow{transform:rotate(90deg)}
+.gi-children{display:none;flex-direction:column;margin:2px 8px 4px;padding:2px 0;border-left:1px solid rgba(255,255,255,.07)}
+.gi.gi-parent.open + .gi-children{display:flex}
+.gnb.collapsed .gi-children{display:none !important}
+.gnb.collapsed .gi-arrow{display:none}
+.gi-sub{display:flex;align-items:center;gap:8px;padding:0 10px 0 22px;height:32px;font-size:12px;color:rgba(235,235,245,.55);cursor:pointer;border-radius:8px;margin:1px 4px;white-space:nowrap;transition:all .15s}
+.gi-sub:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.85)}
+.gi-sub.act{background:rgba(255,255,255,.08);color:#fff;font-weight:600}
+.gi-sub-dot{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0}
 .gi:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.85)}
 .gi.act{background:rgba(255,255,255,.1);color:#fff;font-weight:600}
 .gi.act .gi-icon{filter:none}
@@ -680,8 +691,28 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="gi" onclick="openTab('organization','조직도','👥')" data-tip="조직도">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="gi-label">조직도</span>
     </div>
-    <div class="gi" onclick="openTab('salary','인사·급여','👤')" data-tip="인사·급여">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="gi-label">인사·급여</span>
+    <div class="gi gi-parent open" onclick="toggleSidebarGroup(this)" data-tip="인사·급여">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+      <span class="gi-label">인사·급여</span>
+      <span class="gi-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
+    </div>
+    <div class="gi-children">
+      <div class="gi-sub" onclick="openTab('salary','급여관리','💰')"><span class="gi-sub-dot"></span>급여관리</div>
+      <div class="gi-sub" onclick="openTab('account-mgmt','급여 계좌관리','🏦')"><span class="gi-sub-dot"></span>급여 계좌관리</div>
+      <div class="gi-sub" onclick="openTab('certificate','증명서 발급','📄')"><span class="gi-sub-dot"></span>증명서 발급</div>
+      <div class="gi-sub" onclick="openTab('leave-apply','휴직신청','🏖️')"><span class="gi-sub-dot"></span>휴직신청</div>
+      <div class="gi-sub" onclick="openTab('return-apply','복직신청','💼')"><span class="gi-sub-dot"></span>복직신청</div>
+      <div class="gi-sub" onclick="openTab('staff-work','직원 근무상황','📊')"><span class="gi-sub-dot"></span>직원 근무상황</div>
+    </div>
+    <div class="gi gi-parent open" onclick="toggleSidebarGroup(this)" data-tip="출장관리">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 11-4 0M5 17V9a2 2 0 012-2h10a2 2 0 012 2v8M19 17a2 2 0 104 0M3 11h18"/></svg></span>
+      <span class="gi-label">출장관리</span>
+      <span class="gi-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
+    </div>
+    <div class="gi-children">
+      <div class="gi-sub" onclick="openTab('trip-apply','출장신청','🚗')"><span class="gi-sub-dot"></span>출장신청</div>
+      <div class="gi-sub" onclick="openTab('trip-settle','관외출장 여비정산','🧾')"><span class="gi-sub-dot"></span>관외출장 여비정산</div>
+      <div class="gi-sub" onclick="openTab('trip-overseas','국외출장','✈️')"><span class="gi-sub-dot"></span>국외출장</div>
     </div>
     <div class="gi" onclick="openTab('sales','매출·매입','📊')" data-tip="매출·매입">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span><span class="gi-label">매출·매입</span>
@@ -888,7 +919,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- 직원조회 (KORUS 교직원조회 스타일) -->
+    <!-- 직원조회 (KORUS 직원조회 스타일) -->
     <div class="wgt">
       <div class="whdr">
         <span class="wttl">직원조회</span>
@@ -1155,7 +1186,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <thead><tr><th>과제책임자</th><th>협약기관</th><th>지원기관</th><th>지원사업명</th><th>과제번호</th><th>과제명</th><th>과제기간</th><th>사업비</th><th>과제담당자</th><th>수행기관담당자</th><th>잔여기간</th><th>바로가기</th></tr></thead>
           <tbody>
             <tr style="cursor:pointer" onclick="openProjectDetail('202505000001','봄밀링 기술')">
-              <td>김병선</td><td style="max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">전북대학교 산학협</td>
+              <td>김병선</td><td style="max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">본사학교 산학협</td>
               <td>(교육부)한국연구재단</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">대학 창의적 자산 실용화</td>
               <td class="mn lk">202505080001</td>
               <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">봄밀링 기술을 이용한 기능성 의약품 합성공정 개선</td>
@@ -1214,7 +1245,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <thead><tr><th>과제책임자</th><th>협약기관</th><th>지원기관</th><th>과제번호</th><th>과제명</th><th>과제기간</th><th>사업비</th><th>소진율</th><th>잔여기간</th><th>바로가기</th></tr></thead>
           <tbody>
             <tr style="cursor:pointer" onclick="openProjectDetail('202505000001','봄밀링 기술')">
-              <td>김병선</td><td>전북대 산학협</td><td>(교육부)한국연구재단</td>
+              <td>김병선</td><td>본사 산학협</td><td>(교육부)한국연구재단</td>
               <td class="mn lk">202505080001</td><td>봄밀링 기술을 이용한 기능성 의약품 합성공정 개선</td>
               <td class="mn">2025-06-01~2025-10-31</td><td class="tr">30,000,000</td>
               <td class="tc"><div style="display:flex;align-items:center;gap:6px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:6px"><div style="width:72%;background:var(--p);height:100%;border-radius:4px"></div></div><span style="font-size:10px;font-weight:700;color:var(--p)">72%</span></div></td>
@@ -1555,13 +1586,13 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <tbody>
               <tr style="background:#fffbeb">
                 <td class="tc"><input type="checkbox" checked></td>
-                <td class="mn">5585-****-****-1306</td><td class="mn">2026-02-15</td><td>올리브영 전북대점</td>
+                <td class="mn">5585-****-****-1306</td><td class="mn">2026-02-15</td><td>올리브영 본사점</td>
                 <td class="tr fw7">45,000</td><td><select class="fs" style="font-size:10px"><option>재료비</option><option>연구활동비</option></select></td>
                 <td><span class="bd bo">미청구</span></td>
               </tr>
               <tr style="background:#fffbeb">
                 <td class="tc"><input type="checkbox" checked></td>
-                <td class="mn">5585-****-****-1306</td><td class="mn">2026-02-10</td><td>스타벅스 전북대W점</td>
+                <td class="mn">5585-****-****-1306</td><td class="mn">2026-02-10</td><td>스타벅스 본사W점</td>
                 <td class="tr fw7">28,500</td><td><select class="fs" style="font-size:10px"><option>회의비</option><option>연구활동비</option></select></td>
                 <td><span class="bd bo">미청구</span></td>
               </tr>
@@ -1634,7 +1665,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <table class="ctbl">
               <tr><th><span class="req">*</span>예산</th><td><select class="fc" style="width:300px"><option>인건비 (잔액: 2,000,000원)</option></select></td></tr>
               <tr><th><span class="req">*</span>지급월</th><td><input class="fc" type="month" value="2026-02" style="width:160px"></td></tr>
-              <tr><th>소득구분</th><td><select class="fc" style="width:200px"><option>연구수당(비과세)</option><option>인건비(과세)</option><option>학생인건비</option></select></td></tr>
+              <tr><th>소득구분</th><td><select class="fc" style="width:200px"><option>연구수당(비과세)</option><option>인건비(과세)</option><option>직원인건비</option></select></td></tr>
             </table>
           </div>
         </div>
@@ -1647,7 +1678,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
               </thead>
               <tbody id="pt-body">
                 <tr>
-                  <td class="tc"><input type="checkbox"></td><td class="tc">김병선</td><td>전북대</td><td>교수</td>
+                  <td class="tc"><input type="checkbox"></td><td class="tc">김병선</td><td>본사</td><td>부장</td>
                   <td class="mn tc" style="font-size:10px">***-123456</td>
                   <td class="ed"><input type="number" value="100" min="0" max="100" oninput="prCalc(this)" style="width:55px;text-align:center"></td>
                   <td class="ed"><input type="number" value="5000000" oninput="prCalc(this)" style="width:90px"></td>
@@ -1656,7 +1687,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
                   <td class="tc"><span class="bd by">작성중</span></td>
                 </tr>
                 <tr>
-                  <td class="tc"><input type="checkbox"></td><td class="tc">이연구</td><td>전북대</td><td>박사후</td>
+                  <td class="tc"><input type="checkbox"></td><td class="tc">이연구</td><td>본사</td><td>차장</td>
                   <td class="mn tc" style="font-size:10px">***-654321</td>
                   <td class="ed"><input type="number" value="80" min="0" max="100" oninput="prCalc(this)" style="width:55px;text-align:center"></td>
                   <td class="ed"><input type="number" value="4200000" oninput="prCalc(this)" style="width:90px"></td>
@@ -1665,12 +1696,12 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
                   <td class="tc"><span class="bd by">작성중</span></td>
                 </tr>
                 <tr>
-                  <td class="tc"><input type="checkbox"></td><td class="tc">박대학원</td><td>전북대</td><td>대학원생</td>
+                  <td class="tc"><input type="checkbox"></td><td class="tc">박사원</td><td>본사</td><td>사원</td>
                   <td class="mn tc" style="font-size:10px">***-987654</td>
                   <td class="ed"><input type="number" value="100" min="0" max="100" oninput="prCalc(this)" style="width:55px;text-align:center"></td>
                   <td class="ed"><input type="number" value="1200000" oninput="prCalc(this)" style="width:90px"></td>
                   <td class="calc" id="pc-2">1,200,000</td>
-                  <td><select class="fs" style="font-size:10px"><option>학생인건비</option><option>연구수당</option></select></td>
+                  <td><select class="fs" style="font-size:10px"><option>직원인건비</option><option>연구수당</option></select></td>
                   <td class="tc"><span class="bd by">작성중</span></td>
                 </tr>
               </tbody>
@@ -1717,7 +1748,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
                 </div>
               </td></tr>
               <tr><th><span class="req">*</span>반납계좌</th><td>
-                <select class="fc" style="width:360px"><option>협약기관 지정계좌 - 전북대학교 산학협력단</option></select>
+                <select class="fc" style="width:360px"><option>협약기관 지정계좌 - 본사학교 산학협력단</option></select>
               </td></tr>
               <tr><th><span class="req">*</span>반납금액</th><td><input class="fc num" style="width:160px" placeholder="0"> 원</td></tr>
               <tr><th><span class="req">*</span>반납사유</th><td><textarea class="fc" rows="3" style="width:100%" placeholder="반납 사유를 입력하세요"></textarea></td></tr>
@@ -2094,23 +2125,21 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <span style="font-size:10px;color:var(--tx3)">Tab 이동 | 마지막 행 Enter = 행 추가</span>
   </div>
   <div class="itabs">
-    <div class="it act" onclick="switchIT(this,'sal-payroll')">인건비 통합관리</div>
-    <div class="it" onclick="switchIT(this,'sal-base')">급여 기본정보</div>
-    <div class="it" onclick="switchIT(this,'sal-payslip')">급여명세서</div>
-    <div class="it" onclick="switchIT(this,'sal-severance')">퇴직금 관리</div>
-    <div class="it" onclick="switchIT(this,'sal-4in')">4대보험 관리</div>
-    <div class="it" onclick="switchIT(this,'sal-yearend')">연말정산 <span style="font-size:9px;background:#ecfdf5;color:#059669;padding:1px 5px;border-radius:4px;margin-left:2px">NEW</span></div>
-    <div class="it" onclick="switchIT(this,'sal-daily')">일용직 관리 <span style="font-size:9px;background:#ecfdf5;color:#059669;padding:1px 5px;border-radius:4px;margin-left:2px">NEW</span></div>
+    <div class="it act" onclick="switchIT(this,'sal-base')">급여기본</div>
+    <div class="it" onclick="switchIT(this,'sal-4in')">공제관리</div>
+    <div class="it" onclick="switchIT(this,'sal-payroll')">급여지급</div>
+    <div class="it" onclick="switchIT(this,'sal-severance')">퇴직금정산</div>
+    <div class="it" onclick="switchIT(this,'sal-yearend')">연말정산</div>
   </div>
   <div class="scroll">
 
-    <!-- ─── 인건비 통합관리 (기존 payroll) ─── -->
-    <div id="sal-payroll">
+    <!-- ─── 급여지급 (인건비 통합관리) ─── -->
+    <div id="sal-payroll" style="display:none">
       <div class="frow">
         <span class="fl">과제</span>
         <select class="fs" style="width:320px">
           <option>202505000001 - 봄밀링 기술을 이용한 기능성 의약품 제형 개발</option>
-          <option>2010-06750012 - 학생인건비 통합관리 계정-김병선</option>
+          <option>2010-06750012 - 직원인건비 통합관리 계정-김병선</option>
         </select>
         <span class="fl">지급연월</span><input class="fi" type="month" value="2026-02">
         <button class="fb" onclick="showToast('조회 완료')">조회</button>
@@ -2125,7 +2154,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           </thead>
           <tbody id="pt-body">
             <tr>
-              <td class="tc"><input type="checkbox"></td><td class="tc">김병선</td><td>전북대</td><td>교수</td>
+              <td class="tc"><input type="checkbox"></td><td class="tc">김병선</td><td>본사</td><td>부장</td>
               <td class="mn tc" style="font-size:10px">***-123456</td>
               <td class="ed"><input type="number" value="100" min="0" max="100" oninput="prCalc(this)" style="width:55px;text-align:center"></td>
               <td class="ed"><input type="number" value="5000000" oninput="prCalc(this)" style="width:90px"></td>
@@ -2136,7 +2165,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
               <td class="tc"><button class="tb" style="font-size:10px;padding:2px 8px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 김병선 님께 급여명세서를 발송했습니다')">📧 발송</button></td>
             </tr>
             <tr>
-              <td class="tc"><input type="checkbox"></td><td class="tc">이연구</td><td>전북대</td><td>박사후</td>
+              <td class="tc"><input type="checkbox"></td><td class="tc">이연구</td><td>본사</td><td>차장</td>
               <td class="mn tc" style="font-size:10px">***-654321</td>
               <td class="ed"><input type="number" value="80" min="0" max="100" oninput="prCalc(this)" style="width:55px;text-align:center"></td>
               <td class="ed"><input type="number" value="4200000" oninput="prCalc(this)" style="width:90px"></td>
@@ -2147,15 +2176,15 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
               <td class="tc"><button class="tb" style="font-size:10px;padding:2px 8px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 이연구 님께 급여명세서를 발송했습니다')">📧 발송</button></td>
             </tr>
             <tr>
-              <td class="tc"><input type="checkbox"></td><td class="tc">박대학원</td><td>전북대</td><td>대학원생</td>
+              <td class="tc"><input type="checkbox"></td><td class="tc">박사원</td><td>본사</td><td>사원</td>
               <td class="mn tc" style="font-size:10px">***-987654</td>
               <td class="ed"><input type="number" value="100" min="0" max="100" oninput="prCalc(this)" style="width:55px;text-align:center"></td>
               <td class="ed"><input type="number" value="1200000" oninput="prCalc(this)" style="width:90px"></td>
               <td class="calc" id="pc-2">1,200,000</td>
-              <td><select class="fs" style="font-size:10px"><option>학생인건비</option><option>연구수당</option></select></td>
+              <td><select class="fs" style="font-size:10px"><option>직원인건비</option><option>연구수당</option></select></td>
               <td class="ed"><input type="text" style="width:80px;text-align:left;font-family:var(--font)"></td>
               <td class="tc"><span class="bd by">작성중</span></td>
-              <td class="tc"><button class="tb" style="font-size:10px;padding:2px 8px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 박대학원 님께 급여명세서를 발송했습니다')">📧 발송</button></td>
+              <td class="tc"><button class="tb" style="font-size:10px;padding:2px 8px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 박사원 님께 급여명세서를 발송했습니다')">📧 발송</button></td>
             </tr>
           </tbody>
           <tfoot>
@@ -2174,17 +2203,17 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <div id="pt-alert" class="ib d" style="display:none;margin-top:4px"></div>
     </div>
 
-    <!-- ─── 급여 기본정보 ─── -->
-    <div id="sal-base" style="display:none">
+    <!-- ─── 급여기본 ─── -->
+    <div id="sal-base">
       <div class="ib i" style="margin:8px">ℹ️ 직원의 급여 기본정보 및 연봉 계약 정보입니다.</div>
       <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri" onclick="showToast('직원 정보를 등록합니다')">+ 직원 추가</button><button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button></div>
       <div style="padding:0 8px">
         <table class="dt">
           <thead><tr><th>성명</th><th>소속</th><th>직위</th><th>입사일</th><th>기본급</th><th>연구수당</th><th>4대보험</th><th>실수령액</th><th>연계과제</th><th>이메일</th><th>상태</th><th>관리</th></tr></thead>
           <tbody>
-            <tr><td>김병선</td><td>전북대</td><td>교수</td><td class="mn">2015-03-01</td><td class="tr">5,000,000</td><td class="tr">0</td><td class="tr">450,000</td><td class="tr c-p fw7">4,550,000</td><td class="mn">202505000001</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8aabbe6a3a1a588a2a1a6bde6a9abe6a3ba">[email&#160;protected]</a></td><td><span class="bd bg">재직</span></td><td><span class="lk">수정</span></td></tr>
-            <tr><td>이연구</td><td>전북대</td><td>박사후</td><td class="mn">2023-03-01</td><td class="tr">3,360,000</td><td class="tr">0</td><td class="tr">302,400</td><td class="tr c-p fw7">3,057,600</td><td class="mn">202505000001</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e525b5b7e5457504b105f5d10554c">[email&#160;protected]</a></td><td><span class="bd bg">재직</span></td><td><span class="lk">수정</span></td></tr>
-            <tr><td>박대학원</td><td>전북대</td><td>대학원생</td><td class="mn">2024-03-01</td><td class="tr">1,200,000</td><td class="tr">0</td><td class="tr">0</td><td class="tr c-p fw7">1,200,000</td><td class="mn">202505000001</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1b1a0b3aa81aba8afb4efa0a2efaab3">[email&#160;protected]</a></td><td><span class="bd by">계약임박</span></td><td><span class="lk">수정</span></td></tr>
+            <tr><td>김병선</td><td>본사</td><td>부장</td><td class="mn">2015-03-01</td><td class="tr">5,000,000</td><td class="tr">0</td><td class="tr">450,000</td><td class="tr c-p fw7">4,550,000</td><td class="mn">202505000001</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8aabbe6a3a1a588a2a1a6bde6a9abe6a3ba">[email&#160;protected]</a></td><td><span class="bd bg">재직</span></td><td><span class="lk">수정</span></td></tr>
+            <tr><td>이연구</td><td>본사</td><td>차장</td><td class="mn">2023-03-01</td><td class="tr">3,360,000</td><td class="tr">0</td><td class="tr">302,400</td><td class="tr c-p fw7">3,057,600</td><td class="mn">202505000001</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e525b5b7e5457504b105f5d10554c">[email&#160;protected]</a></td><td><span class="bd bg">재직</span></td><td><span class="lk">수정</span></td></tr>
+            <tr><td>박사원</td><td>본사</td><td>사원</td><td class="mn">2024-03-01</td><td class="tr">1,200,000</td><td class="tr">0</td><td class="tr">0</td><td class="tr c-p fw7">1,200,000</td><td class="mn">202505000001</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1b1a0b3aa81aba8afb4efa0a2efaab3">[email&#160;protected]</a></td><td><span class="bd by">계약임박</span></td><td><span class="lk">수정</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2193,7 +2222,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- ─── 급여명세서 (임금명세서) ─── -->
     <div id="sal-payslip" style="display:none">
       <div class="frow">
-        <span class="fl">직원</span><select class="fs" style="width:160px"><option>전체</option><option>김병선</option><option>이연구</option><option>박대학원</option></select>
+        <span class="fl">직원</span><select class="fs" style="width:160px"><option>전체</option><option>김병선</option><option>이연구</option><option>박사원</option></select>
         <span class="fl">지급연월</span><input class="fi" type="month" value="2026-02">
         <button class="fb" onclick="showToast('조회 완료')">조회</button>
         <div class="ts"></div>
@@ -2238,7 +2267,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div style="background:#fff;border:1px solid var(--bdr);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)">
           <div style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
             <div><div style="font-size:14px;font-weight:700">급여명세서</div><div style="font-size:11px;opacity:.8;margin-top:2px">2026년 02월</div></div>
-            <div style="text-align:right"><div style="font-size:11px;opacity:.8">이연구 / 박사후</div><div style="font-size:10px;opacity:.7"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a464f4f6a4043445f044b49044158">[email&#160;protected]</a></div></div>
+            <div style="text-align:right"><div style="font-size:11px;opacity:.8">이연구 / 차장</div><div style="font-size:10px;opacity:.7"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a464f4f6a4043445f044b49044158">[email&#160;protected]</a></div></div>
           </div>
           <div style="padding:14px 16px">
             <table style="width:100%;font-size:12px;border-collapse:collapse">
@@ -2270,7 +2299,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <span style="font-size:10px;background:#eff6ff;color:var(--p);padding:2px 8px;border-radius:8px">자동계산</span>
           </div>
           <table class="ctbl" style="font-size:12px">
-            <tr><th style="width:130px">직원</th><td><select class="fc" style="width:180px"><option>김병선 (교수)</option><option>이연구 (박사후)</option><option>박대학원 (대학원생)</option></select></td></tr>
+            <tr><th style="width:130px">직원</th><td><select class="fc" style="width:180px"><option>김병선 (부장)</option><option>이연구 (차장)</option><option>박사원 (사원)</option></select></td></tr>
             <tr><th>입사일</th><td><input class="fc" type="date" value="2015-03-01" style="width:140px"></td></tr>
             <tr><th>계산기준일 / 퇴직일</th><td><input class="fc" type="date" value="2026-02-19" style="width:140px"></td></tr>
             <tr><th>3개월 평균임금</th><td><input class="fc num" value="5,000,000" style="width:140px"> 원</td></tr>
@@ -2290,9 +2319,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <table class="dt" style="font-size:11px">
             <thead><tr><th>성명</th><th>직위</th><th>입사일</th><th>근속기간</th><th>예상퇴직금</th><th>상태</th></tr></thead>
             <tbody>
-              <tr><td>김병선</td><td>교수</td><td class="mn">2015-03-01</td><td>11년 0개월</td><td class="tr c-p fw7">55,000,000</td><td><span class="bd bg">재직중</span></td></tr>
-              <tr><td>이연구</td><td>박사후</td><td class="mn">2023-03-01</td><td>3년 0개월</td><td class="tr c-p fw7">10,080,000</td><td><span class="bd bg">재직중</span></td></tr>
-              <tr><td>박대학원</td><td>대학원생</td><td class="mn">2024-03-01</td><td>2년 0개월</td><td class="tr c-p">2,400,000</td><td><span class="bd by">계약임박</span></td></tr>
+              <tr><td>김병선</td><td>부장</td><td class="mn">2015-03-01</td><td>11년 0개월</td><td class="tr c-p fw7">55,000,000</td><td><span class="bd bg">재직중</span></td></tr>
+              <tr><td>이연구</td><td>차장</td><td class="mn">2023-03-01</td><td>3년 0개월</td><td class="tr c-p fw7">10,080,000</td><td><span class="bd bg">재직중</span></td></tr>
+              <tr><td>박사원</td><td>사원</td><td class="mn">2024-03-01</td><td>2년 0개월</td><td class="tr c-p">2,400,000</td><td><span class="bd by">계약임박</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -2306,8 +2335,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <table class="dt">
           <thead><tr><th>성명</th><th>직위</th><th>기준보수월액</th><th>국민연금</th><th>건강보험</th><th>장기요양</th><th>고용보험</th><th>합계</th><th>신고상태</th></tr></thead>
           <tbody>
-            <tr><td>김병선</td><td>교수</td><td class="tr">5,000,000</td><td class="tr">225,000</td><td class="tr">178,150</td><td class="tr">22,870</td><td class="tr">23,500</td><td class="tr fw7 c-r">449,520</td><td><span class="bd bg">신고완료</span></td></tr>
-            <tr><td>이연구</td><td>박사후</td><td class="tr">3,360,000</td><td class="tr">151,200</td><td class="tr">119,637</td><td class="tr">15,360</td><td class="tr">15,792</td><td class="tr fw7 c-r">301,989</td><td><span class="bd bg">신고완료</span></td></tr>
+            <tr><td>김병선</td><td>부장</td><td class="tr">5,000,000</td><td class="tr">225,000</td><td class="tr">178,150</td><td class="tr">22,870</td><td class="tr">23,500</td><td class="tr fw7 c-r">449,520</td><td><span class="bd bg">신고완료</span></td></tr>
+            <tr><td>이연구</td><td>차장</td><td class="tr">3,360,000</td><td class="tr">151,200</td><td class="tr">119,637</td><td class="tr">15,360</td><td class="tr">15,792</td><td class="tr fw7 c-r">301,989</td><td><span class="bd bg">신고완료</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2324,7 +2353,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <tbody>
               <tr><td>김병선</td><td class="tr">60,000,000</td><td class="tr">18,450,000</td><td class="tr">2,847,000</td><td class="tr">3,200,000</td><td class="tr c-g fw7">▲ 353,000 환급</td><td><span class="bd bg">완료</span></td><td class="tc"><button class="tb" style="font-size:10px;padding:2px 7px" onclick="showToast('📄 원천징수영수증을 출력합니다')">출력</button></td></tr>
               <tr><td>이연구</td><td class="tr">40,320,000</td><td class="tr">12,100,000</td><td class="tr">1,240,000</td><td class="tr">1,320,000</td><td class="tr c-g fw7">▲ 80,000 환급</td><td><span class="bd bg">완료</span></td><td class="tc"><button class="tb" style="font-size:10px;padding:2px 7px" onclick="showToast('📄 원천징수영수증을 출력합니다')">출력</button></td></tr>
-              <tr><td>박대학원</td><td class="tr">14,400,000</td><td class="tr">2,400,000</td><td class="tr">0</td><td class="tr">0</td><td class="tr c-g fw7">해당없음</td><td><span class="bd bgr">비과세</span></td><td></td></tr>
+              <tr><td>박사원</td><td class="tr">14,400,000</td><td class="tr">2,400,000</td><td class="tr">0</td><td class="tr">0</td><td class="tr c-g fw7">해당없음</td><td><span class="bd bgr">비과세</span></td><td></td></tr>
             </tbody>
           </table>
           <div style="display:flex;gap:6px;margin-top:10px">
@@ -2381,20 +2410,20 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- ─── 학생인건비 계획 (이동됨: 과제 상세 > 참여인력) ─── -->
+    <!-- ─── 직원인건비 계획 (이동됨: 과제 상세 > 참여인력) ─── -->
     <div id="sal-student" style="display:none" data-archived="true" style="display:none">
-      <div class="ib i" style="margin:8px">ℹ️ 학생인건비 지급계획을 등록하고 통합계정에서 일괄 처리합니다.</div>
+      <div class="ib i" style="margin:8px">ℹ️ 직원인건비 지급계획을 등록하고 통합계정에서 일괄 처리합니다.</div>
       <div class="frow">
-        <span class="fl">통합계정</span><select class="fs" style="width:280px"><option>2010-06750012 - 학생인건비 통합관리 계정-김병선</option></select>
+        <span class="fl">통합계정</span><select class="fs" style="width:280px"><option>2010-06750012 - 직원인건비 통합관리 계정-김병선</option></select>
         <span class="fl">지급연월</span><input class="fi" type="month" value="2026-02">
         <button class="fb" onclick="showToast('조회 완료')">조회</button>
       </div>
       <div style="padding:8px">
         <table class="dt">
-          <thead><tr><th>성명</th><th>학번</th><th>과정</th><th>연계과제</th><th>지급계획액</th><th>지급월</th><th>이메일</th><th>상태</th><th>관리</th></tr></thead>
+          <thead><tr><th>성명</th><th>사번</th><th>과정</th><th>연계과제</th><th>지급계획액</th><th>지급월</th><th>이메일</th><th>상태</th><th>관리</th></tr></thead>
           <tbody>
-            <tr><td>박대학원</td><td class="mn">2021-12345</td><td>박사과정</td><td>202505000001</td><td class="tr">1,200,000</td><td class="mn">2026-02</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="becedfccd5fed4d7d0cb90dfdd90d5cc">[email&#160;protected]</a></td><td><span class="bd by">계획</span></td>
-            <td><span class="lk">수정</span> <button class="tb" style="font-size:9px;padding:1px 6px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 박대학원 님께 지급안내 이메일을 발송했습니다')">📧</button></td></tr>
+            <tr><td>박사원</td><td class="mn">2021-12345</td><td>박사과정</td><td>202505000001</td><td class="tr">1,200,000</td><td class="mn">2026-02</td><td class="mn"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="becedfccd5fed4d7d0cb90dfdd90d5cc">[email&#160;protected]</a></td><td><span class="bd by">계획</span></td>
+            <td><span class="lk">수정</span> <button class="tb" style="font-size:9px;padding:1px 6px;background:#ecfdf5;color:#059669;border-color:#a7f3d0" onclick="showToast('📧 박사원 님께 지급안내 이메일을 발송했습니다')">📧</button></td></tr>
           </tbody>
         </table>
       </div>
@@ -2432,7 +2461,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <table class="dt">
           <thead><tr><th><input type="checkbox"></th><th>매출번호</th><th>매출일</th><th>거래처</th><th>품목</th><th>공급가액</th><th>부가세</th><th>합계</th><th>수금일</th><th>상태</th><th>관리</th></tr></thead>
           <tbody>
-            <tr><td class="tc"><input type="checkbox"></td><td class="mn lk">SAL-2026-001</td><td class="mn">2026-01-20</td><td>전북대학교</td><td>기술이전료</td><td class="tr">5,000,000</td><td class="tr">500,000</td><td class="tr fw7">5,500,000</td><td class="mn">2026-01-28</td><td><span class="bd bg">수금완료</span></td><td><span class="lk">거래명세서</span> <span class="lk">세금계산서</span></td></tr>
+            <tr><td class="tc"><input type="checkbox"></td><td class="mn lk">SAL-2026-001</td><td class="mn">2026-01-20</td><td>본사학교</td><td>기술이전료</td><td class="tr">5,000,000</td><td class="tr">500,000</td><td class="tr fw7">5,500,000</td><td class="mn">2026-01-28</td><td><span class="bd bg">수금완료</span></td><td><span class="lk">거래명세서</span> <span class="lk">세금계산서</span></td></tr>
           </tbody>
           <tfoot><tr><td colspan="5" class="tr">합계</td><td class="tr fw7">5,000,000</td><td class="tr fw7">500,000</td><td class="tr fw7">5,500,000</td><td colspan="3"></td></tr></tfoot>
         </table>
@@ -2459,7 +2488,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <table class="dt" style="font-size:11px">
             <thead><tr><th>거래처</th><th>매출건수</th><th>매출합계</th><th>수금</th><th>미수금</th></tr></thead>
             <tbody>
-              <tr><td>전북대학교</td><td class="tc">1</td><td class="tr">5,500,000</td><td class="tr c-g">5,500,000</td><td class="tr">0</td></tr>
+              <tr><td>본사학교</td><td class="tc">1</td><td class="tr">5,500,000</td><td class="tr c-g">5,500,000</td><td class="tr">0</td></tr>
             </tbody>
           </table>
         </div>
@@ -2482,7 +2511,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <table class="dt">
           <thead><tr><th>구분</th><th>번호</th><th>작성일</th><th>거래처</th><th>품목</th><th>금액</th><th>유효기간</th><th>상태</th><th>관리</th></tr></thead>
           <tbody>
-            <tr><td><span class="bd bb">견적</span></td><td class="mn lk">QUO-2026-001</td><td class="mn">2026-01-10</td><td>전북대학교</td><td>기술이전료</td><td class="tr">5,500,000</td><td class="mn">2026-02-28</td><td><span class="bd bg">수주완료</span></td><td><span class="lk">보기</span> <span class="lk">주문전환</span></td></tr>
+            <tr><td><span class="bd bb">견적</span></td><td class="mn lk">QUO-2026-001</td><td class="mn">2026-01-10</td><td>본사학교</td><td>기술이전료</td><td class="tr">5,500,000</td><td class="mn">2026-02-28</td><td><span class="bd bg">수주완료</span></td><td><span class="lk">보기</span> <span class="lk">주문전환</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2493,7 +2522,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <table class="dt">
           <thead><tr><th>번호</th><th>일자</th><th>거래처</th><th>품목 내역</th><th>공급가액</th><th>부가세</th><th>합계</th><th>관리</th></tr></thead>
           <tbody>
-            <tr><td class="mn lk">STM-2026-001</td><td class="mn">2026-01-20</td><td>전북대학교</td><td>기술이전료</td><td class="tr">5,000,000</td><td class="tr">500,000</td><td class="tr fw7">5,500,000</td><td><span class="lk">출력</span> <span class="lk">이메일</span></td></tr>
+            <tr><td class="mn lk">STM-2026-001</td><td class="mn">2026-01-20</td><td>본사학교</td><td>기술이전료</td><td class="tr">5,000,000</td><td class="tr">500,000</td><td class="tr fw7">5,500,000</td><td><span class="lk">출력</span> <span class="lk">이메일</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2504,7 +2533,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <table class="dt">
           <thead><tr><th>구분</th><th>승인번호</th><th>발행일</th><th>공급자</th><th>공급받는자</th><th>공급가액</th><th>세액</th><th>합계</th><th>상태</th><th>관리</th></tr></thead>
           <tbody>
-            <tr><td><span class="bd bg">발행</span></td><td class="mn lk">20260120-0001</td><td class="mn">2026-01-20</td><td>기초과학연구소</td><td>전북대학교</td><td class="tr">5,000,000</td><td class="tr">500,000</td><td class="tr fw7">5,500,000</td><td><span class="bd bg">국세청 전송완료</span></td><td><span class="lk">조회</span> <span class="lk">PDF</span></td></tr>
+            <tr><td><span class="bd bg">발행</span></td><td class="mn lk">20260120-0001</td><td class="mn">2026-01-20</td><td>기초과학연구소</td><td>본사학교</td><td class="tr">5,000,000</td><td class="tr">500,000</td><td class="tr fw7">5,500,000</td><td><span class="bd bg">국세청 전송완료</span></td><td><span class="lk">조회</span> <span class="lk">PDF</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2515,7 +2544,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <table class="dt">
           <thead><tr><th>코드</th><th>거래처명</th><th>사업자번호</th><th>대표자</th><th>업태/업종</th><th>담당자</th><th>연락처</th><th>이메일</th><th>관리</th></tr></thead>
           <tbody>
-            <tr><td class="mn">C001</td><td class="fw7">전북대학교</td><td class="mn">308-82-00021</td><td>양오봉</td><td>교육/대학교</td><td>이행정</td><td class="mn">063-270-2000</td><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f7e7b7276715f757d716a317e7c31746d">[email&#160;protected]</a></td><td><span class="lk">수정</span></td></tr>
+            <tr><td class="mn">C001</td><td class="fw7">본사학교</td><td class="mn">308-82-00021</td><td>양오봉</td><td>교육/대학교</td><td>이행정</td><td class="mn">063-270-2000</td><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f7e7b7276715f757d716a317e7c31746d">[email&#160;protected]</a></td><td><span class="lk">수정</span></td></tr>
             <tr><td class="mn">C002</td><td>(주)사이언스샵</td><td class="mn">123-45-67890</td><td>홍길동</td><td>도소매/실험기기</td><td>김담당</td><td class="mn">02-1234-5678</td><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcafbdb0b9af9cafbfb5b9b2bfb9afb4b3acf2b7ae">[email&#160;protected]</a></td><td><span class="lk">수정</span></td></tr>
             <tr><td class="mn">C003</td><td>Sigma-Aldrich Korea</td><td class="mn">234-56-78901</td><td>김영희</td><td>도소매/화학시약</td><td>박영업</td><td class="mn">02-9876-5432</td><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1972766b7c78596a707e747878757d6b707a71377a7674">[email&#160;protected]</a></td><td><span class="lk">수정</span></td></tr>
           </tbody>
@@ -2567,9 +2596,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <table class="dt" style="font-size:11px">
             <thead><tr><th>성명</th><th>직위</th><th>연차발생</th><th>사용</th><th>잔여</th><th>이번달사용</th><th>소진율</th></tr></thead>
             <tbody>
-              <tr><td>김병선</td><td>교수</td><td class="tc">17</td><td class="tc c-o">5</td><td class="tc c-g fw7">12</td><td class="tc">2</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:29%;background:var(--p);height:100%;border-radius:4px"></div></div><span style="font-size:10px">29%</span></div></td></tr>
-              <tr><td>이연구</td><td>박사후</td><td class="tc">15</td><td class="tc c-o">8</td><td class="tc c-g fw7">7</td><td class="tc">3</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:53%;background:#d97706;height:100%;border-radius:4px"></div></div><span style="font-size:10px">53%</span></div></td></tr>
-              <tr><td>박대학원</td><td>대학원생</td><td class="tc">10</td><td class="tc c-o">3</td><td class="tc c-g fw7">7</td><td class="tc">0</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:30%;background:var(--p);height:100%;border-radius:4px"></div></div><span style="font-size:10px">30%</span></div></td></tr>
+              <tr><td>김병선</td><td>부장</td><td class="tc">17</td><td class="tc c-o">5</td><td class="tc c-g fw7">12</td><td class="tc">2</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:29%;background:var(--p);height:100%;border-radius:4px"></div></div><span style="font-size:10px">29%</span></div></td></tr>
+              <tr><td>이연구</td><td>차장</td><td class="tc">15</td><td class="tc c-o">8</td><td class="tc c-g fw7">7</td><td class="tc">3</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:53%;background:#d97706;height:100%;border-radius:4px"></div></div><span style="font-size:10px">53%</span></div></td></tr>
+              <tr><td>박사원</td><td>사원</td><td class="tc">10</td><td class="tc c-o">3</td><td class="tc c-g fw7">7</td><td class="tc">0</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:30%;background:var(--p);height:100%;border-radius:4px"></div></div><span style="font-size:10px">30%</span></div></td></tr>
             </tbody>
           </table>
         </div>
@@ -2595,7 +2624,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <tbody>
             <tr><td>김병선</td><td>연가</td><td class="mn">2026-02-10</td><td class="mn">2026-02-11</td><td class="tc">2일</td><td>개인 사유</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
             <tr><td>이연구</td><td>연가</td><td class="mn">2026-01-15</td><td class="mn">2026-01-17</td><td class="tc">3일</td><td>가족 행사</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
-            <tr><td>박대학원</td><td>병가</td><td class="mn">2026-01-08</td><td class="mn">2026-01-08</td><td class="tc">1일</td><td>병원 진료</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
+            <tr><td>박사원</td><td>병가</td><td class="mn">2026-01-08</td><td class="mn">2026-01-08</td><td class="tc">1일</td><td>병원 진료</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2611,6 +2640,848 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </table>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 증명서 발급 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-certificate">
+  <div class="toolbar">
+    <span class="tb-title">증명서 발급</span>
+    <div class="tb-spacer"></div>
+    <span style="font-size:11px;color:var(--tx3)">신청·승인·출력 통합 관리</span>
+  </div>
+  <!-- 상단 사용자 정보 -->
+  <div style="display:flex;align-items:center;gap:24px;padding:14px 20px;background:#fafaf8;border-bottom:1px solid rgba(0,0,0,.06);font-size:12px">
+    <div style="display:flex;align-items:center;gap:10px"><span style="color:var(--tx3);font-weight:600">사번</span><select class="fc" style="width:120px"><option>180494</option></select></div>
+    <div style="display:flex;align-items:center;gap:10px"><span style="color:var(--tx3);font-weight:600">성명</span><input class="fc" value="김병선" style="width:140px" readonly></div>
+    <div style="display:flex;align-items:center;gap:10px"><span style="color:var(--tx3);font-weight:600">직종</span><select class="fc" style="width:140px"><option>정규직</option><option>연구원</option><option>일반직</option></select></div>
+  </div>
+  <!-- 본문 2단 레이아웃 -->
+  <div style="display:flex;flex:1;overflow:hidden">
+    <!-- 좌측: 증명서 신청목록 -->
+    <div style="flex:1.1;display:flex;flex-direction:column;border-right:1px solid rgba(0,0,0,.08);min-width:0">
+      <div style="display:flex;align-items:center;padding:12px 16px 8px;font-size:13px;font-weight:700;color:var(--tx)">
+        <span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 증명서신청목록
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:0 16px 16px">
+        <table class="dt" style="font-size:12px" id="cert-list-table">
+          <thead>
+            <tr>
+              <th>증명서종류</th>
+              <th style="width:90px">신청일자</th>
+              <th style="width:60px">신청매수</th>
+              <th style="width:70px">신청상태</th>
+              <th style="width:90px">승인일자</th>
+              <th style="width:60px">발급여부</th>
+            </tr>
+          </thead>
+          <tbody id="cert-list-tbody">
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2026-02-27','1','승인','2026-02-27','N')"><td>재직증명서</td><td class="tc">2026-02-27</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2026-02-27</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2026-02-04','1','출력완료','2026-02-04','Y')"><td>재직증명서</td><td class="tc">2026-02-04</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2026-02-04</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2026-01-06','1','출력완료','2026-01-06','Y')"><td>재직증명서</td><td class="tc">2026-01-06</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2026-01-06</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-05-19','1','출력완료','2025-05-19','Y')"><td>재직증명서</td><td class="tc">2025-05-19</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2025-05-19</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-04-17','1','출력완료','2025-04-17','Y')"><td>재직증명서</td><td class="tc">2025-04-17</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2025-04-17</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-04-02','1','승인','2025-04-02','N')"><td>재직증명서</td><td class="tc">2025-04-02</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2025-04-02</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'경력증명서','2025-02-17','1','승인','2025-02-17','N')"><td>경력증명서</td><td class="tc">2025-02-17</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2025-02-17</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-02-17','1','승인','2025-02-17','N')"><td>재직증명서</td><td class="tc">2025-02-17</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2025-02-17</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-01-23','1','출력완료','2025-01-23','Y')"><td>재직증명서</td><td class="tc">2025-01-23</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2025-01-23</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2024-12-18','1','출력완료','2024-12-18','Y')"><td>재직증명서</td><td class="tc">2024-12-18</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-12-18</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2024-12-04','1','출력완료','2024-12-04','Y')"><td>재직증명서</td><td class="tc">2024-12-04</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-12-04</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'경력증명서','2024-12-04','1','출력완료','2024-12-05','Y')"><td>경력증명서</td><td class="tc">2024-12-04</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-12-05</td><td class="tc">Y</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서(영문)','2024-12-04','1','승인','2024-12-04','N')"><td>재직증명서(영문)</td><td class="tc">2024-12-04</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2024-12-04</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2024-10-21','1','출력완료','2024-10-21','Y')"><td>재직증명서</td><td class="tc">2024-10-21</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-10-21</td><td class="tc">Y</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 우측: 상세내역 -->
+    <div style="flex:1.3;display:flex;flex-direction:column;background:#fff;min-width:0">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px">
+        <span style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 상세내역</span>
+        <div style="display:flex;gap:6px">
+          <button class="tb" onclick="certInput()">입력</button>
+          <button class="tb" onclick="certApply()" style="background:#2185C5;color:#fff;border-color:#2185C5">신청</button>
+          <button class="tb" onclick="certCheckStatus()">상태확인</button>
+          <button class="tb" onclick="certCancel()">신청취소</button>
+          <button class="tb" onclick="certPrint()" style="background:#2e7d32;color:#fff;border-color:#2e7d32">출력</button>
+        </div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:0 16px 16px">
+        <!-- 안내문 -->
+        <div style="background:#fdf6e3;border:1px solid #e8d8a0;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:8px">
+          <div style="display:flex;gap:8px;margin-bottom:4px"><span style="color:#c33;font-weight:700;flex-shrink:0">증명서신청발급방법</span><span style="color:var(--tx2)">1. '입력'버튼 클릭 → '상세내역'을 입력 → '신청'버튼 클릭<br>2. 담당자 승인처리 후 신청상태가 '승인'으로 변경되어 '출력'버튼 활성화 되면 클릭</span></div>
+        </div>
+        <div style="background:#fef5f5;border:1px solid #f4c3c3;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:12px">
+          <div style="display:flex;gap:8px"><span style="color:#c33;font-weight:700;flex-shrink:0">유의사항</span><span style="color:var(--tx2)">- 시간강사 직종은 증명서종류 선택시 강의경력증명서를 선택하시기 바랍니다.<br>- 증명서출력 문제 발생시 ITSM IT키뮤니티&gt;공지사항에서 '증명서'로 검색하여 게시글 참고 바랍니다.<br>- 국문증명서는 현주소, 영문증명서는 영문현주소 입력사항을 확인하시기 바랍니다.(인사마스터&gt;신상(탭))<br>- 증명서 기재내용을 반드시 확인하시기 바랍니다.<br>- 증명서 기재내용 확인이 필요하거나 경력증명서 담당업무 기재가 필요할 경우 증명서 발급 담당자에게 연락하시기 바랍니다.(교무과)</span></div>
+        </div>
+        <!-- 입력 폼 -->
+        <table style="width:100%;border-collapse:collapse;font-size:12px">
+          <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:110px;background:#fafaf8"><span style="color:#c33">•</span> 증명서종류</td>
+            <td style="padding:9px 12px;width:200px"><select class="fc" id="cert-type" style="width:100%"><option>재직증명서</option><option>경력증명서</option><option>재직증명서(영문)</option><option>경력증명서(영문)</option><option>강의경력증명서</option></select></td>
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:90px;background:#fafaf8"><span style="color:#c33">•</span> 신청일자</td>
+            <td style="padding:9px 12px"><input class="fc" type="date" id="cert-date" style="width:160px"></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 신청매수</td>
+            <td style="padding:9px 12px"><input class="fc" type="number" id="cert-count" value="1" min="1" max="10" style="width:80px;text-align:center"></td>
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 발급방법</td>
+            <td style="padding:9px 12px"><select class="fc" id="cert-method" style="width:160px"><option>온라인발급</option><option>방문수령</option><option>우편발송</option></select></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 발급용도</td>
+            <td style="padding:9px 12px"><select class="fc" id="cert-purpose" style="width:100%"><option>서류제출용</option><option>은행제출용</option><option>관공서제출용</option><option>학교제출용</option><option>비자발급용</option><option>기타</option></select></td>
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">발급용도내용</td>
+            <td style="padding:9px 12px"><input class="fc" id="cert-purpose-detail" placeholder="상세 입력" style="width:100%"></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">공적사적구분</td>
+            <td style="padding:9px 12px"><select class="fc" id="cert-public" style="width:100%"><option>선택</option><option>공적</option><option>사적</option></select></td>
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">FAX번호</td>
+            <td style="padding:9px 12px"><input class="fc" id="cert-fax" placeholder="- -" style="width:100%"></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">주민등록번호표기여부</td>
+            <td style="padding:9px 12px"><label style="cursor:pointer"><input type="checkbox" id="cert-ssn" style="accent-color:var(--p);margin-right:4px"> 표기</label></td>
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">주소표기여부</td>
+            <td style="padding:9px 12px"><label style="cursor:pointer"><input type="checkbox" id="cert-addr" checked style="accent-color:var(--p);margin-right:4px"> 표기</label></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">제출처</td>
+            <td colspan="3" style="padding:9px 12px"><input class="fc" id="cert-submit-to" placeholder="제출처 입력" style="width:100%"></td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">반려일시</td>
+            <td style="padding:9px 12px"><input class="fc" id="cert-reject-date" placeholder="- -" style="width:160px" readonly></td>
+            <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">반려사유</td>
+            <td style="padding:9px 12px"><input class="fc" id="cert-reject-reason" style="width:100%" readonly></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 휴직신청 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-leave-apply">
+  <div class="toolbar">
+    <span class="tb-title">휴직신청</span>
+    <div class="tb-spacer"></div>
+    <span style="font-size:11px;color:var(--tx3)">사번 180494 · 김병선 · 정규직</span>
+  </div>
+  <div style="display:flex;flex:1;overflow:hidden">
+    <!-- 좌측: 신청 폼 -->
+    <div style="flex:1;padding:20px;border-right:1px solid rgba(0,0,0,.08);overflow-y:auto;min-width:0">
+      <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 신규 휴직신청</div>
+      <div style="background:#fef5f5;border:1px solid #f4c3c3;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px">
+        <div style="display:flex;gap:8px"><span style="color:#c33;font-weight:700;flex-shrink:0">유의사항</span><span style="color:var(--tx2)">- 휴직신청은 시작일 30일 이전 제출 권장<br>- 증빙서류는 별도 업로드 (질병휴직: 진단서, 육아휴직: 가족관계증명서 등)<br>- 인사담당자 승인 후 효력 발생</span></div>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;width:120px;background:#fafaf8"><span style="color:#c33">•</span> 휴직종류</td>
+          <td style="padding:10px 12px"><select class="fc" id="leave-type-leave" style="width:240px"><option>일반휴직</option><option>질병휴직</option><option>육아휴직</option><option>가족돌봄휴직</option><option>학업휴직</option><option>병역휴직</option><option>해외연수휴직</option></select></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 휴직 시작일</td>
+          <td style="padding:10px 12px"><input class="fc" type="date" id="leave-start-leave" style="width:200px"></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 휴직 종료일</td>
+          <td style="padding:10px 12px"><input class="fc" type="date" id="leave-end-leave" style="width:200px"></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 휴직사유</td>
+          <td style="padding:10px 12px"><textarea class="fc" id="leave-reason-leave" rows="4" placeholder="구체적인 휴직 사유를 입력하세요" style="width:100%;resize:vertical;font-family:var(--font)"></textarea></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">증빙서류</td>
+          <td style="padding:10px 12px"><button class="tb" onclick="showToast('파일 선택 다이얼로그')" style="font-size:11px">📎 파일 선택</button> <span style="font-size:11px;color:var(--tx3);margin-left:6px">진단서, 가족관계증명서 등</span></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">대체인력</td>
+          <td style="padding:10px 12px"><input class="fc" placeholder="대체 담당자 (선택)" style="width:240px"></td>
+        </tr>
+      </table>
+      <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="tb" onclick="document.getElementById('leave-start-leave').value='';document.getElementById('leave-end-leave').value='';document.getElementById('leave-reason-leave').value='';showToast('초기화')">초기화</button>
+        <button class="tb" onclick="leaveApply('leave')" style="background:#2185C5;color:#fff;border-color:#2185C5">휴직신청</button>
+      </div>
+    </div>
+    <!-- 우측: 신청내역 -->
+    <div style="flex:1.2;padding:20px;overflow-y:auto;min-width:0">
+      <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 휴직신청 내역</div>
+      <table class="dt" style="font-size:12px">
+        <thead>
+          <tr><th>휴직종류</th><th style="width:90px">시작일</th><th style="width:90px">종료일</th><th>사유</th><th style="width:90px">신청일</th><th style="width:70px">상태</th></tr>
+        </thead>
+        <tbody id="leave-list-leave">
+          <tr><td>육아휴직</td><td class="tc">2024-03-01</td><td class="tc">2024-08-31</td><td>출산 후 육아</td><td class="tc">2024-02-10</td><td class="tc"><span style="color:#2e7d32;font-weight:700">승인</span></td></tr>
+          <tr><td>질병휴직</td><td class="tc">2023-09-15</td><td class="tc">2023-12-15</td><td>건강 회복</td><td class="tc">2023-09-01</td><td class="tc"><span style="color:#2e7d32;font-weight:700">승인</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 복직신청 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-return-apply">
+  <div class="toolbar">
+    <span class="tb-title">복직신청</span>
+    <div class="tb-spacer"></div>
+    <span style="font-size:11px;color:var(--tx3)">사번 180494 · 김병선 · 정규직</span>
+  </div>
+  <div style="display:flex;flex:1;overflow:hidden">
+    <!-- 좌측: 신청 폼 -->
+    <div style="flex:1;padding:20px;border-right:1px solid rgba(0,0,0,.08);overflow-y:auto;min-width:0">
+      <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 신규 복직신청</div>
+      <div style="background:#fdf6e3;border:1px solid #e8d8a0;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px">
+        <div style="display:flex;gap:8px"><span style="color:#c33;font-weight:700;flex-shrink:0">안내사항</span><span style="color:var(--tx2)">- 복직신청은 복직일 14일 전까지 제출<br>- 휴직 사유 종료를 증빙할 수 있는 서류 첨부 필요<br>- 인사담당자 승인 후 부서 배치 확정</span></div>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;width:120px;background:#fafaf8"><span style="color:#c33">•</span> 휴직 종류</td>
+          <td style="padding:10px 12px"><select class="fc" id="leave-type-return" style="width:240px"><option>일반휴직</option><option>질병휴직</option><option>육아휴직</option><option>가족돌봄휴직</option><option>학업휴직</option><option>병역휴직</option><option>해외연수휴직</option></select></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 휴직 기간</td>
+          <td style="padding:10px 12px;display:flex;gap:6px;align-items:center">
+            <input class="fc" type="date" id="leave-start-return" style="width:160px">
+            <span style="color:var(--tx3)">~</span>
+            <input class="fc" type="date" id="leave-end-return" style="width:160px">
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 복직예정일</td>
+          <td style="padding:10px 12px"><input class="fc" type="date" style="width:200px"></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 희망 부서</td>
+          <td style="padding:10px 12px"><select class="fc" style="width:240px"><option>화학연구팀 (원소속)</option><option>기초화학팀</option><option>공정개발팀</option><option>분석팀</option><option>기타 (사유 작성)</option></select></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 복직사유</td>
+          <td style="padding:10px 12px"><textarea class="fc" id="leave-reason-return" rows="4" placeholder="휴직사유 종료 등 복직 사유를 입력하세요" style="width:100%;resize:vertical;font-family:var(--font)"></textarea></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">증빙서류</td>
+          <td style="padding:10px 12px"><button class="tb" onclick="showToast('파일 선택 다이얼로그')" style="font-size:11px">📎 파일 선택</button> <span style="font-size:11px;color:var(--tx3);margin-left:6px">완쾌증명서, 육아종료 증빙 등</span></td>
+        </tr>
+      </table>
+      <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="tb" onclick="document.getElementById('leave-start-return').value='';document.getElementById('leave-end-return').value='';document.getElementById('leave-reason-return').value='';showToast('초기화')">초기화</button>
+        <button class="tb" onclick="leaveApply('return')" style="background:#2e7d32;color:#fff;border-color:#2e7d32">복직신청</button>
+      </div>
+    </div>
+    <!-- 우측: 신청내역 -->
+    <div style="flex:1.2;padding:20px;overflow-y:auto;min-width:0">
+      <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 복직신청 내역</div>
+      <table class="dt" style="font-size:12px">
+        <thead>
+          <tr><th>휴직종류</th><th style="width:90px">시작일</th><th style="width:90px">종료일</th><th>사유</th><th style="width:90px">신청일</th><th style="width:70px">상태</th></tr>
+        </thead>
+        <tbody id="leave-list-return">
+          <tr><td>육아휴직</td><td class="tc">2024-03-01</td><td class="tc">2024-08-31</td><td>육아종료, 정상 복직</td><td class="tc">2024-08-15</td><td class="tc"><span style="color:#2e7d32;font-weight:700">승인</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 출장신청 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-trip-apply">
+  <div class="toolbar">
+    <span class="tb-title">출장신청</span>
+    <div style="display:flex;gap:0;margin-left:16px;border-bottom:none">
+      <div class="trip-tab act" onclick="tripSwitchTab(this,'trip-apply-form')" style="padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(0,0,0,.1);border-bottom:none;background:#fff;color:#2185C5">출장신청</div>
+      <div class="trip-tab" onclick="tripSwitchTab(this,'trip-apply-history')" style="padding:6px 14px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(0,0,0,.1);border-bottom:none;background:#fafaf8;color:var(--tx2);margin-left:-1px">출장내역조회</div>
+    </div>
+    <div class="tb-spacer"></div>
+    <button class="tb" onclick="showToast('출장신청서 출력')">출장신청서 출력</button>
+    <button class="tb" onclick="showToast('전자결재 상신')" style="background:#2185C5;color:#fff;border-color:#2185C5">전자결재</button>
+  </div>
+  <!-- 출장신청 폼 -->
+  <div class="trip-panel act" id="trip-apply-form" style="flex:1;overflow-y:auto;padding:16px 20px">
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 출장신청내역</div>
+    <table class="dt" style="font-size:12px;margin-bottom:18px">
+      <thead>
+        <tr><th style="width:24px"><input type="checkbox"></th><th style="width:50px">순번</th><th style="width:90px">출장유형</th><th style="width:120px">부서명</th><th style="width:80px">성명</th><th style="width:100px">신청일</th><th style="width:100px">출장시작일</th><th style="width:100px">출장종료일</th><th>출장시간</th><th>출장지</th><th style="width:80px">출장상태</th><th style="width:120px">승인결재상태</th></tr>
+      </thead>
+      <tbody id="trip-list-tbody">
+        <tr style="color:#c33"><td class="tc"><input type="checkbox"></td><td class="tc">1</td><td class="tc">선택</td><td></td><td></td><td class="tc">2026-04-10</td><td class="tc">2026-04-10</td><td class="tc">2026-04-10</td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 출장상세정보</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:18px">
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:120px;background:#fafaf8"><span style="color:#c33">•</span> 출장유형</td>
+        <td style="padding:9px 12px"><select class="fc" id="trip-type" style="width:240px"><option>선택</option><option>관내출장</option><option>관외출장</option><option>국외출장</option></select></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:90px;background:#fafaf8"><span style="color:#c33">•</span> 출장기간</td>
+        <td style="padding:9px 12px;display:flex;gap:4px;align-items:center">
+          <input class="fc" type="date" id="trip-start-date" style="width:130px"><input class="fc" type="time" value="09:00" style="width:80px">
+          <span>~</span>
+          <input class="fc" type="date" id="trip-end-date" style="width:130px"><input class="fc" type="time" value="18:00" style="width:80px">
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 출장지</td>
+        <td style="padding:9px 12px"><input class="fc" id="trip-place" placeholder="출장지 입력" style="width:100%"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 출장목적</td>
+        <td style="padding:9px 12px"><select class="fc" id="trip-purpose" style="width:100%"><option>선택</option><option>학술회의</option><option>업무회의</option><option>외부강의/회의</option><option>공무</option><option>개인출장</option></select></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 출장내용</td>
+        <td style="padding:9px 12px"><input class="fc" id="trip-content" placeholder="출장내용 입력" style="width:100%"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">방문기관설명</td>
+        <td style="padding:9px 12px"><input class="fc" placeholder="방문기관 상세" style="width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">공용차량이용여부</td>
+        <td style="padding:9px 12px"><label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p);margin-right:4px">공용차량이용</label></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">연구비신청여부</td>
+        <td style="padding:9px 12px"><label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p);margin-right:4px">연구비정산신청</label></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">출장비지급여부</td>
+        <td style="padding:9px 12px;font-size:11px"><label style="margin-right:14px;cursor:pointer"><input type="radio" name="trip-pay" checked style="accent-color:var(--p)"> 지급</label><label style="cursor:pointer"><input type="radio" name="trip-pay" style="accent-color:var(--p)"> 미지급(교연비, 강의, 평가 등)</label></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">회계구분</td>
+        <td style="padding:9px 12px"><select class="fc" style="width:100%"><option>선택</option><option>일반회계</option><option>연구비</option><option>특별회계</option></select></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">지급기관</td>
+        <td style="padding:9px 12px"><input class="fc" placeholder="지급기관" style="width:100%"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">왕복2km이내</td>
+        <td style="padding:9px 12px"><label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p);margin-right:4px">왕복2km이내</label></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">이동사항 및 출장비고</td>
+        <td colspan="3" style="padding:9px 12px"><input class="fc" placeholder="이동수단, 경유지 등" style="width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">출장추가비고</td>
+        <td colspan="3" style="padding:9px 12px"><input class="fc" placeholder="추가 비고" style="width:100%"></td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">첨부파일</td>
+        <td colspan="3" style="padding:9px 12px"><button class="tb" onclick="showToast('파일 선택')" style="font-size:11px">📎 파일 선택</button></td>
+      </tr>
+    </table>
+    <div style="background:#fef5f5;border:1px solid #f4c3c3;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px;color:var(--tx2)">
+      <strong style="color:#c33">★</strong> 출장 목적이 '외부강의/회의'인 경우, 관련 규정에 따라 출장 종료일로 부터 10일 이내에 외부강의을 완료하여 주시기 바랍니다.<br>
+      <strong style="color:#c33">도움말</strong> ★ 전자결재 버튼 클릭 후 변경 필요 시, 기안기 창을 닫고 화면에서 변경 한 뒤 전자결재 버튼 재클릭 바랍니다.<br>
+      1. 연구비정산신청 "체크"할 경우, 인사복무에선 정산신청이 불가능합니다.<br>
+      2. 출장자별 여비지급대상여부 "아니오"로 선택할 경우, 출장자별로 정산이 이루어지지 않음을 알려드립니다.<br>
+      3. 여비지급구분 누락시 인사관리 &gt; (교원,직원,산단)인사 &gt; 복무 &gt; 기준관리 &gt; 여비지급구분별대상 메뉴에서 해당 직급 여비지급구분을 추가해주시면 됩니다.
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between"><span><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 출장자관리</span>
+      <div style="display:flex;gap:6px"><button class="tb" onclick="showToast('행 추가')" style="font-size:11px">행추가</button><button class="tb" onclick="showToast('행 삭제')" style="font-size:11px">행삭제</button><button class="tb" onclick="showToast('위로')" style="font-size:11px">위로</button><button class="tb" onclick="showToast('아래로')" style="font-size:11px">아래로</button></div>
+    </div>
+    <table class="dt" style="font-size:12px">
+      <thead>
+        <tr><th style="width:24px"><input type="checkbox"></th><th style="width:50px">순번</th><th>부서</th><th style="width:80px">직종</th><th style="width:80px">직급</th><th style="width:80px">보직</th><th style="width:80px">성명</th><th style="width:100px">사번</th><th style="width:100px">여비지급대상여부</th><th style="width:90px">여비지급구분</th><th style="width:100px">휴보강계획</th><th style="width:80px">대표자구분</th></tr>
+      </thead>
+      <tbody>
+        <tr style="color:#c33"><td class="tc"><input type="checkbox"></td><td class="tc">1</td><td class="tc">사범대학</td><td class="tc">정규직</td><td class="tc">부교수</td><td class="tc"></td><td class="tc">김병선</td><td class="tc">180494</td><td class="tc"><select class="fc" style="font-size:11px;width:60px"><option>예</option><option>아니오</option></select></td><td class="tc">1호</td><td class="tc"><button class="tb" style="font-size:10px;padding:2px 6px">휴보강계획</button></td><td class="tc">대표자</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 출장내역조회 -->
+  <div class="trip-panel" id="trip-apply-history" style="flex:1;overflow-y:auto;padding:16px 20px;display:none">
+    <div style="display:flex;align-items:center;gap:14px;font-size:12px;margin-bottom:14px;padding:10px 14px;background:#fafaf8;border-radius:4px">
+      <span style="color:var(--tx3);font-weight:600">출장일자</span>
+      <input class="fc" type="date" value="2026-01-01" style="width:140px">
+      <span>~</span>
+      <input class="fc" type="date" value="2026-04-30" style="width:140px">
+      <div style="flex:1"></div>
+      <span style="color:var(--tx3);font-weight:600">출장유형</span>
+      <select class="fc" style="width:120px"><option>전체</option><option>관내출장</option><option>관외출장</option><option>국외출장</option></select>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;margin-bottom:10px">
+      <span style="color:var(--tx3);font-weight:600;min-width:60px">취소유무</span>
+      <label style="cursor:pointer"><input type="checkbox" checked style="accent-color:var(--p);margin-right:4px">취소정보 조회여부 (체크 : 예)</label>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 출장신청내역</div>
+      <div style="display:flex;gap:6px"><button class="tb" onclick="showToast('출장신청서 출력')" style="font-size:11px">출장신청서 출력</button><button class="tb" onclick="showToast('취소결재')" style="font-size:11px">취소결재</button></div>
+    </div>
+    <table class="dt" style="font-size:11.5px">
+      <thead>
+        <tr><th style="width:22px"><input type="checkbox"></th><th style="width:42px">순번</th><th style="width:72px">출장유형</th><th style="width:90px">부서명</th><th style="width:60px">성명</th><th style="width:60px">동반출장</th><th style="width:80px">출장대표자명</th><th style="width:90px">출장시작일</th><th style="width:90px">출장종료일</th><th style="width:100px">출장시간</th><th style="width:70px">출장목적</th><th>출장내용</th><th style="width:120px">출장지</th><th style="width:50px">상태</th><th style="width:130px">승인결재상태</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">1</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-01-07</td><td class="tc">2026-01-10</td><td class="tc">16:00 ~ 18:00</td><td class="tc">학술회의</td><td>한국유기합성학회 리더스 ...</td><td>강릉</td><td class="tc">승인</td><td class="tc">승인(화학교육과-91)</td></tr>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">2</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-01-22</td><td class="tc">2026-01-22</td><td class="tc">09:00 ~ 13:00</td><td class="tc">업무회의</td><td>대응자금 협의 회의</td><td>경상남도청</td><td class="tc">승인</td><td class="tc">승인(화학교육과-251)</td></tr>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">3</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-01-23</td><td class="tc">2026-01-23</td><td class="tc">11:00 ~ 18:00</td><td class="tc">업무회의</td><td>기획서 업무 회의</td><td>경북대학교</td><td class="tc">승인</td><td class="tc">승인(화학교육과-259)</td></tr>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">4</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-01-27</td><td class="tc">2026-01-28</td><td class="tc">16:00 ~ 18:00</td><td class="tc">학술회의</td><td>2026년 대한화학회 의약화...</td><td>대전</td><td class="tc">승인</td><td class="tc">승인(화학교육과-285)</td></tr>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">5</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-02-04</td><td class="tc">2026-02-04</td><td class="tc">09:00 ~ 12:00</td><td class="tc">개인출장</td><td>산학협력단 업무회의</td><td>인제대학교</td><td class="tc">승인</td><td class="tc">승인(화학교육과-382)</td></tr>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">6</td><td class="tc">관내출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-02-09</td><td class="tc">2026-02-09</td><td class="tc">09:00 ~ 13:00</td><td class="tc">업무회의</td><td>RISE사업 마일리지 성과 보...</td><td>진주 컨벤션센터</td><td class="tc">승인</td><td class="tc">승인(화학교육과-415)</td></tr>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">7</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-02-10</td><td class="tc">2026-02-12</td><td class="tc">12:00 ~ 12:00</td><td class="tc">업무회의</td><td>한국산업기술진흥원 발표 평...</td><td>서울시 및 대전시</td><td class="tc">승인</td><td class="tc">승인(화학교육과-426)</td></tr>
+        <tr><td class="tc"><input type="checkbox"></td><td class="tc">8</td><td class="tc">관외출장</td><td class="tc">사범대학</td><td class="tc">김병선</td><td class="tc">아니오</td><td class="tc">김병선</td><td class="tc">2026-02-12</td><td class="tc">2026-02-12</td><td class="tc">12:00 ~ 18:00</td><td class="tc">공무</td><td>사범대학 2025년 성과점검 ...</td><td>산청군 일대</td><td class="tc">승인</td><td class="tc">승인(사범대학-2007)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 관외출장 여비정산신청 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-trip-settle">
+  <div class="toolbar">
+    <span class="tb-title">관외출장 여비정산신청</span>
+    <div class="tb-spacer"></div>
+    <button class="tb" onclick="showToast('조회')" style="font-size:11px">🔍 조회</button>
+    <button class="tb" onclick="showToast('신규 정산')" style="background:#2185C5;color:#fff;border-color:#2185C5;font-size:11px">+ 신규</button>
+    <button class="tb" onclick="showToast('삭제')" style="background:#c33;color:#fff;border-color:#c33;font-size:11px">🗑 삭제</button>
+    <button class="tb" onclick="showToast('저장 완료')" style="background:#2185C5;color:#fff;border-color:#2185C5;font-size:11px">💾 저장</button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:14px 20px">
+    <!-- 검색조건 -->
+    <div style="display:flex;align-items:center;gap:14px;font-size:12px;margin-bottom:14px;padding:10px 14px;background:#fafaf8;border-radius:4px">
+      <span style="color:var(--tx3);font-weight:600">출장일자</span>
+      <input class="fc" type="date" value="2026-02-12" style="width:140px">
+      <span>~</span>
+      <input class="fc" type="date" value="2026-04-30" style="width:140px">
+      <span style="color:var(--tx3);font-weight:600;margin-left:14px">성명</span>
+      <input class="fc" value="김병선" readonly style="width:140px;background:#f0f0f0">
+      <span style="color:var(--tx3);font-weight:600;margin-left:14px">출장목적</span>
+      <select class="fc" style="width:120px"><option>전체</option><option>학술회의</option><option>업무회의</option><option>공무</option></select>
+    </div>
+    <!-- 출장내역 -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 출장내역</div>
+      <button class="tb" onclick="showToast('출장결재문서조회')" style="font-size:11px">출장결재문서조회</button>
+    </div>
+    <table class="dt" style="font-size:11.5px;margin-bottom:18px">
+      <thead>
+        <tr><th style="width:42px">순번</th><th style="width:72px">출장유형</th><th style="width:100px">부서명</th><th style="width:60px">성명</th><th style="width:80px">여비지급구분</th><th style="width:130px">출장시작일</th><th style="width:130px">출장종료일</th><th>출장목적</th><th style="width:140px">출장지</th><th style="width:60px">출장상태</th></tr>
+      </thead>
+      <tbody>
+        <tr style="cursor:pointer;background:#e8f1fa"><td class="tc">2</td><td class="tc">관외출장</td><td class="tc">사범대학</td><td class="tc">김병선</td><td class="tc">1호</td><td class="tc">2026.02.12. (목) 12:00</td><td class="tc">2026.02.12. (목) 18:00</td><td>사범대학 2025년 성과점검 및 2026년 추진계획 논의을 : 산청군 일대</td><td class="tc">승인</td><td class="tc">승인</td></tr>
+        <tr style="cursor:pointer"><td class="tc">3</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">1호</td><td class="tc">2026.02.20. (금) 14:00</td><td class="tc">2026.02.20. (금) 17:00</td><td>한국항공우주산업 업무 협의</td><td class="tc">사천</td><td class="tc">승인</td></tr>
+        <tr style="cursor:pointer"><td class="tc">4</td><td class="tc">관외출장</td><td class="tc">사범대학</td><td class="tc">김병선</td><td class="tc">1호</td><td class="tc">2026.02.26. (목) 13:00</td><td class="tc">2026.02.26. (목) 18:00</td><td>2026년도 사범대학 학생회 주관 새내기 배움터 안전지도</td><td class="tc">통영시(금호동영마리나리조트)</td><td class="tc">승인</td></tr>
+        <tr style="cursor:pointer"><td class="tc">5</td><td class="tc">관외출장</td><td class="tc">화학교육과</td><td class="tc">김병선</td><td class="tc">1호</td><td class="tc">2026.03.13. (금) 09:00</td><td class="tc">2026.03.13. (금) 23:59</td><td>1) 서울대학교 화학교육과 업무협의 2) 대한화학회 춘계학...</td><td class="tc">서울대학교</td><td class="tc">승인</td></tr>
+      </tbody>
+    </table>
+    <!-- 출장상세정보 -->
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 출장상세정보</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:18px">
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:120px;background:#fafaf8">출장유형</td>
+        <td style="padding:9px 12px"><input class="fc" value="관외출장" readonly style="background:#f0f0f0;width:140px"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:90px;background:#fafaf8">출장기간</td>
+        <td style="padding:9px 12px"><input class="fc" value="2026-02-10 12:00 ~ 2026-02-12 12:00" readonly style="background:#f0f0f0;width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">출장지</td>
+        <td style="padding:9px 12px"><input class="fc" value="서울시 및 대전시" readonly style="background:#f0f0f0;width:100%"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">방문기관설명</td>
+        <td style="padding:9px 12px"><input class="fc" readonly style="background:#f0f0f0;width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">출장목적</td>
+        <td style="padding:9px 12px"><input class="fc" value="업무회의" readonly style="background:#f0f0f0;width:140px"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">출장내용</td>
+        <td style="padding:9px 12px"><input class="fc" value="한국산업기술진흥원 발표 평가 및 대한화학회 유기화학분과회" readonly style="background:#f0f0f0;width:100%"></td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">출장비고</td>
+        <td colspan="3" style="padding:9px 12px"><input class="fc" value="진주-서울-오송-대전-진주 / 2026 첨단산업 인재양성 부트캠프 사업 발표 평가 (서울시)" readonly style="background:#f0f0f0;width:100%"></td>
+      </tr>
+    </table>
+    <!-- 정산 섹션들 -->
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 총정산액 (지급액 + 현금 + 카드지출 + 정부구매카드지출 = 출장정산비용)</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:18px;border:1px solid #e0e0e0">
+      <tr><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:110px">지급액 합계</td><td style="padding:8px 12px;text-align:right" id="settle-pay">0</td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:110px">현금 합계</td><td style="padding:8px 12px;text-align:right" id="settle-cash">0</td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:110px">개인카드 합계</td><td style="padding:8px 12px;text-align:right" id="settle-card">0</td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:130px">정부금액카드 합계</td><td style="padding:8px 12px;text-align:right" id="settle-gov">0</td></tr>
+      <tr><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600">출장비 합계</td><td colspan="7" style="padding:8px 12px;text-align:right;font-weight:700;color:#2185C5" id="settle-total">0</td></tr>
+    </table>
+    <!-- 운임 -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 운임 ( 운임이용실비 )</div>
+      <div style="display:flex;gap:6px"><button class="tb" onclick="showToast('수소차 단가정보')" style="font-size:11px">수소차 단가정보</button><button class="tb" onclick="showToast('전기차 단가정보')" style="font-size:11px">전기차 단가정보</button><button class="tb" onclick="showToast('유류단가정보')" style="font-size:11px">유류단가정보</button><button class="tb" onclick="showToast('행 추가')" style="font-size:11px">행추가</button><button class="tb" onclick="showToast('행 삭제')" style="font-size:11px">행삭제</button></div>
+    </div>
+    <table class="dt" style="font-size:11px;margin-bottom:14px">
+      <thead><tr><th style="width:22px"><input type="checkbox"></th><th>이용일자</th><th>출발지</th><th>도착지</th><th>운임항목</th><th>등급</th><th>자동차이용사유</th><th>자동차운임지급</th><th>연료구분</th><th>거리(KM)</th><th>유류단가</th><th>연비</th><th>결재방법</th><th>금액</th><th>항공사</th><th>마일리지</th><th>첨부</th></tr></thead>
+      <tbody><tr><td colspan="17" class="tc" style="color:var(--tx3);padding:30px 0;font-size:11px">데이터가 없습니다 — '행추가' 버튼으로 운임을 입력하세요</td></tr></tbody>
+    </table>
+    <!-- 숙박비 -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 숙박비 ( 숙박이용일 * 급지별 지급금액 )</div>
+      <div style="display:flex;gap:6px"><button class="tb" onclick="showToast('행 추가')" style="font-size:11px">행추가</button><button class="tb" onclick="showToast('행 삭제')" style="font-size:11px">행삭제</button></div>
+    </div>
+    <table class="dt" style="font-size:11px;margin-bottom:14px">
+      <thead><tr><th style="width:22px"><input type="checkbox"></th><th>시작일자</th><th>종료일자</th><th>급지등급</th><th>결재방법</th><th>금액</th><th>첨부파일</th><th>비고</th><th>지출결의여부</th><th>지출결의구분</th><th>지출결의상태</th></tr></thead>
+      <tbody><tr><td colspan="11" class="tc" style="color:var(--tx3);padding:30px 0;font-size:11px">데이터가 없습니다</td></tr></tbody>
+    </table>
+    <!-- 일비 -->
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center"><span><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 일비 ( 출장일 * 일비 지급기준금)</span><button class="tb" onclick="showToast('일비 자동정산')" style="font-size:11px">일비자동정산</button></div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px;border:1px solid #e0e0e0">
+      <tr><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:80px">출장기간</td><td style="padding:8px 12px"><input class="fc" placeholder="- -" readonly style="background:#f0f0f0;width:140px"> ~ <input class="fc" placeholder="- -" readonly style="background:#f0f0f0;width:140px"></td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:50px">비고</td><td style="padding:8px 12px"><input class="fc" readonly style="background:#f0f0f0;width:100%"></td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:90px">일비산정금액</td><td style="padding:8px 12px"><input class="fc" readonly style="background:#f0f0f0;width:120px"></td></tr>
+    </table>
+    <!-- 식비 -->
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center"><span><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 식비 ( 출장일 * 식비 지급기준금 )</span><button class="tb" onclick="showToast('식비 자동정산')" style="font-size:11px">식비자동정산</button></div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px;border:1px solid #e0e0e0">
+      <tr><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:80px">출장기간</td><td style="padding:8px 12px"><input class="fc" placeholder="- -" readonly style="background:#f0f0f0;width:140px"> ~ <input class="fc" placeholder="- -" readonly style="background:#f0f0f0;width:140px"></td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:80px">식사공제횟수</td><td style="padding:8px 12px"><input class="fc" readonly style="background:#f0f0f0;width:80px"></td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:90px">식비산정금액</td><td style="padding:8px 12px"><input class="fc" readonly style="background:#f0f0f0;width:120px"></td></tr>
+    </table>
+    <!-- 정산 초과금액 -->
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center"><span><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 정산 초과금액 ( 세부항목별 초과금액 요청/반납 )</span><div style="display:flex;gap:6px"><button class="tb" onclick="showToast('행 추가')" style="font-size:11px">행추가</button><button class="tb" onclick="showToast('행 삭제')" style="font-size:11px">행삭제</button></div></div>
+    <table class="dt" style="font-size:11px;margin-bottom:14px">
+      <thead><tr><th style="width:22px"><input type="checkbox"></th><th>이용시작일</th><th>이용종료일</th><th>신청항목</th><th>여비차감여부</th><th>결재방법</th><th>금액</th><th>첨부파일</th><th>비고</th><th>지출결의여부</th><th>지출결의구분</th><th>지출결의상태</th></tr></thead>
+      <tbody><tr><td colspan="12" class="tc" style="color:var(--tx3);padding:30px 0;font-size:11px">데이터가 없습니다</td></tr></tbody>
+    </table>
+    <div style="background:#fef5f5;border:1px solid #f4c3c3;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;color:var(--tx2)">
+      <strong style="color:#c33">도움말</strong><br>
+      1. 정산대상 출장자목록별로 세부항목작성(운임/숙박비/식비/일비) 후 "저장"<br>
+      2. 운임/숙박비 는 "행추가" 하여 건별로 정산정보 입력<br>
+      3. 유류비 = 출장거리÷유류단가/연비, 연비기준 : 인사관리>직원인사>복무>기준관리>연비관리<br>
+      4. 일비/식비   는 자동정산하여 금액확인 (수정가능)<br>
+      5. 출장자목록별로 정산하여 "저장" 하시고 출장에 대한 동반자에 대해 대신하여 정산정보 저장가능<br>
+      6. 여비정산신청서 출력시 공란으로 표시될 경우 인사관리 > (교원,직원,산단)인사 > 복무 > 기준관리 > 여비지급구분별대상을 확인해 주세요.
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 국외출장 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-trip-overseas">
+  <div class="toolbar">
+    <span class="tb-title">국외출장 신청</span>
+    <div class="tb-spacer"></div>
+    <button class="tb" onclick="showToast('국외출장 신청서 출력')">신청서 출력</button>
+    <button class="tb" onclick="showToast('전자결재 상신')" style="background:#2185C5;color:#fff;border-color:#2185C5">전자결재</button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:16px 20px">
+    <div style="background:#fdf6e3;border:1px solid #e8d8a0;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px;color:var(--tx2)">
+      <strong style="color:#c33">국외출장 안내</strong><br>
+      - 국외출장은 출국 30일 전까지 신청 권장 (비자/항공권 준비 시간 확보)<br>
+      - 항공권·숙박·여행자보험 정보 첨부 필수<br>
+      - 외환 정산은 귀국 후 14일 이내 환율 기준으로 정산
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 국외출장 상세정보</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:18px">
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:120px;background:#fafaf8"><span style="color:#c33">•</span> 출장국가</td>
+        <td style="padding:9px 12px"><select class="fc" style="width:200px"><option>미국</option><option>일본</option><option>중국</option><option>독일</option><option>영국</option><option>프랑스</option><option>기타</option></select></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;width:90px;background:#fafaf8"><span style="color:#c33">•</span> 출장도시</td>
+        <td style="padding:9px 12px"><input class="fc" placeholder="예: San Francisco" style="width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 출국일</td>
+        <td style="padding:9px 12px"><input class="fc" type="date" style="width:200px"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 귀국예정일</td>
+        <td style="padding:9px 12px"><input class="fc" type="date" style="width:200px"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 출장목적</td>
+        <td style="padding:9px 12px"><select class="fc" style="width:100%"><option>국제학술회의</option><option>해외연수</option><option>업무협의</option><option>기술자문</option><option>해외시장 조사</option></select></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">방문기관</td>
+        <td style="padding:9px 12px"><input class="fc" placeholder="방문기관명" style="width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8"><span style="color:#c33">•</span> 출장내용</td>
+        <td colspan="3" style="padding:9px 12px"><textarea class="fc" rows="3" placeholder="국외출장 상세 내용" style="width:100%;resize:vertical;font-family:var(--font)"></textarea></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">항공편 정보</td>
+        <td style="padding:9px 12px"><input class="fc" placeholder="예: KE001 인천→LAX" style="width:100%"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">숙박지</td>
+        <td style="padding:9px 12px"><input class="fc" placeholder="호텔명/주소" style="width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">예상 비용 (USD)</td>
+        <td style="padding:9px 12px"><input class="fc" type="number" placeholder="0" style="width:200px"></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">통화기준 환율</td>
+        <td style="padding:9px 12px"><input class="fc" placeholder="USD 1,350원 (출국일 기준)" style="width:100%"></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">여행자보험</td>
+        <td style="padding:9px 12px"><label style="cursor:pointer"><input type="checkbox" checked style="accent-color:var(--p);margin-right:4px">가입완료</label></td>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">비자 필요여부</td>
+        <td style="padding:9px 12px"><label style="margin-right:14px;cursor:pointer"><input type="radio" name="visa-need" style="accent-color:var(--p)"> 필요</label><label style="cursor:pointer"><input type="radio" name="visa-need" checked style="accent-color:var(--p)"> 불필요(무비자/ESTA)</label></td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px;color:var(--tx2);font-weight:600;background:#fafaf8">첨부파일</td>
+        <td colspan="3" style="padding:9px 12px"><button class="tb" onclick="showToast('파일 선택')" style="font-size:11px">📎 파일 선택</button> <span style="font-size:11px;color:var(--tx3);margin-left:6px">항공권, 호텔 예약확인서, 보험증권, 초청장 등</span></td>
+      </tr>
+    </table>
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 국외출장 신청내역</div>
+    <table class="dt" style="font-size:12px">
+      <thead><tr><th style="width:50px">순번</th><th style="width:80px">국가</th><th>도시</th><th style="width:100px">출국일</th><th style="width:100px">귀국일</th><th>목적</th><th style="width:80px">상태</th></tr></thead>
+      <tbody>
+        <tr><td class="tc">1</td><td class="tc">미국</td><td>San Francisco</td><td class="tc">2025-09-15</td><td class="tc">2025-09-22</td><td>ACS Fall Meeting 2025 학술발표</td><td class="tc"><span style="color:#2e7d32;font-weight:700">완료</span></td></tr>
+        <tr><td class="tc">2</td><td class="tc">일본</td><td>Tokyo</td><td class="tc">2024-11-08</td><td class="tc">2024-11-12</td><td>도쿄대 화학공정 공동연구 협의</td><td class="tc"><span style="color:#2e7d32;font-weight:700">완료</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 직원 근무상황관리 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-staff-work">
+  <div class="toolbar">
+    <span class="tb-title">직원 근무상황관리</span>
+    <div class="tb-spacer"></div>
+    <button class="tb" onclick="staffWorkSearch()" style="background:#2185C5;color:#fff;border-color:#2185C5">🔍 조회</button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:16px 20px">
+    <!-- 검색조건 -->
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 검색조건</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px">
+      <tr style="border:1px solid rgba(0,0,0,.06);background:#fafaf8">
+        <td style="padding:10px 12px;color:var(--tx2);font-weight:600;width:120px">근무상황일자</td>
+        <td style="padding:10px 12px;background:#fff;display:flex;align-items:center;gap:6px">
+          <input class="fc" type="date" id="staff-work-start" value="2026-04-10" style="width:160px">
+          <span>~</span>
+          <input class="fc" type="date" id="staff-work-end" value="2026-04-10" style="width:160px">
+          <span style="color:var(--tx3);margin-left:14px;font-weight:600">사번</span>
+          <input class="fc" id="staff-work-id" value="180494" style="width:130px">
+          <button class="tb" onclick="openStaffSearchModal()" style="font-size:11px">🔍</button>
+          <input class="fc" id="staff-work-name" value="김병선" readonly style="width:130px;background:#f0f0f0;margin-left:6px">
+        </td>
+      </tr>
+    </table>
+    <div style="background:#fef5f5;border:1px solid #f4c3c3;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px">
+      <div style="display:flex;gap:8px"><span style="color:#c33;font-weight:700;flex-shrink:0">도움말</span><span style="color:var(--tx2)">1. 일반사용자는 본인의 부서에서 근무(원소속, 겸임, 직무대리, 보직, 기타직 등)하는 대상자들의 근무상황 정보를 확인할 수 있습니다.<br>2. 관리자는 부서조건을 통한 해당 부서원(원소속)들의 근무상황 정보를 확인할 수 있습니다.(조회 가능한 부서는 본인의 권한에 등록된 부서에 한함.)<br>3. 부서별 근무상황 포틀릿은 당일(오늘) 현재시간 이후의 근무상황정보만 보여주기 때문에 현재 화면(부서별근무상황조회)의 근무요일 목록과 다를 수 있습니다.</span></div>
+    </div>
+    <!-- 근무요일 목록 -->
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 근무요일 목록</div>
+    <table class="dt" style="font-size:12px">
+      <thead>
+        <tr><th style="width:50px">순번</th><th style="width:90px">구분</th><th style="width:120px">근무유형</th><th style="width:160px">부서</th><th style="width:110px">사번</th><th style="width:90px">성명</th><th style="width:110px">시작일자</th><th style="width:90px">시작시간</th><th style="width:110px">종료일자</th><th style="width:90px">종료시간</th></tr>
+      </thead>
+      <tbody id="staff-work-tbody">
+        <tr><td colspan="10" class="tc" style="color:var(--tx3);padding:40px 0;font-size:12px">조회 버튼을 클릭하면 근무상황 정보가 표시됩니다.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 직원 검색 모달 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="mbg" id="modal-staff-search">
+  <div class="modal" style="max-width:880px">
+    <div class="mhdr"><span class="mttl">직원 검색</span><span class="mclose" onclick="closeModal('modal-staff-search')">✕</span></div>
+    <div style="padding:16px">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px">
+        <tr style="background:#fafaf8;border:1px solid rgba(0,0,0,.06)">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600;width:90px">사번/성명</td>
+          <td style="padding:8px 12px;background:#fff"><input class="fc" value="180494" style="width:200px"></td>
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600;width:90px">재직상태</td>
+          <td style="padding:8px 12px;background:#fff"><select class="fc" style="width:160px"><option>전체</option><option>재직</option><option>휴직</option><option>퇴직</option></select></td>
+        </tr>
+        <tr style="background:#fafaf8;border:1px solid rgba(0,0,0,.06)">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600">소속</td>
+          <td style="padding:8px 12px;background:#fff;display:flex;gap:6px"><input class="fc" placeholder="소속" style="flex:1"><button class="tb" onclick="showToast('소속 검색')" style="font-size:11px">🔍</button></td>
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600">직책구분</td>
+          <td style="padding:8px 12px;background:#fff"><select class="fc" style="width:160px"><option>전체</option><option>정규직</option><option>직원</option><option>연구원</option></select></td>
+        </tr>
+        <tr style="background:#fafaf8;border:1px solid rgba(0,0,0,.06)">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600">공무원구분</td>
+          <td style="padding:8px 12px;background:#fff"><select class="fc" style="width:200px"><option>전체</option><option>국가공무원</option><option>지방공무원</option><option>비공무원</option></select></td>
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600">직종</td>
+          <td style="padding:8px 12px;background:#fff"><select class="fc" style="width:160px"><option>전체</option><option>정규직</option><option>일반직</option><option>연구원</option></select></td>
+        </tr>
+      </table>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 직원 목록</div>
+        <button class="tb" onclick="staffModalSearch()" style="font-size:11px">조회</button>
+      </div>
+      <div style="border:1px solid rgba(0,0,0,.08);max-height:280px;overflow-y:auto">
+        <table class="dt" style="font-size:11px">
+          <thead><tr><th style="width:42px">순번</th><th style="width:70px">사번</th><th style="width:60px">구분</th><th>소속</th><th style="width:80px">직종</th><th style="width:80px">직급(명)</th><th style="width:70px">성명</th><th style="width:90px">생년월일</th><th style="width:80px">직책구분</th><th style="width:70px">재직상태</th><th style="width:90px">보직(직책)</th></tr></thead>
+          <tbody id="staff-search-tbody">
+            <tr><td colspan="11" class="tc" style="color:var(--tx3);padding:60px 0;font-size:12px">조회 버튼을 클릭하면 직원 목록이 표시됩니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mftr" style="display:flex;justify-content:center;gap:8px">
+      <button class="tb" onclick="staffSelectFromModal()" style="background:#2185C5;color:#fff;border-color:#2185C5;min-width:60px">확인</button>
+      <button class="tb" onclick="closeModal('modal-staff-search')" style="min-width:60px">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 급여 계좌관리 ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-account-mgmt">
+  <div class="toolbar">
+    <span class="tb-title">급여 계좌관리</span>
+    <div class="tb-spacer"></div>
+    <button class="tb" onclick="showToast('계좌신청을 등록합니다')" style="background:#2185C5;color:#fff;border-color:#2185C5">+ 신청 등록</button>
+    <button class="tb" onclick="downloadExcel('account-mgmt')">Excel 다운로드</button>
+  </div>
+  <div class="itabs">
+    <div class="it act" onclick="switchIT(this,'acc-personal')">개인계좌신청</div>
+    <div class="it" onclick="switchIT(this,'acc-trip')">여비계좌신청</div>
+  </div>
+  <div class="scroll">
+
+    <!-- ─── 개인계좌신청 목록 ─── -->
+    <div id="acc-personal" style="padding:14px 16px">
+      <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 검색조건</div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px">
+        <tr style="border:1px solid rgba(0,0,0,.06);background:#fafaf8">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600;width:110px">신청일자</td>
+          <td style="padding:8px 12px;background:#fff;display:flex;align-items:center;gap:6px">
+            <input class="fc" type="date" value="2026-01-01" style="width:140px"><span>~</span>
+            <input class="fc" type="date" value="2026-04-10" style="width:140px">
+            <span style="color:var(--tx3);margin-left:14px;font-weight:600">사번/성명</span>
+            <input class="fc" value="180494" style="width:120px">
+            <button class="tb" onclick="openStaffSearchModal()" style="font-size:11px">🔍</button>
+            <input class="fc" value="김병선" readonly style="width:120px;background:#f0f0f0">
+          </td>
+        </tr>
+        <tr style="border:1px solid rgba(0,0,0,.06);background:#fafaf8">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600">개인부서</td>
+          <td style="padding:8px 12px;background:#fff;display:flex;align-items:center;gap:6px">
+            <input class="fc" placeholder="부서" style="width:200px">
+            <button class="tb" style="font-size:11px">🔍</button>
+            <span style="color:var(--tx3);margin-left:14px;font-weight:600">직책구분</span>
+            <select class="fc" style="width:120px"><option>전체</option><option>정규직</option><option>직원</option><option>연구원</option></select>
+            <span style="color:var(--tx3);margin-left:14px;font-weight:600">직종</span>
+            <select class="fc" style="width:120px"><option>전체</option><option>전임</option><option>일반</option></select>
+          </td>
+        </tr>
+        <tr style="border:1px solid rgba(0,0,0,.06);background:#fafaf8">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600">처리상태</td>
+          <td style="padding:8px 12px;background:#fff;display:flex;align-items:center;gap:6px">
+            <select class="fc" style="width:140px"><option>전체</option><option>접수</option><option>처리중</option><option>완료</option><option>반려</option></select>
+            <span style="color:var(--tx3);margin-left:14px;font-weight:600">지급계좌구분</span>
+            <select class="fc" style="width:160px"><option>전체</option><option>급여계좌</option><option>상여금계좌</option><option>기타</option></select>
+            <div style="flex:1"></div>
+            <button class="tb" onclick="showToast('조회 완료')" style="background:#2185C5;color:#fff;border-color:#2185C5">🔍 조회</button>
+          </td>
+        </tr>
+      </table>
+      <div style="background:#fef5f5;border:1px solid #f4c3c3;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px">
+        <div style="display:flex;gap:8px"><span style="color:#c33;font-weight:700;flex-shrink:0">도움말</span><span style="color:var(--tx2)">1. 신규 계좌 등록 시 통장 사본을 첨부하여 신청하시기 바랍니다.<br>2. 주계좌는 1개만 등록 가능하며, 변경 시 기존 주계좌는 자동으로 부계좌로 전환됩니다.<br>3. 급여 지급일 5일 전까지 신청된 건만 당월 급여에 반영되며, 이후 신청은 익월 처리됩니다.</span></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 개인계좌신청 목록</div>
+        <span style="font-size:11px;color:var(--tx3)">총 4건</span>
+      </div>
+      <table class="dt" style="font-size:11px">
+        <thead>
+          <tr>
+            <th rowspan="2" style="width:40px">순번</th>
+            <th rowspan="2" style="width:70px">사번</th>
+            <th rowspan="2" style="width:70px">성명</th>
+            <th rowspan="2" style="width:90px">직책구분</th>
+            <th rowspan="2" style="width:80px">직종</th>
+            <th rowspan="2" style="width:70px">직급</th>
+            <th rowspan="2" style="width:80px">사업장</th>
+            <th rowspan="2">부서</th>
+            <th rowspan="2" style="width:80px">처리상태</th>
+            <th colspan="4" style="background:#eef5fb">신청내역</th>
+            <th colspan="5" style="background:#fef9ee">계좌내역</th>
+          </tr>
+          <tr>
+            <th style="background:#eef5fb">접수번호</th>
+            <th style="background:#eef5fb">신청일자</th>
+            <th style="background:#eef5fb">처리인</th>
+            <th style="background:#eef5fb">처리부서</th>
+            <th style="background:#fef9ee">계좌구분</th>
+            <th style="background:#fef9ee">은행</th>
+            <th style="background:#fef9ee">계좌번호</th>
+            <th style="background:#fef9ee">예금주</th>
+            <th style="background:#fef9ee">주계좌</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tc">1</td><td class="tc">180494</td><td class="tc">김병선</td><td class="tc">정규직</td><td class="tc">정규직</td><td class="tc">부장</td><td class="tc">본사</td><td>연구개발1팀</td><td class="tc"><span class="bd bg">완료</span></td>
+            <td class="tc">A20260105001</td><td class="tc">2026-01-05</td><td class="tc">박관리</td><td class="tc">총무팀</td>
+            <td class="tc">급여계좌</td><td class="tc">국민은행</td><td class="tc">123-456-7890</td><td class="tc">김병선</td><td class="tc"><span style="color:#c33;font-weight:700">주</span></td>
+          </tr>
+          <tr>
+            <td class="tc">2</td><td class="tc">180501</td><td class="tc">이연구</td><td class="tc">연구원</td><td class="tc">차장</td><td class="tc">선임</td><td class="tc">본사</td><td>연구개발2팀</td><td class="tc"><span class="bd bg">완료</span></td>
+            <td class="tc">A20260118003</td><td class="tc">2026-01-18</td><td class="tc">박관리</td><td class="tc">총무팀</td>
+            <td class="tc">급여계좌</td><td class="tc">신한은행</td><td class="tc">110-234-5678</td><td class="tc">이연구</td><td class="tc"><span style="color:#c33;font-weight:700">주</span></td>
+          </tr>
+          <tr>
+            <td class="tc">3</td><td class="tc">180523</td><td class="tc">박사원</td><td class="tc">연구원</td><td class="tc">사원</td><td class="tc">연구원</td><td class="tc">본사</td><td>연구개발1팀</td><td class="tc"><span class="bd by">처리중</span></td>
+            <td class="tc">A20260302005</td><td class="tc">2026-03-02</td><td class="tc">-</td><td class="tc">-</td>
+            <td class="tc">상여금계좌</td><td class="tc">우리은행</td><td class="tc">1002-345-678901</td><td class="tc">박사원</td><td class="tc">-</td>
+          </tr>
+          <tr>
+            <td class="tc">4</td><td class="tc">180601</td><td class="tc">최영업</td><td class="tc">직원</td><td class="tc">일반직</td><td class="tc">대리</td><td class="tc">서울지점</td><td>영업1팀</td><td class="tc"><span class="bd bg">완료</span></td>
+            <td class="tc">A20260315008</td><td class="tc">2026-03-15</td><td class="tc">박관리</td><td class="tc">총무팀</td>
+            <td class="tc">급여계좌</td><td class="tc">하나은행</td><td class="tc">352-789-012345</td><td class="tc">최영업</td><td class="tc"><span style="color:#c33;font-weight:700">주</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ─── 여비계좌신청 목록 ─── -->
+    <div id="acc-trip" style="display:none;padding:14px 16px">
+      <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:8px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 검색조건</div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px">
+        <tr style="border:1px solid rgba(0,0,0,.06);background:#fafaf8">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600;width:110px">신청일자</td>
+          <td style="padding:8px 12px;background:#fff;display:flex;align-items:center;gap:6px">
+            <input class="fc" type="date" value="2026-01-01" style="width:140px"><span>~</span>
+            <input class="fc" type="date" value="2026-04-10" style="width:140px">
+            <span style="color:var(--tx3);margin-left:14px;font-weight:600">사번/성명</span>
+            <input class="fc" value="180494" style="width:120px">
+            <button class="tb" onclick="openStaffSearchModal()" style="font-size:11px">🔍</button>
+            <input class="fc" value="김병선" readonly style="width:120px;background:#f0f0f0">
+          </td>
+        </tr>
+        <tr style="border:1px solid rgba(0,0,0,.06);background:#fafaf8">
+          <td style="padding:8px 12px;color:var(--tx2);font-weight:600">신청인부서</td>
+          <td style="padding:8px 12px;background:#fff;display:flex;align-items:center;gap:6px">
+            <input class="fc" placeholder="부서" style="width:200px">
+            <button class="tb" style="font-size:11px">🔍</button>
+            <span style="color:var(--tx3);margin-left:14px;font-weight:600">처리상태</span>
+            <select class="fc" style="width:140px"><option>전체</option><option>접수</option><option>처리중</option><option>완료</option><option>반려</option></select>
+            <div style="flex:1"></div>
+            <button class="tb" onclick="showToast('조회 완료')" style="background:#2185C5;color:#fff;border-color:#2185C5">🔍 조회</button>
+          </td>
+        </tr>
+      </table>
+      <div style="background:#fef5f5;border:1px solid #f4c3c3;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px">
+        <div style="display:flex;gap:8px"><span style="color:#c33;font-weight:700;flex-shrink:0">도움말</span><span style="color:var(--tx2)">1. 여비계좌는 출장여비 정산을 위한 별도 계좌로 등록할 수 있습니다.<br>2. 등록된 여비계좌가 없을 경우 급여계좌(주계좌)로 자동 지급됩니다.<br>3. 신청 후 1~2 영업일 내 처리 완료되며, 처리 결과는 메일로 안내됩니다.</span></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 여비계좌신청 목록</div>
+        <span style="font-size:11px;color:var(--tx3)">총 3건</span>
+      </div>
+      <table class="dt" style="font-size:11px">
+        <thead>
+          <tr>
+            <th rowspan="2" style="width:40px">순번</th>
+            <th rowspan="2" style="width:70px">사번</th>
+            <th rowspan="2" style="width:70px">성명</th>
+            <th rowspan="2" style="width:80px">사업장</th>
+            <th rowspan="2">신청인부서</th>
+            <th rowspan="2" style="width:80px">처리상태</th>
+            <th colspan="4" style="background:#eef5fb">신청내역</th>
+            <th colspan="4" style="background:#fef9ee">여비계좌</th>
+          </tr>
+          <tr>
+            <th style="background:#eef5fb">접수번호</th>
+            <th style="background:#eef5fb">신청일자</th>
+            <th style="background:#eef5fb">처리인</th>
+            <th style="background:#eef5fb">처리부서</th>
+            <th style="background:#fef9ee">은행</th>
+            <th style="background:#fef9ee">계좌번호</th>
+            <th style="background:#fef9ee">예금주</th>
+            <th style="background:#fef9ee">사용여부</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tc">1</td><td class="tc">180494</td><td class="tc">김병선</td><td class="tc">본사</td><td>연구개발1팀</td><td class="tc"><span class="bd bg">완료</span></td>
+            <td class="tc">T20260112002</td><td class="tc">2026-01-12</td><td class="tc">박관리</td><td class="tc">총무팀</td>
+            <td class="tc">국민은행</td><td class="tc">123-456-7890</td><td class="tc">김병선</td><td class="tc"><span style="color:#2e7d32;font-weight:700">사용</span></td>
+          </tr>
+          <tr>
+            <td class="tc">2</td><td class="tc">180501</td><td class="tc">이연구</td><td class="tc">본사</td><td>연구개발2팀</td><td class="tc"><span class="bd bg">완료</span></td>
+            <td class="tc">T20260208004</td><td class="tc">2026-02-08</td><td class="tc">박관리</td><td class="tc">총무팀</td>
+            <td class="tc">신한은행</td><td class="tc">110-234-5678</td><td class="tc">이연구</td><td class="tc"><span style="color:#2e7d32;font-weight:700">사용</span></td>
+          </tr>
+          <tr>
+            <td class="tc">3</td><td class="tc">180601</td><td class="tc">최영업</td><td class="tc">서울지점</td><td>영업1팀</td><td class="tc"><span class="bd by">처리중</span></td>
+            <td class="tc">T20260401007</td><td class="tc">2026-04-01</td><td class="tc">-</td><td class="tc">-</td>
+            <td class="tc">하나은행</td><td class="tc">352-789-012345</td><td class="tc">최영업</td><td class="tc">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
 
@@ -2644,7 +3515,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <tr>
               <td class="lk fw7">2월 정기 연구미팅</td>
               <td class="mn">2026-02-19 14:00</td><td>연구실 (B304)</td><td>김병선</td>
-              <td style="font-size:10px">김병선, 이연구, 박대학원</td>
+              <td style="font-size:10px">김병선, 이연구, 박사원</td>
               <td class="mn">202505000001</td>
               <td><span class="lk" style="color:var(--p)">📄 보기</span></td>
               <td><span class="bd by">진행예정</span></td>
@@ -2689,10 +3560,10 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <div style="display:flex;gap:6px"><button class="tb" onclick="showToast('편집 모드로 전환합니다')">편집</button><button class="tb" onclick="printPage()">출력</button></div>
           </div>
           <div style="background:var(--bg);border-radius:8px;padding:14px;font-size:12px;line-height:1.7;color:var(--tx)">
-            <strong>참석자:</strong> 김병선, 이연구, 박대학원<br><br>
+            <strong>참석자:</strong> 김병선, 이연구, 박사원<br><br>
             <strong>안건 1. 연구 진행 현황 보고</strong><br>
             - 이연구: 실험 3단계 완료, 데이터 분석 중<br>
-            - 박대학원: 문헌조사 완료, 실험 시작 예정<br><br>
+            - 박사원: 문헌조사 완료, 실험 시작 예정<br><br>
             <strong>안건 2. 연구비 집행 현황</strong><br>
             - 재료비 잔액 2,160,000원 (소진율 73%)<br>
             - 전문가활용비 미집행분 3,700,000원 활용 방안 논의<br><br>
@@ -2757,7 +3628,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <th style="width:90px">지원사업</th><td><input class="fc ro" value="대학 창의적 자산 실용화 지원사업" readonly style="width:100%;min-width:200px"></td>
           </tr>
           <tr>
-            <th>협약기관</th><td><input class="fc ro" value="전북대학교 산학협력단" readonly style="width:200px"></td>
+            <th>협약기관</th><td><input class="fc ro" value="본사학교 산학협력단" readonly style="width:200px"></td>
             <th>세부지원기관</th><td style="display:flex;align-items:center;gap:60px"><input class="fc ro" value="" readonly style="width:180px"><span style="color:var(--tx3);font-size:11px">관리기관</span><input class="fc ro" value="산학지원과" readonly style="width:120px"></td>
           </tr>
           <tr>
@@ -2921,8 +3792,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <table class="dt" style="font-size:11px">
           <thead><tr><th>성명</th><th>직위</th><th>역할</th><th>기여율</th><th>참여기간</th><th>총지급액</th><th>상태</th></tr></thead>
           <tbody>
-            <tr><td>김병선</td><td>교수</td><td>책임연구자</td><td class="tc">100%</td><td class="mn">2025-06-01~2025-10-31</td><td class="tr c-p fw7">12,000,000</td><td><span class="bd bg">재직</span></td></tr>
-            <tr><td>이연구</td><td>박사후</td><td>공동연구원</td><td class="tc">80%</td><td class="mn">2025-06-01~2025-10-31</td><td class="tr c-p fw7">6,400,000</td><td><span class="bd bg">재직</span></td></tr>
+            <tr><td>김병선</td><td>부장</td><td>책임연구자</td><td class="tc">100%</td><td class="mn">2025-06-01~2025-10-31</td><td class="tr c-p fw7">12,000,000</td><td><span class="bd bg">재직</span></td></tr>
+            <tr><td>이연구</td><td>차장</td><td>공동연구원</td><td class="tc">80%</td><td class="mn">2025-06-01~2025-10-31</td><td class="tr c-p fw7">6,400,000</td><td><span class="bd bg">재직</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2958,8 +3829,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
           <table class="dt" style="font-size:11px">
             <thead><tr><th>No</th><th>카드번호</th><th>사용일</th><th>가맹점</th><th>사용금액</th><th>비목</th><th>청구상태</th><th>관리</th></tr></thead>
             <tbody>
-              <tr style="background:#fffbeb"><td class="tc">1</td><td class="mn">5585-****-****-1306</td><td class="mn">2026-02-15</td><td>올리브영 전북대점</td><td class="tr">45,000</td><td>재료비</td><td><span class="bd bo">미청구</span></td><td class="tc"><button class="tb pri" style="font-size:10px;padding:2px 7px" onclick="openExpensePage('카드청구')">청구서 작성</button></td></tr>
-              <tr style="background:#fffbeb"><td class="tc">2</td><td class="mn">5585-****-****-1306</td><td class="mn">2026-02-10</td><td>스타벅스 전북대W점</td><td class="tr">28,500</td><td>회의비</td><td><span class="bd bo">미청구</span></td><td class="tc"><button class="tb pri" style="font-size:10px;padding:2px 7px" onclick="openExpensePage('카드청구')">청구서 작성</button></td></tr>
+              <tr style="background:#fffbeb"><td class="tc">1</td><td class="mn">5585-****-****-1306</td><td class="mn">2026-02-15</td><td>올리브영 본사점</td><td class="tr">45,000</td><td>재료비</td><td><span class="bd bo">미청구</span></td><td class="tc"><button class="tb pri" style="font-size:10px;padding:2px 7px" onclick="openExpensePage('카드청구')">청구서 작성</button></td></tr>
+              <tr style="background:#fffbeb"><td class="tc">2</td><td class="mn">5585-****-****-1306</td><td class="mn">2026-02-10</td><td>스타벅스 본사W점</td><td class="tr">28,500</td><td>회의비</td><td><span class="bd bo">미청구</span></td><td class="tc"><button class="tb pri" style="font-size:10px;padding:2px 7px" onclick="openExpensePage('카드청구')">청구서 작성</button></td></tr>
               <tr><td class="tc">3</td><td class="mn">5585-****-****-1306</td><td class="mn">2025-10-12</td><td>진남횟집</td><td class="tr">484,000</td><td>회의비</td><td><span class="bd bg">청구완료</span></td><td class="tc"><span class="lk">상세</span></td></tr>
             </tbody>
           </table>
@@ -3014,14 +3885,14 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <tr style="background:#fffbeb">
               <td class="tc"><input type="checkbox"></td><td>자체법인카드</td><td class="mn">5585-****-****-1306</td><td>김병선</td>
               <td class="mn">2026-03-12</td><td class="mn">2026-02-15</td><td class="mn">14:32</td><td class="mn">A1234567</td>
-              <td>국내</td><td>올리브영 전북대점</td><td>의약품/의료용품</td>
+              <td>국내</td><td>올리브영 본사점</td><td>의약품/의료용품</td>
               <td class="tr fw7">45,000</td><td class="tr">40,909</td><td class="tr">4,091</td>
               <td><span class="bd bo">미청구</span></td><td class="tr">0</td><td class="tr">0</td>
             </tr>
             <tr style="background:#fffbeb">
               <td class="tc"><input type="checkbox"></td><td>자체법인카드</td><td class="mn">5585-****-****-1306</td><td>김병선</td>
               <td class="mn">2026-03-10</td><td class="mn">2026-02-10</td><td class="mn">09:15</td><td class="mn">B9876543</td>
-              <td>국내</td><td>스타벅스 전북대W점</td><td>음식점업</td>
+              <td>국내</td><td>스타벅스 본사W점</td><td>음식점업</td>
               <td class="tr fw7">28,500</td><td class="tr">25,909</td><td class="tr">2,591</td>
               <td><span class="bd bo">미청구</span></td><td class="tr">0</td><td class="tr">0</td>
             </tr>
@@ -3451,9 +4322,13 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 function openTab(pid,title,ico){
   const pageMap={'docmgmt':'docmgmt'};
   if(pageMap[pid])pid=pageMap[pid];
-  document.querySelectorAll('.gnb .gi').forEach(g=>g.classList.remove('act'));
-  document.querySelectorAll('.gnb .gi').forEach(g=>{if(g.getAttribute('onclick')&&g.getAttribute('onclick').includes("'"+pid+"'"))g.classList.add('act');});
+  document.querySelectorAll('.gnb .gi,.gnb .gi-sub').forEach(g=>g.classList.remove('act'));
+  document.querySelectorAll('.gnb .gi,.gnb .gi-sub').forEach(g=>{const oc=g.getAttribute('onclick');if(oc&&oc.includes("'"+pid+"'"))g.classList.add('act');});
   showPage(pid);
+}
+function toggleSidebarGroup(el){
+  el.classList.toggle('open');
+  event && event.stopPropagation && event.stopPropagation();
 }
 function showMain(pid){
   document.querySelectorAll('.gnb .gi').forEach(g=>g.classList.remove('act'));
@@ -4064,6 +4939,103 @@ function aprNav(panelId){
       item.classList.add('act');
     }
   });
+}
+
+// ══ 증명서 발급 ══
+let _certSelectedRow=null;
+function selectCertRow(tr,type,date,count,status,approveDate,issued){
+  document.querySelectorAll('#cert-list-tbody tr').forEach(r=>r.style.background='');
+  tr.style.background='#e8f1fa';
+  _certSelectedRow=tr;
+  // 상세 폼에 반영
+  const sel=document.getElementById('cert-type');
+  if(sel){for(let i=0;i<sel.options.length;i++){if(sel.options[i].text===type){sel.selectedIndex=i;break;}}}
+  document.getElementById('cert-date').value=date;
+  document.getElementById('cert-count').value=count;
+  document.getElementById('cert-reject-date').value='';
+  document.getElementById('cert-reject-reason').value='';
+}
+function certInput(){
+  // 새 입력 모드 - 폼 초기화
+  _certSelectedRow=null;
+  document.querySelectorAll('#cert-list-tbody tr').forEach(r=>r.style.background='');
+  const today=new Date();
+  const ymd=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  document.getElementById('cert-type').selectedIndex=0;
+  document.getElementById('cert-date').value=ymd;
+  document.getElementById('cert-count').value=1;
+  document.getElementById('cert-method').selectedIndex=0;
+  document.getElementById('cert-purpose').selectedIndex=0;
+  document.getElementById('cert-purpose-detail').value='';
+  document.getElementById('cert-public').selectedIndex=0;
+  document.getElementById('cert-fax').value='';
+  document.getElementById('cert-ssn').checked=false;
+  document.getElementById('cert-addr').checked=true;
+  document.getElementById('cert-submit-to').value='';
+  document.getElementById('cert-reject-date').value='';
+  document.getElementById('cert-reject-reason').value='';
+  showToast('새 증명서 입력 모드');
+}
+function certApply(){
+  const type=document.getElementById('cert-type').value;
+  const date=document.getElementById('cert-date').value;
+  const count=document.getElementById('cert-count').value;
+  if(!date){showToast('신청일자를 입력하세요');return;}
+  // 신청목록 상단에 추가
+  const tbody=document.getElementById('cert-list-tbody');
+  const tr=document.createElement('tr');
+  tr.style.cursor='pointer';
+  tr.style.background='#fff5e6';
+  tr.innerHTML='<td>'+type+'</td><td class="tc">'+date+'</td><td class="tc">'+count+'</td><td class="tc"><span style="color:#e69500;font-weight:700">신청</span></td><td class="tc">-</td><td class="tc">N</td>';
+  tr.setAttribute('onclick',"selectCertRow(this,'"+type+"','"+date+"','"+count+"','신청','-','N')");
+  tbody.insertBefore(tr,tbody.firstChild);
+  showToast(type+' 신청 완료 — 담당자 승인 대기');
+}
+function certCheckStatus(){
+  if(!_certSelectedRow){showToast('신청목록에서 항목을 선택하세요');return;}
+  const cells=_certSelectedRow.querySelectorAll('td');
+  const status=cells[3]?cells[3].textContent.trim():'';
+  showToast('현재 상태: '+status);
+}
+function certCancel(){
+  if(!_certSelectedRow){showToast('취소할 항목을 선택하세요');return;}
+  const cells=_certSelectedRow.querySelectorAll('td');
+  const issued=cells[5]?cells[5].textContent.trim():'';
+  if(issued==='Y'){showToast('이미 발급 완료된 항목은 취소할 수 없습니다');return;}
+  _certSelectedRow.remove();
+  _certSelectedRow=null;
+  showToast('신청이 취소되었습니다');
+}
+function certPrint(){
+  if(!_certSelectedRow){showToast('출력할 항목을 선택하세요');return;}
+  const cells=_certSelectedRow.querySelectorAll('td');
+  const status=cells[3]?cells[3].textContent.trim():'';
+  if(status!=='승인'&&status!=='출력완료'){showToast('승인된 항목만 출력 가능합니다');return;}
+  const type=cells[0]?cells[0].textContent.trim():'';
+  // 출력완료로 상태 변경
+  cells[3].innerHTML='<span style="color:#2e7d32;font-weight:700">출력완료</span>';
+  cells[5].textContent='Y';
+  showToast(type+' 출력 완료');
+}
+
+// ══ 휴직신청 / 복직신청 ══
+function leaveApply(kind){
+  const type=document.getElementById('leave-type-'+kind).value;
+  const start=document.getElementById('leave-start-'+kind).value;
+  const end=document.getElementById('leave-end-'+kind).value;
+  const reason=document.getElementById('leave-reason-'+kind).value;
+  if(!start||!end){showToast('기간을 입력하세요');return;}
+  if(!reason.trim()){showToast('사유를 입력하세요');return;}
+  const tbody=document.getElementById('leave-list-'+kind);
+  const tr=document.createElement('tr');
+  const today=new Date().toISOString().slice(0,10);
+  tr.innerHTML='<td>'+type+'</td><td class="tc">'+start+'</td><td class="tc">'+end+'</td><td>'+reason+'</td><td class="tc">'+today+'</td><td class="tc"><span style="color:#e69500;font-weight:700">대기</span></td>';
+  tbody.insertBefore(tr,tbody.firstChild);
+  showToast((kind==='leave'?'휴직':'복직')+'신청이 접수되었습니다');
+  // 폼 초기화
+  document.getElementById('leave-start-'+kind).value='';
+  document.getElementById('leave-end-'+kind).value='';
+  document.getElementById('leave-reason-'+kind).value='';
 }
 
 // ══ LOGIN ══
