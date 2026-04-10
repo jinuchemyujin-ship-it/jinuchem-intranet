@@ -91,17 +91,14 @@ input,select,textarea{font-family:var(--font)}
 .gi-section-label{padding:14px 16px 4px;font-size:11px;font-weight:600;letter-spacing:.2px;color:rgba(235,235,245,.3);text-transform:none;white-space:nowrap;transition:all .15s}
 .gnb.collapsed .gi-section-label{display:none}
 .gi-divider{height:0;margin:2px 10px}
-.gi-arrow{width:14px;height:14px;flex-shrink:0;transition:transform .18s ease;opacity:.55}
-.gi-arrow svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
-.gi.gi-parent.open .gi-arrow{transform:rotate(90deg)}
-.gi-children{display:none;flex-direction:column;margin:2px 8px 4px;padding:2px 0;border-left:1px solid rgba(255,255,255,.07)}
-.gi.gi-parent.open + .gi-children{display:flex}
+.gi.gi-parent{cursor:default}
+.gi.gi-parent:hover{background:transparent;color:var(--sbtext)}
+.gi-children{display:flex;flex-direction:column;margin:0 8px 6px;padding:0}
 .gnb.collapsed .gi-children{display:none !important}
-.gnb.collapsed .gi-arrow{display:none}
-.gi-sub{display:flex;align-items:center;gap:8px;padding:0 10px 0 22px;height:32px;font-size:12px;color:rgba(235,235,245,.55);cursor:pointer;border-radius:8px;margin:1px 4px;white-space:nowrap;transition:all .15s}
-.gi-sub:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.85)}
-.gi-sub.act{background:rgba(255,255,255,.08);color:#fff;font-weight:600}
-.gi-sub-dot{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0}
+.gi-sub{display:flex;align-items:center;padding:0 12px 0 42px;height:32px;font-size:12px;color:rgba(235,235,245,.55);cursor:pointer;white-space:nowrap;transition:all .15s;position:relative;border-radius:8px;margin:0 0 1px 0}
+.gi-sub:hover{background:rgba(255,255,255,.04);color:rgba(255,255,255,.9)}
+.gi-sub.act{background:rgba(33,133,197,.18);color:#fff;font-weight:600}
+.gi-sub.act::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;background:#2185C5;border-radius:0 2px 2px 0}
 .gi:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.85)}
 .gi.act{background:rgba(255,255,255,.1);color:#fff;font-weight:600}
 .gi.act .gi-icon{filter:none}
@@ -691,28 +688,26 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="gi" onclick="openTab('organization','조직도','')" data-tip="조직도">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="gi-label">조직도</span>
     </div>
-    <div class="gi gi-parent open" onclick="toggleSidebarGroup(this)" data-tip="인사·급여">
+    <div class="gi gi-parent" data-tip="인사·급여">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
       <span class="gi-label">인사·급여</span>
-      <span class="gi-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
     </div>
     <div class="gi-children">
-      <div class="gi-sub" onclick="openTab('salary','급여관리','')"><span class="gi-sub-dot"></span>급여관리</div>
-      <div class="gi-sub" onclick="openTab('account-mgmt','급여 계좌관리','')"><span class="gi-sub-dot"></span>급여 계좌관리</div>
-      <div class="gi-sub" onclick="openTab('certificate','증명서 발급','')"><span class="gi-sub-dot"></span>증명서 발급</div>
-      <div class="gi-sub" onclick="openTab('leave-apply','휴직신청','️')"><span class="gi-sub-dot"></span>휴직신청</div>
-      <div class="gi-sub" onclick="openTab('return-apply','복직신청','')"><span class="gi-sub-dot"></span>복직신청</div>
-      <div class="gi-sub" onclick="openTab('staff-work','직원 근무상황','')"><span class="gi-sub-dot"></span>직원 근무상황</div>
+      <div class="gi-sub" onclick="openTab('salary','급여관리','')">급여관리</div>
+      <div class="gi-sub" onclick="openTab('account-mgmt','급여 계좌관리','')">급여 계좌관리</div>
+      <div class="gi-sub" onclick="openTab('certificate','증명서 발급','')">증명서 발급</div>
+      <div class="gi-sub" onclick="openTab('leave-apply','휴직신청','')">휴직신청</div>
+      <div class="gi-sub" onclick="openTab('return-apply','복직신청','')">복직신청</div>
+      <div class="gi-sub" onclick="openTab('staff-work','직원 근무상황','')">직원 근무상황</div>
     </div>
-    <div class="gi gi-parent open" onclick="toggleSidebarGroup(this)" data-tip="출장관리">
+    <div class="gi gi-parent" data-tip="출장관리">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 11-4 0M5 17V9a2 2 0 012-2h10a2 2 0 012 2v8M19 17a2 2 0 104 0M3 11h18"/></svg></span>
       <span class="gi-label">출장관리</span>
-      <span class="gi-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
     </div>
     <div class="gi-children">
-      <div class="gi-sub" onclick="openTab('trip-apply','출장신청','')"><span class="gi-sub-dot"></span>출장신청</div>
-      <div class="gi-sub" onclick="openTab('trip-settle','관외출장 여비정산','')"><span class="gi-sub-dot"></span>관외출장 여비정산</div>
-      <div class="gi-sub" onclick="openTab('trip-overseas','국외출장','️')"><span class="gi-sub-dot"></span>국외출장</div>
+      <div class="gi-sub" onclick="openTab('trip-apply','출장신청','')">출장신청</div>
+      <div class="gi-sub" onclick="openTab('trip-settle','관외출장 여비정산','')">관외출장 여비정산</div>
+      <div class="gi-sub" onclick="openTab('trip-overseas','국외출장','')">국외출장</div>
     </div>
     <div class="gi" onclick="openTab('sales','매출·매입','')" data-tip="매출·매입">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span><span class="gi-label">매출·매입</span>
@@ -4325,10 +4320,6 @@ function openTab(pid,title,ico){
   document.querySelectorAll('.gnb .gi,.gnb .gi-sub').forEach(g=>g.classList.remove('act'));
   document.querySelectorAll('.gnb .gi,.gnb .gi-sub').forEach(g=>{const oc=g.getAttribute('onclick');if(oc&&oc.includes("'"+pid+"'"))g.classList.add('act');});
   showPage(pid);
-}
-function toggleSidebarGroup(el){
-  el.classList.toggle('open');
-  event && event.stopPropagation && event.stopPropagation();
 }
 function showMain(pid){
   document.querySelectorAll('.gnb .gi').forEach(g=>g.classList.remove('act'));
