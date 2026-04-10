@@ -1851,7 +1851,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 
       <!-- 전체서식 -->
       <div class="apr-panel" id="apr-forms">
-        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">전체서식 (11)</div>
+        <div style="font-size:12px;color:var(--tx3);padding:12px 16px 4px">전체서식 (9)</div>
         <div class="frow">
           <span class="fl">서식명</span><input class="fi" placeholder="서식명 검색" style="width:180px">
           <button class="fb" onclick="showToast('검색 완료')">검색</button>
@@ -1866,11 +1866,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <tr style="cursor:pointer" onclick="openApprovalForm('재료비청구서')"><td class="lk">04_재료비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('회의비')"><td class="lk">05_회의비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('휴가신청서')"><td class="lk">06_휴가신청서</td><td>공통서식</td><td>결재자3명 협조자2명</td></tr>
-            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('기안기 배포 안내')"><td class="lk" style="color:#2185C5">07_공문_기안기 배포</td><td>공문서식</td><td>기안기 프로그램 배포 안내 공문</td></tr>
-            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('유통필터 변경 안내')"><td class="lk" style="color:#2185C5">08_공문_유통필터 변경</td><td>공문서식</td><td>유통필터 정책 변경 안내 공문</td></tr>
-            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('한글 OCX 패치 안내')"><td class="lk" style="color:#2185C5">09_공문_한글OCX패치</td><td>공문서식</td><td>한글 OCX 패치파일 설치 안내 공문</td></tr>
-            <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">10_간이기안문</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
-            <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">11_간이기안문</td><td>공통서식(이전서식)</td><td>결재자6명 협조자6명</td></tr>
+            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('공문')"><td class="lk" style="color:#2185C5">07_공문</td><td>공문서식</td><td>대내·대외 공문 작성 (기안기 배포 / 유통필터 / 한글OCX 패치)</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">08_간이기안문</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
+            <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">09_간이기안문</td><td>공통서식(이전서식)</td><td>결재자6명 협조자6명</td></tr>
           </tbody></table>
         </div>
       </div>
@@ -3867,11 +3865,45 @@ function switchDraftTab(el,panelId){
   if(panel)panel.classList.add('act');
 }
 function openDraftModal(formName){
-  if(formName){
-    const ti=document.getElementById('draft-title');
-    if(ti)ti.value=formName;
+  const ti=document.getElementById('draft-title');
+  const topicRow=document.getElementById('draft-gm-topic-row');
+  const topicSel=document.getElementById('draft-gm-topic');
+  // 공문 서식 여부 판정
+  const isGm = formName==='공문';
+  if(topicRow) topicRow.style.display = isGm ? '' : 'none';
+  if(topicSel) topicSel.value='';
+  if(ti){
+    if(isGm){
+      ti.value='';
+      ti.placeholder='공문 주제를 선택하면 자동 입력됩니다';
+    } else {
+      ti.placeholder='문서 제목을 입력하세요';
+      if(formName) ti.value=formName;
+    }
+  }
+  // 공문이면 문서정보 탭으로 시작
+  if(isGm){
+    const tabs=document.querySelectorAll('#modal-draft .draft-tab');
+    const panels=document.querySelectorAll('#modal-draft .draft-panel');
+    tabs.forEach(t=>t.classList.remove('act'));
+    panels.forEach(p=>p.classList.remove('act'));
+    if(tabs[0])tabs[0].classList.add('act');
+    const dp=document.getElementById('draft-docinfo');
+    if(dp)dp.classList.add('act');
   }
   openModal('modal-draft');
+}
+// 공문 주제 변경 시 제목 자동 채우기
+function onGmTopicChange(topic){
+  const ti=document.getElementById('draft-title');
+  if(!ti)return;
+  const tpl = (typeof GM_TEMPLATES!=='undefined') ? GM_TEMPLATES[topic] : null;
+  if(tpl && tpl.title){
+    ti.value=tpl.title;
+    showToast('공문 주제: '+topic);
+  } else {
+    ti.value='';
+  }
 }
 function addApprover(pos,grade,method,name){
   const tbody=document.querySelector('#draft-ap-table tbody');
@@ -3891,7 +3923,19 @@ function removeLastApprover(){
 }
 function submitDraft(){
   const title=document.getElementById('draft-title');
-  if(!title||!title.value.trim()){showToast('제목을 입력하세요');return;}
+  const topicSel=document.getElementById('draft-gm-topic');
+  const topicRow=document.getElementById('draft-gm-topic-row');
+  const isGmActive = topicRow && topicRow.style.display!=='none';
+  // 공문이면 주제 선택 필수
+  if(isGmActive){
+    if(!topicSel || !topicSel.value){
+      showToast('공문 주제를 선택하세요');
+      if(topicSel)topicSel.focus();
+      return;
+    }
+  } else {
+    if(!title||!title.value.trim()){showToast('제목을 입력하세요');return;}
+  }
   // 결재선 정보 수집
   const rows=document.querySelectorAll('#draft-ap-table tbody tr');
   let apLine='';
@@ -3899,9 +3943,10 @@ function submitDraft(){
     const cells=r.querySelectorAll('td');
     if(cells.length>=4) apLine+=(i>0?' → ':'')+cells[3].textContent+'('+cells[2].textContent+')';
   });
-  // 에디터 열기
+  // 에디터 열기 — 공문이면 선택한 주제 키를 docTitle로 전달 → openDocEditor가 GM_TEMPLATES 매핑
   closeModal('modal-draft');
-  openDocEditor(title.value, apLine);
+  const docKey = isGmActive ? topicSel.value : title.value;
+  openDocEditor(docKey, apLine);
 }
 
 // 공문 양식 템플릿 데이터
@@ -4248,6 +4293,18 @@ function handleLogin(e){
             <label style="margin-right:12px;cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 자동발송</label>
             <label style="margin-right:12px;cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 긴급결재</label>
             <label style="cursor:pointer"><input type="checkbox" style="accent-color:var(--p)"> 열람시암호확인</label>
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,0,0,.06);display:none" id="draft-gm-topic-row">
+          <td style="padding:10px 12px;color:var(--tx2);font-weight:600">공문 주제</td>
+          <td style="padding:10px 12px;display:flex;gap:8px;align-items:center">
+            <select class="fc" id="draft-gm-topic" style="flex:1;max-width:340px" onchange="onGmTopicChange(this.value)">
+              <option value="">— 공문 주제를 선택하세요 —</option>
+              <option value="기안기 배포 안내">기안기 배포 안내 (전자결재 기안기 v2.0)</option>
+              <option value="유통필터 변경 안내">유통필터 변경 안내 (정책 변경)</option>
+              <option value="한글 OCX 패치 안내">한글 OCX 패치 안내 (패치파일 설치)</option>
+            </select>
+            <span style="font-size:11px;color:var(--tx3)">선택 시 제목·본문 자동 입력</span>
           </td>
         </tr>
         <tr style="border-bottom:1px solid rgba(0,0,0,.06)">
