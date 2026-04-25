@@ -8,10 +8,12 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  /* ScholarWorks 스타일 — 미니멀, 넓은 여백, 큰 타이포 */
-  --p:#2C2C2C;--pd:#1a1a1a;--pl:#555;--pp:#f7f7f7;
-  --acc:#2C2C2C;--acc2:#555;
-  --cv-teal:#2C2C2C;--cv-teal-dark:#1a1a1a;
+  /* MY INTRANET — Fresh Blue Theme */
+  --p:#4A7CF0;--pd:#3563D9;--pl:#7FA3F5;--pp:#EEF3FE;
+  --acc:#4A7CF0;--acc2:#7FA3F5;
+  --cv-teal:#4A7CF0;--cv-teal-dark:#3563D9;
+  --hero:linear-gradient(135deg,#4A7CF0 0%,#6E99F4 100%);
+  --hero-soft:linear-gradient(135deg,#EEF3FE 0%,#DBE6FC 100%);
   --bg:#f0f0f0;--bg2:#e8e8e8;--white:#fff;
   --bdr:rgba(0,0,0,.08);--bdr2:rgba(0,0,0,.15);
   --tx:#1a1a1a;--tx2:#444;--tx3:#888;--tx4:#aaa;
@@ -99,7 +101,7 @@ input,select,textarea{font-family:var(--font)}
 .gi-sub{display:flex;align-items:center;padding:0 12px 0 42px;height:32px;font-size:12px;color:rgba(235,235,245,.55);cursor:pointer;white-space:nowrap;transition:all .15s;position:relative;border-radius:8px;margin:0 0 1px 0}
 .gi-sub:hover{background:rgba(255,255,255,.04);color:rgba(255,255,255,.9)}
 .gi-sub.act{background:rgba(33,133,197,.18);color:#fff;font-weight:600}
-.gi-sub.act::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;background:#2185C5;border-radius:0 2px 2px 0}
+.gi-sub.act::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;background:#4A7CF0;border-radius:0 2px 2px 0}
 .gi:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.85)}
 .gi.act{background:rgba(255,255,255,.1);color:#fff;font-weight:600}
 .gi.act .gi-icon{filter:none}
@@ -439,6 +441,18 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .apr-page-title{font-size:17px;font-weight:700;color:#1a1a1a;letter-spacing:-.3px}
 .apr-page-count{font-size:12px;color:var(--tx3);font-weight:500}
 .apr-panel .frow{background:#fff;border-bottom:1px solid #eef0f3;padding:14px 24px;gap:10px}
+/* ══ WELCOME HERO (MY INTRANET) ══ */
+.welcome-hero{margin:14px 18px 4px;padding:22px 28px;background:var(--hero);border-radius:14px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 4px 18px rgba(74,124,240,.18);overflow:hidden}
+.welcome-hero-text{flex:1;min-width:0}
+.welcome-greeting{font-size:20px;font-weight:700;letter-spacing:-.4px;margin-bottom:4px}
+.welcome-sub{font-size:12px;color:rgba(255,255,255,.8);margin-bottom:14px}
+.welcome-stats{display:flex;align-items:center;gap:18px}
+.wh-stat{cursor:pointer;transition:opacity .15s}
+.wh-stat:hover{opacity:.85}
+.wh-stat-num{font-size:22px;font-weight:700;font-family:var(--mono);line-height:1}
+.wh-stat-lbl{font-size:11px;color:rgba(255,255,255,.82);margin-top:3px}
+.wh-sep{width:1px;height:28px;background:rgba(255,255,255,.3)}
+.welcome-hero-art{flex-shrink:0;opacity:.95}
 .apr-section{padding:18px 24px 8px}
 .apr-section>table.dt{background:#fff;border:1px solid #eef0f3;border-radius:6px;overflow:hidden}
 .apr-section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -593,17 +607,17 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="login-logo">
       <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg">
         <!-- 분자 구조 아이콘 -->
-        <circle cx="38" cy="18" r="7" fill="#2185C5"/>
+        <circle cx="38" cy="18" r="7" fill="#4A7CF0"/>
         <circle cx="22" cy="8" r="4" fill="#4DB4E6"/>
         <circle cx="52" cy="6" r="3" fill="#4DB4E6"/>
         <circle cx="56" cy="20" r="2.5" fill="#6DCFF6"/>
-        <circle cx="28" cy="28" r="3" fill="#2185C5"/>
-        <line x1="38" y1="18" x2="22" y2="8" stroke="#2185C5" stroke-width="2.5"/>
+        <circle cx="28" cy="28" r="3" fill="#4A7CF0"/>
+        <line x1="38" y1="18" x2="22" y2="8" stroke="#4A7CF0" stroke-width="2.5"/>
         <line x1="38" y1="18" x2="52" y2="6" stroke="#4DB4E6" stroke-width="2"/>
         <line x1="38" y1="18" x2="56" y2="20" stroke="#4DB4E6" stroke-width="1.8"/>
-        <line x1="38" y1="18" x2="28" y2="28" stroke="#2185C5" stroke-width="2"/>
+        <line x1="38" y1="18" x2="28" y2="28" stroke="#4A7CF0" stroke-width="2"/>
         <!-- jinu 텍스트 (파란색) -->
-        <text x="8" y="72" font-family="'Nunito','Poppins','Pretendard',sans-serif" font-size="48" font-weight="800" fill="#2185C5" letter-spacing="-1">jinu</text>
+        <text x="8" y="72" font-family="'Nunito','Poppins','Pretendard',sans-serif" font-size="48" font-weight="800" fill="#4A7CF0" letter-spacing="-1">jinu</text>
         <!-- chem 텍스트 (진회색) -->
         <text x="120" y="72" font-family="'Nunito','Poppins','Pretendard',sans-serif" font-size="48" font-weight="800" fill="#3C3C3C" letter-spacing="-1">chem</text>
       </svg>
@@ -798,6 +812,44 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <span style="width:1px;height:16px;background:rgba(0,0,0,.08);margin:0 4px"></span>
       <button class="qab" onclick="showMain('approval')"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> 결재대기 <strong style="color:var(--ora)">4</strong></button>
       <button class="qab" onclick="window.open('https://mail.google.com','_blank')"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg> 발송대기 <strong>0</strong></button>
+    </div>
+
+    <!-- ══ 웰컴 히어로 ══ -->
+    <div class="welcome-hero">
+      <div class="welcome-hero-text">
+        <div class="welcome-greeting" id="welcome-greeting">김병선님, 좋은 하루 보내세요</div>
+        <div class="welcome-sub">오늘도 함께 성장해요</div>
+        <div class="welcome-stats">
+          <div class="wh-stat" onclick="showMain('approval')">
+            <div class="wh-stat-num">3</div>
+            <div class="wh-stat-lbl">결재대기</div>
+          </div>
+          <div class="wh-sep"></div>
+          <div class="wh-stat" onclick="showMain('attendance')">
+            <div class="wh-stat-num">12</div>
+            <div class="wh-stat-lbl">잔여 연차</div>
+          </div>
+          <div class="wh-sep"></div>
+          <div class="wh-stat" onclick="showMain('projects')">
+            <div class="wh-stat-num">4</div>
+            <div class="wh-stat-lbl">진행 과제</div>
+          </div>
+        </div>
+      </div>
+      <div class="welcome-hero-art" aria-hidden="true">
+        <svg viewBox="0 0 200 120" width="200" height="120">
+          <rect x="20" y="90" width="16" height="24" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="44" y="70" width="16" height="44" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="68" y="50" width="16" height="64" rx="2" fill="rgba(255,255,255,.75)"/>
+          <rect x="92" y="60" width="16" height="54" rx="2" fill="rgba(255,255,255,.6)"/>
+          <rect x="116" y="30" width="16" height="84" rx="2" fill="#fff"/>
+          <rect x="140" y="55" width="16" height="59" rx="2" fill="rgba(255,255,255,.7)"/>
+          <polyline points="28,85 52,65 76,45 100,55 124,25 148,50" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+          <circle cx="28" cy="85" r="3" fill="#fff"/><circle cx="52" cy="65" r="3" fill="#fff"/>
+          <circle cx="76" cy="45" r="3" fill="#fff"/><circle cx="100" cy="55" r="3" fill="#fff"/>
+          <circle cx="124" cy="25" r="3" fill="#fff"/><circle cx="148" cy="50" r="3" fill="#fff"/>
+        </svg>
+      </div>
     </div>
 
     <!-- ══ 대시보드 본문 ══ -->
@@ -1900,7 +1952,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <tr style="cursor:pointer" onclick="openApprovalForm('재료비청구서')"><td class="lk">04_재료비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('회의비')"><td class="lk">05_회의비청구서</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('휴가신청서')"><td class="lk">06_휴가신청서</td><td>공통서식</td><td>결재자3명 협조자2명</td></tr>
-            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('공문')"><td class="lk" style="color:#2185C5">07_공문</td><td>공문서식</td><td>대내·대외 공문 작성 (기안기 배포 / 유통필터 / 한글OCX 패치)</td></tr>
+            <tr style="cursor:pointer;background:#f8fbff" onclick="openApprovalForm('공문')"><td class="lk" style="color:#4A7CF0">07_공문</td><td>공문서식</td><td>대내·대외 공문 작성 (기안기 배포 / 유통필터 / 한글OCX 패치)</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">08_간이기안문</td><td>공통서식(이전서식)</td><td>결재자4명 협조자4명</td></tr>
             <tr style="cursor:pointer" onclick="openApprovalForm('간이기안문')"><td class="lk">09_간이기안문</td><td>공통서식(이전서식)</td><td>결재자6명 협조자6명</td></tr>
           </tbody></table>
@@ -2679,19 +2731,19 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             </tr>
           </thead>
           <tbody id="cert-list-tbody">
-            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2026-02-27','1','승인','2026-02-27','N')"><td>재직증명서</td><td class="tc">2026-02-27</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2026-02-27</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2026-02-27','1','승인','2026-02-27','N')"><td>재직증명서</td><td class="tc">2026-02-27</td><td class="tc">1</td><td class="tc"><span style="color:#4A7CF0;font-weight:700">승인</span></td><td class="tc">2026-02-27</td><td class="tc">N</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2026-02-04','1','출력완료','2026-02-04','Y')"><td>재직증명서</td><td class="tc">2026-02-04</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2026-02-04</td><td class="tc">Y</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2026-01-06','1','출력완료','2026-01-06','Y')"><td>재직증명서</td><td class="tc">2026-01-06</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2026-01-06</td><td class="tc">Y</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-05-19','1','출력완료','2025-05-19','Y')"><td>재직증명서</td><td class="tc">2025-05-19</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2025-05-19</td><td class="tc">Y</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-04-17','1','출력완료','2025-04-17','Y')"><td>재직증명서</td><td class="tc">2025-04-17</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2025-04-17</td><td class="tc">Y</td></tr>
-            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-04-02','1','승인','2025-04-02','N')"><td>재직증명서</td><td class="tc">2025-04-02</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2025-04-02</td><td class="tc">N</td></tr>
-            <tr style="cursor:pointer" onclick="selectCertRow(this,'경력증명서','2025-02-17','1','승인','2025-02-17','N')"><td>경력증명서</td><td class="tc">2025-02-17</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2025-02-17</td><td class="tc">N</td></tr>
-            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-02-17','1','승인','2025-02-17','N')"><td>재직증명서</td><td class="tc">2025-02-17</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2025-02-17</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-04-02','1','승인','2025-04-02','N')"><td>재직증명서</td><td class="tc">2025-04-02</td><td class="tc">1</td><td class="tc"><span style="color:#4A7CF0;font-weight:700">승인</span></td><td class="tc">2025-04-02</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'경력증명서','2025-02-17','1','승인','2025-02-17','N')"><td>경력증명서</td><td class="tc">2025-02-17</td><td class="tc">1</td><td class="tc"><span style="color:#4A7CF0;font-weight:700">승인</span></td><td class="tc">2025-02-17</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-02-17','1','승인','2025-02-17','N')"><td>재직증명서</td><td class="tc">2025-02-17</td><td class="tc">1</td><td class="tc"><span style="color:#4A7CF0;font-weight:700">승인</span></td><td class="tc">2025-02-17</td><td class="tc">N</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2025-01-23','1','출력완료','2025-01-23','Y')"><td>재직증명서</td><td class="tc">2025-01-23</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2025-01-23</td><td class="tc">Y</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2024-12-18','1','출력완료','2024-12-18','Y')"><td>재직증명서</td><td class="tc">2024-12-18</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-12-18</td><td class="tc">Y</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2024-12-04','1','출력완료','2024-12-04','Y')"><td>재직증명서</td><td class="tc">2024-12-04</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-12-04</td><td class="tc">Y</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'경력증명서','2024-12-04','1','출력완료','2024-12-05','Y')"><td>경력증명서</td><td class="tc">2024-12-04</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-12-05</td><td class="tc">Y</td></tr>
-            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서(영문)','2024-12-04','1','승인','2024-12-04','N')"><td>재직증명서(영문)</td><td class="tc">2024-12-04</td><td class="tc">1</td><td class="tc"><span style="color:#2185C5;font-weight:700">승인</span></td><td class="tc">2024-12-04</td><td class="tc">N</td></tr>
+            <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서(영문)','2024-12-04','1','승인','2024-12-04','N')"><td>재직증명서(영문)</td><td class="tc">2024-12-04</td><td class="tc">1</td><td class="tc"><span style="color:#4A7CF0;font-weight:700">승인</span></td><td class="tc">2024-12-04</td><td class="tc">N</td></tr>
             <tr style="cursor:pointer" onclick="selectCertRow(this,'재직증명서','2024-10-21','1','출력완료','2024-10-21','Y')"><td>재직증명서</td><td class="tc">2024-10-21</td><td class="tc">1</td><td class="tc"><span style="color:#2e7d32;font-weight:700">출력완료</span></td><td class="tc">2024-10-21</td><td class="tc">Y</td></tr>
           </tbody>
         </table>
@@ -2703,7 +2755,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <span style="font-size:13px;font-weight:700;color:var(--tx)"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 상세내역</span>
         <div style="display:flex;gap:6px">
           <button class="tb" onclick="certInput()">입력</button>
-          <button class="tb" onclick="certApply()" style="background:#2185C5;color:#fff;border-color:#2185C5">신청</button>
+          <button class="tb" onclick="certApply()" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0">신청</button>
           <button class="tb" onclick="certCheckStatus()">상태확인</button>
           <button class="tb" onclick="certCancel()">신청취소</button>
           <button class="tb" onclick="certPrint()" style="background:#2e7d32;color:#fff;border-color:#2e7d32">출력</button>
@@ -2807,7 +2859,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </table>
       <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end">
         <button class="tb" onclick="document.getElementById('leave-start-leave').value='';document.getElementById('leave-end-leave').value='';document.getElementById('leave-reason-leave').value='';showToast('초기화')">초기화</button>
-        <button class="tb" onclick="leaveApply('leave')" style="background:#2185C5;color:#fff;border-color:#2185C5">휴직신청</button>
+        <button class="tb" onclick="leaveApply('leave')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0">휴직신청</button>
       </div>
     </div>
     <!-- 우측: 신청내역 -->
@@ -2895,12 +2947,12 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <div class="toolbar">
     <span class="tb-title">출장신청</span>
     <div style="display:flex;gap:0;margin-left:16px;border-bottom:none">
-      <div class="trip-tab act" onclick="tripSwitchTab(this,'trip-apply-form')" style="padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(0,0,0,.1);border-bottom:none;background:#fff;color:#2185C5">출장신청</div>
+      <div class="trip-tab act" onclick="tripSwitchTab(this,'trip-apply-form')" style="padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(0,0,0,.1);border-bottom:none;background:#fff;color:#4A7CF0">출장신청</div>
       <div class="trip-tab" onclick="tripSwitchTab(this,'trip-apply-history')" style="padding:6px 14px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(0,0,0,.1);border-bottom:none;background:#fafaf8;color:var(--tx2);margin-left:-1px">출장내역조회</div>
     </div>
     <div class="tb-spacer"></div>
     <button class="tb" onclick="showToast('출장신청서 출력')">출장신청서 출력</button>
-    <button class="tb" onclick="showToast('전자결재 상신')" style="background:#2185C5;color:#fff;border-color:#2185C5">전자결재</button>
+    <button class="tb" onclick="showToast('전자결재 상신')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0">전자결재</button>
   </div>
   <!-- 출장신청 폼 -->
   <div class="trip-panel act" id="trip-apply-form" style="flex:1;overflow-y:auto;padding:16px 20px">
@@ -3030,9 +3082,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <span class="tb-title">관외출장 여비정산신청</span>
     <div class="tb-spacer"></div>
     <button class="tb" onclick="showToast('조회')" style="font-size:11px"> 조회</button>
-    <button class="tb" onclick="showToast('신규 정산')" style="background:#2185C5;color:#fff;border-color:#2185C5;font-size:11px">+ 신규</button>
+    <button class="tb" onclick="showToast('신규 정산')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0;font-size:11px">+ 신규</button>
     <button class="tb" onclick="showToast('삭제')" style="background:#c33;color:#fff;border-color:#c33;font-size:11px"> 삭제</button>
-    <button class="tb" onclick="showToast('저장 완료')" style="background:#2185C5;color:#fff;border-color:#2185C5;font-size:11px"> 저장</button>
+    <button class="tb" onclick="showToast('저장 완료')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0;font-size:11px"> 저장</button>
   </div>
   <div style="flex:1;overflow-y:auto;padding:14px 20px">
     <!-- 검색조건 -->
@@ -3092,7 +3144,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px"><span style="color:var(--tx3);font-weight:400;margin-right:4px">›</span> 총정산액 (지급액 + 현금 + 카드지출 + 정부구매카드지출 = 출장정산비용)</div>
     <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:18px;border:1px solid #e0e0e0">
       <tr><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:110px">지급액 합계</td><td style="padding:8px 12px;text-align:right" id="settle-pay">0</td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:110px">현금 합계</td><td style="padding:8px 12px;text-align:right" id="settle-cash">0</td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:110px">개인카드 합계</td><td style="padding:8px 12px;text-align:right" id="settle-card">0</td><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600;width:130px">정부금액카드 합계</td><td style="padding:8px 12px;text-align:right" id="settle-gov">0</td></tr>
-      <tr><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600">출장비 합계</td><td colspan="7" style="padding:8px 12px;text-align:right;font-weight:700;color:#2185C5" id="settle-total">0</td></tr>
+      <tr><td style="padding:8px 12px;background:#fafaf8;color:var(--tx2);font-weight:600">출장비 합계</td><td colspan="7" style="padding:8px 12px;text-align:right;font-weight:700;color:#4A7CF0" id="settle-total">0</td></tr>
     </table>
     <!-- 운임 -->
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
@@ -3146,7 +3198,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <span class="tb-title">국외출장 신청</span>
     <div class="tb-spacer"></div>
     <button class="tb" onclick="showToast('국외출장 신청서 출력')">신청서 출력</button>
-    <button class="tb" onclick="showToast('전자결재 상신')" style="background:#2185C5;color:#fff;border-color:#2185C5">전자결재</button>
+    <button class="tb" onclick="showToast('전자결재 상신')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0">전자결재</button>
   </div>
   <div style="flex:1;overflow-y:auto;padding:16px 20px">
     <div style="background:#fdf6e3;border:1px solid #e8d8a0;border-radius:4px;padding:10px 14px;font-size:11px;line-height:1.7;margin-bottom:14px;color:var(--tx2)">
@@ -3218,7 +3270,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <div class="toolbar">
     <span class="tb-title">직원 근무상황관리</span>
     <div class="tb-spacer"></div>
-    <button class="tb" onclick="staffWorkSearch()" style="background:#2185C5;color:#fff;border-color:#2185C5"> 조회</button>
+    <button class="tb" onclick="staffWorkSearch()" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0"> 조회</button>
   </div>
   <div style="flex:1;overflow-y:auto;padding:16px 20px">
     <!-- 검색조건 -->
@@ -3292,7 +3344,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
     <div class="mftr" style="display:flex;justify-content:center;gap:8px">
-      <button class="tb" onclick="staffSelectFromModal()" style="background:#2185C5;color:#fff;border-color:#2185C5;min-width:60px">확인</button>
+      <button class="tb" onclick="staffSelectFromModal()" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0;min-width:60px">확인</button>
       <button class="tb" onclick="closeModal('modal-staff-search')" style="min-width:60px">취소</button>
     </div>
   </div>
@@ -3303,7 +3355,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   <div class="toolbar">
     <span class="tb-title">급여 계좌관리</span>
     <div class="tb-spacer"></div>
-    <button class="tb" onclick="showToast('계좌신청을 등록합니다')" style="background:#2185C5;color:#fff;border-color:#2185C5">+ 신청 등록</button>
+    <button class="tb" onclick="showToast('계좌신청을 등록합니다')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0">+ 신청 등록</button>
     <button class="tb" onclick="downloadExcel('account-mgmt')">Excel 다운로드</button>
   </div>
   <div class="itabs">
@@ -3345,7 +3397,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <span style="color:var(--tx3);margin-left:14px;font-weight:600">지급계좌구분</span>
             <select class="fc" style="width:160px"><option>전체</option><option>급여계좌</option><option>상여금계좌</option><option>기타</option></select>
             <div style="flex:1"></div>
-            <button class="tb" onclick="showToast('조회 완료')" style="background:#2185C5;color:#fff;border-color:#2185C5"> 조회</button>
+            <button class="tb" onclick="showToast('조회 완료')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0"> 조회</button>
           </td>
         </tr>
       </table>
@@ -3431,7 +3483,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
             <span style="color:var(--tx3);margin-left:14px;font-weight:600">처리상태</span>
             <select class="fc" style="width:140px"><option>전체</option><option>접수</option><option>처리중</option><option>완료</option><option>반려</option></select>
             <div style="flex:1"></div>
-            <button class="tb" onclick="showToast('조회 완료')" style="background:#2185C5;color:#fff;border-color:#2185C5"> 조회</button>
+            <button class="tb" onclick="showToast('조회 완료')" style="background:#4A7CF0;color:#fff;border-color:#4A7CF0"> 조회</button>
           </td>
         </tr>
       </table>
@@ -5355,7 +5407,7 @@ function handleLogin(e){
       <div class="gm-slogan">연구자의 니즈를 존중하는 기업</div>
       <!-- 로고 + 회사명 -->
       <div class="gm-header">
-        <div class="gm-logo"><svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg"><circle cx="38" cy="18" r="7" fill="#2185C5"/><circle cx="22" cy="8" r="4" fill="#4DB4E6"/><circle cx="52" cy="6" r="3" fill="#4DB4E6"/><circle cx="56" cy="20" r="2.5" fill="#6DCFF6"/><circle cx="28" cy="28" r="3" fill="#2185C5"/><line x1="38" y1="18" x2="22" y2="8" stroke="#2185C5" stroke-width="2.5"/><line x1="38" y1="18" x2="52" y2="6" stroke="#4DB4E6" stroke-width="2"/><line x1="38" y1="18" x2="56" y2="20" stroke="#4DB4E6" stroke-width="1.8"/><line x1="38" y1="18" x2="28" y2="28" stroke="#2185C5" stroke-width="2"/><text x="8" y="72" font-family="'Nunito','Poppins','Pretendard',sans-serif" font-size="48" font-weight="800" fill="#2185C5" letter-spacing="-1">jinu</text><text x="120" y="72" font-family="'Nunito','Poppins','Pretendard',sans-serif" font-size="48" font-weight="800" fill="#3C3C3C" letter-spacing="-1">chem</text></svg></div>
+        <div class="gm-logo"><svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg"><circle cx="38" cy="18" r="7" fill="#4A7CF0"/><circle cx="22" cy="8" r="4" fill="#4DB4E6"/><circle cx="52" cy="6" r="3" fill="#4DB4E6"/><circle cx="56" cy="20" r="2.5" fill="#6DCFF6"/><circle cx="28" cy="28" r="3" fill="#4A7CF0"/><line x1="38" y1="18" x2="22" y2="8" stroke="#4A7CF0" stroke-width="2.5"/><line x1="38" y1="18" x2="52" y2="6" stroke="#4DB4E6" stroke-width="2"/><line x1="38" y1="18" x2="56" y2="20" stroke="#4DB4E6" stroke-width="1.8"/><line x1="38" y1="18" x2="28" y2="28" stroke="#4A7CF0" stroke-width="2"/><text x="8" y="72" font-family="'Nunito','Poppins','Pretendard',sans-serif" font-size="48" font-weight="800" fill="#4A7CF0" letter-spacing="-1">jinu</text><text x="120" y="72" font-family="'Nunito','Poppins','Pretendard',sans-serif" font-size="48" font-weight="800" fill="#3C3C3C" letter-spacing="-1">chem</text></svg></div>
         <div class="gm-company">주식회사 지누켐</div>
       </div>
       <!-- 수신 / 경유 / 제목 -->
