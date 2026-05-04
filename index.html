@@ -441,6 +441,16 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .apr-page-title{font-size:17px;font-weight:700;color:#1a1a1a;letter-spacing:-.3px}
 .apr-page-count{font-size:12px;color:var(--tx3);font-weight:500}
 .apr-panel .frow{background:#fff;border-bottom:1px solid #eef0f3;padding:14px 24px;gap:10px}
+/* ══ PROJECT STATUS WIDGET (R&D ERP 스타일) ══ */
+.proj-tabs{display:flex;gap:2px;background:#f3f5f9;border-radius:8px;padding:3px}
+.proj-tab{padding:6px 12px;font-size:11px;font-weight:600;color:#7a8294;cursor:pointer;border-radius:6px;transition:all .15s;white-space:nowrap}
+.proj-tab:hover{color:var(--tx)}
+.proj-tab.act{background:#fff;color:var(--p);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.proj-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.proj-stat-mini{background:#f7f9fc;border-radius:8px;padding:10px 12px;text-align:left}
+.psm-num{font-size:18px;font-weight:700;color:var(--tx);font-family:var(--mono);line-height:1}
+.psm-lbl{font-size:11px;color:var(--tx3);margin-top:4px}
+
 /* ══ DASHBOARD TOPBAR (인사말 + 검색) ══ */
 .dash-topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#fff;border-bottom:1px solid #eef0f3;flex-shrink:0;gap:18px}
 .dash-greet{flex:1;min-width:0}
@@ -924,6 +934,60 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
+    <!-- ROW 1.5: 과제 현황 (3col) + 책임자 정보 (1col) — R&D ERP 스타일 -->
+    <div class="wgt" style="grid-column:span 3">
+      <div class="whdr">
+        <span class="wttl">과제 현황</span>
+        <div class="wact" style="display:flex;align-items:center;gap:6px">
+          <div class="proj-tabs">
+            <div class="proj-tab act" onclick="switchProjTab(this,'all')">전체현황</div>
+            <div class="proj-tab" onclick="switchProjTab(this,'progress')">진행중</div>
+            <div class="proj-tab" onclick="switchProjTab(this,'done')">완료</div>
+            <div class="proj-tab" onclick="switchProjTab(this,'pending')">미승인</div>
+            <div class="proj-tab" onclick="switchProjTab(this,'approved')">승인내역</div>
+          </div>
+          <div class="wico" onclick="showMain('projects')" style="cursor:pointer;font-size:16px;color:var(--tx3);margin-left:6px">+</div>
+        </div>
+      </div>
+      <div class="wbody" style="padding:12px 14px">
+        <div class="proj-stats">
+          <div class="proj-stat-mini"><div class="psm-num">6</div><div class="psm-lbl">총괄</div></div>
+          <div class="proj-stat-mini"><div class="psm-num c-p">4</div><div class="psm-lbl">진행중</div></div>
+          <div class="proj-stat-mini"><div class="psm-num c-g">2</div><div class="psm-lbl">완료</div></div>
+          <div class="proj-stat-mini"><div class="psm-num c-o">0</div><div class="psm-lbl">미승인</div></div>
+          <div class="proj-stat-mini"><div class="psm-num">142,500K</div><div class="psm-lbl">총 예산</div></div>
+        </div>
+        <table class="dt" style="margin-top:10px">
+          <thead><tr><th style="width:90px">과제번호</th><th>과제명</th><th style="width:90px">기간</th><th style="width:70px">사업비</th><th style="width:60px">상태</th></tr></thead>
+          <tbody>
+            <tr style="cursor:pointer" onclick="showMain('projects')"><td class="mn">202505000001</td><td class="lk">대학 창의적 봄맞이 기술을 이용한 정밀 합성공정</td><td class="mn">2025-06~12</td><td class="tr">30,000K</td><td class="tc"><span class="bd bb">진행중</span></td></tr>
+            <tr style="cursor:pointer" onclick="showMain('projects')"><td class="mn">202505100801</td><td class="lk">의약화학연구분야 핵심 인재양성 사업</td><td class="mn">2025-05~12</td><td class="tr">50,000K</td><td class="tc"><span class="bd bb">진행중</span></td></tr>
+            <tr style="cursor:pointer" onclick="showMain('projects')"><td class="mn">202410890801</td><td class="lk">2024 AI 디지털교과서 개발사업</td><td class="mn">2024-11~26-02</td><td class="tr">414,544K</td><td class="tc"><span class="bd bb">진행중</span></td></tr>
+            <tr style="cursor:pointer" onclick="showMain('projects')"><td class="mn">202404580801</td><td class="lk">[산학공동기술개발] LINC 농생명(황희정)</td><td class="mn">2024-06~12</td><td class="tr">78,000K</td><td class="tc"><span class="bd bg">완료</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 책임자 정보 (KORUS 연구책임자/담당자 패널) -->
+    <div class="wgt">
+      <div class="whdr"><span class="wttl">담당자 정보</span><div class="wico" style="cursor:pointer;font-size:11px;color:var(--p)" onclick="showMain('organization')">상세 →</div></div>
+      <div class="wbody" style="padding:14px">
+        <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #eef0f3;margin-bottom:12px">
+          <div style="width:42px;height:42px;border-radius:50%;background:var(--hero);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">김</div>
+          <div style="min-width:0">
+            <div style="font-size:13px;font-weight:700;color:var(--tx)">김병선 <span style="font-size:11px;color:var(--tx3);font-weight:400">부장</span></div>
+            <div style="font-size:11px;color:var(--tx3);margin-top:2px">화학연구팀 · 사번 180494</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:11px">
+          <div style="background:#EEF3FE;padding:10px;border-radius:8px"><div style="color:var(--p);font-size:18px;font-weight:700;font-family:var(--mono)">0</div><div style="color:var(--tx3);margin-top:2px">미승인</div></div>
+          <div style="background:#fff0e9;padding:10px;border-radius:8px"><div style="color:#e76f3f;font-size:18px;font-weight:700;font-family:var(--mono)">0</div><div style="color:var(--tx3);margin-top:2px">본부지급</div></div>
+          <div style="background:#e8f5ee;padding:10px;border-radius:8px"><div style="color:#2d8a4e;font-size:18px;font-weight:700;font-family:var(--mono)">2</div><div style="color:var(--tx3);margin-top:2px">접수증</div></div>
+          <div style="background:#f3ebfe;padding:10px;border-radius:8px"><div style="color:#7c3aed;font-size:18px;font-weight:700;font-family:var(--mono)">3</div><div style="color:var(--tx3);margin-top:2px">결재대기</div></div>
+        </div>
+      </div>
+    </div>
 
     <!-- ROW 1: 전체공지 (2col) + 공지사항 (1col) + 출퇴근 (1col) -->
     <!-- 전체공지 (KORUS 스타일 — 2열 차지) -->
@@ -4699,6 +4763,13 @@ function switchClaimSubTab(el, tid){
   parent.querySelectorAll('#cs-general,#cs-card,#cs-refund').forEach(d=>d.style.display='none');
   const t=document.getElementById(tid);if(t)t.style.display='';
 }
+// ══ PROJECT TABS ══
+function switchProjTab(el, key){
+  el.parentElement.querySelectorAll('.proj-tab').forEach(t=>t.classList.remove('act'));
+  el.classList.add('act');
+  showToast('과제 현황: ' + el.textContent.trim());
+}
+
 // ══ APPROVAL ══
 function doApprove(){closeModal('modal-approve');showToast('승인이 완료되었습니다');}
 function doReject(){closeModal('modal-approve');showToast('반려 처리되었습니다','var(--red)');}
