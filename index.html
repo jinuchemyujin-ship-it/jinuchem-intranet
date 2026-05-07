@@ -441,6 +441,48 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .apr-page-title{font-size:17px;font-weight:700;color:#1a1a1a;letter-spacing:-.3px}
 .apr-page-count{font-size:12px;color:var(--tx3);font-weight:500}
 .apr-panel .frow{background:#fff;border-bottom:1px solid #eef0f3;padding:14px 24px;gap:10px}
+/* ══ ALL-MENU 링크 ══ */
+.am-link{display:block;padding:7px 10px;font-size:12px;color:var(--tx2);text-decoration:none;border-radius:6px;margin-bottom:2px;transition:all .12s}
+.am-link:hover{background:var(--pp);color:var(--p)}
+
+/* ══ RDERP 상단 유틸리티 바 ══ */
+.rderp-top{display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 18px;background:#fff;border-bottom:1px solid #eef0f3;flex-shrink:0}
+.rderp-top-left{display:flex;align-items:center;gap:10px}
+.rderp-logo{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px;transition:background .15s}
+.rderp-logo:hover{background:var(--pp)}
+.rderp-logo-mark{width:26px;height:26px;background:var(--hero);color:#fff;font-weight:800;font-size:11px;letter-spacing:-.3px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.rderp-logo-text{font-size:13px;font-weight:700;color:#1a1a1a;letter-spacing:-.3px}
+.rderp-top-right{display:flex;align-items:center;gap:2px}
+.rderp-tu{display:flex;align-items:center;gap:5px;padding:7px 11px;border-radius:7px;font-size:12px;color:#5a6577;font-weight:500;cursor:pointer;text-decoration:none;transition:all .15s;background:transparent;border:none;font-family:var(--font);position:relative;white-space:nowrap}
+.rderp-tu:hover{background:#f3f5f9;color:var(--p)}
+.rderp-tu svg{flex-shrink:0;color:#7a8294;transition:color .15s}
+.rderp-tu:hover svg{color:var(--p)}
+.rderp-tu-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px;line-height:1.4;margin-left:2px}
+.rderp-tu-btn{cursor:pointer}
+.rderp-tu-logout{color:var(--p);background:var(--pp)}
+.rderp-tu-logout:hover{background:var(--p);color:#fff}
+.rderp-tu-logout:hover svg{color:#fff}
+.rderp-dd{position:relative}
+.rderp-dd-btn{display:flex;align-items:center;gap:5px;padding:7px 11px;border-radius:7px;font-size:12px;color:#5a6577;font-weight:500;cursor:pointer;background:transparent;border:none;font-family:var(--font);transition:all .15s;white-space:nowrap}
+.rderp-dd-btn:hover, .rderp-dd.open .rderp-dd-btn{background:#f3f5f9;color:var(--p)}
+.rderp-dd-btn svg{color:#7a8294;flex-shrink:0}
+.rderp-dd-btn:hover svg, .rderp-dd.open .rderp-dd-btn svg{color:var(--p)}
+.rderp-dd-menu{position:absolute;top:calc(100% + 4px);right:0;min-width:180px;background:#fff;border:1px solid #eef0f3;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.10);padding:6px;display:none;z-index:200}
+.rderp-dd.open .rderp-dd-menu{display:block}
+.rderp-dd-menu a{display:block;padding:9px 12px;font-size:12px;color:var(--tx2);text-decoration:none;border-radius:6px;transition:all .12s}
+.rderp-dd-menu a:hover{background:var(--pp);color:var(--p)}
+.rderp-dd-empty{padding:14px 12px;font-size:11px;color:var(--tx3);line-height:1.7}
+.rderp-dd-empty p{margin:0}
+/* RDERP 멀티탭 */
+.rderp-tabs{display:flex;align-items:flex-end;background:#f7f9fc;border-bottom:1px solid #eef0f3;padding:6px 12px 0;gap:2px;flex-shrink:0;height:36px}
+.rderp-tab{display:flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #eef0f3;border-bottom:none;border-radius:8px 8px 0 0;font-size:12px;font-weight:600;color:var(--tx2);cursor:pointer;transition:all .15s}
+.rderp-tab.act{color:var(--p);border-color:#eef0f3;border-bottom:2px solid #fff;margin-bottom:-1px;position:relative}
+.rderp-tab.act::before{content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:var(--p);border-radius:2px 2px 0 0}
+.rderp-tab svg{color:currentColor}
+.rderp-tab-controls{margin-left:auto;display:flex;align-items:center;padding-bottom:4px}
+.rderp-tab-ctrl{font-size:11px;color:var(--tx3);text-decoration:none;padding:5px 10px;border-radius:6px;transition:all .15s}
+.rderp-tab-ctrl:hover{background:#eef0f3;color:var(--tx)}
+
 /* ══ PROJECT STATUS WIDGET (R&D ERP 스타일) ══ */
 .proj-tabs{display:flex;gap:2px;background:#f3f5f9;border-radius:8px;padding:3px}
 .proj-tab{padding:6px 12px;font-size:11px;font-weight:600;color:#7a8294;cursor:pointer;border-radius:6px;transition:all .15s;white-space:nowrap}
@@ -840,6 +882,76 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- ━━━━━━━━━━━━━━━━━━━━ DASHBOARD ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page act" id="page-dashboard">
   <div style="display:flex;flex-direction:column;gap:0;overflow-y:auto;height:100%">
+
+    <!-- ══ RDERP 스타일 상단 유틸리티 바 ══ -->
+    <div class="rderp-top">
+      <div class="rderp-top-left">
+        <div class="rderp-logo" onclick="showMain('dashboard')">
+          <span class="rderp-logo-mark">JC</span>
+          <span class="rderp-logo-text">Jinuchem ERP</span>
+        </div>
+      </div>
+      <div class="rderp-top-right">
+        <a class="rderp-tu" href="#none" onclick="showToast('위임자 전환 화면')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          <span>위임자전환</span>
+        </a>
+        <a class="rderp-tu" href="#none" onclick="openModal('modal-sysnoti')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+          <span>통합공지사항</span>
+          <span class="rderp-tu-badge">3</span>
+        </a>
+        <a class="rderp-tu" href="#none" onclick="openModal('modal-faq')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>FAQ</span>
+        </a>
+        <div class="rderp-dd">
+          <button class="rderp-dd-btn" onclick="rderpToggle(this)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+            <span>바로가기</span>
+            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="rderp-dd-menu">
+            <a href="#none" onclick="showToast('rERP 원격지원 연결 중')">rERP 원격지원</a>
+            <a href="#none" onclick="showToast('학내 원격지원 연결 중')">학내 원격지원</a>
+            <a href="#none" onclick="window.open('https://slack.com','_blank')">Slack 워크스페이스 ↗</a>
+            <a href="#none" onclick="window.open('https://atlassian.net','_blank')">Jira 이슈 ↗</a>
+            <a href="#none" onclick="window.open('https://atlassian.net','_blank')">Confluence ↗</a>
+          </div>
+        </div>
+        <div class="rderp-dd">
+          <button class="rderp-dd-btn" onclick="rderpToggle(this)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>즐겨찾기</span>
+          </button>
+          <div class="rderp-dd-menu">
+            <div class="rderp-dd-empty">
+              <p>※ 설정한 내역이 없습니다.</p>
+              <p>※ 메뉴 좌측의 별 아이콘을 클릭하여 즐겨찾기를 추가할 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+        <button class="rderp-tu rderp-tu-btn" onclick="openModal('modal-allmenu')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span>전체메뉴</span>
+        </button>
+        <button class="rderp-tu rderp-tu-btn rderp-tu-logout" onclick="showToast('로그아웃되었습니다')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span>로그아웃</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ 멀티탭 (RDERP 스타일) ══ -->
+    <div class="rderp-tabs">
+      <div class="rderp-tab act" data-tab="dashboard">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>홈</span>
+      </div>
+      <div class="rderp-tab-controls">
+        <a href="#none" class="rderp-tab-ctrl" title="모두닫기" onclick="showToast('모든 탭 닫음')">모두닫기</a>
+      </div>
+    </div>
 
     <!-- ══ 대시보드 헤더 (인사말 + 검색) ══ -->
     <div class="dash-topbar">
@@ -4470,6 +4582,113 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   </div>
 </div>
 
+<!-- MODAL: 통합공지사항 (RDERP 스타일) -->
+<div class="mbg" id="modal-sysnoti">
+  <div class="modal" style="max-width:640px">
+    <div class="mhdr"><span class="mttl">통합공지사항</span><span class="mclose" onclick="closeModal('modal-sysnoti')">×</span></div>
+    <div class="mbody">
+      <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
+        <span class="bd bb">시스템</span>
+        <span class="bd by">정기점검</span>
+        <span class="bd bgr">전체공지</span>
+      </div>
+      <table class="dt"><thead><tr><th style="width:60px">구분</th><th>제목</th><th style="width:90px">등록일</th><th style="width:60px">상태</th></tr></thead>
+      <tbody>
+        <tr style="cursor:pointer" onclick="showToast('공지 상세보기')"><td class="tc"><span class="bd by">긴급</span></td><td class="lk fw7">2026년 5월 정기 시스템 점검 안내 (5/15 02:00~04:00)</td><td class="mn tc">2026-05-01</td><td class="tc"><span class="bd bb">진행</span></td></tr>
+        <tr style="cursor:pointer" onclick="showToast('공지 상세보기')"><td class="tc"><span class="bd bb">시스템</span></td><td class="lk">전자결재 모듈 v2.5 업데이트 완료</td><td class="mn tc">2026-04-28</td><td class="tc"><span class="bd bg">완료</span></td></tr>
+        <tr style="cursor:pointer" onclick="showToast('공지 상세보기')"><td class="tc"><span class="bd bgr">전체</span></td><td class="lk">2026년 1분기 R&D 보고서 제출 마감 안내</td><td class="mn tc">2026-04-15</td><td class="tc"><span class="bd bgr">종료</span></td></tr>
+      </tbody></table>
+    </div>
+    <div class="mfoot">
+      <label style="font-size:12px;color:var(--tx2);margin-right:auto"><input type="checkbox"> 하루동안 열지 않기</label>
+      <button class="tb" onclick="closeModal('modal-sysnoti')">닫기</button>
+      <button class="tb pri" onclick="closeModal('modal-sysnoti');showMain('board')">전체보기</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: FAQ -->
+<div class="mbg" id="modal-faq">
+  <div class="modal" style="max-width:560px">
+    <div class="mhdr"><span class="mttl">자주 묻는 질문 (FAQ)</span><span class="mclose" onclick="closeModal('modal-faq')">×</span></div>
+    <div class="mbody">
+      <div class="frow" style="margin-bottom:12px;padding:0">
+        <input class="fi" placeholder="검색어를 입력하세요" style="flex:1">
+        <button class="fb" onclick="showToast('FAQ 검색')">검색</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#f7f9fc;border-radius:8px;padding:14px 16px;cursor:pointer" onclick="showToast('FAQ 상세 펼치기')">
+          <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:4px">Q. 비밀번호를 분실했어요. 어떻게 재설정하나요?</div>
+          <div style="font-size:11px;color:var(--tx3)">로그인 화면 하단의 [비밀번호 찾기]를 클릭하시고…</div>
+        </div>
+        <div style="background:#f7f9fc;border-radius:8px;padding:14px 16px;cursor:pointer" onclick="showToast('FAQ 상세 펼치기')">
+          <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:4px">Q. 출력물이 열리지 않을 경우 조치 방법</div>
+          <div style="font-size:11px;color:var(--tx3)">오즈뷰어 재설치가 필요합니다. [바로가기 ▸ 오즈뷰어 설치]를 …</div>
+        </div>
+        <div style="background:#f7f9fc;border-radius:8px;padding:14px 16px;cursor:pointer" onclick="showToast('FAQ 상세 펼치기')">
+          <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:4px">Q. 위임자 전환은 어떻게 하나요?</div>
+          <div style="font-size:11px;color:var(--tx3)">상단 [위임자전환] 메뉴에서 위임자 정보를 등록하면 …</div>
+        </div>
+        <div style="background:#f7f9fc;border-radius:8px;padding:14px 16px;cursor:pointer" onclick="showToast('FAQ 상세 펼치기')">
+          <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:4px">Q. 즐겨찾기에 메뉴를 어떻게 추가하나요?</div>
+          <div style="font-size:11px;color:var(--tx3)">메뉴 좌측의 ☆ 아이콘을 클릭하면 즐겨찾기에 추가됩니다.</div>
+        </div>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="tb" onclick="closeModal('modal-faq')">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: 전체메뉴 -->
+<div class="mbg" id="modal-allmenu">
+  <div class="modal" style="max-width:780px">
+    <div class="mhdr"><span class="mttl">전체메뉴</span><span class="mclose" onclick="closeModal('modal-allmenu')">×</span></div>
+    <div class="mbody">
+      <div class="frow" style="margin-bottom:14px;padding:0">
+        <input class="fi" placeholder="메뉴 검색" style="flex:1">
+        <button class="fb" onclick="showToast('메뉴 검색')">검색</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--p);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--p)">업무</div>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('approval')">전자결재</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('attendance')">근태관리</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('projects')">과제관리</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('expense')">연구비 관리</a>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--p);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--p)">인사·급여</div>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('salary')">급여관리</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('account-mgmt')">급여 계좌관리</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('certificate')">증명서 발급</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('leave-apply')">휴직신청</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('return-apply')">복직신청</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('staff-work')">직원 근무상황</a>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--p);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--p)">출장·매출</div>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('trip-apply')">출장신청</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('trip-settle')">관외출장 여비정산</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('trip-overseas')">국외출장</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('sales')">매출·매입</a>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--p);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--p)">소통·정보</div>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('board')">게시판</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('msds')">MSDS 관리</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('organization')">조직도</a>
+          <a href="#none" class="am-link" onclick="closeModal('modal-allmenu');showMain('docmgmt')">문서함</a>
+        </div>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="tb" onclick="closeModal('modal-allmenu')">닫기</button>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL: DOCUMENT DETAIL (공문 상세) -->
 <div class="mbg" id="modal-doc">
   <div class="modal" style="max-width:760px">
@@ -4769,6 +4988,19 @@ function switchProjTab(el, key){
   el.classList.add('act');
   showToast('과제 현황: ' + el.textContent.trim());
 }
+
+// ══ RDERP 드롭다운 토글 ══
+function rderpToggle(btn){
+  const dd = btn.closest('.rderp-dd');
+  const isOpen = dd.classList.contains('open');
+  document.querySelectorAll('.rderp-dd.open').forEach(d=>d.classList.remove('open'));
+  if(!isOpen) dd.classList.add('open');
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.rderp-dd')){
+    document.querySelectorAll('.rderp-dd.open').forEach(d=>d.classList.remove('open'));
+  }
+});
 
 // ══ APPROVAL ══
 function doApprove(){closeModal('modal-approve');showToast('승인이 완료되었습니다');}
