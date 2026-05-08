@@ -523,6 +523,72 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .menu-ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center}
 .menu-lbl{font-size:12px;color:var(--tx2);font-weight:500;text-align:center}
 
+/* ══ ATTENDANCE HERO CARD (WEWORKS 메인 - 히어로 옆) ══ */
+.attend-hero{padding:18px 18px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;border:1px solid #eef0f3;border-radius:12px}
+.attend-hero-times{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px}
+.ah-row{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.ah-row-lbl{font-size:10px;color:var(--tx3);font-weight:500}
+.ah-row-val{font-size:22px;font-weight:700;color:var(--tx);line-height:1;font-family:var(--mono);letter-spacing:-1px}
+.ah-btn{padding:7px 14px;font-size:11px;font-weight:700;background:var(--p);color:#fff;border:none;border-radius:18px;cursor:pointer;font-family:var(--font);transition:all .15s}
+.ah-btn:hover{background:var(--pd)}
+.ah-ring-wrap{position:relative;width:100px;height:100px;margin:4px 0}
+.ah-ring-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--p);font-family:var(--mono);letter-spacing:-.5px}
+#ah-ring-progress{transition:stroke-dashoffset .4s}
+.ah-meta{text-align:center}
+.ah-meta-lbl{font-size:10px;color:var(--tx3);margin-bottom:2px}
+.ah-meta-val{font-size:16px;font-weight:700;color:var(--tx);font-family:var(--mono);letter-spacing:-.5px}
+
+/* ══ BIG MENU GRID (WEWORKS — 6 large cards) ══ */
+.big-menu-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.big-menu-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 12px 18px;background:#fff;border:1px solid #eef0f3;border-radius:12px;cursor:pointer;transition:all .15s}
+.big-menu-item:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(74,124,240,.12);border-color:var(--p)}
+.bm-ic{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.bm-blue{background:#EEF3FE;color:var(--p)}
+.bm-orange{background:#fff0e9;color:#e76f3f}
+.bm-cyan{background:#e6f4fd;color:#0891b2}
+.bm-pink{background:#ffeef5;color:#db2777}
+.bm-green{background:#e8f5ee;color:#2d8a4e}
+.bm-purple{background:#f3ebfe;color:#7c3aed}
+.bm-lbl{font-size:13px;font-weight:600;color:var(--tx);text-align:center}
+
+/* ══ NOTICE LIST (WEWORKS) ══ */
+.wn-row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background .12s;border-radius:6px;padding:9px 6px;margin:0 -6px}
+.wn-row:last-child{border-bottom:none}
+.wn-row:hover{background:#f7f9fc}
+.wn-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0;letter-spacing:.2px}
+.wn-tag-red{background:#fdf0ef;color:var(--red)}
+.wn-tag-blue{background:#EEF3FE;color:var(--p)}
+.wn-tag-amber{background:#fef3e2;color:#d97706}
+.wn-title{flex:1;min-width:0;font-size:12px;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wn-date{font-size:10px;color:var(--tx3);flex-shrink:0;font-family:var(--mono)}
+
+/* ══ PROGRESS LIST (WEWORKS — 진행상황 with checkboxes) ══ */
+.wp-row{display:flex;align-items:flex-start;gap:10px;padding:10px 6px;border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background .12s;border-radius:6px;margin:0 -6px}
+.wp-row:last-child{border-bottom:none}
+.wp-row:hover{background:#f7f9fc}
+.wp-row input[type="checkbox"]{margin-top:2px;flex-shrink:0;accent-color:var(--p)}
+.wp-content{flex:1;min-width:0}
+.wp-title{font-size:12px;color:var(--tx);font-weight:500;line-height:1.4}
+.wp-meta{font-size:10px;color:var(--tx3);margin-top:3px}
+.wp-tag{font-size:9px;font-weight:700;padding:1px 6px;border-radius:6px;letter-spacing:.2px}
+.wp-tag-blue{background:#EEF3FE;color:var(--p)}
+.wp-tag-amber{background:#fef3e2;color:#d97706}
+.wp-tag-green{background:#e8f5ee;color:#2d8a4e}
+.wp-tag-red{background:#fdf0ef;color:var(--red)}
+
+/* ══ TIMELINE (WEWORKS — 오늘의 일정) ══ */
+.timeline{position:relative;padding-left:6px}
+.tl-item{position:relative;padding-left:18px;padding-bottom:18px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item:not(:last-child)::before{content:"";position:absolute;left:5px;top:14px;bottom:0;width:1.5px;background:#eef0f3}
+.tl-dot{position:absolute;left:0;top:5px;width:11px;height:11px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 0 0 1px #eef0f3}
+.tl-dot-blue{background:var(--p);box-shadow:0 0 0 1px var(--p)}
+.tl-dot-orange{background:#e76f3f;box-shadow:0 0 0 1px #e76f3f}
+.tl-dot-green{background:#2d8a4e;box-shadow:0 0 0 1px #2d8a4e}
+.tl-time{font-size:10px;color:var(--tx3);font-family:var(--mono);margin-bottom:2px;font-weight:600}
+.tl-title{font-size:12.5px;color:var(--tx);font-weight:600;line-height:1.4}
+.tl-loc{font-size:10px;color:var(--tx4);margin-top:2px}
+
 /* ══ PHOTO NEWS (WEWORKS 스타일) ══ */
 .photo-news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:14px 16px}
 .photo-card{cursor:pointer;border-radius:10px;overflow:hidden;background:#fff;border:1px solid #eef0f3;transition:all .15s}
@@ -1012,8 +1078,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- ══ 대시보드 본문 ══ -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:max-content;gap:12px;padding:12px 18px 24px;align-content:start;flex:1;overflow-y:auto;min-height:0">
 
-    <!-- ROW 0: 웰컴 히어로 (2col) + 스탯 그리드 2x2 (2col) -->
-    <div class="welcome-hero" style="grid-column:span 2;margin:0">
+    <!-- ROW 0: 웰컴 히어로 (3col) + 근태 위젯 (1col) — WEWORKS 그대로 -->
+    <div class="welcome-hero" style="grid-column:span 3;margin:0">
       <div class="welcome-hero-text">
         <div class="welcome-greeting">안녕하세요, 김병선님!</div>
         <div class="welcome-sub">오늘도 좋은 하루 되세요</div>
@@ -1037,51 +1103,144 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- 스탯 2x2 그리드 -->
-    <div style="grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px">
-      <div class="stat-card" onclick="showMain('approval')">
-        <div class="stat-ic" style="background:#EEF3FE;color:var(--p)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <!-- 근태 카드 (히어로 옆 1col, WEWORKS 메인 페이지 그대로) -->
+    <div class="wgt attend-hero">
+      <div class="attend-hero-times">
+        <div class="ah-row">
+          <div class="ah-row-lbl">출근</div>
+          <div class="ah-row-val mn" id="ah-checkin">08:45</div>
         </div>
-        <div class="stat-txt"><div class="stat-num">3</div><div class="stat-lbl">결재대기</div></div>
+        <button class="ah-btn" id="ah-btn-out" onclick="checkOut()">퇴근하기</button>
       </div>
-      <div class="stat-card" onclick="showMain('attendance')">
-        <div class="stat-ic" style="background:#fff0e9;color:#e76f3f">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        </div>
-        <div class="stat-txt"><div class="stat-num">12</div><div class="stat-lbl">잔여 연차</div></div>
+      <div class="ah-ring-wrap">
+        <svg viewBox="0 0 120 120" width="100" height="100">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#eef0f3" stroke-width="9"/>
+          <circle id="ah-ring-progress" cx="60" cy="60" r="50" fill="none" stroke="var(--p)" stroke-width="9" stroke-dasharray="314.16" stroke-dashoffset="72.3" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+        </svg>
+        <div class="ah-ring-pct" id="ah-ring-pct">77%</div>
       </div>
-      <div class="stat-card" onclick="showMain('projects')">
-        <div class="stat-ic" style="background:#e8f5ee;color:#2d8a4e">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <div class="stat-txt"><div class="stat-num">4</div><div class="stat-lbl">진행 과제</div></div>
-      </div>
-      <div class="stat-card" onclick="showMain('expense')">
-        <div class="stat-ic" style="background:#f3ebfe;color:#7c3aed">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-        </div>
-        <div class="stat-txt"><div class="stat-num">57%</div><div class="stat-lbl">예산 집행률</div></div>
+      <div class="ah-meta">
+        <div class="ah-meta-lbl">퇴근까지</div>
+        <div class="ah-meta-val mn" id="ah-remaining">40:15</div>
       </div>
     </div>
 
-    <!-- 바로가기 메뉴 그리드 (full width, icon menu) -->
-    <div class="wgt" style="grid-column:span 4;padding:0">
-      <div class="whdr"><span class="wttl">바로가기 메뉴</span></div>
-      <div class="menu-grid">
-        <div class="menu-item" onclick="showMain('approval')"><div class="menu-ic" style="background:#EEF3FE;color:var(--p)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="menu-lbl">전자결재</div></div>
-        <div class="menu-item" onclick="showMain('attendance')"><div class="menu-ic" style="background:#fff0e9;color:#e76f3f"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div class="menu-lbl">근태관리</div></div>
-        <div class="menu-item" onclick="showMain('projects')"><div class="menu-ic" style="background:#e8f5ee;color:#2d8a4e"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><div class="menu-lbl">과제관리</div></div>
-        <div class="menu-item" onclick="showMain('expense')"><div class="menu-ic" style="background:#f3ebfe;color:#7c3aed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="menu-lbl">연구비</div></div>
-        <div class="menu-item" onclick="showMain('salary')"><div class="menu-ic" style="background:#fef3e2;color:#d97706"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="menu-lbl">급여관리</div></div>
-        <div class="menu-item" onclick="showMain('board')"><div class="menu-ic" style="background:#e6f4fd;color:#0891b2"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="menu-lbl">게시판</div></div>
-        <div class="menu-item" onclick="showMain('organization')"><div class="menu-ic" style="background:#ffeef5;color:#db2777"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div class="menu-lbl">조직도</div></div>
-        <div class="menu-item" onclick="showMain('msds')"><div class="menu-ic" style="background:#fef2f2;color:var(--red)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="menu-lbl">MSDS</div></div>
+    <!-- 바로가기 메뉴 (WEWORKS — 6개 큰 카드) -->
+    <div class="big-menu-grid" style="grid-column:span 4">
+      <div class="big-menu-item" onclick="showMain('projects')">
+        <div class="bm-ic bm-blue"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg></div>
+        <div class="bm-lbl">인사이트</div>
+      </div>
+      <div class="big-menu-item" onclick="showMain('approval')">
+        <div class="bm-ic bm-orange"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 13 11 15 15 11"/></svg></div>
+        <div class="bm-lbl">내 결재</div>
+      </div>
+      <div class="big-menu-item" onclick="showMain('meeting')">
+        <div class="bm-ic bm-cyan"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="bm-lbl">일정관리</div>
+      </div>
+      <div class="big-menu-item" onclick="showMain('organization')">
+        <div class="bm-ic bm-pink"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="bm-lbl">인사관리</div>
+      </div>
+      <div class="big-menu-item" onclick="showMain('board')">
+        <div class="bm-ic bm-green"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="bm-lbl">게시판</div>
+      </div>
+      <div class="big-menu-item" onclick="showMain('docmgmt')">
+        <div class="bm-ic bm-purple"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div>
+        <div class="bm-lbl">자료실</div>
       </div>
     </div>
 
-    <!-- ROW 1.5: 과제 현황 (3col) + 책임자 정보 (1col) — R&D ERP 스타일 -->
-    <div class="wgt" style="grid-column:span 3">
+    <!-- ROW 2: 공지사항 + 진행상황 + 오늘의 일정 (1+1+1 col) — WEWORKS 그대로 -->
+    <div class="wgt" style="grid-column:span 1">
+      <div class="whdr">
+        <span class="wttl">공지사항</span>
+        <div class="wico" onclick="showMain('board')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
+      </div>
+      <div class="wbody" style="padding:8px 14px">
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-red">공지</span><span class="wn-title">출력물이 열리지 않을 경우 조치 방법</span><span class="wn-date">04-03</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-blue">공지</span><span class="wn-title">국가R&D 간접비 고시 안내</span><span class="wn-date">04-01</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-blue">공지</span><span class="wn-title">기술이전창업 신청 매뉴얼</span><span class="wn-date">03-28</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-amber">긴급</span><span class="wn-title">MSDS 안전관리 교육 필수 이수 안내</span><span class="wn-date">03-25</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-blue">공지</span><span class="wn-title">2026 상반기 연구비 집행 마감 일정</span><span class="wn-date">03-20</span></div>
+      </div>
+    </div>
+    <div class="wgt" style="grid-column:span 1">
+      <div class="whdr">
+        <span class="wttl">진행상황</span>
+        <div class="wico" onclick="showMain('approval')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
+      </div>
+      <div class="wbody" style="padding:8px 14px">
+        <div class="wp-row" onclick="showToast('내 결재함')">
+          <input type="checkbox" onclick="event.stopPropagation()" checked>
+          <div class="wp-content">
+            <div class="wp-title">결재 진행함 — 작성중인 문서</div>
+            <div class="wp-meta"><span class="wp-tag wp-tag-blue">진행중</span> · 3건</div>
+          </div>
+        </div>
+        <div class="wp-row" onclick="showToast('수신 문서함')">
+          <input type="checkbox" onclick="event.stopPropagation()">
+          <div class="wp-content">
+            <div class="wp-title">결재 수신함 — 결재 대기</div>
+            <div class="wp-meta"><span class="wp-tag wp-tag-amber">대기</span> · 5건</div>
+          </div>
+        </div>
+        <div class="wp-row" onclick="showToast('완료 문서함')">
+          <input type="checkbox" onclick="event.stopPropagation()" checked>
+          <div class="wp-content">
+            <div class="wp-title">결재 완료함</div>
+            <div class="wp-meta"><span class="wp-tag wp-tag-green">완료</span> · 12건</div>
+          </div>
+        </div>
+        <div class="wp-row" onclick="showToast('반려 문서함')">
+          <input type="checkbox" onclick="event.stopPropagation()">
+          <div class="wp-content">
+            <div class="wp-title">결재 반려함</div>
+            <div class="wp-meta"><span class="wp-tag wp-tag-red">반려</span> · 1건</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wgt" style="grid-column:span 1">
+      <div class="whdr">
+        <span class="wttl">오늘의 일정 <span style="font-size:11px;color:var(--p);font-weight:600;margin-left:4px">3건</span></span>
+        <div class="wico" onclick="showMain('meeting')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
+      </div>
+      <div class="wbody" style="padding:14px">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot tl-dot-blue"></div>
+            <div class="tl-content">
+              <div class="tl-time mn">10:00 ~ 11:00</div>
+              <div class="tl-title">화학연구팀 주간 회의</div>
+              <div class="tl-loc">2층 회의실 A</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot tl-dot-orange"></div>
+            <div class="tl-content">
+              <div class="tl-time mn">14:00 ~ 15:30</div>
+              <div class="tl-title">신규 과제 킥오프 미팅</div>
+              <div class="tl-loc">대회의실</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot tl-dot-green"></div>
+            <div class="tl-content">
+              <div class="tl-time mn">16:00 ~ 17:00</div>
+              <div class="tl-title">월간 보고서 제출 마감</div>
+              <div class="tl-loc">전사</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 1.5 (숨김): 과제 현황 + 담당자 정보 — R&D ERP 호환용 -->
+    <div class="wgt" style="grid-column:span 3;display:none">
+      <div class="whdr">
       <div class="whdr">
         <span class="wttl">과제 현황</span>
         <div class="wact" style="display:flex;align-items:center;gap:6px">
@@ -1115,8 +1274,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- 책임자 정보 (KORUS 연구책임자/담당자 패널) -->
-    <div class="wgt">
+    <!-- 책임자 정보 (KORUS 연구책임자/담당자 패널) — 숨김 -->
+    <div class="wgt" style="display:none">
       <div class="whdr"><span class="wttl">담당자 정보</span><div class="wico" style="cursor:pointer;font-size:11px;color:var(--p)" onclick="showMain('organization')">상세 →</div></div>
       <div class="wbody" style="padding:14px">
         <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #eef0f3;margin-bottom:12px">
@@ -1135,9 +1294,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- ROW 1: 전체공지 (2col) + 공지사항 (1col) + 출퇴근 (1col) -->
+    <!-- ROW 1: 전체공지 (2col) + 공지사항 (1col) + 출퇴근 (1col) — 숨김 (위에 새 공지사항으로 대체) -->
     <!-- 전체공지 (KORUS 스타일 — 2열 차지) -->
-    <div class="wgt" style="grid-column:span 2">
+    <div class="wgt" style="grid-column:span 2;display:none">
       <div class="whdr">
         <span class="wttl">전체공지</span>
         <div class="wico" onclick="showMain('board')" style="cursor:pointer;font-size:16px;color:var(--tx3)">+</div>
@@ -1152,8 +1311,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- 근태 위젯 (WEWORKS 스타일 — 원형 progress) -->
-    <div class="wgt">
+    <!-- 근태 위젯 (WEWORKS 스타일 — 원형 progress) — 숨김 (히어로 옆 attend-hero로 이동) -->
+    <div class="wgt" style="display:none">
       <div class="whdr">
         <span class="wttl">근태 현황</span>
         <div class="wico" onclick="showMain('attendance')" style="cursor:pointer;font-size:16px;color:var(--tx3)">+</div>
