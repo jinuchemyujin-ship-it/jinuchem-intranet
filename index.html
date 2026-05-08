@@ -1052,6 +1052,39 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- MAIN CONTENT COLUMN -->
 <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
 
+<!-- ══ WEWORKS 전역 상단 헤더 (모든 페이지 공통) ══ -->
+<div class="ww-top-header">
+  <div class="ww-search">
+    <input type="text" placeholder="통합검색" onkeydown="if(event.key==='Enter')showToast('검색: '+this.value)">
+    <button class="ww-search-btn" onclick="showToast('검색')">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#7a8294" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    </button>
+  </div>
+  <div class="ww-actions">
+    <button class="ww-act-btn" onclick="openModal('modal-notif')" title="알림">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <span class="ww-act-badge">3</span>
+    </button>
+    <button class="ww-act-btn" onclick="showToast('메일 7건')" title="메일">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span class="ww-act-badge">7</span>
+    </button>
+    <button class="ww-act-btn" onclick="showToast('즐겨찾기')" title="즐겨찾기">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    </button>
+    <button class="ww-act-btn" onclick="openModal('modal-allmenu')" title="전체메뉴">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    </button>
+    <div class="ww-profile" onclick="openModal('modal-myinfo')">
+      <div class="ww-profile-avatar">김</div>
+      <div class="ww-profile-info">
+        <div class="ww-profile-name">김병선 부장 <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ww-profile-org">화학연구팀</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PAGES -->
 <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
 
@@ -1059,37 +1092,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page act" id="page-dashboard">
   <div style="display:flex;flex-direction:column;gap:0;height:100%;overflow:hidden;min-height:0">
 
-    <!-- ══ WEWORKS 상단 헤더 (검색 + 아이콘 + 프로필) ══ -->
-    <div class="ww-top-header">
-      <div class="ww-search">
-        <input type="text" placeholder="통합검색" onkeydown="if(event.key==='Enter')showToast('검색: '+this.value)">
-        <button class="ww-search-btn" onclick="showToast('검색')">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#7a8294" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        </button>
-      </div>
-      <div class="ww-actions">
-        <button class="ww-act-btn" onclick="openModal('modal-notif')" title="알림">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-          <span class="ww-act-badge">3</span>
-        </button>
-        <button class="ww-act-btn" onclick="showToast('메일 7건')" title="메일">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span class="ww-act-badge">7</span>
-        </button>
-        <button class="ww-act-btn" onclick="showToast('즐겨찾기')" title="즐겨찾기">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </button>
-        <button class="ww-act-btn" onclick="openModal('modal-allmenu')" title="전체메뉴">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </button>
-        <div class="ww-profile" onclick="openModal('modal-myinfo')">
-          <div class="ww-profile-avatar">김</div>
-          <div class="ww-profile-info">
-            <div class="ww-profile-name">김병선 부장 <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polyline points="6 9 12 15 18 9"/></svg></div>
-            <div class="ww-profile-org">화학연구팀</div>
-          </div>
-        </div>
-      </div>
+    <!-- (구) WEWORKS 헤더 — 숨김 (전역 헤더로 이동) -->
+    <div class="ww-top-header" style="display:none">
+      <div class="ww-search"><input type="text" placeholder="통합검색"></div>
     </div>
 
     <!-- (구) RDERP 유틸리티 바 — 숨김 -->
