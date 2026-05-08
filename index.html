@@ -523,7 +523,79 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .menu-ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center}
 .menu-lbl{font-size:12px;color:var(--tx2);font-weight:500;text-align:center}
 
-/* ══ ATTENDANCE HERO CARD (WEWORKS 메인 - 히어로 옆) ══ */
+/* ══ ATTENDANCE CARD (WEWORKS 메인 - 히어로 옆) ══ */
+.attend-card{display:flex;flex-direction:column}
+.attend-body{padding:14px 18px;display:flex;align-items:center;gap:18px;flex:1}
+.attend-info{flex:1;display:flex;flex-direction:column;gap:14px}
+.att-block{display:flex;flex-direction:column;gap:4px}
+.att-block-lbl{font-size:11px;color:var(--tx3);font-weight:500}
+.att-block-val{display:flex;align-items:center;gap:6px;font-size:22px;font-weight:700;color:var(--tx);letter-spacing:-1px}
+.att-block-pill{font-size:10px;font-weight:700;color:var(--p);background:var(--pp);padding:3px 8px;border-radius:10px;letter-spacing:.2px;align-self:center}
+.att-block-target{font-size:13px;color:var(--tx3);font-weight:500}
+.attend-ring-big{position:relative;flex-shrink:0;width:92px;height:92px}
+.att-ring-pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.att-ring-num{font-size:18px;font-weight:700;color:var(--p);font-family:var(--mono);letter-spacing:-.5px;line-height:1}
+.att-ring-lbl{font-size:9px;color:var(--tx3);margin-top:2px}
+.att-out-btn{margin:0 18px 16px;padding:10px;background:#fff;color:var(--p);border:1px solid var(--p);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s}
+.att-out-btn:hover{background:var(--pp)}
+
+/* ══ QUICK MENU CARD (WEWORKS — 6 inline icons) ══ */
+.quick-card{background:#fff;border:1px solid #eef0f3;border-radius:12px;display:grid;grid-template-columns:repeat(6,1fr);gap:0;padding:18px 0}
+.quick-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:8px 6px;cursor:pointer;border-right:1px solid #f3f4f6;transition:background .15s}
+.quick-item:last-child{border-right:none}
+.quick-item:hover{background:#f7f9fc}
+.qm-ic{position:relative;width:42px;height:42px;display:flex;align-items:center;justify-content:center}
+.qm-badge{position:absolute;top:-3px;right:-7px;width:17px;height:17px;background:var(--p);color:#fff;font-size:9px;font-weight:700;border-radius:9px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;line-height:1}
+.qm-lbl{font-size:12px;color:var(--tx);font-weight:500;text-align:center}
+
+/* ══ APPROVAL TABS (WEWORKS 전자결재 위젯) ══ */
+.appr-tabs{display:flex;border-bottom:1px solid #eef0f3;padding:0 14px}
+.appr-tab{padding:8px 4px;font-size:12px;font-weight:600;color:var(--tx3);cursor:pointer;border-bottom:2px solid transparent;margin-right:14px;transition:all .15s;display:flex;align-items:center;gap:5px}
+.appr-tab:hover{color:var(--tx)}
+.appr-tab.act{color:var(--p);border-bottom-color:var(--p)}
+.appr-tab-cnt{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;background:var(--p);color:#fff;font-size:10px;font-weight:700;border-radius:9px;padding:0 5px}
+.appr-tab-cnt-gray{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;background:#e8eaef;color:#7a8294;font-size:10px;font-weight:700;border-radius:9px;padding:0 5px}
+.appr-card{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background .12s;border-radius:6px;padding:10px 6px;margin:0 -6px}
+.appr-card:last-child{border-bottom:none}
+.appr-card:hover{background:#f7f9fc}
+.appr-state{flex-shrink:0;font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;letter-spacing:.2px;border:1px solid}
+.appr-state-amber{background:#fff8e1;color:#d97706;border-color:#fcd34d}
+.appr-state-blue{background:#EEF3FE;color:var(--p);border-color:#bfdbfe}
+.appr-state-gray{background:#f3f4f6;color:#6b7280;border-color:#d1d5db}
+.appr-info{flex:1;min-width:0}
+.appr-title{font-size:12.5px;color:var(--tx);font-weight:600;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.appr-meta{font-size:11px;color:var(--tx3);margin-top:3px}
+
+/* ══ ORG NEWS (WEWORKS 조직 소식) ══ */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:14px 16px}
+.news-card{cursor:pointer;border-radius:10px;overflow:hidden;background:#fff;border:1px solid #eef0f3;transition:all .15s}
+.news-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(74,124,240,.10);border-color:var(--p)}
+.news-img{aspect-ratio:1.6/1;display:flex;align-items:center;justify-content:center}
+.news-meta{padding:10px 14px 12px}
+.news-title{font-size:13px;font-weight:600;color:var(--tx);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-author{font-size:11px;color:var(--tx3);margin-top:4px;display:flex;justify-content:space-between;align-items:center}
+.news-date{font-family:var(--mono)}
+.news-arrows{display:flex;gap:4px}
+.news-arr{width:24px;height:24px;border:1px solid #eef0f3;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--tx3);transition:all .15s}
+.news-arr:hover{border-color:var(--p);color:var(--p)}
+
+/* ══ DOCBOX (WEWORKS 문서함) ══ */
+.docbox-tabs{display:flex;border-bottom:1px solid #eef0f3;padding:0 14px;gap:14px}
+.docbox-tab{padding:8px 0;font-size:12px;font-weight:600;color:var(--tx3);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.docbox-tab:hover{color:var(--tx)}
+.docbox-tab.act{color:var(--p);border-bottom-color:var(--p)}
+.docbox-row{display:flex;align-items:center;gap:10px;padding:10px 6px;border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background .12s;border-radius:6px;margin:0 -6px}
+.docbox-row:last-child{border-bottom:none}
+.docbox-row:hover{background:#f7f9fc}
+.docbox-ic{flex-shrink:0;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;letter-spacing:-.3px}
+.docbox-ic-word{background:#2563eb}
+.docbox-ic-excel{background:#16a34a}
+.docbox-ic-pdf{background:#dc2626;font-size:9px}
+.docbox-info{flex:1;min-width:0}
+.docbox-title{font-size:12.5px;color:var(--tx);font-weight:500;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.docbox-meta{font-size:10.5px;color:var(--tx3);margin-top:2px}
+
+/* ══ ATTENDANCE HERO CARD (legacy, hidden but kept) ══ */
 .attend-hero{padding:18px 18px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;border:1px solid #eef0f3;border-radius:12px}
 .attend-hero-times{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px}
 .ah-row{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
@@ -1103,53 +1175,81 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- 근태 카드 (히어로 옆 1col, WEWORKS 메인 페이지 그대로) -->
-    <div class="wgt attend-hero">
-      <div class="attend-hero-times">
-        <div class="ah-row">
-          <div class="ah-row-lbl">출근</div>
-          <div class="ah-row-val mn" id="ah-checkin">08:45</div>
+    <!-- 근태 현황 카드 (WEWORKS 그대로 — 1col) -->
+    <div class="wgt attend-card">
+      <div class="whdr">
+        <span class="wttl">근태 현황</span>
+        <div class="wico" onclick="showMain('attendance')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
+      </div>
+      <div class="wbody attend-body">
+        <div class="attend-info">
+          <div class="att-block">
+            <div class="att-block-lbl">· 오늘 근무시간</div>
+            <div class="att-block-val">
+              <span class="mn" id="ah-checkin">08:45</span>
+              <span class="att-block-pill">근무중</span>
+            </div>
+          </div>
+          <div class="att-block">
+            <div class="att-block-lbl">· 주간 누적시간</div>
+            <div class="att-block-val">
+              <span class="mn">40:15</span>
+              <span class="att-block-target mn">/ 52:00</span>
+            </div>
+          </div>
         </div>
-        <button class="ah-btn" id="ah-btn-out" onclick="checkOut()">퇴근하기</button>
+        <div class="attend-ring-big">
+          <svg viewBox="0 0 120 120" width="92" height="92">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#EEF3FE" stroke-width="9"/>
+            <circle id="ah-ring-progress" cx="60" cy="60" r="50" fill="none" stroke="var(--p)" stroke-width="9" stroke-dasharray="314.16" stroke-dashoffset="72.3" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="att-ring-pct">
+            <span class="att-ring-num" id="ah-ring-pct">77%</span>
+            <span class="att-ring-lbl">주간 달성률</span>
+          </div>
+        </div>
       </div>
-      <div class="ah-ring-wrap">
-        <svg viewBox="0 0 120 120" width="100" height="100">
-          <circle cx="60" cy="60" r="50" fill="none" stroke="#eef0f3" stroke-width="9"/>
-          <circle id="ah-ring-progress" cx="60" cy="60" r="50" fill="none" stroke="var(--p)" stroke-width="9" stroke-dasharray="314.16" stroke-dashoffset="72.3" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-        </svg>
-        <div class="ah-ring-pct" id="ah-ring-pct">77%</div>
-      </div>
-      <div class="ah-meta">
-        <div class="ah-meta-lbl">퇴근까지</div>
-        <div class="ah-meta-val mn" id="ah-remaining">40:15</div>
-      </div>
+      <button class="att-out-btn" id="ah-btn-out" onclick="checkOut()">퇴근하기</button>
     </div>
 
-    <!-- 바로가기 메뉴 (WEWORKS — 6개 큰 카드) -->
-    <div class="big-menu-grid" style="grid-column:span 4">
-      <div class="big-menu-item" onclick="showMain('projects')">
-        <div class="bm-ic bm-blue"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg></div>
-        <div class="bm-lbl">인사이트</div>
+    <!-- 바로가기 메뉴 (WEWORKS — 6개 라인 아이콘 in 한 카드) -->
+    <div class="quick-card" style="grid-column:span 3">
+      <div class="quick-item" onclick="showMain('approval')">
+        <div class="qm-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--p)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="qm-badge">3</span>
+        </div>
+        <div class="qm-lbl">전자결재</div>
       </div>
-      <div class="big-menu-item" onclick="showMain('approval')">
-        <div class="bm-ic bm-orange"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 13 11 15 15 11"/></svg></div>
-        <div class="bm-lbl">내 결재</div>
+      <div class="quick-item" onclick="showMain('meeting')">
+        <div class="qm-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--p)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div class="qm-lbl">내 일정</div>
       </div>
-      <div class="big-menu-item" onclick="showMain('meeting')">
-        <div class="bm-ic bm-cyan"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <div class="bm-lbl">일정관리</div>
+      <div class="quick-item" onclick="showMain('attendance')">
+        <div class="qm-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e76f3f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+        </div>
+        <div class="qm-lbl">근태기록</div>
       </div>
-      <div class="big-menu-item" onclick="showMain('organization')">
-        <div class="bm-ic bm-pink"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="bm-lbl">인사관리</div>
+      <div class="quick-item" onclick="openApprovalForm('휴가신청서')">
+        <div class="qm-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#2d8a4e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        </div>
+        <div class="qm-lbl">연차신청</div>
       </div>
-      <div class="big-menu-item" onclick="showMain('board')">
-        <div class="bm-ic bm-green"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="bm-lbl">게시판</div>
+      <div class="quick-item" onclick="showMain('docmgmt')">
+        <div class="qm-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="qm-lbl">문서함</div>
       </div>
-      <div class="big-menu-item" onclick="showMain('docmgmt')">
-        <div class="bm-ic bm-purple"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div>
-        <div class="bm-lbl">자료실</div>
+      <div class="quick-item" onclick="openModal('modal-allmenu')">
+        <div class="qm-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#0891b2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <div class="qm-lbl">업무도구</div>
       </div>
     </div>
 
@@ -1169,36 +1269,34 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
     <div class="wgt" style="grid-column:span 1">
       <div class="whdr">
-        <span class="wttl">진행상황</span>
+        <span class="wttl">전자결재</span>
         <div class="wico" onclick="showMain('approval')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
       </div>
-      <div class="wbody" style="padding:8px 14px">
-        <div class="wp-row" onclick="showToast('내 결재함')">
-          <input type="checkbox" onclick="event.stopPropagation()" checked>
-          <div class="wp-content">
-            <div class="wp-title">결재 진행함 — 작성중인 문서</div>
-            <div class="wp-meta"><span class="wp-tag wp-tag-blue">진행중</span> · 3건</div>
+      <div class="appr-tabs">
+        <div class="appr-tab act" onclick="switchApprTab(this,'todo')">진행할 결재 <span class="appr-tab-cnt">3</span></div>
+        <div class="appr-tab" onclick="switchApprTab(this,'doing')">진행중 결재 <span class="appr-tab-cnt-gray">2</span></div>
+        <div class="appr-tab" onclick="switchApprTab(this,'done')">완료된 결재</div>
+      </div>
+      <div class="wbody appr-list" style="padding:6px 14px 14px">
+        <div class="appr-card" onclick="showMain('approval')">
+          <span class="appr-state appr-state-amber">결재 요청</span>
+          <div class="appr-info">
+            <div class="appr-title">지출결의서(5월 광고비)</div>
+            <div class="appr-meta">마케팅팀 이지은 <span class="mn">2026.05.21</span></div>
           </div>
         </div>
-        <div class="wp-row" onclick="showToast('수신 문서함')">
-          <input type="checkbox" onclick="event.stopPropagation()">
-          <div class="wp-content">
-            <div class="wp-title">결재 수신함 — 결재 대기</div>
-            <div class="wp-meta"><span class="wp-tag wp-tag-amber">대기</span> · 5건</div>
+        <div class="appr-card" onclick="showMain('approval')">
+          <span class="appr-state appr-state-blue">결재 진행</span>
+          <div class="appr-info">
+            <div class="appr-title">휴가신청서(연차)</div>
+            <div class="appr-meta">김병선 <span class="mn">2026.05.20</span></div>
           </div>
         </div>
-        <div class="wp-row" onclick="showToast('완료 문서함')">
-          <input type="checkbox" onclick="event.stopPropagation()" checked>
-          <div class="wp-content">
-            <div class="wp-title">결재 완료함</div>
-            <div class="wp-meta"><span class="wp-tag wp-tag-green">완료</span> · 12건</div>
-          </div>
-        </div>
-        <div class="wp-row" onclick="showToast('반려 문서함')">
-          <input type="checkbox" onclick="event.stopPropagation()">
-          <div class="wp-content">
-            <div class="wp-title">결재 반려함</div>
-            <div class="wp-meta"><span class="wp-tag wp-tag-red">반려</span> · 1건</div>
+        <div class="appr-card" onclick="showMain('approval')">
+          <span class="appr-state appr-state-gray">검토 중</span>
+          <div class="appr-info">
+            <div class="appr-title">업무용 기기 구매 신청</div>
+            <div class="appr-meta">개발팀 박수현 <span class="mn">2026.05.20</span></div>
           </div>
         </div>
       </div>
@@ -1539,77 +1637,78 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- ROW 4: 포토 소식 (3col) + 동호회·식권 (1col) — WEWORKS 스타일 -->
+    <!-- ROW 4: 조직 소식 (3 photo cards, 3col) + 문서함 (1col) — WEWORKS 그대로 -->
     <div class="wgt" style="grid-column:span 3">
       <div class="whdr">
-        <span class="wttl">포토 소식</span>
-        <div class="wico" onclick="showMain('board')" style="cursor:pointer;font-size:16px;color:var(--tx3)">+</div>
+        <span class="wttl">조직 소식</span>
+        <div class="news-arrows">
+          <button class="news-arr" onclick="showToast('이전 소식')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="news-arr" onclick="showToast('다음 소식')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
       </div>
-      <div class="wbody photo-news-grid">
-        <div class="photo-card" onclick="showToast('2024 신입사원 환영회')">
-          <div class="photo-card-img" style="background:linear-gradient(135deg,#FFB94B,#FF6B6B)">
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="14" r="3"/><circle cx="20" cy="9" r="2"/></svg>
+      <div class="wbody news-grid">
+        <div class="news-card" onclick="showToast('2026 상반기 워크샵')">
+          <div class="news-img" style="background:linear-gradient(135deg,#FFB94B,#FF6B6B)">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="14" r="3"/><circle cx="20" cy="9" r="2"/></svg>
           </div>
-          <div class="photo-card-meta">
-            <div class="photo-card-title">2026 신입사원 환영회 개최</div>
-            <div class="photo-card-date">2026-04-25</div>
-          </div>
-        </div>
-        <div class="photo-card" onclick="showToast('회사 비전 발표회')">
-          <div class="photo-card-img" style="background:linear-gradient(135deg,#7FA3F5,#4A7CF0)">
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div class="photo-card-meta">
-            <div class="photo-card-title">2026 상반기 비전 발표회</div>
-            <div class="photo-card-date">2026-04-12</div>
+          <div class="news-meta">
+            <div class="news-title">2026 상반기 워크샵 성료</div>
+            <div class="news-author">경영지원팀 <span class="news-date mn">05-20</span></div>
           </div>
         </div>
-        <div class="photo-card" onclick="showToast('체육대회 사진')">
-          <div class="photo-card-img" style="background:linear-gradient(135deg,#5DD39E,#2D8A4E)">
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+        <div class="news-card" onclick="showToast('사내 카페 새 메뉴')">
+          <div class="news-img" style="background:linear-gradient(135deg,#C49A6C,#8B5A2B)">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
           </div>
-          <div class="photo-card-meta">
-            <div class="photo-card-title">춘계 체육대회 한마음으로</div>
-            <div class="photo-card-date">2026-04-05</div>
+          <div class="news-meta">
+            <div class="news-title">사내 카페 새 메뉴 출시!</div>
+            <div class="news-author">총무팀 <span class="news-date mn">05-17</span></div>
           </div>
         </div>
-        <div class="photo-card" onclick="showToast('연구개발 워크숍')">
-          <div class="photo-card-img" style="background:linear-gradient(135deg,#C792EA,#7C3AED)">
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <div class="news-card" onclick="showToast('지누켐 마라톤')">
+          <div class="news-img" style="background:linear-gradient(135deg,#5DD39E,#2D8A4E)">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"><path d="M13 4v16M9 8l4-4 4 4M9 16l4 4 4-4"/></svg>
           </div>
-          <div class="photo-card-meta">
-            <div class="photo-card-title">R&D 워크숍 in 제주</div>
-            <div class="photo-card-date">2026-03-22</div>
+          <div class="news-meta">
+            <div class="news-title">제2회 지누켐 마라톤 참가 안내</div>
+            <div class="news-author">동호회 <span class="news-date mn">05-16</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 동호회·식권 패널 (1col) -->
-    <div style="grid-column:span 1;display:flex;flex-direction:column;gap:12px">
-      <div class="wgt">
-        <div class="whdr">
-          <span class="wttl">동호회 소식</span>
-          <div class="wico" onclick="showToast('동호회 페이지')" style="cursor:pointer;font-size:16px;color:var(--tx3)">+</div>
-        </div>
-        <div class="wbody" style="padding:10px 14px">
-          <div class="club-row" onclick="showToast('등산 동호회')"><span class="club-tag" style="background:#e8f5ee;color:#2d8a4e">등산</span><span class="club-title">5월 정기 산행 신청</span><span class="club-date mn">05-08</span></div>
-          <div class="club-row" onclick="showToast('독서 모임')"><span class="club-tag" style="background:#EEF3FE;color:var(--p)">독서</span><span class="club-title">이달의 책 토론</span><span class="club-date mn">05-15</span></div>
-          <div class="club-row" onclick="showToast('볼링 동호회')"><span class="club-tag" style="background:#fef3e2;color:#d97706">볼링</span><span class="club-title">정기 모임 회원 모집</span><span class="club-date mn">05-22</span></div>
-          <div class="club-row" onclick="showToast('보드게임')"><span class="club-tag" style="background:#f3ebfe;color:#7c3aed">보드</span><span class="club-title">금요 정기 보드게임</span><span class="club-date mn">매주 금</span></div>
-        </div>
+    <!-- 문서함 위젯 (1col, WEWORKS 그대로) -->
+    <div class="wgt" style="grid-column:span 1">
+      <div class="whdr">
+        <span class="wttl">문서함</span>
+        <div class="wico" onclick="showMain('docmgmt')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
       </div>
-      <div class="wgt">
-        <div class="whdr">
-          <span class="wttl">오늘의 식권</span>
-          <div class="wico" onclick="showToast('식당 메뉴')" style="cursor:pointer;font-size:16px;color:var(--tx3)">+</div>
+      <div class="docbox-tabs">
+        <div class="docbox-tab act" onclick="switchDocboxTab(this,'recent')">최근 문서</div>
+        <div class="docbox-tab" onclick="switchDocboxTab(this,'mine')">내 문서</div>
+        <div class="docbox-tab" onclick="switchDocboxTab(this,'shared')">공유 문서</div>
+        <div class="docbox-tab" onclick="switchDocboxTab(this,'important')">중요 문서</div>
+      </div>
+      <div class="wbody docbox-list" style="padding:6px 14px 14px">
+        <div class="docbox-row" onclick="showToast('문서 열기')">
+          <span class="docbox-ic docbox-ic-word">W</span>
+          <div class="docbox-info">
+            <div class="docbox-title">2026년 사업계획서_v1.0.docx</div>
+            <div class="docbox-meta">김병선 <span class="mn">05-20</span></div>
+          </div>
         </div>
-        <div class="wbody" style="padding:14px">
-          <div style="font-size:11px;color:var(--tx3);margin-bottom:6px">2026.05.08 (금) 점심</div>
-          <div style="font-size:13px;color:var(--tx);font-weight:600;line-height:1.6">제육볶음 · 김치찌개 · 시금치나물 · 어묵볶음 · 백미밥 · 김치</div>
-          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
-            <div><span style="font-size:11px;color:var(--tx3)">잔여</span> <strong style="font-size:13px;color:var(--p);font-family:var(--mono)">3장</strong></div>
-            <button class="tb pri" style="font-size:11px;padding:4px 12px" onclick="showToast('식권 사용')">사용</button>
+        <div class="docbox-row" onclick="showToast('문서 열기')">
+          <span class="docbox-ic docbox-ic-excel">X</span>
+          <div class="docbox-info">
+            <div class="docbox-title">예산_2026년_5월.xlsx</div>
+            <div class="docbox-meta">이연구 <span class="mn">05-20</span></div>
+          </div>
+        </div>
+        <div class="docbox-row" onclick="showToast('문서 열기')">
+          <span class="docbox-ic docbox-ic-pdf">PDF</span>
+          <div class="docbox-info">
+            <div class="docbox-title">사내 규정집(2026).pdf</div>
+            <div class="docbox-meta">경영지원팀 <span class="mn">05-19</span></div>
           </div>
         </div>
       </div>
@@ -5410,6 +5509,20 @@ function switchClaimSubTab(el, tid){
   parent.querySelectorAll('#cs-general,#cs-card,#cs-refund').forEach(d=>d.style.display='none');
   const t=document.getElementById(tid);if(t)t.style.display='';
 }
+// ══ APPROVAL WIDGET TABS ══
+function switchApprTab(el, key){
+  el.parentElement.querySelectorAll('.appr-tab').forEach(t=>t.classList.remove('act'));
+  el.classList.add('act');
+  showToast('전자결재: ' + el.textContent.trim().split('  ')[0]);
+}
+
+// ══ DOCBOX TABS ══
+function switchDocboxTab(el, key){
+  el.parentElement.querySelectorAll('.docbox-tab').forEach(t=>t.classList.remove('act'));
+  el.classList.add('act');
+  showToast('문서함: ' + el.textContent.trim());
+}
+
 // ══ PROJECT TABS ══
 function switchProjTab(el, key){
   el.parentElement.querySelectorAll('.proj-tab').forEach(t=>t.classList.remove('act'));
