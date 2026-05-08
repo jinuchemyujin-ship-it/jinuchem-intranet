@@ -523,6 +523,49 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .menu-ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center}
 .menu-lbl{font-size:12px;color:var(--tx2);font-weight:500;text-align:center}
 
+/* ══ WEWORKS 사이드바 BRAND (2-line logo) ══ */
+.ww-brand{padding:24px 16px 22px;text-align:center;cursor:pointer;border-bottom:1px solid #f3f5f9}
+.ww-brand-name{font-size:22px;font-weight:800;color:var(--p);letter-spacing:-.5px;line-height:1}
+.ww-brand-sub{font-size:11px;color:var(--tx3);font-weight:500;margin-top:5px;letter-spacing:2px}
+
+/* WEWORKS 메뉴 아이템 */
+.ww-gi{padding:0 14px;height:46px;font-size:14px;color:#5a6577;margin:2px 12px;border-radius:10px;gap:12px}
+.ww-gi:hover{background:#f3f5f9;color:var(--tx)}
+.ww-gi.act{background:var(--pp);color:var(--p);font-weight:600}
+.ww-gi .gi-icon{width:22px}
+.ww-gi .gi-icon svg{width:20px;height:20px;stroke-width:1.7}
+.ww-gi.act .gi-icon svg{stroke-width:2}
+
+/* 즐겨찾는 메뉴 헤더 */
+.ww-favorites-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 8px;font-size:12px;font-weight:600;color:var(--tx3);margin-top:6px;border-top:1px solid #f3f5f9;margin-left:6px;margin-right:6px;padding-top:14px;padding-left:18px;padding-right:18px}
+.ww-fav-edit{background:#f3f5f9;border:none;color:#5a6577;font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px;cursor:pointer;font-family:var(--font);transition:all .15s}
+.ww-fav-edit:hover{background:#e5e8ed;color:var(--tx)}
+
+/* 즐겨찾는 메뉴 아이템 */
+.ww-fav{padding:0 14px;height:38px;font-size:13px;color:#5a6577;margin:1px 12px;border-radius:8px;gap:10px}
+.ww-fav:hover{background:#f3f5f9;color:var(--tx)}
+.ww-fav-star{color:var(--p)}
+.ww-fav-star svg{width:14px;height:14px}
+
+/* ══ WEWORKS 상단 헤더 ══ */
+.ww-top-header{display:flex;align-items:center;gap:18px;padding:14px 24px;background:#fff;border-bottom:1px solid #eef0f3;flex-shrink:0;height:64px}
+.ww-search{flex:1;max-width:500px;display:flex;align-items:center;background:#f7f9fc;border:1px solid #f3f5f9;border-radius:24px;padding:0 6px 0 22px;height:42px;transition:all .15s}
+.ww-search:focus-within{border-color:var(--p);background:#fff;box-shadow:0 0 0 3px rgba(74,124,240,.1)}
+.ww-search input{flex:1;border:none;background:none;outline:none;font-size:13px;color:var(--tx);font-family:var(--font)}
+.ww-search input::placeholder{color:var(--tx3)}
+.ww-search-btn{width:32px;height:32px;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.ww-search-btn:hover{background:#f0f2f6}
+.ww-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.ww-act-btn{position:relative;width:38px;height:38px;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .15s}
+.ww-act-btn:hover{background:#f3f5f9}
+.ww-act-badge{position:absolute;top:6px;right:6px;min-width:16px;height:16px;background:var(--p);color:#fff;font-size:9px;font-weight:700;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #fff;line-height:1}
+.ww-profile{display:flex;align-items:center;gap:10px;padding:5px 12px 5px 5px;border-radius:24px;cursor:pointer;transition:background .15s;margin-left:6px}
+.ww-profile:hover{background:#f3f5f9}
+.ww-profile-avatar{width:34px;height:34px;border-radius:50%;background:var(--hero);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.ww-profile-info{display:flex;flex-direction:column}
+.ww-profile-name{font-size:13px;font-weight:600;color:var(--tx);display:flex;align-items:center;gap:3px}
+.ww-profile-org{font-size:11px;color:var(--tx3);margin-top:1px}
+
 /* ══ ATTENDANCE CARD (WEWORKS 메인 - 히어로 옆) ══ */
 .attend-card{display:flex;flex-direction:column}
 .attend-body{padding:14px 18px;display:flex;align-items:center;gap:18px;flex:1}
@@ -910,116 +953,68 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <!-- SIDEBAR + CONTENT ROW -->
 <div style="flex:1;overflow:hidden;display:flex;flex-direction:row">
 
-<!-- SIDEBAR -->
+<!-- SIDEBAR (WEWORKS 그대로) -->
 <div class="gnb" id="gnb">
-  <!-- 상단: 로고 + 접기 버튼 -->
-  <div class="gnb-top">
-    <div class="gnb-logo" style="cursor:pointer" onclick="showMain('dashboard')">
-      <div class="gnb-logo-icon"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M9 3h6v7l4 8a2 2 0 01-1.8 2.9H6.8A2 2 0 015 18l4-8V3z"/><path d="M9 3h6"/></svg></div>
-      <div class="gnb-logo-text">Jinuchem <span class="ver">Intranet</span></div>
-    </div>
-    <button class="gnb-toggle" onclick="toggleSidebar()" title="사이드바 접기"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <!-- 상단: WEWORKS-style 2-line 로고 -->
+  <div class="ww-brand" onclick="showMain('dashboard')">
+    <div class="ww-brand-name">JINUCHEM</div>
+    <div class="ww-brand-sub">INTRANET</div>
   </div>
 
-  <!-- 검색 -->
-  <div class="sb-search">
-    <span class="sb-search-icon"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
-    <input placeholder="빠른 검색...">
-  </div>
-
-  <!-- 알림 요약 -->
-  <div class="sb-notif-row">
-    <div class="sb-nf" onclick="openTab('approval','전자결재','')" title="결재 대기">
-      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-      <span class="sb-nf-label">결재대기</span>
-      <span class="sb-nf-count" style="color:#FF9500">3</span>
-    </div>
-    <div class="sb-nf" onclick="window.open('https://slack.com','_blank')" title="Slack">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2h-2v2a2 2 0 01-4 0v-6a2 2 0 012-2h4a2 2 0 012 2z"/><path d="M3 9a2 2 0 012-2h2V5a2 2 0 014 0v6a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-      <span class="sb-nf-label">Slack</span>
-      <span class="sb-nf-count">3</span>
-    </div>
-  </div>
-
-  <!-- 네비게이션 -->
+  <!-- 네비게이션 (WEWORKS 그대로 — 10 main items) -->
   <div class="gnb-items">
-    <div class="gi act" onclick="showMain('dashboard')" data-tip="대시보드">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="gi-label">대시보드</span>
+    <div class="gi ww-gi act" onclick="showMain('dashboard')" data-tip="홈">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="gi-label">홈</span>
     </div>
-    <div class="gi-section-label">업무</div>
-    <div class="gi" onclick="openTab('approval','전자결재','')" data-tip="전자결재">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
-      <span class="gi-label">전자결재</span>
-      <span class="gi-label-badge">3</span>
+    <div class="gi ww-gi" onclick="openTab('board','공지사항','')" data-tip="공지사항">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></span><span class="gi-label">공지사항</span>
     </div>
-    <div class="gi" onclick="openTab('attendance','근태관리','️')" data-tip="근태관리">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="gi-label">근태관리</span>
+    <div class="gi ww-gi" onclick="openTab('approval','전자결재','')" data-tip="전자결재">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="gi-label">전자결재</span>
     </div>
-    <div class="gi" onclick="openTab('projects','과제관리','')" data-tip="과제관리">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12h6M9 16h6"/></svg></span><span class="gi-label">과제관리</span>
-      <span class="gi-label-badge">4</span>
+    <div class="gi ww-gi" onclick="openTab('attendance','근태관리','')" data-tip="근태관리">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></span><span class="gi-label">근태관리</span>
     </div>
-    <div class="gi" onclick="openExpensePage('목록')" data-tip="연구비 관리">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="gi-label">연구비 관리</span>
+    <div class="gi ww-gi" onclick="openTab('meeting','일정관리','')" data-tip="일정관리">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="gi-label">일정관리</span>
     </div>
-    <div class="gi-divider"></div>
-    <div class="gi-section-label">소통</div>
-    <div class="gi" onclick="openTab('board','게시판','')" data-tip="게시판">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><span class="gi-label">게시판</span>
+    <div class="gi ww-gi" onclick="openTab('docmgmt','문서함','')" data-tip="문서함">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="gi-label">문서함</span>
     </div>
-    <div class="gi" onclick="openTab('msds','MSDS 관리','️')" data-tip="MSDS 관리">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6v7l4 8a2 2 0 01-1.8 2.9H6.8A2 2 0 015 18l4-8V3z"/><path d="M9 3h6"/></svg></span><span class="gi-label">MSDS 관리</span>
+    <div class="gi ww-gi" onclick="openTab('organization','조직도','')" data-tip="조직도">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M12 9v3M9 14l-1 2M15 14l1 2"/></svg></span><span class="gi-label">조직도</span>
     </div>
-    <div class="gi-divider"></div>
-    <div class="gi-section-label">정보</div>
-    <div class="gi" onclick="openTab('organization','조직도','')" data-tip="조직도">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="gi-label">조직도</span>
+    <div class="gi ww-gi" onclick="openModal('modal-allmenu')" data-tip="업무도구">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="gi-label">업무도구</span>
     </div>
-    <div class="gi gi-parent" data-tip="인사·급여">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-      <span class="gi-label">인사·급여</span>
+    <div class="gi ww-gi" onclick="openTab('board','게시판','')" data-tip="게시판">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span class="gi-label">게시판</span>
     </div>
-    <div class="gi-children">
-      <div class="gi-sub" onclick="openTab('salary','급여관리','')">급여관리</div>
-      <div class="gi-sub" onclick="openTab('account-mgmt','급여 계좌관리','')">급여 계좌관리</div>
-      <div class="gi-sub" onclick="openTab('certificate','증명서 발급','')">증명서 발급</div>
-      <div class="gi-sub" onclick="openTab('leave-apply','휴직신청','')">휴직신청</div>
-      <div class="gi-sub" onclick="openTab('return-apply','복직신청','')">복직신청</div>
-      <div class="gi-sub" onclick="openTab('staff-work','직원 근무상황','')">직원 근무상황</div>
+    <div class="gi ww-gi" onclick="showToast('자주찾는 메뉴')" data-tip="자주찾는 메뉴">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="gi-label">자주찾는 메뉴</span>
     </div>
-    <div class="gi gi-parent" data-tip="출장관리">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 11-4 0M5 17V9a2 2 0 012-2h10a2 2 0 012 2v8M19 17a2 2 0 104 0M3 11h18"/></svg></span>
-      <span class="gi-label">출장관리</span>
+
+    <!-- 즐겨찾는 메뉴 섹션 -->
+    <div class="ww-favorites-head">
+      <span>즐겨찾는 메뉴</span>
+      <button class="ww-fav-edit" onclick="showToast('즐겨찾기 편집')">편집</button>
     </div>
-    <div class="gi-children">
-      <div class="gi-sub" onclick="openTab('trip-apply','출장신청','')">출장신청</div>
-      <div class="gi-sub" onclick="openTab('trip-settle','관외출장 여비정산','')">관외출장 여비정산</div>
-      <div class="gi-sub" onclick="openTab('trip-overseas','국외출장','')">국외출장</div>
+    <div class="gi ww-fav" onclick="openApprovalForm('지출결의서')" data-tip="지출결의서">
+      <span class="gi-icon ww-fav-star"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="gi-label">지출결의서</span>
     </div>
-    <div class="gi" onclick="openTab('sales','매출·매입','')" data-tip="매출·매입">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span><span class="gi-label">매출·매입</span>
+    <div class="gi ww-fav" onclick="openApprovalForm('휴가신청서')" data-tip="휴가신청서">
+      <span class="gi-icon ww-fav-star"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="gi-label">휴가신청서</span>
     </div>
-    <div class="gi-divider"></div>
-    <div class="gi-section-label">외부 도구</div>
-    <div class="gi" onclick="window.open('https://slack.com','_blank')" data-tip="Slack">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2h-2v2a2 2 0 01-4 0v-6a2 2 0 012-2h4a2 2 0 012 2z"/><path d="M3 9a2 2 0 012-2h2V5a2 2 0 014 0v6a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M15 3a2 2 0 012 2v2h2a2 2 0 010 4h-6a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M9 21a2 2 0 01-2-2v-2H5a2 2 0 010-4h6a2 2 0 012 2v4a2 2 0 01-2 2z"/></svg></span><span class="gi-label">Slack <span style="font-size:9px;color:var(--tx4)">↗</span></span>
+    <div class="gi ww-fav" onclick="openApprovalForm('업무계획서')" data-tip="업무계획서">
+      <span class="gi-icon ww-fav-star"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="gi-label">업무계획서</span>
     </div>
-    <div class="gi" onclick="window.open('https://atlassian.net','_blank')" data-tip="Jira">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/><path d="M12 8v8M8 12h8"/></svg></span><span class="gi-label">Jira <span style="font-size:9px;color:var(--tx4)">↗</span></span>
-    </div>
-    <div class="gi" onclick="window.open('https://atlassian.net/wiki','_blank')" data-tip="Confluence">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span><span class="gi-label">Confluence <span style="font-size:9px;color:var(--tx4)">↗</span></span>
-    </div>
-    <div class="gi" onclick="window.open('https://calendar.google.com','_blank')" data-tip="Google Calendar">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><span class="gi-label">Calendar <span style="font-size:9px;color:var(--tx4)">↗</span></span>
-    </div>
-    <div class="gi" onclick="window.open('https://drive.google.com','_blank')" data-tip="Google Drive">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="gi-label">Drive <span style="font-size:9px;color:var(--tx4)">↗</span></span>
+    <div class="gi ww-fav" onclick="showToast('회사규정집')" data-tip="회사규정집">
+      <span class="gi-icon ww-fav-star"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="gi-label">회사규정집</span>
     </div>
   </div>
 
-  <!-- 하단: 유저 + 설정 -->
-  <div class="gnb-footer">
+  <!-- 하단: 유저 + 설정 — 숨김 (헤더로 이동) -->
+  <div class="gnb-footer" style="display:none">
     <div class="sb-user" onclick="openModal('modal-myinfo')" title="내 정보">
       <div class="sb-avatar">김</div>
       <div class="sb-user-info">
@@ -1056,8 +1051,41 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 <div class="page act" id="page-dashboard">
   <div style="display:flex;flex-direction:column;gap:0;height:100%;overflow:hidden;min-height:0">
 
-    <!-- ══ RDERP 스타일 상단 유틸리티 바 ══ -->
-    <div class="rderp-top">
+    <!-- ══ WEWORKS 상단 헤더 (검색 + 아이콘 + 프로필) ══ -->
+    <div class="ww-top-header">
+      <div class="ww-search">
+        <input type="text" placeholder="통합검색" onkeydown="if(event.key==='Enter')showToast('검색: '+this.value)">
+        <button class="ww-search-btn" onclick="showToast('검색')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#7a8294" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+      <div class="ww-actions">
+        <button class="ww-act-btn" onclick="openModal('modal-notif')" title="알림">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span class="ww-act-badge">3</span>
+        </button>
+        <button class="ww-act-btn" onclick="showToast('메일 7건')" title="메일">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span class="ww-act-badge">7</span>
+        </button>
+        <button class="ww-act-btn" onclick="showToast('즐겨찾기')" title="즐겨찾기">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+        <button class="ww-act-btn" onclick="openModal('modal-allmenu')" title="전체메뉴">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5a6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </button>
+        <div class="ww-profile" onclick="openModal('modal-myinfo')">
+          <div class="ww-profile-avatar">김</div>
+          <div class="ww-profile-info">
+            <div class="ww-profile-name">김병선 부장 <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polyline points="6 9 12 15 18 9"/></svg></div>
+            <div class="ww-profile-org">화학연구팀</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (구) RDERP 유틸리티 바 — 숨김 -->
+    <div class="rderp-top" style="display:none">
       <div class="rderp-top-left">
         <div class="rderp-logo" onclick="showMain('dashboard')">
           <span class="rderp-logo-mark">JC</span>
@@ -1126,8 +1154,8 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- ══ 대시보드 헤더 (인사말 + 검색) ══ -->
-    <div class="dash-topbar">
+    <!-- ══ 대시보드 헤더 (인사말 + 검색) — 숨김 (위 ww-top-header로 대체) ══ -->
+    <div class="dash-topbar" style="display:none">
       <div class="dash-greet">
         <div class="dash-greet-name" id="dash-greet-name">김병선님, 좋은 하루 보내세요</div>
         <div class="dash-greet-sub" id="dash-greet-sub">2026년 4월 25일 토요일</div>
