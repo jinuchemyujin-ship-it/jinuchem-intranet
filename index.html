@@ -523,6 +523,24 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .menu-ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center}
 .menu-lbl{font-size:12px;color:var(--tx2);font-weight:500;text-align:center}
 
+/* ══ WELCOME WEATHER (WEWORKS 스타일) ══ */
+.welcome-weather{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);padding:14px 20px;border-radius:14px;color:#fff;flex-shrink:0;position:relative}
+.ww-city{position:absolute;top:8px;right:14px;font-size:10px;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:3px}
+.ww-icon{flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.ww-info{display:flex;flex-direction:column;gap:2px}
+.ww-temp{font-size:32px;font-weight:700;line-height:1;letter-spacing:-1px;font-family:var(--mono)}
+.ww-desc{font-size:12px;color:rgba(255,255,255,.92);font-weight:500}
+
+/* ══ ATTENDANCE RING WIDGET (WEWORKS 스타일) ══ */
+.attend-w{padding:14px 16px;display:flex;flex-direction:column;align-items:stretch}
+.attend-times{display:flex;gap:12px;margin-bottom:10px}
+.attend-row{flex:1;background:#f7f9fc;border-radius:8px;padding:8px 10px;text-align:center}
+.attend-row-lbl{font-size:10px;color:var(--tx3);margin-bottom:3px}
+.attend-row-val{font-size:14px;font-weight:700;color:var(--tx);line-height:1}
+.attend-ring{position:relative;width:80px;height:80px;margin:0 auto 4px}
+.attend-ring-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--p);font-family:var(--mono)}
+#attend-ring-progress{transition:stroke-dashoffset .4s}
+
 /* ══ WELCOME HERO (MY INTRANET) ══ */
 .welcome-hero{margin:14px 18px 4px;padding:22px 28px;background:var(--hero);border-radius:14px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 4px 18px rgba(74,124,240,.18);overflow:hidden}
 .welcome-hero-text{flex:1;min-width:0}
@@ -980,26 +998,25 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- ROW 0: 웰컴 히어로 (2col) + 스탯 그리드 2x2 (2col) -->
     <div class="welcome-hero" style="grid-column:span 2;margin:0">
       <div class="welcome-hero-text">
-        <div class="welcome-greeting">오늘도 함께 성장해요</div>
-        <div class="welcome-sub">MY INTRANET — 더 스마트한 업무 환경</div>
-        <button class="tb" style="background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3);margin-top:14px;font-weight:600" onclick="showMain('approval')">
-          결재 바로가기
-          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
+        <div class="welcome-greeting">안녕하세요, 김병선님!</div>
+        <div class="welcome-sub">오늘도 좋은 하루 되세요</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.85);margin-top:10px;font-family:var(--mono)">2026.05.08 (금)</div>
       </div>
-      <div class="welcome-hero-art" aria-hidden="true">
-        <svg viewBox="0 0 200 120" width="200" height="120">
-          <rect x="20" y="90" width="16" height="24" rx="2" fill="rgba(255,255,255,.35)"/>
-          <rect x="44" y="70" width="16" height="44" rx="2" fill="rgba(255,255,255,.55)"/>
-          <rect x="68" y="50" width="16" height="64" rx="2" fill="rgba(255,255,255,.75)"/>
-          <rect x="92" y="60" width="16" height="54" rx="2" fill="rgba(255,255,255,.6)"/>
-          <rect x="116" y="30" width="16" height="84" rx="2" fill="#fff"/>
-          <rect x="140" y="55" width="16" height="59" rx="2" fill="rgba(255,255,255,.7)"/>
-          <polyline points="28,85 52,65 76,45 100,55 124,25 148,50" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
-          <circle cx="28" cy="85" r="3" fill="#fff"/><circle cx="52" cy="65" r="3" fill="#fff"/>
-          <circle cx="76" cy="45" r="3" fill="#fff"/><circle cx="100" cy="55" r="3" fill="#fff"/>
-          <circle cx="124" cy="25" r="3" fill="#fff"/><circle cx="148" cy="50" r="3" fill="#fff"/>
-        </svg>
+      <div class="welcome-weather" aria-hidden="true">
+        <div class="ww-city">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>서울특별시</span>
+        </div>
+        <div class="ww-icon">
+          <svg viewBox="0 0 64 64" width="58" height="58">
+            <circle cx="22" cy="22" r="8" fill="#FFD66B"/>
+            <path d="M48 30a10 10 0 00-19-3 8 8 0 00-9 8 8 8 0 008 8h20a8 8 0 000-13z" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="ww-info">
+          <div class="ww-temp">22°</div>
+          <div class="ww-desc">맑음</div>
+        </div>
       </div>
     </div>
 
@@ -1118,23 +1135,32 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
-    <!-- 근무상황 (KORUS 스타일) -->
+    <!-- 근태 위젯 (WEWORKS 스타일 — 원형 progress) -->
     <div class="wgt">
       <div class="whdr">
-        <span class="wttl">근무상황</span>
+        <span class="wttl">근태 현황</span>
         <div class="wico" onclick="showMain('attendance')" style="cursor:pointer;font-size:16px;color:var(--tx3)">+</div>
       </div>
-      <div class="wbody" style="padding:10px 12px">
-        <div style="text-align:center;font-size:11px;color:var(--tx3);margin-bottom:6px" id="attend-date">2026년 4월 5일 (토)</div>
-        <div style="text-align:center;font-size:20px;font-weight:800;font-family:var(--mono);color:var(--tx);margin-bottom:4px" id="clock-display">--:--:--</div>
-        <div style="text-align:center;margin-bottom:10px"><span id="attend-status" style="font-size:12px;font-weight:700;color:var(--tx4)">미출근</span></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">
-          <button id="btn-checkin" onclick="checkIn()" style="padding:8px;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;background:var(--p);color:#fff;font-family:var(--font);transition:all .2s">출근</button>
-          <button id="btn-checkout" onclick="checkOut()" style="padding:8px;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;background:var(--bg);color:var(--tx3);font-family:var(--font);transition:all .2s" disabled>퇴근</button>
+      <div class="wbody attend-w">
+        <div class="attend-times">
+          <div class="attend-row"><div class="attend-row-lbl">출근</div><div class="attend-row-val mn" id="checkin-time">--:--</div></div>
+          <div class="attend-row"><div class="attend-row-lbl">퇴근</div><div class="attend-row-val mn" id="checkout-time">--:--</div></div>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--tx4)">
-          <span>출근 <strong id="checkin-time" style="color:var(--tx)">--:--</strong></span>
-          <span>퇴근 <strong id="checkout-time" style="color:var(--tx)">--:--</strong></span>
+        <div class="attend-ring">
+          <svg viewBox="0 0 80 80" width="80" height="80">
+            <circle cx="40" cy="40" r="34" fill="none" stroke="#eef0f3" stroke-width="6"/>
+            <circle id="attend-ring-progress" cx="40" cy="40" r="34" fill="none" stroke="var(--p)" stroke-width="6" stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round" transform="rotate(-90 40 40)"/>
+          </svg>
+          <div class="attend-ring-pct" id="attend-ring-pct">0%</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px">
+          <button id="btn-checkin" onclick="checkIn()" style="padding:9px;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;background:var(--p);color:#fff;font-family:var(--font);transition:all .2s">출근</button>
+          <button id="btn-checkout" onclick="checkOut()" style="padding:9px;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;background:#f3f5f9;color:var(--tx3);font-family:var(--font);transition:all .2s" disabled>퇴근</button>
+        </div>
+        <div style="display:none">
+          <span id="attend-status">미출근</span>
+          <span id="attend-date"></span>
+          <span id="clock-display"></span>
           <span>근무 <strong id="work-duration" style="color:var(--p)">0h 0m</strong></span>
         </div>
       </div>
@@ -5433,6 +5459,19 @@ function updateClock(){
 }
 setInterval(updateClock,1000);updateClock();
 
+function updateAttendRing(){
+  if(!isCheckedIn)return;
+  const ring=document.getElementById('attend-ring-progress');
+  const pctEl=document.getElementById('attend-ring-pct');
+  if(!ring||!pctEl)return;
+  const elapsedMs=Date.now()-checkinTs.getTime();
+  const workMs=8*60*60*1000; // 8시간
+  const pct=Math.min(100, Math.round(elapsedMs/workMs*100));
+  const circumference=2*Math.PI*34; // 213.6
+  const offset=circumference*(1-pct/100);
+  ring.style.strokeDashoffset=offset;
+  pctEl.textContent=pct+'%';
+}
 function checkIn(){
   if(isCheckedIn)return;
   isCheckedIn=true;checkinTs=new Date();
@@ -5440,13 +5479,15 @@ function checkIn(){
   document.getElementById('checkin-time').textContent=t;
   document.getElementById('attend-status').textContent='근무중';
   document.getElementById('attend-status').style.color='var(--green)';
-  document.getElementById('btn-checkin').style.background='var(--bg)';
+  document.getElementById('btn-checkin').style.background='#f3f5f9';
   document.getElementById('btn-checkin').style.color='var(--tx3)';
   document.getElementById('btn-checkin').textContent='출근완료';
   document.getElementById('btn-checkin').disabled=true;
   document.getElementById('btn-checkout').disabled=false;
   document.getElementById('btn-checkout').style.background='var(--red)';
   document.getElementById('btn-checkout').style.color='#fff';
+  updateAttendRing();
+  if(!window._attendInterval) window._attendInterval=setInterval(updateAttendRing,30000);
   showToast('출근 처리되었습니다 ('+t+')');
 }
 function checkOut(){
