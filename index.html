@@ -582,6 +582,13 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .att-out-btn{margin:0 18px 16px;padding:10px;background:#fff;color:var(--p);border:1px solid var(--p);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s}
 .att-out-btn:hover{background:var(--pp)}
 
+/* ══ 업무도구 PAGE (WEWORKS — 10 컬러 아이콘) ══ */
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:20px}
+.tool-item{display:flex;flex-direction:column;align-items:center;gap:16px;padding:32px 16px;background:#fff;border:1px solid #eef0f3;border-radius:16px;cursor:pointer;transition:all .2s}
+.tool-item:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(74,124,240,.12);border-color:var(--p)}
+.tool-ic{width:78px;height:78px;border-radius:20px;display:flex;align-items:center;justify-content:center}
+.tool-lbl{font-size:14px;font-weight:600;color:var(--tx);text-align:center}
+
 /* ══ QUICK MENU 12 ICONS (4x3 grid, 카카오톡 스타일) ══ */
 .quick-card12{background:#fff;border:1px solid #eef0f3;border-radius:12px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:0;padding:14px 10px}
 .quick12-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px;cursor:pointer;border-radius:12px;transition:background .15s}
@@ -992,7 +999,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="gi ww-gi" onclick="openTab('organization','조직도','')" data-tip="조직도">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M12 9v3M9 14l-1 2M15 14l1 2"/></svg></span><span class="gi-label">조직도</span>
     </div>
-    <div class="gi ww-gi" onclick="openModal('modal-allmenu')" data-tip="업무도구">
+    <div class="gi ww-gi" onclick="openTab('tools','업무도구','')" data-tip="업무도구">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="gi-label">업무도구</span>
     </div>
     <div class="gi ww-gi" onclick="openTab('board','게시판','')" data-tip="게시판">
@@ -1791,6 +1798,78 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       </div>
     </div>
 
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 업무도구 PAGE (WEWORKS 레퍼런스) ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-tools">
+  <div class="toolbar">
+    <span class="tb-title">업무도구</span>
+  </div>
+  <div class="scroll" style="padding:24px">
+    <div class="tools-grid">
+      <div class="tool-item" onclick="window.open('https://mail.google.com','_blank')">
+        <div class="tool-ic" style="background:#EEF3FE">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--p)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+        </div>
+        <div class="tool-lbl">메일</div>
+      </div>
+      <div class="tool-item" onclick="showMain('messenger')">
+        <div class="tool-ic" style="background:#EEF3FE">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--p)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="tool-lbl">메신저</div>
+      </div>
+      <div class="tool-item" onclick="showToast('화상회의 시작')">
+        <div class="tool-ic" style="background:#e8f5ee">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#2d8a4e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="tool-lbl">화상회의</div>
+      </div>
+      <div class="tool-item" onclick="showMain('organization')">
+        <div class="tool-ic" style="background:#fef3e2">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#d97706" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+        </div>
+        <div class="tool-lbl">주소록</div>
+      </div>
+      <div class="tool-item" onclick="showToast('설문조사 작성')">
+        <div class="tool-ic" style="background:#EEF3FE">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--p)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div class="tool-lbl">설문조사</div>
+      </div>
+      <div class="tool-item" onclick="showToast('예약 시스템')">
+        <div class="tool-ic" style="background:#fef0ec">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#e76f3f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="2"/></svg>
+        </div>
+        <div class="tool-lbl">예약</div>
+      </div>
+      <div class="tool-item" onclick="showToast('차량 예약')">
+        <div class="tool-ic" style="background:#EEF3FE">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--p)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 00-.84-.99L16 11l-2.7-3.6a1 1 0 00-.8-.4H5.24a2 2 0 00-1.8 1.1l-.8 1.63A6 6 0 002 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+        </div>
+        <div class="tool-lbl">차량예약</div>
+      </div>
+      <div class="tool-item" onclick="showToast('회의실 예약')">
+        <div class="tool-ic" style="background:#e8f5ee">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#2d8a4e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 18h18M5 18V8a2 2 0 012-2h10a2 2 0 012 2v10M9 6V4h6v2"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
+        </div>
+        <div class="tool-lbl">회의실예약</div>
+      </div>
+      <div class="tool-item" onclick="showToast('전자책 도서관')">
+        <div class="tool-ic" style="background:#f3ebe2">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#8b5a2b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <div class="tool-lbl">전자책</div>
+      </div>
+      <div class="tool-item" onclick="showToast('사내 교육')">
+        <div class="tool-ic" style="background:#ffeef5">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#db2777" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="tool-lbl">사내교육</div>
+      </div>
     </div>
   </div>
 </div>
