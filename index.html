@@ -608,6 +608,235 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .ww2-c{font-size:18px;font-weight:600;margin-top:4px;margin-left:1px}
 .ww2-city{font-size:13px;color:rgba(255,255,255,.95);font-weight:500}
 
+/* ══ WEWORKS LIST PAGE v2 (공지사항 — 풀버전) ══ */
+.ww-bc{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--tx3);margin-bottom:16px}
+.ww-bc-home{cursor:pointer;display:inline-flex;color:var(--tx3);transition:color .15s}
+.ww-bc-home:hover{color:var(--p)}
+.ww-bc-sep{color:#c8cdd6}
+.ww-bc-curr{color:var(--tx2);font-weight:500}
+
+.ww-ph{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;gap:20px}
+.ww-ph-title{font-size:24px;font-weight:700;color:var(--tx);letter-spacing:-.5px;margin:0;display:flex;align-items:baseline;gap:14px}
+.ww-ph-sub{font-size:13px;font-weight:400;color:var(--tx3);letter-spacing:-.2px}
+
+/* 탭 + 검색 한 줄 */
+.ww-tab-row{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eef0f3;margin-bottom:18px;padding-bottom:0;gap:16px;flex-wrap:wrap}
+.ww-tabs2{display:flex;gap:32px;flex-shrink:0}
+.ww-tabs2 .ww-tab{padding:14px 0;font-size:14px;font-weight:600;color:#7a8294;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:all .15s}
+.ww-tabs2 .ww-tab:hover{color:var(--tx)}
+.ww-tabs2 .ww-tab.act{color:var(--p);border-bottom-color:var(--p)}
+.ww-tab-search{display:flex;gap:6px;align-items:center;padding-bottom:8px}
+.ww-sb-select2{padding:8px 28px 8px 12px;border:1px solid #e5e8ed;border-radius:8px;font-size:13px;color:var(--tx);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a8294' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 10px center;cursor:pointer;font-family:var(--font);outline:none;appearance:none;-webkit-appearance:none;min-width:110px}
+.ww-sb-input-wrap2{position:relative;display:flex;align-items:center}
+.ww-sb-input2{padding:8px 36px 8px 14px;border:1px solid #e5e8ed;border-radius:8px;font-size:13px;color:var(--tx);outline:none;font-family:var(--font);background:#fff;min-width:240px}
+.ww-sb-input2:focus{border-color:var(--p)}
+.ww-sb-icon2{position:absolute;right:12px;cursor:pointer}
+.ww-adv-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border:1px solid #e5e8ed;background:#fff;color:var(--tx2);font-size:13px;font-weight:500;border-radius:8px;cursor:pointer;font-family:var(--font);transition:all .15s}
+.ww-adv-btn:hover{border-color:var(--p);color:var(--p)}
+.ww-adv-btn svg{color:#7a8294}
+.ww-adv-btn:hover svg{color:var(--p)}
+
+/* 총 건수 */
+.ww-tbl-count{font-size:13px;color:var(--tx2);margin-bottom:12px}
+.ww-tbl-count strong{color:var(--p);font-weight:700}
+
+/* 테이블 v2 */
+.ww-tbl2{width:100%;background:#fff;border-collapse:separate;border-spacing:0}
+.ww-tbl2 thead th{padding:14px 16px;background:#f7f9fc;font-size:13px;font-weight:600;color:var(--tx2);text-align:center;border-top:1px solid #eef0f3;border-bottom:1px solid #eef0f3;letter-spacing:-.2px;white-space:nowrap}
+.ww-tbl2 thead th:first-child{border-top-left-radius:0}
+.ww-tbl2 tbody tr{cursor:pointer;transition:background .12s}
+.ww-tbl2 tbody tr:hover{background:#f7f9fc}
+.ww-tbl2 tbody td{padding:14px 16px;font-size:13.5px;color:var(--tx);border-bottom:1px solid #f3f4f6;text-align:center;letter-spacing:-.2px}
+.ww-tbl2 tbody td:nth-child(3){text-align:left;color:var(--tx);font-weight:500}
+.ww-tbl2 tbody tr:last-child td{border-bottom:none}
+
+/* 구분 pill */
+.ww-cat{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.2px}
+.ww-cat-blue{background:#EEF3FE;color:var(--p);border:1px solid #d4e0fc}
+.ww-cat-green{background:#e8f5ee;color:#2d8a4e;border:1px solid #c5e2d0}
+.ww-cat-orange{background:#fff3e6;color:#d97706;border:1px solid #fbd9b0}
+.ww-cat-red{background:#fdf0ef;color:var(--red);border:1px solid #f3c9c4}
+
+/* N (new) badge */
+.ww-new{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--red);color:#fff;font-size:9px;font-weight:700;border-radius:50%;margin-left:6px;vertical-align:middle}
+
+/* 첨부 */
+.ww-att{display:inline-flex;align-items:center;gap:4px;color:var(--tx3);font-size:12.5px}
+.ww-att svg{color:var(--tx3)}
+.ww-att-empty{color:#c8cdd6;font-size:13px}
+
+/* 페이지네이션 (DESIGNNAS Standard Pagination 가이드) */
+.ww-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:32px 0 8px;font-family:var(--font)}
+/* Prev / Next 버튼 (outlined) */
+.ww-pg-prev,.ww-pg-next{display:inline-flex;align-items:center;gap:4px;height:36px;padding:0 14px;border:1px solid #d4dae3;background:#fff;color:var(--p);font-size:14px;font-weight:500;border-radius:8px;cursor:pointer;font-family:var(--font);transition:all .15s;letter-spacing:-.2px}
+.ww-pg-prev:hover,.ww-pg-next:hover{border-color:var(--p);background:var(--pp)}
+.ww-pg-prev{margin-right:4px}
+.ww-pg-next{margin-left:4px}
+.ww-pg-first{margin-right:12px}
+.ww-pg-last{margin-left:12px}
+/* 숫자 버튼 */
+.ww-pg{min-width:36px;height:36px;padding:0 8px;border:1px solid transparent;background:transparent;color:var(--tx2);font-size:14px;font-weight:500;border-radius:8px;cursor:pointer;font-family:var(--font);transition:all .15s;display:inline-flex;align-items:center;justify-content:center;letter-spacing:-.2px}
+.ww-pg:hover{background:#f3f5f9;color:var(--tx)}
+.ww-pg.act{background:var(--p);color:#fff;font-weight:700;border-color:var(--p)}
+.ww-pg-dots{color:var(--tx3);font-size:14px;padding:0 4px;letter-spacing:1px;align-self:center}
+
+/* ══ 사이드바 접기/펼치기 버튼 (WEWORKS) ══ */
+.ww-collapse-btn{margin:auto 14px 14px;padding:10px 14px;border:1px solid #eef0f3;background:#fff;color:var(--tx2);font-size:12.5px;font-weight:500;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:var(--font);transition:all .15s;flex-shrink:0}
+.ww-collapse-btn:hover{border-color:var(--p);color:var(--p)}
+.ww-collapse-btn .wcb-icon-collapse{flex-shrink:0;color:#7a8294;transition:transform .25s}
+.ww-collapse-btn:hover .wcb-icon-collapse{color:var(--p)}
+.gnb.collapsed .ww-collapse-btn{padding:10px;justify-content:center;margin:auto 8px 14px}
+.gnb.collapsed .ww-collapse-btn .wcb-label{display:none}
+.gnb.collapsed .ww-collapse-btn .wcb-icon-collapse{transform:rotate(180deg)}
+
+/* WEWORKS sidebar collapsed adjustments */
+.gnb{transition:width .25s cubic-bezier(.4,0,.2,1);min-width:0}
+.gnb.collapsed{width:64px !important;min-width:64px !important;max-width:64px !important;flex-basis:64px !important}
+.gnb.collapsed .ww-brand-name{font-size:14px}
+.gnb.collapsed .ww-brand-sub{display:none}
+.gnb.collapsed .ww-brand{padding:18px 10px 16px}
+.gnb.collapsed .ww-gi{padding:0 6px;margin:2px 8px;justify-content:center;height:42px}
+.gnb.collapsed .ww-fav{padding:0 6px;margin:1px 8px;justify-content:center;height:36px}
+.gnb.collapsed .ww-favorites-head{display:none}
+.gnb.collapsed .ww-sub-arr,.gnb.collapsed .ww-sub-menu{display:none !important}
+
+/* 호버 툴팁 (collapsed 상태에서 라벨 표시) */
+.gnb.collapsed .ww-gi,.gnb.collapsed .ww-fav{position:relative}
+.gnb.collapsed .ww-gi:hover::after,
+.gnb.collapsed .ww-fav:hover::after{
+  content:attr(data-tip);
+  position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);
+  background:#1a1a1a;color:#fff;padding:6px 12px;border-radius:6px;
+  font-size:12px;font-weight:500;white-space:nowrap;
+  z-index:1000;pointer-events:none;
+  box-shadow:0 4px 12px rgba(0,0,0,.15)
+}
+.gnb.collapsed .ww-gi:hover::before,
+.gnb.collapsed .ww-fav:hover::before{
+  content:"";position:absolute;left:calc(100% + 4px);top:50%;transform:translateY(-50%);
+  border:6px solid transparent;border-right-color:#1a1a1a;
+  z-index:1000;pointer-events:none
+}
+
+/* ══ 사이드바 서브메뉴 (근태관리) ══ */
+.ww-gi-parent{position:relative}
+.ww-sub-arr{margin-left:auto;color:#a0a8b8;transition:transform .2s}
+.ww-gi-parent.open .ww-sub-arr{transform:rotate(180deg)}
+.ww-sub-menu{display:none;flex-direction:column;padding:4px 0 6px;margin:0 12px}
+.ww-gi-parent.open + .ww-sub-menu{display:flex}
+.ww-sub-item{padding:8px 14px 8px 44px;font-size:13px;color:#7a8294;cursor:pointer;border-radius:8px;margin:1px 0;transition:all .15s;position:relative}
+.ww-sub-item:hover{background:#f3f5f9;color:var(--tx)}
+.ww-sub-item.act{color:var(--p);font-weight:600;background:var(--pp)}
+.ww-sub-item.act::before{content:"";position:absolute;left:30px;top:50%;transform:translateY(-50%);width:4px;height:4px;background:var(--p);border-radius:50%}
+
+/* ══ 폼 레이아웃 (연차/연장근무 신청) ══ */
+.ww-form{display:flex;flex-direction:column;gap:18px}
+.ww-form-row{display:flex;align-items:flex-start;gap:18px}
+.ww-form-lbl{font-size:13px;font-weight:600;color:var(--tx2);width:100px;flex-shrink:0;padding-top:9px}
+.ww-form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:8px;padding-top:18px;border-top:1px solid #f3f4f6}
+
+/* ══ 근태관리 페이지 (WEWORKS) ══ */
+.ww-out-btn{padding:9px 22px;background:#fff;color:var(--tx);border:1px solid #e5e8ed;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s}
+.ww-out-btn:hover{border-color:var(--p);color:var(--p)}
+
+.att-row1{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.att-cal-card,.att-stat-card{background:#fff;border:1px solid #eef0f3;border-radius:12px;padding:24px}
+.att-cal-hdr{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.att-cal-arr{width:30px;height:30px;border:none;background:#f3f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--tx2);transition:all .15s}
+.att-cal-arr:hover{background:var(--pp);color:var(--p)}
+.att-cal-month{font-size:18px;font-weight:700;color:var(--tx);letter-spacing:-.5px;flex:1;text-align:left;margin-left:6px}
+.att-cal-today{padding:6px 16px;border:1px solid #e5e8ed;background:#fff;color:var(--tx2);font-size:12px;font-weight:600;border-radius:8px;cursor:pointer;font-family:var(--font);transition:all .15s}
+.att-cal-today:hover{border-color:var(--p);color:var(--p)}
+
+.att-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0}
+.att-day-h{padding:10px 0;text-align:center;font-size:12px;font-weight:600;color:var(--tx3);letter-spacing:.3px}
+.att-day-h:first-child{color:var(--red)}
+.att-day-h:last-child{color:var(--p)}
+.att-day{aspect-ratio:1.1/1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:10px;font-size:13px;color:var(--tx);position:relative;cursor:pointer;border-radius:8px;transition:background .12s}
+.att-day:hover:not(.att-mute):not(.att-today){background:#f7f9fc}
+.att-mute{color:#cdd2d8}
+.att-sat{color:var(--p)}
+.att-sun{color:var(--red)}
+.att-today{background:var(--p);color:#fff;font-weight:700;border-radius:50%;width:36px;height:36px;align-self:center;margin-top:6px;padding:0;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1}
+.att-today .ad-num{font-size:13px}
+.ad-num{display:block}
+.ad-dot{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%}
+
+.dot-g{background:#22c55e}
+.dot-y{background:#f97316}
+.dot-b{background:var(--p)}
+.dot-r{background:#ef4444}
+.dot-x{background:#cdd2d8}
+
+.att-legend{display:flex;justify-content:center;gap:18px;margin-top:18px;padding-top:16px;border-top:1px solid #f3f4f6}
+.al-item{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--tx2);font-weight:500}
+.al-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* 오늘/이번주 카드 */
+.att-today-row{display:flex;gap:20px;align-items:center;padding-bottom:20px;border-bottom:1px solid #f3f4f6;margin-bottom:18px}
+.att-today-info{flex:1;min-width:0}
+.att-today-title{font-size:16px;font-weight:700;color:var(--tx);margin-bottom:5px}
+.att-today-base{font-size:11.5px;color:var(--tx3);margin-bottom:14px}
+.att-today-list{display:flex;flex-direction:column;gap:11px}
+.atli-row{display:flex;align-items:center;gap:10px}
+.atli-ic{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.atli-lbl{font-size:13px;color:var(--tx2);flex:1}
+.atli-val{font-size:15px;font-weight:700;color:var(--tx);font-family:var(--mono);letter-spacing:-.5px}
+
+.att-prog{position:relative;width:140px;height:140px;flex-shrink:0}
+.att-prog-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.att-prog-lbl{font-size:11px;color:var(--tx3);margin-bottom:4px}
+.att-prog-num{font-size:30px;font-weight:700;color:var(--p);font-family:var(--mono);line-height:1;letter-spacing:-1px}
+.att-prog-meta{font-size:10.5px;color:var(--tx3);margin-top:4px}
+
+.att-week-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.att-week-title{font-size:14px;font-weight:700;color:var(--tx)}
+.att-week-date{font-size:12px;color:var(--tx3);font-family:var(--mono)}
+.att-week-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.aws{background:#f7f9fc;border-radius:8px;padding:12px 14px;text-align:center}
+.aws-lbl{font-size:11px;color:var(--tx3);margin-bottom:5px}
+.aws-val{font-size:14px;font-weight:700;color:var(--tx);letter-spacing:-.3px}
+
+/* 근태 기록 카드 */
+.att-rec-card{background:#fff;border:1px solid #eef0f3;border-radius:12px;padding:24px}
+.att-rec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.att-rec-title{font-size:16px;font-weight:700;color:var(--tx);margin:0}
+.att-excel-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid #e5e8ed;background:#fff;color:var(--tx2);font-size:13px;font-weight:500;border-radius:8px;cursor:pointer;font-family:var(--font);transition:all .15s}
+.att-excel-btn:hover{border-color:var(--p);color:var(--p)}
+.att-excel-btn svg{color:#7a8294}
+.att-excel-btn:hover svg{color:var(--p)}
+
+/* ── (legacy v1 styles) ── */
+.ww-page-title{font-size:24px;font-weight:700;color:var(--tx);letter-spacing:-.5px;margin:0 0 22px}
+
+/* 탭 + 글쓰기 버튼 */
+.ww-tabs{display:flex;align-items:center;gap:24px;border-bottom:1px solid #eef0f3;margin-bottom:18px;position:relative}
+.ww-tab{padding:10px 0;font-size:14px;font-weight:600;color:#7a8294;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
+.ww-tab:hover{color:var(--tx)}
+.ww-tab.act{color:var(--p);border-bottom-color:var(--p)}
+.ww-write-btn{margin-left:auto;margin-bottom:8px;padding:9px 22px;background:var(--p);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);transition:background .15s}
+.ww-write-btn:hover{background:var(--pd)}
+
+/* 검색 바 */
+.ww-search-bar{display:flex;gap:8px;background:#fff;border:1px solid #eef0f3;border-radius:10px;padding:10px;margin-bottom:18px}
+.ww-sb-select{padding:8px 12px;border:1px solid #eef0f3;border-radius:6px;font-size:13px;color:var(--tx);background:#fff;cursor:pointer;font-family:var(--font);outline:none;min-width:130px}
+.ww-sb-input-wrap{flex:1;position:relative;display:flex;align-items:center}
+.ww-sb-input{flex:1;padding:8px 40px 8px 14px;border:1px solid #eef0f3;border-radius:6px;font-size:13px;color:var(--tx);outline:none;font-family:var(--font);background:#fff}
+.ww-sb-input:focus{border-color:var(--p);box-shadow:0 0 0 2px rgba(74,124,240,.1)}
+.ww-sb-icon{position:absolute;right:12px;cursor:pointer}
+
+/* 테이블 */
+.ww-tbl{width:100%;background:#fff;border:1px solid #eef0f3;border-radius:12px;border-collapse:separate;border-spacing:0;overflow:hidden}
+.ww-tbl thead th{padding:14px 16px;background:#fff;font-size:13px;font-weight:600;color:var(--tx2);text-align:left;border-bottom:1px solid #eef0f3;letter-spacing:-.2px}
+.ww-tbl tbody tr{cursor:pointer;transition:background .12s}
+.ww-tbl tbody tr:hover{background:#f7f9fc}
+.ww-tbl tbody td{padding:16px;font-size:13.5px;color:var(--tx);border-bottom:1px solid #f3f4f6;letter-spacing:-.2px}
+.ww-tbl tbody tr:last-child td{border-bottom:none}
+.ww-tbl-num{color:var(--tx3);font-family:var(--mono);font-weight:500}
+.ww-tag-must{display:inline-block;background:#fdf0ef;color:var(--red);font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;margin-right:6px;letter-spacing:.2px}
+
+/* 페이지네이션 (legacy v1 — 위에 v2 가이드로 대체됨) */
+
 /* ══ 업무도구 PAGE (WEWORKS — 10 컬러 아이콘) ══ */
 .tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:20px}
 .tool-item{display:flex;flex-direction:column;align-items:center;gap:16px;padding:32px 16px;background:#fff;border:1px solid #eef0f3;border-radius:16px;cursor:pointer;transition:all .2s}
@@ -1004,14 +1233,24 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="gi ww-gi act" onclick="showMain('dashboard')" data-tip="홈">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="gi-label">홈</span>
     </div>
-    <div class="gi ww-gi" onclick="openTab('board','공지사항','')" data-tip="공지사항">
+    <div class="gi ww-gi" onclick="openTab('notice','공지사항','')" data-tip="공지사항">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></span><span class="gi-label">공지사항</span>
     </div>
     <div class="gi ww-gi" onclick="openTab('approval','전자결재','')" data-tip="전자결재">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="gi-label">전자결재</span>
     </div>
-    <div class="gi ww-gi" onclick="openTab('attendance','근태관리','')" data-tip="근태관리">
-      <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></span><span class="gi-label">근태관리</span>
+    <div class="gi ww-gi ww-gi-parent" onclick="toggleAttSub(this)" data-tip="근태관리">
+      <span class="gi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></span>
+      <span class="gi-label">근태관리</span>
+      <svg class="ww-sub-arr" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="ww-sub-menu" id="att-sub-menu">
+      <div class="ww-sub-item act" onclick="openTab('attendance','근태 현황','')">근태 현황</div>
+      <div class="ww-sub-item" onclick="openTab('att-records','근태 기록','')">근태 기록</div>
+      <div class="ww-sub-item" onclick="openTab('att-leave','연차 사용 현황','')">연차 사용 현황</div>
+      <div class="ww-sub-item" onclick="openTab('att-leave-apply','연차 사용 신청','')">연차 사용 신청</div>
+      <div class="ww-sub-item" onclick="openTab('att-overtime','연장 근무 신청','')">연장 근무 신청</div>
+      <div class="ww-sub-item" onclick="openTab('att-overtime-history','연장 근무 승인 내역','')">연장 근무 승인 내역</div>
     </div>
     <div class="gi ww-gi" onclick="openTab('meeting','일정관리','')" data-tip="일정관리">
       <span class="gi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="gi-label">일정관리</span>
@@ -1050,6 +1289,12 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <span class="gi-icon ww-fav-star"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="gi-label">회사규정집</span>
     </div>
   </div>
+
+  <!-- 사이드바 접기/펼치기 토글 -->
+  <button class="ww-collapse-btn" onclick="toggleSidebar()" data-tip="사이드바 접기">
+    <svg class="wcb-icon-collapse" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    <span class="wcb-label">Collapse</span>
+  </button>
 
   <!-- 하단: 유저 + 설정 — 숨김 (헤더로 이동) -->
   <div class="gnb-footer" style="display:none">
@@ -1785,6 +2030,154 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     </div>
   </div>
 </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 공지사항 PAGE (WEWORKS 레퍼런스 v2) ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-notice">
+  <div class="scroll" style="padding:24px 32px 32px">
+    <!-- 브레드크럼 -->
+    <div class="ww-bc">
+      <span class="ww-bc-home" onclick="showMain('dashboard')">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </span>
+      <span class="ww-bc-sep">›</span>
+      <span class="ww-bc-curr">공지사항</span>
+    </div>
+    <!-- 페이지 헤더 -->
+    <div class="ww-ph">
+      <div>
+        <h1 class="ww-ph-title">공지사항 <span class="ww-ph-sub">회사 소식과 주요 안내 사항을 확인하세요.</span></h1>
+      </div>
+      <button class="ww-write-btn" onclick="showToast('공지 등록 화면')">공지 등록</button>
+    </div>
+    <!-- 탭 + 검색 (한 줄) -->
+    <div class="ww-tab-row">
+      <div class="ww-tabs2">
+        <div class="ww-tab act" onclick="switchNoticeTab(this,'all')">전체</div>
+        <div class="ww-tab" onclick="switchNoticeTab(this,'general')">일반공지</div>
+        <div class="ww-tab" onclick="switchNoticeTab(this,'work')">업무공지</div>
+        <div class="ww-tab" onclick="switchNoticeTab(this,'event')">행사안내</div>
+        <div class="ww-tab" onclick="switchNoticeTab(this,'sys')">시스템공지</div>
+      </div>
+      <div class="ww-tab-search">
+        <select class="ww-sb-select2">
+          <option>제목+내용</option>
+          <option>제목</option>
+          <option>내용</option>
+          <option>작성자</option>
+        </select>
+        <div class="ww-sb-input-wrap2">
+          <input type="text" class="ww-sb-input2" placeholder="검색어를 입력하세요.">
+          <svg class="ww-sb-icon2" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#a0a8b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <button class="ww-adv-btn" onclick="showToast('상세검색 옵션 열기')">
+          상세검색
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- 총 건수 -->
+    <div class="ww-tbl-count">총 <strong>23</strong>건</div>
+    <!-- 테이블 -->
+    <table class="ww-tbl2">
+      <thead>
+        <tr>
+          <th style="width:70px">번호</th>
+          <th style="width:90px">구분</th>
+          <th>제목</th>
+          <th style="width:140px">작성자</th>
+          <th style="width:140px">작성일</th>
+          <th style="width:90px">조회수</th>
+          <th style="width:80px">첨부</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="showToast('공지 상세')">
+          <td>1</td>
+          <td><span class="ww-cat ww-cat-blue">공지</span></td>
+          <td>2026년 하계 휴가 일정 안내 <span class="ww-new">N</span></td>
+          <td>인사팀</td><td class="mn">2026-05-20</td><td>532</td>
+          <td><span class="ww-att"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>1</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>22</td>
+          <td><span class="ww-cat ww-cat-green">업무</span></td>
+          <td>개인정보보호 교육 실시 안내</td>
+          <td>정보보안팀</td><td class="mn">2026-05-17</td><td>312</td>
+          <td><span class="ww-att"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>1</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>21</td>
+          <td><span class="ww-cat ww-cat-green">업무</span></td>
+          <td>사내 시스템 점검 안내 (5/25 토요일)</td>
+          <td>IT운영팀</td><td class="mn">2026-05-15</td><td>245</td>
+          <td><span class="ww-att-empty">/ -</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>20</td>
+          <td><span class="ww-cat ww-cat-orange">행사</span></td>
+          <td>창립 15주년 기념 행사 안내</td>
+          <td>총무팀</td><td class="mn">2026-05-13</td><td>378</td>
+          <td><span class="ww-att"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>2</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>19</td>
+          <td><span class="ww-cat ww-cat-blue">공지</span></td>
+          <td>복지포인트 제도 변경 안내</td>
+          <td>인사팀</td><td class="mn">2026-05-10</td><td>198</td>
+          <td><span class="ww-att"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>1</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>18</td>
+          <td><span class="ww-cat ww-cat-green">업무</span></td>
+          <td>사옥 출입 보안 강화 안내</td>
+          <td>총무팀</td><td class="mn">2026-05-08</td><td>145</td>
+          <td><span class="ww-att-empty">/ -</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>17</td>
+          <td><span class="ww-cat ww-cat-green">업무</span></td>
+          <td>2026년 1분기 경영실적 공지</td>
+          <td>경영기획팀</td><td class="mn">2026-05-02</td><td>432</td>
+          <td><span class="ww-att"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>2</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>16</td>
+          <td><span class="ww-cat ww-cat-orange">행사</span></td>
+          <td>사내 동호회 활동 지원 안내</td>
+          <td>인사팀</td><td class="mn">2026-04-29</td><td>221</td>
+          <td><span class="ww-att-empty">/ -</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>15</td>
+          <td><span class="ww-cat ww-cat-green">업무</span></td>
+          <td>업무용 노트북 보안 설정 변경 안내</td>
+          <td>IT운영팀</td><td class="mn">2026-04-26</td><td>167</td>
+          <td><span class="ww-att"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>1</span></td>
+        </tr>
+        <tr onclick="showToast('공지 상세')">
+          <td>14</td>
+          <td><span class="ww-cat ww-cat-blue">공지</span></td>
+          <td>임직원 단체 상해보험 가입 안내</td>
+          <td>인사팀</td><td class="mn">2026-04-20</td><td>205</td>
+          <td><span class="ww-att"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>1</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 페이지네이션 (DESIGNNAS 가이드) -->
+    <div class="ww-pagination">
+      <button class="ww-pg-prev ww-pg-first" onclick="showToast('처음 페이지')">« Prev</button>
+      <button class="ww-pg-prev" onclick="showToast('이전 페이지')">‹ Prev</button>
+      <button class="ww-pg act">1</button>
+      <button class="ww-pg" onclick="showToast('2 페이지')">2</button>
+      <button class="ww-pg" onclick="showToast('3 페이지')">3</button>
+      <button class="ww-pg" onclick="showToast('4 페이지')">4</button>
+      <button class="ww-pg" onclick="showToast('5 페이지')">5</button>
+      <span class="ww-pg-dots">···</span>
+      <button class="ww-pg-next" onclick="showToast('다음 페이지')">Next ›</button>
+      <button class="ww-pg-next ww-pg-last" onclick="showToast('마지막 페이지')">Next »</button>
+    </div>
+  </div>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━ 업무도구 PAGE (WEWORKS 레퍼런스) ━━━━━━━━━━━━━━━━━━━━ -->
@@ -3372,91 +3765,348 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
   </div>
 </div>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━ 근태관리 ━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ━━━━━━━━━━━━━━━━━━━━ 근태관리 (WEWORKS 레퍼런스 v2) ━━━━━━━━━━━━━━━━━━━━ -->
 <div class="page" id="page-attendance">
-  <div class="toolbar">
-    <span class="tb-title">근태관리</span>
-    <button class="tb pri" onclick="openApprovalForm('출장비신청서')">+ 출장 신청</button>
-    <button class="tb acc" onclick="openApprovalForm('휴가신청서')">+ 휴가 신청</button>
-    <div class="tb-sep"></div>
-    <button class="tb" onclick="downloadExcel(this.closest('.page').id.replace('page-',''))">Excel 다운로드</button>
-    <button class="tb" onclick="printPage()">출력</button>
+  <div class="scroll" style="padding:24px 32px 32px">
+    <!-- 브레드크럼 -->
+    <div class="ww-bc">
+      <span class="ww-bc-home" onclick="showMain('dashboard')">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </span>
+      <span class="ww-bc-sep">›</span>
+      <span class="ww-bc-curr">근태관리</span>
+      <span class="ww-bc-sep">›</span>
+      <span class="ww-bc-curr">근태 현황</span>
+    </div>
+    <!-- 페이지 헤더 -->
+    <div class="ww-ph">
+      <div>
+        <h1 class="ww-ph-title">근태 현황 <span class="ww-ph-sub">나의 근태 현황과 근무 기록을 확인할 수 있습니다.</span></h1>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="ww-write-btn" onclick="openApprovalForm('연장근무신청서')">연장 근무 신청</button>
+        <button class="ww-out-btn" onclick="openApprovalForm('휴가신청서')">연차 신청</button>
+      </div>
+    </div>
+
+    <!-- ROW 1: 캘린더 + 오늘/이번주 현황 -->
+    <div class="att-row1">
+      <!-- 캘린더 카드 -->
+      <div class="att-cal-card">
+        <div class="att-cal-hdr">
+          <button class="att-cal-arr" onclick="showToast('이전 달')"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span class="att-cal-month">2026.05</span>
+          <button class="att-cal-arr" onclick="showToast('다음 달')"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+          <button class="att-cal-today" onclick="showToast('오늘로 이동')">오늘</button>
+        </div>
+        <div class="att-cal-grid">
+          <div class="att-day-h">일</div><div class="att-day-h">월</div><div class="att-day-h">화</div><div class="att-day-h">수</div><div class="att-day-h">목</div><div class="att-day-h">금</div><div class="att-day-h">토</div>
+          <div class="att-day att-mute">28</div><div class="att-day att-mute">29</div><div class="att-day att-mute">30</div><div class="att-day"><span class="ad-num">1</span><span class="ad-dot dot-g"></span></div><div class="att-day"><span class="ad-num">2</span><span class="ad-dot dot-g"></span></div><div class="att-day"><span class="ad-num">3</span><span class="ad-dot dot-y"></span></div><div class="att-day att-sat"><span class="ad-num">4</span></div>
+          <div class="att-day att-sun"><span class="ad-num">5</span></div><div class="att-day"><span class="ad-num">6</span></div><div class="att-day"><span class="ad-num">7</span></div><div class="att-day"><span class="ad-num">8</span><span class="ad-dot dot-g"></span></div><div class="att-day"><span class="ad-num">9</span><span class="ad-dot dot-y"></span></div><div class="att-day"><span class="ad-num">10</span></div><div class="att-day att-sat"><span class="ad-num">11</span></div>
+          <div class="att-day att-sun"><span class="ad-num">12</span></div><div class="att-day"><span class="ad-num">13</span></div><div class="att-day"><span class="ad-num">14</span></div><div class="att-day"><span class="ad-num">15</span></div><div class="att-day"><span class="ad-num">16</span><span class="ad-dot dot-r"></span></div><div class="att-day"><span class="ad-num">17</span></div><div class="att-day att-sat"><span class="ad-num">18</span></div>
+          <div class="att-day att-sun"><span class="ad-num">19</span></div><div class="att-day"><span class="ad-num">20</span></div><div class="att-day att-today"><span class="ad-num">21</span></div><div class="att-day"><span class="ad-num">22</span></div><div class="att-day"><span class="ad-num">23</span></div><div class="att-day"><span class="ad-num">24</span></div><div class="att-day att-sat"><span class="ad-num">25</span></div>
+          <div class="att-day att-sun"><span class="ad-num">26</span></div><div class="att-day"><span class="ad-num">27</span></div><div class="att-day"><span class="ad-num">28</span></div><div class="att-day"><span class="ad-num">29</span></div><div class="att-day"><span class="ad-num">30</span></div><div class="att-day"><span class="ad-num">31</span></div><div class="att-day att-mute"><span class="ad-num">1</span></div>
+        </div>
+        <div class="att-legend">
+          <span class="al-item"><span class="al-dot dot-g"></span>정상</span>
+          <span class="al-item"><span class="al-dot dot-y"></span>지각</span>
+          <span class="al-item"><span class="al-dot dot-b"></span>연장</span>
+          <span class="al-item"><span class="al-dot dot-r"></span>휴무</span>
+          <span class="al-item"><span class="al-dot dot-x"></span>미기록</span>
+        </div>
+      </div>
+
+      <!-- 오늘/이번주 카드 -->
+      <div class="att-stat-card">
+        <div class="att-today-row">
+          <div class="att-today-info">
+            <div class="att-today-title">오늘 근무 현황</div>
+            <div class="att-today-base">기준시간 09:00 ~ 18:00 (휴게 12:00 ~ 13:00)</div>
+            <div class="att-today-list">
+              <div class="atli-row">
+                <span class="atli-ic" style="background:#e8f5ee;color:#2d8a4e">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                </span>
+                <span class="atli-lbl">출근 시간</span>
+                <span class="atli-val mn">08:54</span>
+              </div>
+              <div class="atli-row">
+                <span class="atli-ic" style="background:#fdf0ef;color:var(--red)">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                </span>
+                <span class="atli-lbl">퇴근 시간</span>
+                <span class="atli-val mn">-</span>
+              </div>
+              <div class="atli-row">
+                <span class="atli-ic" style="background:#EEF3FE;color:var(--p)">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+                </span>
+                <span class="atli-lbl">총 근무 시간</span>
+                <span class="atli-val mn">-</span>
+              </div>
+              <div class="atli-row">
+                <span class="atli-ic" style="background:#fef3e2;color:#d97706">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                </span>
+                <span class="atli-lbl">휴게 시간</span>
+                <span class="atli-val mn">01:00</span>
+              </div>
+            </div>
+          </div>
+          <div class="att-prog">
+            <svg viewBox="0 0 140 140" width="140" height="140">
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#EEF3FE" stroke-width="11"/>
+              <circle cx="70" cy="70" r="60" fill="none" stroke="var(--p)" stroke-width="11" stroke-dasharray="376.99" stroke-dashoffset="143.26" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+            </svg>
+            <div class="att-prog-inner">
+              <div class="att-prog-lbl">근무 진행률</div>
+              <div class="att-prog-num">62<span style="font-size:18px">%</span></div>
+              <div class="att-prog-meta">(3시간 46분 / 8시간)</div>
+            </div>
+          </div>
+        </div>
+        <div class="att-week-hdr">
+          <div class="att-week-title">이번 주 근무 현황</div>
+          <div class="att-week-date">05.19(일) ~ 05.25(토)</div>
+        </div>
+        <div class="att-week-stats">
+          <div class="aws"><div class="aws-lbl">총 근무시간</div><div class="aws-val">38시간 20분</div></div>
+          <div class="aws"><div class="aws-lbl">연장 근무시간</div><div class="aws-val">6시간 20분</div></div>
+          <div class="aws"><div class="aws-lbl">지각</div><div class="aws-val">1회</div></div>
+          <div class="aws"><div class="aws-lbl">결근</div><div class="aws-val">0회</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: 근태 기록 테이블 -->
+    <div class="att-rec-card">
+      <div class="att-rec-hdr">
+        <h3 class="att-rec-title">근태 기록</h3>
+        <div style="display:flex;gap:8px">
+          <select class="ww-sb-select2"><option>전체 기간</option><option>이번 주</option><option>이번 달</option><option>지난 달</option></select>
+          <button class="att-excel-btn" onclick="showToast('엑셀 다운로드')">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            엑셀 다운로드
+          </button>
+        </div>
+      </div>
+      <table class="ww-tbl2">
+        <thead>
+          <tr>
+            <th style="width:120px">날짜</th>
+            <th style="width:60px">요일</th>
+            <th style="width:90px">근무 구분</th>
+            <th style="width:90px">출근 시간</th>
+            <th style="width:90px">퇴근 시간</th>
+            <th style="width:120px">총 근무 시간</th>
+            <th style="width:90px">휴게 시간</th>
+            <th style="width:90px">연장 근무</th>
+            <th style="width:110px">지각/조퇴</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="mn">2026-05-21</td><td>화</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:54</td><td class="mn">-</td><td>3시간 46분</td><td class="mn">01:00</td><td class="mn">-</td><td class="mn">-</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-20</td><td>월</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:59</td><td class="mn">18:05</td><td>8시간 06분</td><td class="mn">01:00</td><td class="mn">00:06</td><td class="mn">-</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-17</td><td>금</td><td><span class="ww-cat ww-cat-blue">연장</span></td><td class="mn">08:58</td><td class="mn">20:15</td><td>10시간 17분</td><td class="mn">01:00</td><td class="mn">02:15</td><td class="mn">-</td><td>프로젝트 마감</td></tr>
+          <tr><td class="mn">2026-05-16</td><td>목</td><td><span class="ww-cat ww-cat-orange">지각</span></td><td class="mn">09:18</td><td class="mn">18:02</td><td>7시간 44분</td><td class="mn">01:00</td><td class="mn">-</td><td class="mn">지각 18분</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-15</td><td>수</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:55</td><td class="mn">17:55</td><td>8시간 00분</td><td class="mn">01:00</td><td class="mn">-</td><td class="mn">-</td><td>-</td></tr>
+        </tbody>
+      </table>
+      <div class="ww-pagination">
+        <button class="ww-pg-prev ww-pg-first" onclick="showToast('처음')">« Prev</button>
+        <button class="ww-pg-prev" onclick="showToast('이전')">‹ Prev</button>
+        <button class="ww-pg act">1</button>
+        <button class="ww-pg" onclick="showToast('2 페이지')">2</button>
+        <button class="ww-pg" onclick="showToast('3 페이지')">3</button>
+        <span class="ww-pg-dots">···</span>
+        <button class="ww-pg" onclick="showToast('10 페이지')">10</button>
+        <button class="ww-pg-next" onclick="showToast('다음')">Next ›</button>
+        <button class="ww-pg-next ww-pg-last" onclick="showToast('마지막')">Next »</button>
+      </div>
+    </div>
   </div>
-  <div class="itabs">
-    <div class="it act" onclick="switchIT(this,'att-dash')">현황 대시보드</div>
-    <div class="it" onclick="switchIT(this,'att-trip')">출장 관리</div>
-    <div class="it" onclick="switchIT(this,'att-leave')">휴가·연차 관리</div>
-    <div class="it" onclick="switchIT(this,'att-overtime')">시간외 근무</div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 근태 기록 PAGE ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-att-records">
+  <div class="scroll" style="padding:24px 32px 32px">
+    <div class="ww-bc"><span class="ww-bc-home" onclick="showMain('dashboard')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">근태관리</span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">근태 기록</span></div>
+    <div class="ww-ph"><div><h1 class="ww-ph-title">근태 기록 <span class="ww-ph-sub">일자별 근태 기록을 확인할 수 있습니다.</span></h1></div></div>
+    <div class="att-rec-card">
+      <div class="att-rec-hdr" style="margin-bottom:14px">
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="month" class="ww-sb-input2" value="2026-05" style="min-width:140px">
+          <select class="ww-sb-select2"><option>전체</option><option>정상</option><option>지각</option><option>연장</option><option>휴무</option></select>
+          <button class="ww-write-btn" style="padding:8px 22px" onclick="showToast('조회')">조회</button>
+        </div>
+        <button class="att-excel-btn" onclick="showToast('엑셀 다운로드')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>엑셀 다운로드</button>
+      </div>
+      <table class="ww-tbl2">
+        <thead><tr><th>날짜</th><th>요일</th><th>근무 구분</th><th>출근 시간</th><th>퇴근 시간</th><th>총 근무 시간</th><th>휴게 시간</th><th>연장 근무</th><th>지각/조퇴</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td class="mn">2026-05-21</td><td>화</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:54</td><td class="mn">-</td><td>3시간 46분</td><td class="mn">01:00</td><td class="mn">-</td><td class="mn">-</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-20</td><td>월</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:59</td><td class="mn">18:05</td><td>8시간 06분</td><td class="mn">01:00</td><td class="mn">00:06</td><td class="mn">-</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-17</td><td>금</td><td><span class="ww-cat ww-cat-blue">연장</span></td><td class="mn">08:58</td><td class="mn">20:15</td><td>10시간 17분</td><td class="mn">01:00</td><td class="mn">02:15</td><td class="mn">-</td><td>프로젝트 마감</td></tr>
+          <tr><td class="mn">2026-05-16</td><td>목</td><td><span class="ww-cat ww-cat-orange">지각</span></td><td class="mn">09:18</td><td class="mn">18:02</td><td>7시간 44분</td><td class="mn">01:00</td><td class="mn">-</td><td class="mn">지각 18분</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-15</td><td>수</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:55</td><td class="mn">17:55</td><td>8시간 00분</td><td class="mn">01:00</td><td class="mn">-</td><td class="mn">-</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-14</td><td>화</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:50</td><td class="mn">18:01</td><td>8시간 11분</td><td class="mn">01:00</td><td class="mn">00:01</td><td class="mn">-</td><td>-</td></tr>
+          <tr><td class="mn">2026-05-13</td><td>월</td><td><span class="ww-cat ww-cat-green">정상</span></td><td class="mn">08:53</td><td class="mn">17:55</td><td>8시간 02분</td><td class="mn">01:00</td><td class="mn">-</td><td class="mn">-</td><td>-</td></tr>
+        </tbody>
+      </table>
+      <div class="ww-pagination"><button class="ww-pg-prev ww-pg-first" onclick="showToast('처음')">« Prev</button><button class="ww-pg-prev" onclick="showToast('이전')">‹ Prev</button><button class="ww-pg act">1</button><button class="ww-pg" onclick="showToast('2')">2</button><button class="ww-pg" onclick="showToast('3')">3</button><button class="ww-pg" onclick="showToast('4')">4</button><button class="ww-pg" onclick="showToast('5')">5</button><button class="ww-pg-next" onclick="showToast('다음')">Next ›</button><button class="ww-pg-next ww-pg-last" onclick="showToast('마지막')">Next »</button></div>
+    </div>
   </div>
-  <div class="scroll">
-    <div id="att-dash">
-      <div style="padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:4px">
-        <div style="background:#fff;border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center">
-          <div style="font-size:24px;font-weight:800;color:var(--p);font-family:var(--mono)">12</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px">잔여 연차</div>
-        </div>
-        <div style="background:#fff;border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center">
-          <div style="font-size:24px;font-weight:800;color:#d97706;font-family:var(--mono)">2</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px">이번달 출장</div>
-        </div>
-        <div style="background:#fff;border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center">
-          <div style="font-size:24px;font-weight:800;color:#059669;font-family:var(--mono)">5</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px">사용 연차 (2월)</div>
-        </div>
-        <div style="background:#fff;border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center">
-          <div style="font-size:24px;font-weight:800;color:#7c3aed;font-family:var(--mono)">3</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px">결재 대기</div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 연차 사용 현황 PAGE ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-att-leave">
+  <div class="scroll" style="padding:24px 32px 32px">
+    <div class="ww-bc"><span class="ww-bc-home" onclick="showMain('dashboard')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">근태관리</span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">연차 사용 현황</span></div>
+    <div class="ww-ph"><div><h1 class="ww-ph-title">연차 사용 현황 <span class="ww-ph-sub">연차 사용 내역과 잔여 연차를 확인할 수 있습니다.</span></h1></div><button class="ww-write-btn" onclick="openTab('att-leave-apply','연차 사용 신청','')">연차 신청</button></div>
+    <div class="att-row1">
+      <div class="att-cal-card" style="display:flex;flex-direction:column">
+        <h3 class="att-rec-title" style="margin-bottom:18px">연차 현황</h3>
+        <div style="display:flex;align-items:center;gap:32px">
+          <div style="position:relative;width:140px;height:140px;flex-shrink:0">
+            <svg viewBox="0 0 140 140" width="140" height="140">
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#EEF3FE" stroke-width="11"/>
+              <circle cx="70" cy="70" r="60" fill="none" stroke="var(--p)" stroke-width="11" stroke-dasharray="376.99" stroke-dashoffset="226.19" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font-size:11px;color:var(--tx3);margin-bottom:3px">사용률</div>
+              <div style="font-size:30px;font-weight:700;color:var(--p);font-family:var(--mono);letter-spacing:-1px">40<span style="font-size:18px">%</span></div>
+            </div>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+            <div class="aws"><div class="aws-lbl">총 연차</div><div class="aws-val">15일</div></div>
+            <div class="aws"><div class="aws-lbl">사용 연차</div><div class="aws-val" style="color:#d97706">6일</div></div>
+            <div class="aws"><div class="aws-lbl">잔여 연차</div><div class="aws-val" style="color:var(--p)">9일</div></div>
+          </div>
         </div>
       </div>
-      <div style="padding:0 8px 8px">
-        <div style="background:#fff;border:1px solid var(--bdr);border-radius:8px;padding:12px 14px">
-          <div style="font-size:12px;font-weight:700;color:var(--tx);margin-bottom:8px">직원별 연차 현황 (2026년)</div>
-          <table class="dt" style="font-size:11px">
-            <thead><tr><th>성명</th><th>직위</th><th>연차발생</th><th>사용</th><th>잔여</th><th>이번달사용</th><th>소진율</th></tr></thead>
-            <tbody>
-              <tr><td>김병선</td><td>부장</td><td class="tc">17</td><td class="tc c-o">5</td><td class="tc c-g fw7">12</td><td class="tc">2</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:29%;background:var(--p);height:100%;border-radius:4px"></div></div><span style="font-size:10px">29%</span></div></td></tr>
-              <tr><td>이연구</td><td>차장</td><td class="tc">15</td><td class="tc c-o">8</td><td class="tc c-g fw7">7</td><td class="tc">3</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:53%;background:#d97706;height:100%;border-radius:4px"></div></div><span style="font-size:10px">53%</span></div></td></tr>
-              <tr><td>박사원</td><td>사원</td><td class="tc">10</td><td class="tc c-o">3</td><td class="tc c-g fw7">7</td><td class="tc">0</td><td class="tc"><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--bdr);border-radius:4px;height:5px"><div style="width:30%;background:var(--p);height:100%;border-radius:4px"></div></div><span style="font-size:10px">30%</span></div></td></tr>
-            </tbody>
-          </table>
+      <div class="att-cal-card">
+        <h3 class="att-rec-title" style="margin-bottom:18px">연차 상세 내역</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:13px">
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:#f7f9fc;border-radius:8px"><span style="color:var(--tx3)">발생 연차</span><span style="font-weight:700">15일</span><span class="mn" style="color:var(--tx3)">2026-01-01 ~ 2026-12-31</span></div>
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:#f7f9fc;border-radius:8px"><span style="color:var(--tx3)">사용 연차</span><span style="font-weight:700;color:#d97706">6일</span><span class="mn" style="color:var(--tx3)"></span></div>
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:#f7f9fc;border-radius:8px"><span style="color:var(--tx3)">잔여 연차</span><span style="font-weight:700;color:var(--p)">9일</span><span class="mn" style="color:var(--tx3)">2026-05-21 기준</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="att-rec-card" style="margin-top:18px">
+      <h3 class="att-rec-title" style="margin-bottom:14px">연차 사용 내역</h3>
+      <table class="ww-tbl2">
+        <thead><tr><th>번호</th><th>신청일</th><th>사용 기간</th><th>연차 구분</th><th>일수</th><th>상태</th><th>승인자</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td class="mn">2026-05-15</td><td class="mn">2026-05-20 ~ 2026-05-22</td><td>연차</td><td>1</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td>-</td></tr>
+          <tr><td>5</td><td class="mn">2026-03-15</td><td class="mn">2026-03-26 (목)</td><td>반차</td><td>0.5</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td>개인 일정</td></tr>
+          <tr><td>4</td><td class="mn">2026-03-01</td><td class="mn">2026-03-02 ~ 2026-03-05</td><td>연차</td><td>3</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td>-</td></tr>
+          <tr><td>3</td><td class="mn">2026-02-10</td><td class="mn">2026-02-13 (금)</td><td>연차</td><td>1</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td>-</td></tr>
+          <tr><td>2</td><td class="mn">2026-01-10</td><td class="mn">2026-01-15 ~ 2026-01-16</td><td>연차</td><td>2</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td>가족행사</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 연차 사용 신청 PAGE ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-att-leave-apply">
+  <div class="scroll" style="padding:24px 32px 32px">
+    <div class="ww-bc"><span class="ww-bc-home" onclick="showMain('dashboard')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">근태관리</span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">연차 사용 신청</span></div>
+    <div class="ww-ph"><div><h1 class="ww-ph-title">연차 사용 신청 <span class="ww-ph-sub">연차 사용을 신청합니다.</span></h1></div></div>
+    <div class="att-rec-card" style="max-width:780px">
+      <div class="ww-form">
+        <div class="ww-form-row"><label class="ww-form-lbl">사용 기간</label>
+          <div style="display:flex;gap:8px;align-items:center;flex:1">
+            <input type="date" class="ww-sb-input2" value="2026-06-10" style="flex:1">
+            <span style="color:var(--tx3)">~</span>
+            <input type="date" class="ww-sb-input2" value="2026-06-12" style="flex:1">
+            <input type="text" class="ww-sb-input2" value="3" style="width:60px;text-align:center">
+            <span style="color:var(--tx3);font-size:13px">일</span>
+          </div>
+        </div>
+        <div class="ww-form-row"><label class="ww-form-lbl">연차 구분</label>
+          <select class="ww-sb-select2" style="flex:1"><option>연차</option><option>반차</option><option>병가</option><option>경조사</option></select>
+        </div>
+        <div class="ww-form-row"><label class="ww-form-lbl">사유</label>
+          <textarea class="ww-sb-input2" rows="4" style="flex:1;resize:vertical;padding:10px 14px" placeholder="개인 일정으로 연차 사용 신청합니다.">개인 일정으로 연차 사용 신청합니다.</textarea>
+        </div>
+        <div class="ww-form-row"><label class="ww-form-lbl">첨부파일</label>
+          <div style="flex:1;display:flex;align-items:center;gap:10px">
+            <button class="ww-out-btn" onclick="showToast('파일 선택')" style="padding:8px 16px">파일 선택</button>
+            <span style="color:var(--tx3);font-size:13px">선택된 파일 없음</span>
+          </div>
+        </div>
+        <div class="ww-form-actions">
+          <button class="ww-out-btn" onclick="showToast('취소')">취소</button>
+          <button class="ww-write-btn" onclick="showToast('연차 신청이 완료되었습니다')">신청</button>
         </div>
       </div>
     </div>
-    <div id="att-trip" style="display:none">
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px;margin-bottom:0"><button class="tb pri" onclick="openApprovalForm('출장비신청서')">+ 출장 신청</button></div>
-      <div class="dtw">
-        <table class="dt">
-          <thead><tr><th>신청자</th><th>출장지</th><th>출발일</th><th>복귀일</th><th>목적</th><th>연계과제</th><th>예산</th><th>상태</th><th>관리</th></tr></thead>
-          <tbody>
-            <tr><td>김병선</td><td>서울 (한국연구재단)</td><td class="mn">2026-02-20</td><td class="mn">2026-02-20</td><td>연구과제 협약회의</td><td class="mn">202505000001</td><td class="tr">150,000</td><td><span class="bd by">결재중</span></td><td><span class="lk">수정</span></td></tr>
-            <tr><td>이연구</td><td>부산 (학회)</td><td class="mn">2026-02-15</td><td class="mn">2026-02-16</td><td>한국화학회 참여</td><td class="mn">202505000001</td><td class="tr">380,000</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
-          </tbody>
-        </table>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 연장 근무 신청 PAGE ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-att-overtime">
+  <div class="scroll" style="padding:24px 32px 32px">
+    <div class="ww-bc"><span class="ww-bc-home" onclick="showMain('dashboard')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">근태관리</span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">연장 근무 신청</span></div>
+    <div class="ww-ph"><div><h1 class="ww-ph-title">연장 근무 신청 <span class="ww-ph-sub">연장 근무를 신청합니다.</span></h1></div></div>
+    <div class="att-rec-card" style="max-width:780px">
+      <div class="ww-form">
+        <div class="ww-form-row"><label class="ww-form-lbl">근무 예정일</label><input type="date" class="ww-sb-input2" value="2026-05-21" style="flex:1"></div>
+        <div class="ww-form-row"><label class="ww-form-lbl">근무 시간</label>
+          <div style="display:flex;gap:8px;align-items:center;flex:1">
+            <input type="time" class="ww-sb-input2" value="18:00" style="flex:1">
+            <span style="color:var(--tx3)">~</span>
+            <input type="time" class="ww-sb-input2" value="21:00" style="flex:1">
+            <input type="text" class="ww-sb-input2" value="3" style="width:60px;text-align:center">
+            <span style="color:var(--tx3);font-size:13px">시간</span>
+          </div>
+        </div>
+        <div class="ww-form-row"><label class="ww-form-lbl">사유</label><textarea class="ww-sb-input2" rows="2" style="flex:1;resize:vertical;padding:10px 14px">프로젝트 마감 작업으로 인한 연장 근무 신청입니다.</textarea></div>
+        <div class="ww-form-row"><label class="ww-form-lbl">업무 내용</label><textarea class="ww-sb-input2" rows="2" style="flex:1;resize:vertical;padding:10px 14px">최종 보고서 작성 및 검토</textarea></div>
+        <div class="ww-form-row"><label class="ww-form-lbl">첨부파일</label>
+          <div style="flex:1;display:flex;align-items:center;gap:10px">
+            <button class="ww-out-btn" onclick="showToast('파일 선택')" style="padding:8px 16px">파일 선택</button>
+            <span style="color:var(--tx3);font-size:13px">선택된 파일 없음</span>
+          </div>
+        </div>
+        <div class="ww-form-actions">
+          <button class="ww-out-btn" onclick="showToast('취소')">취소</button>
+          <button class="ww-write-btn" onclick="showToast('연장 근무 신청이 완료되었습니다')">신청</button>
+        </div>
       </div>
     </div>
-    <div id="att-leave" style="display:none">
-      <div style="padding:8px;display:flex;justify-content:flex-end;gap:4px"><button class="tb pri" onclick="openApprovalForm('휴가신청서')">+ 휴가 신청</button></div>
-      <div class="dtw">
-        <table class="dt">
-          <thead><tr><th>신청자</th><th>휴가종류</th><th>시작일</th><th>종료일</th><th>일수</th><th>사유</th><th>상태</th><th>관리</th></tr></thead>
-          <tbody>
-            <tr><td>김병선</td><td>연가</td><td class="mn">2026-02-10</td><td class="mn">2026-02-11</td><td class="tc">2일</td><td>개인 사유</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
-            <tr><td>이연구</td><td>연가</td><td class="mn">2026-01-15</td><td class="mn">2026-01-17</td><td class="tc">3일</td><td>가족 행사</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
-            <tr><td>박사원</td><td>병가</td><td class="mn">2026-01-08</td><td class="mn">2026-01-08</td><td class="tc">1일</td><td>병원 진료</td><td><span class="bd bg">승인완료</span></td><td><span class="lk">상세</span></td></tr>
-          </tbody>
-        </table>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ 연장 근무 승인 내역 PAGE ━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page" id="page-att-overtime-history">
+  <div class="scroll" style="padding:24px 32px 32px">
+    <div class="ww-bc"><span class="ww-bc-home" onclick="showMain('dashboard')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">근태관리</span><span class="ww-bc-sep">›</span><span class="ww-bc-curr">연장 근무 승인 내역</span></div>
+    <div class="ww-ph"><div><h1 class="ww-ph-title">연장 근무 승인 내역 <span class="ww-ph-sub">연장 근무 승인 내역을 확인할 수 있습니다.</span></h1></div></div>
+    <div class="att-rec-card">
+      <div class="att-rec-hdr" style="margin-bottom:14px">
+        <div style="display:flex;gap:8px;align-items:center">
+          <select class="ww-sb-select2"><option>전체</option><option>승인</option><option>반려</option><option>대기</option></select>
+          <input type="date" class="ww-sb-input2" value="2026-05-01">
+          <span style="color:var(--tx3)">~</span>
+          <input type="date" class="ww-sb-input2" value="2026-05-31">
+          <button class="ww-write-btn" style="padding:8px 22px" onclick="showToast('조회')">조회</button>
+        </div>
       </div>
-    </div>
-    <div id="att-overtime" style="display:none">
-      <div class="ib i" style="margin:8px">ℹ️ 시간외 근무 신청 및 관리 화면입니다.</div>
-      <div class="dtw">
-        <table class="dt">
-          <thead><tr><th>신청자</th><th>근무일</th><th>시작시간</th><th>종료시간</th><th>시간</th><th>사유</th><th>상태</th></tr></thead>
-          <tbody>
-            <tr><td>이연구</td><td class="mn">2026-02-13</td><td>18:00</td><td>21:00</td><td class="tc">3h</td><td>실험 마감 작업</td><td><span class="bd bg">승인완료</span></td></tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="ww-tbl2">
+        <thead><tr><th>번호</th><th>근무 예정일</th><th>근무 시간</th><th>총 시간</th><th>사유</th><th>상태</th><th>승인자</th><th>승인일</th></tr></thead>
+        <tbody>
+          <tr><td>8</td><td class="mn">2026-05-21</td><td class="mn">18:00 ~ 21:00</td><td>3시간</td><td>프로젝트 마감 작업</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td class="mn">2026-05-16</td></tr>
+          <tr><td>7</td><td class="mn">2026-05-17</td><td class="mn">19:00 ~ 22:00</td><td>3시간</td><td>시스템 테스트 및 오류 수정</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td class="mn">2026-05-16</td></tr>
+          <tr><td>5</td><td class="mn">2026-05-10</td><td class="mn">18:30 ~ 21:30</td><td>3시간</td><td>보고서 검토 및 수정</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td class="mn">2026-05-09</td></tr>
+          <tr><td>4</td><td class="mn">2026-05-02</td><td class="mn">18:00 ~ 20:00</td><td>2시간</td><td>회의 자료 준비</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td class="mn">2026-05-01</td></tr>
+          <tr><td>3</td><td class="mn">2026-04-29</td><td class="mn">19:00 ~ 22:00</td><td>3시간</td><td>데이터 분석</td><td><span class="ww-cat ww-cat-green">승인</span></td><td>김병선</td><td class="mn">2026-04-28</td></tr>
+        </tbody>
+      </table>
+      <div class="ww-pagination"><button class="ww-pg-prev ww-pg-first" onclick="showToast('처음')">« Prev</button><button class="ww-pg-prev" onclick="showToast('이전')">‹ Prev</button><button class="ww-pg act">1</button><button class="ww-pg" onclick="showToast('2')">2</button><button class="ww-pg-next" onclick="showToast('다음')">Next ›</button><button class="ww-pg-next ww-pg-last" onclick="showToast('마지막')">Next »</button></div>
     </div>
   </div>
 </div>
@@ -5454,8 +6104,14 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 function openTab(pid,title,ico){
   const pageMap={'docmgmt':'docmgmt'};
   if(pageMap[pid])pid=pageMap[pid];
-  document.querySelectorAll('.gnb .gi,.gnb .gi-sub').forEach(g=>g.classList.remove('act'));
-  document.querySelectorAll('.gnb .gi,.gnb .gi-sub').forEach(g=>{const oc=g.getAttribute('onclick');if(oc&&oc.includes("'"+pid+"'"))g.classList.add('act');});
+  document.querySelectorAll('.gnb .gi,.gnb .gi-sub,.gnb .ww-sub-item').forEach(g=>g.classList.remove('act'));
+  document.querySelectorAll('.gnb .gi,.gnb .gi-sub,.gnb .ww-sub-item').forEach(g=>{const oc=g.getAttribute('onclick');if(oc&&oc.includes("'"+pid+"'"))g.classList.add('act');});
+  // 근태관리 서브 페이지 진입 시 부모 메뉴도 활성화 + 서브메뉴 펼침
+  const attPids=['attendance','att-records','att-leave','att-leave-apply','att-overtime','att-overtime-history'];
+  if(attPids.includes(pid)){
+    const parent=document.querySelector('.ww-gi-parent');
+    if(parent){parent.classList.add('act','open');}
+  }
   showPage(pid);
 }
 function showMain(pid){
@@ -5649,6 +6305,21 @@ function switchClaimSubTab(el, tid){
   parent.querySelectorAll('#cs-general,#cs-card,#cs-refund').forEach(d=>d.style.display='none');
   const t=document.getElementById(tid);if(t)t.style.display='';
 }
+// ══ 사이드바 서브메뉴 토글 ══
+function toggleAttSub(el){
+  el.classList.toggle('open');
+}
+// 근태관리 또는 하위 페이지 진입 시 서브메뉴 활성화
+const _origOpenTab = typeof openTab==='function' ? openTab : null;
+window._attPagePids = ['attendance','att-records','att-leave','att-leave-apply','att-overtime','att-overtime-history'];
+
+// ══ NOTICE TABS ══
+function switchNoticeTab(el, key){
+  el.parentElement.querySelectorAll('.ww-tab').forEach(t=>t.classList.remove('act'));
+  el.classList.add('act');
+  showToast('공지사항: ' + el.textContent.trim());
+}
+
 // ══ APPROVAL WIDGET TABS ══
 function switchApprTab(el, key){
   el.parentElement.querySelectorAll('.appr-tab').forEach(t=>t.classList.remove('act'));
