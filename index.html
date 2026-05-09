@@ -582,6 +582,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .att-out-btn{margin:0 18px 16px;padding:10px;background:#fff;color:var(--p);border:1px solid var(--p);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s}
 .att-out-btn:hover{background:var(--pp)}
 
+/* ══ WEWORKS ROW 3-COLUMN 서브그리드 (공지/전자결재/일정) ══ */
+.ww-row3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
 /* ══ WEWORKS 통합 카드 (히어로 + 퀵메뉴) ══ */
 .ww-hero-combo{background:#fff;border:1px solid #eef0f3;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
 .ww-hero-top{background:var(--hero);color:#fff;padding:30px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;overflow:hidden}
@@ -1319,8 +1322,9 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <button class="att-out-btn" id="ah-btn-out" onclick="checkOut()">퇴근하기</button>
     </div>
 
-    <!-- ROW 2: 공지사항 + 진행상황 + 오늘의 일정 (1+1+1 col) — WEWORKS 그대로 -->
-    <div class="wgt" style="grid-column:span 1">
+    <!-- ROW 2: 공지사항 + 전자결재 + 오늘의 일정 (3 동일 분할, 4col 풀 너비) — WEWORKS 그대로 -->
+    <div class="ww-row3" style="grid-column:span 4">
+    <div class="wgt">
       <div class="whdr">
         <span class="wttl">공지사항</span>
         <div class="wico" onclick="showMain('board')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
@@ -1333,7 +1337,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-blue">공지</span><span class="wn-title">2026 상반기 연구비 집행 마감 일정</span><span class="wn-date">03-20</span></div>
       </div>
     </div>
-    <div class="wgt" style="grid-column:span 1">
+    <div class="wgt">
       <div class="whdr">
         <span class="wttl">전자결재</span>
         <div class="wico" onclick="showMain('approval')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
@@ -1367,7 +1371,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
       </div>
     </div>
-    <div class="wgt" style="grid-column:span 1">
+    <div class="wgt">
       <div class="whdr">
         <span class="wttl">오늘의 일정 <span style="font-size:11px;color:var(--p);font-weight:600;margin-left:4px">3건</span></span>
         <div class="wico" onclick="showMain('meeting')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
@@ -1401,6 +1405,7 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
       </div>
     </div>
+    </div><!-- end .ww-row3 -->
 
     <!-- ROW 1.5 (숨김): 과제 현황 + 담당자 정보 — R&D ERP 호환용 -->
     <div class="wgt" style="grid-column:span 3;display:none">
