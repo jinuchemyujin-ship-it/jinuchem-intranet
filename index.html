@@ -582,6 +582,14 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .att-out-btn{margin:0 18px 16px;padding:10px;background:#fff;color:var(--p);border:1px solid var(--p);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s}
 .att-out-btn:hover{background:var(--pp)}
 
+/* ══ WEWORKS 통합 카드 (히어로 + 퀵메뉴) ══ */
+.ww-hero-combo{background:#fff;border:1px solid #eef0f3;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ww-hero-top{background:var(--hero);color:#fff;padding:30px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;overflow:hidden}
+.ww-hero-top::before{content:"";position:absolute;top:-40px;right:120px;width:140px;height:140px;background:rgba(255,255,255,.08);border-radius:50%}
+.ww-hero-top::after{content:"";position:absolute;top:60px;right:-20px;width:80px;height:80px;background:rgba(255,255,255,.06);border-radius:50%}
+.ww-hero-top .welcome-hero-text,.ww-hero-top .welcome-weather2{position:relative;z-index:1}
+.ww-hero-quick{display:grid;grid-template-columns:repeat(6,1fr);padding:18px 14px;background:#fff}
+
 /* ══ WEWORKS 퀵 메뉴 (6 inline icons in white card) ══ */
 .ww-quick-row{background:#fff;border:1px solid #eef0f3;border-radius:12px;display:grid;grid-template-columns:repeat(6,1fr);padding:24px 14px}
 .ww-q-item{display:flex;flex-direction:column;align-items:center;gap:14px;padding:6px;cursor:pointer;border-radius:10px;transition:background .15s}
@@ -1213,62 +1221,27 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <!-- ══ 대시보드 본문 ══ -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:max-content;gap:12px;padding:12px 18px 24px;align-content:start;flex:1;overflow-y:auto;min-height:0">
 
-    <!-- ROW 0: 웰컴 히어로 (3col) + 근태 위젯 (1col) — WEWORKS 그대로 -->
-    <div class="welcome-hero" style="grid-column:span 3;margin:0">
-      <div class="welcome-hero-text">
-        <div class="welcome-greeting">안녕하세요, 김병선님!</div>
-        <div class="welcome-sub">오늘도 좋은 하루 보내세요.</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.85);margin-top:14px;font-family:var(--mono)">2026.05.09 (토)</div>
-      </div>
-      <div class="welcome-weather2" aria-hidden="true">
-        <svg viewBox="0 0 90 70" width="90" height="70">
-          <circle cx="34" cy="26" r="14" fill="#FFD66B"/>
-          <path d="M50 42c0-9-7-16-16-16-7 0-13 4-15 11-7 1-12 7-12 14 0 8 6 14 14 14h36c8 0 14-6 14-14 0-8-7-14-16-14-2 0-4 0-5 1z" fill="#fff"/>
-        </svg>
-        <div class="ww2-temp">24<span class="ww2-c">°C</span></div>
-        <div class="ww2-city">서울특별시</div>
-      </div>
-    </div>
 
-    <!-- 근태 현황 카드 (WEWORKS 그대로 — 1col) -->
-    <div class="wgt attend-card">
-      <div class="whdr">
-        <span class="wttl">근태 현황</span>
-        <div class="wico" onclick="showMain('attendance')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
-      </div>
-      <div class="wbody attend-body">
-        <div class="attend-info">
-          <div class="att-block">
-            <div class="att-block-lbl">· 오늘 근무시간</div>
-            <div class="att-block-val">
-              <span class="mn" id="ah-checkin">08:45</span>
-              <span class="att-block-pill">근무중</span>
-            </div>
-          </div>
-          <div class="att-block">
-            <div class="att-block-lbl">· 주간 누적시간</div>
-            <div class="att-block-val">
-              <span class="mn">40:15</span>
-              <span class="att-block-target mn">/ 52:00</span>
-            </div>
-          </div>
+    <!-- ROW 0: 통합 카드 (히어로 + 퀵메뉴) (3col) + 근태 현황 (1col) -->
+    <div class="ww-hero-combo" style="grid-column:span 3">
+      <!-- 상단: 블루 그라디언트 히어로 -->
+      <div class="ww-hero-top">
+        <div class="welcome-hero-text">
+          <div class="welcome-greeting">안녕하세요, 김병선님!</div>
+          <div class="welcome-sub">오늘도 좋은 하루 보내세요.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);margin-top:14px;font-family:var(--mono)">2026.05.09 (토)</div>
         </div>
-        <div class="attend-ring-big">
-          <svg viewBox="0 0 120 120" width="92" height="92">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#EEF3FE" stroke-width="9"/>
-            <circle id="ah-ring-progress" cx="60" cy="60" r="50" fill="none" stroke="var(--p)" stroke-width="9" stroke-dasharray="314.16" stroke-dashoffset="72.3" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+        <div class="welcome-weather2" aria-hidden="true">
+          <svg viewBox="0 0 90 70" width="90" height="70">
+            <circle cx="34" cy="26" r="14" fill="#FFD66B"/>
+            <path d="M50 42c0-9-7-16-16-16-7 0-13 4-15 11-7 1-12 7-12 14 0 8 6 14 14 14h36c8 0 14-6 14-14 0-8-7-14-16-14-2 0-4 0-5 1z" fill="#fff"/>
           </svg>
-          <div class="att-ring-pct">
-            <span class="att-ring-num" id="ah-ring-pct">77%</span>
-            <span class="att-ring-lbl">주간 달성률</span>
-          </div>
+          <div class="ww2-temp">24<span class="ww2-c">°C</span></div>
+          <div class="ww2-city">서울특별시</div>
         </div>
       </div>
-      <button class="att-out-btn" id="ah-btn-out" onclick="checkOut()">퇴근하기</button>
-    </div>
-
-    <!-- 바로가기 메뉴 (WEWORKS 레퍼런스 그대로 — 6개 인라인) -->
-    <div class="ww-quick-row" style="grid-column:span 4">
+      <!-- 하단: 6개 퀵메뉴 -->
+      <div class="ww-hero-quick">
       <div class="ww-q-item" onclick="showMain('approval')">
         <div class="ww-q-ic ww-q-ic-frame">
           <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--p)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
@@ -1306,6 +1279,44 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         </div>
         <div class="ww-q-lbl">업무도구</div>
       </div>
+      </div><!-- end .ww-hero-quick -->
+    </div><!-- end .ww-hero-combo -->
+
+    <!-- 근태 현황 카드 (WEWORKS 우측 1col) -->
+    <div class="wgt attend-card">
+      <div class="whdr">
+        <span class="wttl">근태 현황</span>
+        <div class="wico" onclick="showMain('attendance')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
+      </div>
+      <div class="wbody attend-body">
+        <div class="attend-info">
+          <div class="att-block">
+            <div class="att-block-lbl">· 오늘 근무시간</div>
+            <div class="att-block-val">
+              <span class="mn" id="ah-checkin">08:45</span>
+              <span class="att-block-pill">근무중</span>
+            </div>
+          </div>
+          <div class="att-block">
+            <div class="att-block-lbl">· 주간 누적시간</div>
+            <div class="att-block-val">
+              <span class="mn">40:15</span>
+              <span class="att-block-target mn">/ 52:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="attend-ring-big">
+          <svg viewBox="0 0 120 120" width="92" height="92">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#EEF3FE" stroke-width="9"/>
+            <circle id="ah-ring-progress" cx="60" cy="60" r="50" fill="none" stroke="var(--p)" stroke-width="9" stroke-dasharray="314.16" stroke-dashoffset="72.3" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="att-ring-pct">
+            <span class="att-ring-num" id="ah-ring-pct">77%</span>
+            <span class="att-ring-lbl">주간 달성률</span>
+          </div>
+        </div>
+      </div>
+      <button class="att-out-btn" id="ah-btn-out" onclick="checkOut()">퇴근하기</button>
     </div>
 
     <!-- ROW 2: 공지사항 + 진행상황 + 오늘의 일정 (1+1+1 col) — WEWORKS 그대로 -->
