@@ -582,6 +582,21 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .att-out-btn{margin:0 18px 16px;padding:10px;background:#fff;color:var(--p);border:1px solid var(--p);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .15s}
 .att-out-btn:hover{background:var(--pp)}
 
+/* ══ WEWORKS 퀵 메뉴 (6 inline icons in white card) ══ */
+.ww-quick-row{background:#fff;border:1px solid #eef0f3;border-radius:12px;display:grid;grid-template-columns:repeat(6,1fr);padding:24px 14px}
+.ww-q-item{display:flex;flex-direction:column;align-items:center;gap:14px;padding:6px;cursor:pointer;border-radius:10px;transition:background .15s}
+.ww-q-item:hover{background:#f7f9fc}
+.ww-q-ic{position:relative;width:52px;height:52px;display:flex;align-items:center;justify-content:center}
+.ww-q-ic-frame{border:1.5px solid #e3e8f1;border-radius:14px}
+.ww-q-badge{position:absolute;top:-6px;right:-8px;min-width:20px;height:20px;background:var(--p);color:#fff;font-size:10px;font-weight:700;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 6px;border:2px solid #fff;line-height:1}
+.ww-q-lbl{font-size:13px;color:var(--tx);font-weight:500;text-align:center}
+
+/* ══ WEWORKS 히어로 날씨 (큰 아이콘 + 24°C) ══ */
+.welcome-weather2{display:flex;flex-direction:column;align-items:center;gap:6px;color:#fff;flex-shrink:0;padding-right:12px}
+.ww2-temp{font-size:32px;font-weight:700;letter-spacing:-1px;font-family:var(--mono);line-height:1;display:flex;align-items:flex-start}
+.ww2-c{font-size:18px;font-weight:600;margin-top:4px;margin-left:1px}
+.ww2-city{font-size:13px;color:rgba(255,255,255,.95);font-weight:500}
+
 /* ══ 업무도구 PAGE (WEWORKS — 10 컬러 아이콘) ══ */
 .tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:20px}
 .tool-item{display:flex;flex-direction:column;align-items:center;gap:16px;padding:32px 16px;background:#fff;border:1px solid #eef0f3;border-radius:16px;cursor:pointer;transition:all .2s}
@@ -1202,24 +1217,16 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
     <div class="welcome-hero" style="grid-column:span 3;margin:0">
       <div class="welcome-hero-text">
         <div class="welcome-greeting">안녕하세요, 김병선님!</div>
-        <div class="welcome-sub">오늘도 좋은 하루 되세요</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.85);margin-top:10px;font-family:var(--mono)">2026.05.08 (금)</div>
+        <div class="welcome-sub">오늘도 좋은 하루 보내세요.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.85);margin-top:14px;font-family:var(--mono)">2026.05.09 (토)</div>
       </div>
-      <div class="welcome-weather" aria-hidden="true">
-        <div class="ww-city">
-          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>서울특별시</span>
-        </div>
-        <div class="ww-icon">
-          <svg viewBox="0 0 64 64" width="58" height="58">
-            <circle cx="22" cy="22" r="8" fill="#FFD66B"/>
-            <path d="M48 30a10 10 0 00-19-3 8 8 0 00-9 8 8 8 0 008 8h20a8 8 0 000-13z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="ww-info">
-          <div class="ww-temp">22°</div>
-          <div class="ww-desc">맑음</div>
-        </div>
+      <div class="welcome-weather2" aria-hidden="true">
+        <svg viewBox="0 0 90 70" width="90" height="70">
+          <circle cx="34" cy="26" r="14" fill="#FFD66B"/>
+          <path d="M50 42c0-9-7-16-16-16-7 0-13 4-15 11-7 1-12 7-12 14 0 8 6 14 14 14h36c8 0 14-6 14-14 0-8-7-14-16-14-2 0-4 0-5 1z" fill="#fff"/>
+        </svg>
+        <div class="ww2-temp">24<span class="ww2-c">°C</span></div>
+        <div class="ww2-city">서울특별시</div>
       </div>
     </div>
 
@@ -1260,80 +1267,44 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
       <button class="att-out-btn" id="ah-btn-out" onclick="checkOut()">퇴근하기</button>
     </div>
 
-    <!-- 바로가기 메뉴 (12개 아이콘 4x3 그리드 — 레퍼런스 그대로) -->
-    <div class="quick-card12" style="grid-column:span 4">
-      <div class="quick12-item" onclick="window.open('https://mail.google.com','_blank')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+    <!-- 바로가기 메뉴 (WEWORKS 레퍼런스 그대로 — 6개 인라인) -->
+    <div class="ww-quick-row" style="grid-column:span 4">
+      <div class="ww-q-item" onclick="showMain('approval')">
+        <div class="ww-q-ic ww-q-ic-frame">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--p)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="ww-q-badge">3</span>
         </div>
-        <div class="q12-lbl">메일</div>
+        <div class="ww-q-lbl">전자결재</div>
       </div>
-      <div class="quick12-item" onclick="showMain('meeting')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="1"/><path d="M16 2v4M8 2v4M3 10h18"/><polyline points="9 14 11 16 15 12"/></svg>
+      <div class="ww-q-item" onclick="showMain('meeting')">
+        <div class="ww-q-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--p)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
         </div>
-        <div class="q12-lbl">캘린더</div>
+        <div class="ww-q-lbl">내 일정</div>
       </div>
-      <div class="quick12-item" onclick="showMain('docmgmt')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+      <div class="ww-q-item" onclick="showMain('attendance')">
+        <div class="ww-q-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e76f3f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
         </div>
-        <div class="q12-lbl">톡클라우드</div>
+        <div class="ww-q-lbl">근태기록</div>
       </div>
-      <div class="quick12-item" onclick="showToast('이모티콘')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      <div class="ww-q-item" onclick="openApprovalForm('휴가신청서')">
+        <div class="ww-q-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#2d8a4e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>
         </div>
-        <div class="q12-lbl">이모티콘</div>
+        <div class="ww-q-lbl">연차신청</div>
       </div>
-      <div class="quick12-item" onclick="showToast('선물하기')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+      <div class="ww-q-item" onclick="showMain('docmgmt')">
+        <div class="ww-q-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#7c3aed" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
         </div>
-        <div class="q12-lbl">선물하기</div>
+        <div class="ww-q-lbl">문서함</div>
       </div>
-      <div class="quick12-item" onclick="showToast('톡딜')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+      <div class="ww-q-item" onclick="showMain('tools')">
+        <div class="ww-q-ic">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#0891b2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         </div>
-        <div class="q12-lbl">톡딜</div>
-      </div>
-      <div class="quick12-item" onclick="showToast('톡타이머')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 14.5 14.5"/><line x1="9" y1="2" x2="15" y2="2"/></svg>
-          <span class="q12-dot"></span>
-        </div>
-        <div class="q12-lbl">톡타이머</div>
-      </div>
-      <div class="quick12-item" onclick="showMain('msds')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6l4 9a2 2 0 01-1.8 2.9H6.8A2 2 0 015 18l4-9V3z"/><line x1="9" y1="3" x2="15" y2="3"/></svg>
-        </div>
-        <div class="q12-lbl">실험실</div>
-      </div>
-      <div class="quick12-item" onclick="showMain('expense')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-        </div>
-        <div class="q12-lbl">내 결제</div>
-      </div>
-      <div class="quick12-item" onclick="showMain('board')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
-        </div>
-        <div class="q12-lbl">공지사항</div>
-      </div>
-      <div class="quick12-item" onclick="openModal('modal-myinfo')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-        </div>
-        <div class="q12-lbl">환경설정</div>
-      </div>
-      <div class="quick12-item" onclick="openModal('modal-faq')">
-        <div class="q12-ic">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="q12-lbl">도움말</div>
+        <div class="ww-q-lbl">업무도구</div>
       </div>
     </div>
 
