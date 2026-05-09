@@ -707,16 +707,13 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
 .bm-purple{background:#f3ebfe;color:#7c3aed}
 .bm-lbl{font-size:13px;font-weight:600;color:var(--tx);text-align:center}
 
-/* ══ NOTICE LIST (WEWORKS) ══ */
-.wn-row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background .12s;border-radius:6px;padding:9px 6px;margin:0 -6px}
+/* ══ NOTICE LIST (WEWORKS — bullet style) ══ */
+.wn-row{display:flex;align-items:center;gap:10px;padding:11px 6px;border-bottom:1px dashed #eef0f3;cursor:pointer;transition:background .12s;border-radius:6px;margin:0 -6px}
 .wn-row:last-child{border-bottom:none}
 .wn-row:hover{background:#f7f9fc}
-.wn-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0;letter-spacing:.2px}
-.wn-tag-red{background:#fdf0ef;color:var(--red)}
-.wn-tag-blue{background:#EEF3FE;color:var(--p)}
-.wn-tag-amber{background:#fef3e2;color:#d97706}
-.wn-title{flex:1;min-width:0;font-size:12px;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.wn-date{font-size:10px;color:var(--tx3);flex-shrink:0;font-family:var(--mono)}
+.wn-bullet{flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--p);margin-left:4px}
+.wn-title{flex:1;min-width:0;font-size:13px;color:var(--tx);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wn-date{font-size:12px;color:var(--tx3);flex-shrink:0;font-family:var(--mono);font-weight:500}
 
 /* ══ PROGRESS LIST (WEWORKS — 진행상황 with checkboxes) ══ */
 .wp-row{display:flex;align-items:flex-start;gap:10px;padding:10px 6px;border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background .12s;border-radius:6px;margin:0 -6px}
@@ -1330,11 +1327,11 @@ table.pt .calc{font-family:var(--mono);font-size:11px;text-align:right;padding-r
         <div class="wico" onclick="showMain('board')" style="cursor:pointer;font-size:11px;color:var(--p)">더보기 ›</div>
       </div>
       <div class="wbody" style="padding:8px 14px">
-        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-red">공지</span><span class="wn-title">출력물이 열리지 않을 경우 조치 방법</span><span class="wn-date">04-03</span></div>
-        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-blue">공지</span><span class="wn-title">국가R&D 간접비 고시 안내</span><span class="wn-date">04-01</span></div>
-        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-blue">공지</span><span class="wn-title">기술이전창업 신청 매뉴얼</span><span class="wn-date">03-28</span></div>
-        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-amber">긴급</span><span class="wn-title">MSDS 안전관리 교육 필수 이수 안내</span><span class="wn-date">03-25</span></div>
-        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-tag wn-tag-blue">공지</span><span class="wn-title">2026 상반기 연구비 집행 마감 일정</span><span class="wn-date">03-20</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-bullet"></span><span class="wn-title">사내 시스템 점검 안내 (5/25 토요일)</span><span class="wn-date">05.20</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-bullet"></span><span class="wn-title">2026년 하계 휴가 일정 안내</span><span class="wn-date">05.17</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-bullet"></span><span class="wn-title">개인정보보호 교육 실시 안내</span><span class="wn-date">05.16</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-bullet"></span><span class="wn-title">사옥 출입 보안 강화 안내</span><span class="wn-date">05.14</span></div>
+        <div class="wn-row" onclick="showToast('공지 상세')"><span class="wn-bullet"></span><span class="wn-title">복지포인트 제도 변경 안내</span><span class="wn-date">05.13</span></div>
       </div>
     </div>
     <div class="wgt">
